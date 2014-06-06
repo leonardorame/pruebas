@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/local/bin/fpc" Date="1395947403"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -vewnhi -Fu/home/leonardo/Desarrollo/brookframework/packages/lib/x86_64-linux -Fu/home/leonardo/Desarrollo/tir/cgi/ -l tir.lpr"/>
+</CONFIG>
