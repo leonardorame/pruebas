@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
     <link rel="stylesheet" href="../css/dataTables.jqueryui.css"/>
     <link rel="stylesheet" href="../css/tir.css" media="screen">
     <script src="../js/jquery-1.11.1.min.js"></script>
@@ -34,6 +33,11 @@
         </div>
       </div>
       </header>
+
+      <ol class="breadcrumb">
+        <li><a href="#">TIR</a></li>
+        <li class="active">Estudios</li>
+      </ol>
 
       <div id="container">
 
@@ -83,6 +87,7 @@
       $('#example').on( 'click', 'td', function () {
           var tr = $(this)[0].childNodes[0].data;
           var tr = $(this).closest('tr')[0].childNodes[0].firstChild.data;
+          document.location.replace('estudio.html');
           console.log(tr);
           });
     </script>
