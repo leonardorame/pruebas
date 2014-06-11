@@ -20,7 +20,7 @@
           <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
               <li>
-                <a href="../help/">Estudios</a>
+                <a href="index.html">Estudios</a>
               </li>
               <li>
                 <a href="http://news.bootswatch.com">Pacientes</a>
@@ -81,9 +81,21 @@
                 {"data": "Date"},
                 {"data": "Salary"}
               ],
-              "ajax": "/cgi-bin/tir/countries"
-          } );
-      } );
+              "sAjaxSource": "/cgi-bin/tir/countries",
+              "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
+                 oSettings.jqXHR = $.ajax( {
+                   "dataType": 'json',
+                   "type": "POST",
+                   "url": sSource,
+                   "data": aoData,
+                   "success": fnCallback,
+                   "error": function (e) {
+                      window.location.replace('login.html');
+                   }
+                 });
+               }
+          } ); 
+      });
       $('#example').on( 'click', 'td', function () {
           var tr = $(this)[0].childNodes[0].data;
           var tr = $(this).closest('tr')[0].childNodes[0].firstChild.data;

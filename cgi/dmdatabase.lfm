@@ -1,0 +1,30 @@
+object datamodule1: Tdatamodule1
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 183
+  HorizontalOffset = 1018
+  VerticalOffset = 309
+  Width = 235
+  object PGConnection1: TPQConnection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'brooktest'
+    KeepConnection = False
+    Params.Strings = (
+      'port=5432'
+    )
+    Password = 'postgres'
+    Transaction = SQLTransaction1
+    UserName = 'postgres'
+    HostName = '192.168.0.161'
+    LogEvents = []
+    left = 48
+    top = 40
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = PGConnection1
+    left = 57
+    top = 104
+  end
+end

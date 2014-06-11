@@ -5,46 +5,57 @@ unit countries;
 interface
 
 uses
-  BrookAction,
+  baseaction,
   SysUtils,
   fpjson;
 
 type
-  TMyAction = class(TBrookAction)
+  TMyAction = class(TBaseAction)
   public
-    procedure Get; override;
+    procedure Post; override;
   end;
 
 implementation
 
-procedure TMyAction.Get;
+procedure TMyAction.Post;
 var
   lData: TJSONObject;
   lArray: TJsonArray;
   lArrayItem: TJsonObject;
   I: Integer;
+  lStart: Integer;
+  lLength: Integer;
 begin
   lArray := TJsonArray.Create;
 
-  for I := StrToInt(TheRequest.QueryFields.Values['start']) to StrToInt(TheRequest.QueryFields.Values['start']) + StrToInt(TheRequest.QueryFields.Values['length']) do
+  try
+
+  lStart := StrToInt(TheRequest.ContentFields.Values['iDisplayStart']);
+  lLength := StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
+  for I := lStart to (lStart + lLength) - 1 do
   begin
     lArrayItem := TJsonObject.Create;
     lArrayItem.Add('FirstName', 'Tiger Nixon ' + IntToStr(I));
-    lArrayItem.Add('System Architect');
-    lArrayItem.Add('Edinburgh');
-    lArrayItem.Add('5421');
-    lArrayItem.Add('2011/04/25');
-    lArrayItem.Add('$320,800');
+    lArrayItem.Add('Title', 'System Architect');
+    lArrayItem.Add('City', 'Edinburgh');
+    lArrayItem.Add('Id', '5421');
+    lArrayItem.Add('Date', '2011/04/25');
+    lArrayItem.Add('Salary', '$320,800');
     lArray.Add(lArrayItem);
   end;
 
   lData := TJSONObject.Create;
   lData.Add('data', lArray);
-  lData.Add('draw', StrToInt(TheRequest.QueryFields.Values['draw']));
+  lData.Add('draw', StrToInt(TheRequest.ContentFields.Values['draw']));
   lData.Add('recordsTotal', 20);
   lData.Add('recordsFiltered', 20);
 
   Write(lData.AsJson);
+
+  except
+    on E: exception do
+      Write(TheRequest.Content);
+  end;
 
 end;
 
