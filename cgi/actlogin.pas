@@ -52,7 +52,9 @@ begin
             lJson.Strings['idusuario'] := lQuery.FieldByName('iduser').AsString;
             lJson.Strings['usuario'] := lQuery.FieldByName('username').AsString;
             lJson.Strings['perfil'] := lQuery.FieldByName('usergroup').AsString;
-            Write(Session.NewSession(lJson.AsJSON));
+            lJson.Strings['fullname'] := lQuery.FieldByName('fullname').AsString;
+            Session.NewSession(lJson.AsJSON);
+            Write(lJson.AsJSON);
           finally
             lJson.Free;
           end;

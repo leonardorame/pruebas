@@ -10,99 +10,16 @@
     <script src="../js/dataTables.jqueryui.js"></script>
   </head>
   
-  <body>
-    <header>
-      <div class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <a href="../" class="navbar-brand">TIR</a>
-          </div>
-          <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="index.html">Estudios</a>
-              </li>
-              <li>
-                <a href="http://news.bootswatch.com">Pacientes</a>
-              </li>
-              <li>
-                <a href="http://news.bootswatch.com">Plantillas</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      </header>
+  <body ng-app="TIRApp">
 
-      <ol class="breadcrumb">
-        <li><a href="#">TIR</a></li>
-        <li class="active">Estudios</li>
-      </ol>
+      <ng-view></ng-view>
 
-      <div id="container">
-
-        <table id="example" class="display" cellspacing="0" width="100%">
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Extn.</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-              </tr>
-          </thead>
-   
-          <tfoot>
-              <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Extn.</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-              </tr>
-          </tfoot>
-        </table>
-
-      </div> <!-- /container -->
-
-    <script>
-      $(document).ready(function() {
-          $('#example').dataTable( {
-              "bJQueryUI": true,
-              "processing": true,
-              "serverSide": true,
-              "columns": [
-                {"data": "FirstName"},
-                {"data": "Title"},
-                {"data": "City"},
-                {"data": "Id"},
-                {"data": "Date"},
-                {"data": "Salary"}
-              ],
-              "sAjaxSource": "/cgi-bin/tir/countries",
-              "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
-                 oSettings.jqXHR = $.ajax( {
-                   "dataType": 'json',
-                   "type": "POST",
-                   "url": sSource,
-                   "data": aoData,
-                   "success": fnCallback,
-                   "error": function (e) {
-                      window.location.replace('login.html');
-                   }
-                 });
-               }
-          } ); 
-      });
-      $('#example').on( 'click', 'td', function () {
-          var tr = $(this)[0].childNodes[0].data;
-          var tr = $(this).closest('tr')[0].childNodes[0].firstChild.data;
-          document.location.replace('estudio.html');
-          console.log(tr);
-          });
     </script>
 
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/services.js"></script>
+    <script src="../js/controllers.js"></script>
   </body>
 </html>
