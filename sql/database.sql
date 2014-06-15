@@ -42,3 +42,24 @@ create table study(
   StudyDate date not null,
   primary key(IdStudy)
 );
+
+create table user_groups(
+  IdUserGroup serial not null,
+  UserGroup varchar(100),
+  primary key(IdUserGroup)
+ );
+
+insert into user_groups(UserGroup) values('Administrators');
+insert into user_groups(UserGroup) values('Reporters');
+insert into user_groups(UserGroup) values('ReadOnly');
+
+create table users(
+  IdUser serial not null,
+  IdUserGroup integer not null references user_groups(IdUserGroup),
+  UserName varchar(8),
+  Password varchar(8),
+  FullName varchar(100), 
+  primary key(IdUser)
+); 
+
+insert into users(IdUserGroup, Username, Password, FullName) values(1, 'admin', '123', 'Leonardo M. Ramé');
