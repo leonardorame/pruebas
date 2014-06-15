@@ -42,11 +42,11 @@
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="tir"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="8" Y="12"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -57,18 +57,18 @@
         <WindowIndex Value="0"/>
         <TopLine Value="29"/>
         <CursorPos X="1" Y="17"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="42" Y="19"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -83,11 +83,11 @@
         <Filename Value="baseaction.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseaction"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="40"/>
         <CursorPos X="1" Y="48"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -105,11 +105,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="189"/>
         <CursorPos X="1" Y="238"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -117,10 +117,13 @@
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="session"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="35"/>
-        <CursorPos X="1" Y="45"/>
-        <UsageCount Value="40"/>
+        <TopLine Value="50"/>
+        <CursorPos X="39" Y="57"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../lazarus/lcl/interfaces/win32/win32wsdialogs.pp"/>
@@ -150,18 +153,17 @@
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="40"/>
         <CursorPos X="1" Y="62"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="../../brookframework/brokers/brookfclhttpappbroker.pas"/>
         <UnitName Value="BrookFCLHttpAppBroker"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="98"/>
         <CursorPos X="19" Y="118"/>
@@ -171,7 +173,7 @@
       <Unit13>
         <Filename Value="../../brookframework/core/brookutils.pas"/>
         <UnitName Value="BrookUtils"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="65"/>
         <CursorPos X="12" Y="77"/>
@@ -181,7 +183,7 @@
       <Unit14>
         <Filename Value="../../brookframework/core/brookconsts.pas"/>
         <UnitName Value="BrookConsts"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="10"/>
         <CursorPos X="3" Y="22"/>

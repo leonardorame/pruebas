@@ -7,6 +7,7 @@ lib/
 *.o
 *.or
 *.ppu
+*.bak
 
 #exclude executable output in windows
 *.exe
