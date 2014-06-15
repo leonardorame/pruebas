@@ -5,9 +5,18 @@ unit Brokers;
 interface
 
 uses
+  BrookFCLEventLogBroker,
   //BrookFCLHttpAppBroker;
-  BrookFCLCGIBroker;
+  BrookFCLCGIBroker,
+  BrookUtils,
+  SysUtils;
 
 implementation
+
+initialization
+  //BrookSettings.Port := 1024;
+  BrookSettings.LogActive := True;
+  BrookSettings.LogFile := '/tmp/tir.log';
+
 
 end.

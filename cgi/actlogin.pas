@@ -5,13 +5,21 @@ unit actLogin;
 interface
 
 uses
+  BrookLogger,
   dmdatabase,
   sqldb,
   BaseAction,
   fpjson;
 
 type
-  TActLogin = class(TBaseAction)
+  TUser = class
+  private
+    FFirstName: string;
+  published
+    property FirstName: string read FFirstName write FFirstName;
+  end;
+
+  TActLogin = class(specialize TBaseGAction<TUser>)
   public
     procedure Get; override;
   end;
@@ -31,16 +39,19 @@ begin
     lQuery := TSQLQuery.Create(nil);
     try
       lQuery.DataBase := dmdatabase.datamodule1.PGConnection1;
-      lSql := 'select * from v_usuarios where usuario='''+Params.Values['user']+''' and clave='''+Params.Values['password']+'''';
+      lSql := 'select ug.usergroup, u.iduser, u.username, u.password, u.fullname ' +
+        'from users u ' +
+        'join user_groups ug on u.idusergroup=ug.idusergroup ' +
+        'where u.username='''+Params.Values['user']+''' and u.password='''+Params.Values['password']+'''';
       lQuery.SQL.Text := lSql;
       lQuery.Open;
       if lQuery.RecordCount > 0 then
         begin
           lJson := TJSONObject.Create;
           try
-            lJson.Strings['idusuario'] := lQuery.FieldByName('idusuario').AsString;
-            lJson.Strings['usuario'] := lQuery.FieldByName('usuario').AsString;
-            lJson.Strings['perfil'] := lQuery.FieldByName('perfil').AsString;
+            lJson.Strings['idusuario'] := lQuery.FieldByName('iduser').AsString;
+            lJson.Strings['usuario'] := lQuery.FieldByName('username').AsString;
+            lJson.Strings['perfil'] := lQuery.FieldByName('usergroup').AsString;
             Write(Session.NewSession(lJson.AsJSON));
           finally
             lJson.Free;

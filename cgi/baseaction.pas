@@ -7,6 +7,7 @@ interface
 uses
   BrookAction,
   BrookHttpDefs,
+  BrookLogger,
   HTTPDefs,
   dmdatabase,
   SysUtils,
@@ -15,8 +16,7 @@ uses
 type
 
   { TBaseAction }
-
-  TBaseAction = class(TBrookAction)
+  generic TBaseGAction<T> = class(specialize TBrookGAction<T>)
   private
     FPageSize: integer;
     FSession: TSession;
@@ -42,10 +42,8 @@ implementation
 
 { TBaseAction }
 
-procedure TBaseAction.Request(ARequest: TBrookRequest; AResponse: TBrookResponse
+procedure TBaseGAction.Request(ARequest: TBrookRequest; AResponse: TBrookResponse
   );
-var
-  C: TCookie;
 begin
   if ARequest.PathInfo <> '/login' then
   begin
@@ -83,7 +81,7 @@ begin
   end;
 end;
 
-procedure TBaseAction.ActualizarCookie;
+procedure TBaseGAction.ActualizarCookie;
 begin
   with TheResponse.Cookies.Add do
   begin
@@ -95,7 +93,7 @@ begin
   end;
 end;
 
-procedure TBaseAction.ActualizarOffSet;
+procedure TBaseGAction.ActualizarOffSet;
 begin
   try
   StartIndex:= StrToInt(TheRequest.QueryFields.Values['jtStartIndex']);
@@ -113,7 +111,7 @@ begin
 
 end;
 
-procedure TBaseAction.Post;
+procedure TBaseGAction.Post;
 begin
   inherited Post;
   try
@@ -127,13 +125,13 @@ begin
   end;
 end;
 
-constructor TBaseAction.Create;
+constructor TBaseGAction.Create;
 begin
   FSession := TSession.Create(datamodule1.PGConnection1);
   inherited Create;
 end;
 
-destructor TBaseAction.Destroy;
+destructor TBaseGAction.Destroy;
 begin
   FSession.Free;
   inherited Destroy;

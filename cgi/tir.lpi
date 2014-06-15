@@ -37,60 +37,57 @@
         <PackageName Value="BrookRT"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="17">
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="tir"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="6" Y="10"/>
-        <UsageCount Value="38"/>
+        <CursorPos X="8" Y="12"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="countries.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="countries"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="26"/>
-        <CursorPos X="40" Y="47"/>
-        <UsageCount Value="38"/>
+        <TopLine Value="29"/>
+        <CursorPos X="1" Y="17"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="5" Y="8"/>
-        <UsageCount Value="38"/>
+        <CursorPos X="42" Y="19"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="../../fpc/packages/fcl-json/src/fpjson.pp"/>
         <UnitName Value="fpjson"/>
-        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
         <TopLine Value="362"/>
         <CursorPos X="14" Y="371"/>
         <UsageCount Value="19"/>
-        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="baseaction.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseaction"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="48"/>
-        <CursorPos X="1" Y="61"/>
-        <UsageCount Value="38"/>
+        <TopLine Value="40"/>
+        <CursorPos X="1" Y="48"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -108,11 +105,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="214"/>
+        <TopLine Value="189"/>
         <CursorPos X="1" Y="238"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -120,175 +117,214 @@
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="session"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="35"/>
         <CursorPos X="1" Y="45"/>
-        <UsageCount Value="38"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="40"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../lazarus/lcl/interfaces/win32/win32wsdialogs.pp"/>
         <UnitName Value="Win32WSDialogs"/>
-        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="18"/>
         <CursorPos X="51" Y="31"/>
         <UsageCount Value="17"/>
-        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="../../brookframework/core/brookaction.pas"/>
         <UnitName Value="BrookAction"/>
-        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="326"/>
-        <CursorPos X="15" Y="341"/>
+        <TopLine Value="258"/>
+        <CursorPos X="11" Y="281"/>
         <UsageCount Value="17"/>
-        <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="../../brookframework/core/brookrouter.pas"/>
         <UnitName Value="BrookRouter"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="719"/>
         <CursorPos X="1" Y="733"/>
         <UsageCount Value="17"/>
-        <Loaded Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <EditorIndex Value="6"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="32" Y="14"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="40"/>
+        <CursorPos X="1" Y="62"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="../../brookframework/brokers/brookfclhttpappbroker.pas"/>
+        <UnitName Value="BrookFCLHttpAppBroker"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="98"/>
+        <CursorPos X="19" Y="118"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <UnitName Value="BrookUtils"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="65"/>
+        <CursorPos X="12" Y="77"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="../../brookframework/core/brookconsts.pas"/>
+        <UnitName Value="BrookConsts"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="22"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="../../brookframework/brokers/brookfcleventlogbroker.pas"/>
+        <UnitName Value="BrookFCLEventLogBroker"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="19"/>
+        <CursorPos X="47" Y="25"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="../../brookframework/test/testbrooklogger.pas"/>
+        <UnitName Value="testbrooklogger"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="3" Y="184"/>
+        <UsageCount Value="10"/>
+      </Unit16>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="tir.lpr"/>
-        <Caret Line="10" Column="1" TopLine="1"/>
+        <Filename Value="countries.pas"/>
+        <Caret Line="20" Column="65" TopLine="9"/>
       </Position1>
       <Position2>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="42" Column="1" TopLine="29"/>
+        <Filename Value="countries.pas"/>
+        <Caret Line="23" Column="43" TopLine="15"/>
       </Position2>
       <Position3>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="43" Column="1" TopLine="29"/>
+        <Filename Value="actlogin.pas"/>
+        <Caret Line="14" Column="32" TopLine="10"/>
       </Position3>
       <Position4>
-        <Filename Value="tir.lpr"/>
-        <Caret Line="12" Column="1" TopLine="1"/>
+        <Filename Value="actlogin.pas"/>
+        <Caret Line="19" Column="8" TopLine="2"/>
       </Position4>
       <Position5>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="138" Column="1" TopLine="122"/>
+        <Filename Value="tir.lpr"/>
+        <Caret Line="11" Column="1" TopLine="1"/>
       </Position5>
       <Position6>
-        <Filename Value="session.pas"/>
-        <Caret Line="43" Column="1" TopLine="35"/>
+        <Filename Value="brokers.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position6>
       <Position7>
-        <Filename Value="session.pas"/>
-        <Caret Line="44" Column="1" TopLine="35"/>
+        <Filename Value="../../brookframework/brokers/brookfclhttpappbroker.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position7>
       <Position8>
-        <Filename Value="session.pas"/>
-        <Caret Line="45" Column="1" TopLine="35"/>
+        <Filename Value="tir.lpr"/>
+        <Caret Line="11" Column="28" TopLine="1"/>
       </Position8>
       <Position9>
         <Filename Value="baseaction.pas"/>
-        <Caret Line="139" Column="1" TopLine="122"/>
+        <Caret Line="117" Column="1" TopLine="31"/>
       </Position9>
       <Position10>
         <Filename Value="baseaction.pas"/>
-        <Caret Line="140" Column="1" TopLine="122"/>
+        <Caret Line="52" Column="1" TopLine="32"/>
       </Position10>
       <Position11>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="317" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="47" Column="1" TopLine="32"/>
       </Position11>
       <Position12>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="318" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="52" Column="1" TopLine="41"/>
       </Position12>
       <Position13>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="319" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="47" Column="1" TopLine="41"/>
       </Position13>
       <Position14>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="320" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="49" Column="1" TopLine="41"/>
       </Position14>
       <Position15>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="321" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="52" Column="1" TopLine="41"/>
       </Position15>
       <Position16>
-        <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <Caret Line="322" Column="1" TopLine="303"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="56" Column="1" TopLine="41"/>
       </Position16>
       <Position17>
-        <Filename Value="../../brookframework/core/brookrouter.pas"/>
-        <Caret Line="374" Column="1" TopLine="360"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="72" Column="1" TopLine="49"/>
       </Position17>
       <Position18>
-        <Filename Value="../../brookframework/core/brookrouter.pas"/>
-        <Caret Line="732" Column="1" TopLine="719"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="52" Column="1" TopLine="48"/>
       </Position18>
       <Position19>
-        <Filename Value="../../brookframework/core/brookrouter.pas"/>
-        <Caret Line="733" Column="1" TopLine="719"/>
+        <Filename Value="brokers.pas"/>
+        <Caret Line="11" Column="11" TopLine="1"/>
       </Position19>
       <Position20>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="50" Column="1" TopLine="37"/>
+        <Filename Value="brokers.pas"/>
+        <Caret Line="18" Column="28" TopLine="1"/>
       </Position20>
       <Position21>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="52" Column="1" TopLine="37"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="77" Column="5" TopLine="80"/>
       </Position21>
       <Position22>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="55" Column="1" TopLine="37"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="129" Column="14" TopLine="167"/>
       </Position22>
       <Position23>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="61" Column="1" TopLine="49"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
       </Position23>
       <Position24>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="65" Column="1" TopLine="55"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="127" Column="19" TopLine="107"/>
       </Position24>
       <Position25>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="81" Column="1" TopLine="68"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="61" Column="1" TopLine="61"/>
       </Position25>
       <Position26>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="82" Column="1" TopLine="68"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="77" Column="12" TopLine="61"/>
       </Position26>
       <Position27>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="90" Column="1" TopLine="69"/>
+        <Filename Value="../../brookframework/core/brookutils.pas"/>
+        <Caret Line="100" Column="12" TopLine="80"/>
       </Position27>
       <Position28>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="39" Column="66" TopLine="29"/>
+        <Filename Value="brokers.pas"/>
+        <Caret Line="9" Column="3" TopLine="1"/>
       </Position28>
       <Position29>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="61" Column="1" TopLine="48"/>
+        <Filename Value="brokers.pas"/>
+        <Caret Line="17" Column="5" TopLine="1"/>
       </Position29>
       <Position30>
-        <Filename Value="actlogin.pas"/>
-        <Caret Line="11" Column="9" TopLine="1"/>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="10" Column="15" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -301,21 +337,25 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
     </SearchPaths>
     <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
       <CompilerPath Value="$(CompPath)"/>
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="1">
+    <BreakPoints Count="2">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="baseaction.pas"/>
-        <Line Value="55"/>
+        <Line Value="53"/>
       </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="countries.pas"/>
+        <Line Value="39"/>
+      </Item2>
     </BreakPoints>
     <Exceptions Count="3">
       <Item1>

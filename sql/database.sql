@@ -49,6 +49,8 @@ create table user_groups(
   primary key(IdUserGroup)
  );
 
+delete from users;
+delete from user_groups;
 insert into user_groups(UserGroup) values('Administrators');
 insert into user_groups(UserGroup) values('Reporters');
 insert into user_groups(UserGroup) values('ReadOnly');
@@ -62,4 +64,11 @@ create table users(
   primary key(IdUser)
 ); 
 
-insert into users(IdUserGroup, Username, Password, FullName) values(1, 'admin', '123', 'Leonardo M. Ramé');
+insert into users(IdUserGroup, Username, Password, FullName) values(3, 'admin', '123', 'Leonardo M. Ramé');
+
+create table sessions(
+  SessionId serial not null,
+  SessionTimeStamp timestamp default current_timestamp,
+  SessionData varchar(100),
+  primary key(SessionId)
+);
