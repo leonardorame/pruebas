@@ -27,17 +27,17 @@
         </select>
       </td>
     </tr>
-    <tr ng-repeat="customer in customers">
-      <td><a href="/#/customer{{customer.id}}">{{customer.id}}</a></td>
-      <td>{{customer.name}}</td>
-      <td>{{customer.email}}</td>
-      <td>{{customer.city}}</td>
-      <td>{{customer.state}}</td>
+    <tr ng-repeat="turno in turnos">
+      <td><a href="#/turnos/{{turno.id}}">{{turno.id}}</a></td>
+      <td>{{turno.name}}</td>
+      <td>{{turno.email}}</td>
+      <td>{{turno.city}}</td>
+      <td>{{turno.state}}</td>
     </tr>
     </tbody>
   </table>
   <div ng-show="itemCount == 0">
-    <h3>No Customers Found</h3>
+    <h3>No se han encontrado turnos</h3>
   </div>
   <div ng-show="totalPages > 1" class="align-center">
     <pagination total-items="itemCount" page="filterCriteria.pageNumber" max-size="10" class="pagination-sm" boundary-links="true" on-select-page="selectPage(page)"></pagination>

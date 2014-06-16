@@ -40,7 +40,7 @@ begin
   lArray := TJsonArray.Create;
 
   try
-    lStart := 0; //StrToInt(TheRequest.ContentFields.Values['iDisplayStart']);
+    lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     for I := lStart to (lStart + lLength) - 1 do
     begin

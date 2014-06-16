@@ -4,9 +4,10 @@ angular.module('TIRApp.services', [])
     var TIRAPI = {};
     TIRAPI.user = {};
 
-    TIRAPI.getTurnos = function() {
+    TIRAPI.getTurnos = function(filter) {
       return $http({
         method: 'POST', 
+        params: filter,
         url: '/cgi-bin/tir/countries'
       });
     }

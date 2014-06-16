@@ -1,36 +1,11 @@
     <div main-menu=""></div>
     
       <ol class="breadcrumb">
-        <li><a href="#">TIR</a></li>
-        <li><a href="index.html">Estudios</a></li>
+        <li><a href="#/turnos">TIR</a></li>
+        <li><a href="#/turnos">Estudios</a></li>
         <li class="active">Estudio</li>
       </ol>
 
       <div id="editor1" style="width: 98%; padding: 5px; margin-left: auto; margin-right: auto;">
         <div id="editor2" />
       </div> 
-
-    <script>
-        function resize(editor){
-          //editor.resize($("#editor1").width(), $("#editor1").height());
-        };
-
-        CKEDITOR.editorConfig = function( config ) {
-          config.width = 600;
-          config.height = 700;
-          config.autoGrow_onStartup = false;
-        };
-        var editor = CKEDITOR.replace( 'editor2', {
-          toolbarGroups: [
-              { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
-              { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
-              { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
-            ]
-        } );
-        CKEDITOR.on('instanceReady', function(evt){
-          //resize(evt.editor);
-        });
-        
-        $(window).resize(function() { resize(editor) });
-        $(document).resize(function() { resize(editor) });
-    </script>

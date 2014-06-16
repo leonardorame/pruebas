@@ -37,16 +37,16 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
          
           //The function that is responsible of fetching the result from the server and setting the grid to the new result
           $scope.fetchResult = function () {
+            console.log($scope.filterCriteria);
             return TIRAPIservice.getTurnos($scope.filterCriteria).then(function (data) {
               console.log(data.data);
-              $scope.customers = data.data.data;
-              $scope.totalPages = 20;
-              $scope.itemCount = 100;
-              $scope.filterCriteria.pageNumber = 1;
+              $scope.turnos = data.data.data;
+              $scope.totalPages = data.data.recordsTotal / 10; // page size = 10
+              $scope.itemCount = data.data.recordsTotal;
             }, function () {
-              $scope.customers = [];
+              $scope.turnos = [];
               $scope.totalPages = 0;
-              $scope.customersCount = 0;
+              $scope.itemCount = 0;
             });
           };
          
@@ -93,6 +93,27 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
             console.log(status);
           });
         }
+  }).
+
+  /* Turno controller */
+  controller('turnoController', function($scope, $routeParams, TIRAPIservice) {
+    $scope.userName = TIRAPIservice.user.name;
+    CKEDITOR.editorConfig = function( config ) {
+      config.width = 600;
+      config.height = 700;
+      config.autoGrow_onStartup = false;
+    };
+    var editor = CKEDITOR.replace( 'editor2', {
+      toolbarGroups: [
+          { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+          { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+        ]
+    } );
+    CKEDITOR.on('instanceReady', function(evt){
+      evt.editor.setData('Texto del estudio ID:' + $routeParams.id);
+      //resize(evt.editor);
+    });
   }).
 
   /* Turnos controller */
