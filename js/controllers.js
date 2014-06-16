@@ -86,7 +86,10 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
       $scope.submit = function(){
         TIRAPIservice.login($scope.username, $scope.password).
           success(function(data, status, headers, config){
-            TIRAPIservice.user.name = data.fullname
+            TIRAPIservice.user.id = data.id;
+            TIRAPIservice.user.name = data.name;
+            TIRAPIservice.user.fullname = data.fullname;
+            TIRAPIservice.user.profile = data.profile;
             $location.path('/turnos');
           }).
           error(function(data, status, headers, config){
@@ -97,7 +100,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
 
   /* Turno controller */
   controller('turnoController', function($scope, $routeParams, TIRAPIservice) {
-    $scope.userName = TIRAPIservice.user.name;
+    $scope.userName = TIRAPIservice.user.fullname;
     CKEDITOR.editorConfig = function( config ) {
       config.width = 600;
       config.height = 700;
@@ -114,12 +117,42 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
       evt.editor.setData('Texto del estudio ID:' + $routeParams.id);
       //resize(evt.editor);
     });
+
+
+    CKEDITOR.plugins.registered['save'] = {
+        init: function (editor) {
+           // Save Command
+           var command = editor.addCommand('save',
+           {
+                modes: { wysiwyg: 1, source: 1 },
+                exec: function (editor) { // Add here custom function for the save button
+                  var study = {};
+                  study.Report = editor.getData();
+                  study.IdStudy = $routeParams.id;
+                  study.IdUser = TIRAPIservice.user.id;
+                  $.ajax({
+                    type: 'POST', 
+                    url: '/cgi-bin/tir/study',
+                    data: study,
+                    success: function(data, textStatus, request){
+                      // se inserta el texto
+                      alert("Documento almacenado correctamente");
+                    },
+                    error: function(req, status, error){
+                      alert(error);
+                    }
+                  })
+                }
+           });
+           editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });
+        }
+    }
   }).
 
   /* Turnos controller */
   controller('turnosController', function($scope, TIRAPIservice) {
     $scope.turnos = [];
-    $scope.userName = TIRAPIservice.user.name;
+    $scope.userName = TIRAPIservice.user.fullname;
     TIRAPIservice.getTurnos().success(function (response) {
         //Digging into the response to get the relevant data
     });

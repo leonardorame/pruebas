@@ -21,3 +21,33 @@ config(['$routeProvider', function($routeProvider) {
 	when("/turnos/:id", {templateUrl: "partials/turno.html", controller: "turnoController"}).
 	otherwise({redirectTo: '/login'});
 }]);
+
+angular.module('TIRApp').directive('onBlurChange', function ($parse) {
+  return function (scope, element, attr) {
+    var fn = $parse(attr['onBlurChange']);
+    var hasChanged = false;
+    element.on('change', function (event) {
+      hasChanged = true;
+    });
+ 
+    element.on('blur', function (event) {
+      if (hasChanged) {
+        scope.$apply(function () {
+          fn(scope, {$event: event});
+        });
+        hasChanged = false;
+      }
+    });
+  };
+});
+
+angular.module('TIRApp').directive('onEnterBlur', function() {
+  return function(scope, element, attrs) {
+    element.bind("keydown keypress", function(event) {
+      if(event.which === 13) {
+        element.blur();
+        event.preventDefault();
+      }
+    });
+  };
+});

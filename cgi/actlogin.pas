@@ -49,9 +49,9 @@ begin
         begin
           lJson := TJSONObject.Create;
           try
-            lJson.Strings['idusuario'] := lQuery.FieldByName('iduser').AsString;
-            lJson.Strings['usuario'] := lQuery.FieldByName('username').AsString;
-            lJson.Strings['perfil'] := lQuery.FieldByName('usergroup').AsString;
+            lJson.Strings['id'] := lQuery.FieldByName('iduser').AsString;
+            lJson.Strings['name'] := lQuery.FieldByName('username').AsString;
+            lJson.Strings['profile'] := lQuery.FieldByName('usergroup').AsString;
             lJson.Strings['fullname'] := lQuery.FieldByName('fullname').AsString;
             Session.NewSession(lJson.AsJSON);
             Write(lJson.AsJSON);
