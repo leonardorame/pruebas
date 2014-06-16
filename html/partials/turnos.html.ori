@@ -1,0 +1,71 @@
+    <div main-menu=""></div>
+
+      <ol class="breadcrumb">
+        <li><a href="#">TIR</a></li>
+        <li class="active">Estudios</li>
+      </ol>
+
+
+      <div id="container">
+
+        <table id="example" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Extn.</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </thead>
+   
+          <tfoot>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Extn.</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </tfoot>
+        </table>
+
+      </div> <!-- /container -->
+
+    <script>
+      $(document).ready(function() {
+          $('#example').dataTable( {
+              "bJQueryUI": true,
+              "processing": true,
+              "serverSide": true,
+              "columns": [
+                {"data": "FirstName"},
+                {"data": "Title"},
+                {"data": "City"},
+                {"data": "Id"},
+                {"data": "Date"},
+                {"data": "Salary"}
+              ],
+              "sAjaxSource": "/cgi-bin/tir/countries",
+              "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
+                 oSettings.jqXHR = $.ajax( {
+                   "dataType": 'json',
+                   "type": "POST",
+                   "url": sSource,
+                   "data": aoData,
+                   "success": fnCallback,
+                   "error": function (e) {
+                      window.location.replace('login.html');
+                   }
+                 });
+               }
+          } ); 
+      });
+      $('#example').on( 'click', 'td', function () {
+          var tr = $(this)[0].childNodes[0].data;
+          var tr = $(this).closest('tr')[0].childNodes[0].firstChild.data;
+          $location.path('estudio.html');
+          console.log(tr);
+          });

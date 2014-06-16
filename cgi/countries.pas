@@ -6,6 +6,7 @@ interface
 
 uses
   baseaction,
+  BrookLogger,
   SysUtils,
   fpjson;
 
@@ -39,15 +40,15 @@ begin
   lArray := TJsonArray.Create;
 
   try
-    lStart := StrToInt(TheRequest.ContentFields.Values['iDisplayStart']);
-    lLength := StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
+    lStart := 0; //StrToInt(TheRequest.ContentFields.Values['iDisplayStart']);
+    lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     for I := lStart to (lStart + lLength) - 1 do
     begin
       lArrayItem := TJsonObject.Create;
-      lArrayItem.Add('FirstName', 'Tiger Nixon ' + IntToStr(I));
-      lArrayItem.Add('Title', 'System Architect');
-      lArrayItem.Add('City', 'Edinburgh');
-      lArrayItem.Add('Id', '5421');
+      lArrayItem.Add('name', 'Tiger Nixon ' + IntToStr(I));
+      lArrayItem.Add('email', 'nombre@address.com');
+      lArrayItem.Add('city', 'Edinburgh');
+      lArrayItem.Add('id', IntToStr(I));
       lArrayItem.Add('Date', '2011/04/25');
       lArrayItem.Add('Salary', '$320,800');
       lArray.Add(lArrayItem);
@@ -60,6 +61,7 @@ begin
     lData.Add('recordsFiltered', 20);
 
     Write(lData.AsJson);
+    BrookLog.Info(ldata.AsJSON);
 
   except
     on E: exception do

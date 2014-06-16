@@ -1,71 +1,45 @@
-    <div main-menu=""></div>
+<div main-menu=""></div>
 
-      <ol class="breadcrumb">
-        <li><a href="#">TIR</a></li>
-        <li class="active">Estudios</li>
-      </ol>
+  <ol class="breadcrumb">
+    <li><a href="#">TIR</a></li>
+    <li class="active">Estudios</li>
+  </ol>
 
-
-      <div id="container">
-
-        <table id="example" class="display" cellspacing="0" width="100%">
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Extn.</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-              </tr>
-          </thead>
-   
-          <tfoot>
-              <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Extn.</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-              </tr>
-          </tfoot>
-        </table>
-
-      </div> <!-- /container -->
-
-    <script>
-      $(document).ready(function() {
-          $('#example').dataTable( {
-              "bJQueryUI": true,
-              "processing": true,
-              "serverSide": true,
-              "columns": [
-                {"data": "FirstName"},
-                {"data": "Title"},
-                {"data": "City"},
-                {"data": "Id"},
-                {"data": "Date"},
-                {"data": "Salary"}
-              ],
-              "sAjaxSource": "/cgi-bin/tir/countries",
-              "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
-                 oSettings.jqXHR = $.ajax( {
-                   "dataType": 'json',
-                   "type": "POST",
-                   "url": sSource,
-                   "data": aoData,
-                   "success": fnCallback,
-                   "error": function (e) {
-                      window.location.replace('login.html');
-                   }
-                 });
-               }
-          } ); 
-      });
-      $('#example').on( 'click', 'td', function () {
-          var tr = $(this)[0].childNodes[0].data;
-          var tr = $(this).closest('tr')[0].childNodes[0].firstChild.data;
-          $location.path('estudio.html');
-          console.log(tr);
-          });
+<div ng-controller="GridCtrl">
+  <h1>Found ({{customersCount}}) Customers</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th ng-repeat="header in headers">
+          <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.id" type="text" /></td>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.name" type="text" /></td>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.email" type="text" /></td>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.city" type="text" /></td>
+      <td>
+        <select ng-change="filterResult()" ng-model="filterCriteria.state" ng-options="state for state in states" >
+          <option value=""> </option>
+        </select>
+      </td>
+    </tr>
+    <tr ng-repeat="customer in customers">
+      <td><a href="/#/customer{{customer.id}}">{{customer.id}}</a></td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.city}}</td>
+      <td>{{customer.state}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div ng-show="itemCount == 0">
+    <h3>No Customers Found</h3>
+  </div>
+  <div ng-show="totalPages > 1" class="align-center">
+    <pagination total-items="itemCount" page="filterCriteria.pageNumber" max-size="10" class="pagination-sm" boundary-links="true" on-select-page="selectPage(page)"></pagination>
+  </div>
+</div>
