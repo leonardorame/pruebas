@@ -40,6 +40,7 @@ create table study(
   IdSecondaryInterpreterPhysician Integer references professional(IdProfessional),
   IdStatus Integer not null references status(IdStatus),
   StudyDate date not null,
+  Report text,
   primary key(IdStudy)
 );
 
@@ -69,6 +70,15 @@ insert into users(IdUserGroup, Username, Password, FullName) values(3, 'admin', 
 create table sessions(
   SessionId serial not null,
   SessionTimeStamp timestamp default current_timestamp,
-  SessionData varchar(100),
+  SessionData text,
   primary key(SessionId)
+);
+
+create table study_status(
+  IdStudyStatus serial not null,
+  IdStudy Integer not null references study(idstudy),
+  Updated timestamp default current_timestamp,
+  IdUser Integer not null references users(iduser),
+  IdStatus Integer not null references status(IdStatus),
+  primary key(IdStudyStatus)
 );
