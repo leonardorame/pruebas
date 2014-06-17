@@ -8,7 +8,7 @@ angular.module('TIRApp.services', [])
       return $http({
         method: 'POST', 
         params: filter,
-        url: '/cgi-bin/tir/countries'
+        url: '/cgi-bin/tir/studies'
       });
     }
 

@@ -5,20 +5,20 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
           $scope.itemCount = 0;
           $scope.headers = [
           {
-            title: 'Id',
-            value: 'id'
+            title: 'IdStudy',
+            value: 'IdStudy'
           },
           {
-            title: 'Name',
-            value: 'name'
+            title: 'Apellido',
+            value: 'Patient_LastName'
           },
           {
-            title: 'Email',
-            value: 'email'
+            title: 'Nombre',
+            value: 'Patient_Nombre'
           },
           {
-            title: 'City',
-            value: 'city'
+            title: 'Fecha',
+            value: 'StudyDate'
           },
           {
             title: 'State',
@@ -26,7 +26,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
           }];
          
           //Will make an ajax call to fill the drop down menu in the filter of the states
-          $scope.states = TIRAPIservice.getTurnos();
+          //$scope.states = TIRAPIservice.getTurnos();
          
           //default criteria that will be sent to the server
           $scope.filterCriteria = {
@@ -153,8 +153,5 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
   controller('turnosController', function($scope, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
-    TIRAPIservice.getTurnos().success(function (response) {
-        //Digging into the response to get the relevant data
-    });
   });
 

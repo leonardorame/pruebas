@@ -28,9 +28,10 @@
       </td>
     </tr>
     <tr ng-repeat="turno in turnos">
-      <td><a href="#/turnos/{{turno.id}}">{{turno.id}}</a></td>
-      <td>{{turno.name}}</td>
-      <td>{{turno.email}}</td>
+      <td><a href="#/turnos/{{turno.IdStudy}}">{{turno.IdStudy}}</a></td>
+      <td>{{turno.Patient_LastName}}</td>
+      <td>{{turno.Patient_FirstName}}</td>
+      <td>{{turno.StudyDate}}</td>
       <td>{{turno.city}}</td>
       <td>{{turno.state}}</td>
     </tr>
