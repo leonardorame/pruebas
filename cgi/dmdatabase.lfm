@@ -1,10 +1,10 @@
 object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 183
-  HorizontalOffset = 995
-  VerticalOffset = 309
-  Width = 235
+  Height = 315
+  HorizontalOffset = 543
+  VerticalOffset = 168
+  Width = 410
   object PGConnection1: TPQConnection
     Connected = False
     LoginPrompt = False
@@ -24,7 +24,33 @@ object datamodule1: Tdatamodule1
   object SQLTransaction1: TSQLTransaction
     Active = False
     Database = PGConnection1
-    left = 57
-    top = 104
+    left = 48
+    top = 112
+  end
+  object studies: TSQLQuery
+    FieldDefs = <>
+    SQL.Strings = (
+      'select'
+      'st.idstudy,'
+      'st.studydate,'
+      's.status,'
+      'p.firstname,'
+      'p.lastname,'
+      'p.sex,'
+      'p.birthdate,'
+      'pf.firstname as pf_firstname,'
+      'pf.lastname as pf_lastname,'
+      'rf.firstname as rf_firstname,'
+      'rf.lastname as rf_lastname'
+      'from study st'
+      'join patient p on st.idpatient = p.idpatient'
+      'join status s on st.idstatus = s.idstatus'
+      'join professional pf on st.idperformingphysician = pf.idprofessional'
+      'join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      ''
+    )
+    Params = <>
+    left = 167
+    top = 65
   end
 end

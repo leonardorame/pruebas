@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
-  fpJson, db;
+  fpJson, db,
+  fgl;
 
 type
 
@@ -14,6 +15,7 @@ type
 
   Tdatamodule1 = class(TDataModule)
     PGConnection1: TPQConnection;
+    studies: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     procedure DataModuleCreate(Sender: TObject);
   private
