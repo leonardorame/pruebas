@@ -59,6 +59,7 @@ insert into user_groups(UserGroup) values('ReadOnly');
 create table users(
   IdUser serial not null,
   IdUserGroup integer not null references user_groups(IdUserGroup),
+  IdProfessional integer not null references professional(IdProfessional),
   UserName varchar(8),
   Password varchar(8),
   FullName varchar(100), 

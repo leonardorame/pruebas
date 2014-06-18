@@ -6,19 +6,23 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
           $scope.headers = [
           {
             title: 'IdStudy',
-            value: 'IdStudy'
+            value: 'IdStudy',
+            width: '50px;'
           },
           {
             title: 'Apellido',
-            value: 'Patient_LastName'
+            value: 'Patient_LastName',
+            width: '300px;'
           },
           {
             title: 'Nombre',
-            value: 'Patient_Nombre'
+            value: 'Patient_Nombre',
+            width: '300px;'
           },
           {
             title: 'Fecha',
-            value: 'StudyDate'
+            value: 'StudyDate',
+            width: '100px;'
           },
           {
             title: 'State',
@@ -37,9 +41,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
          
           //The function that is responsible of fetching the result from the server and setting the grid to the new result
           $scope.fetchResult = function () {
-            console.log($scope.filterCriteria);
             return TIRAPIservice.getTurnos($scope.filterCriteria).then(function (data) {
-              console.log(data.data);
               $scope.turnos = data.data.data;
               $scope.totalPages = data.data.recordsTotal / 10; // page size = 10
               $scope.itemCount = data.data.recordsTotal;
@@ -90,6 +92,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
             TIRAPIservice.user.name = data.name;
             TIRAPIservice.user.fullname = data.fullname;
             TIRAPIservice.user.profile = data.profile;
+            TIRAPIservice.user.idprofessional = data.idprofessional;
             $location.path('/turnos');
           }).
           error(function(data, status, headers, config){
@@ -106,18 +109,22 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
       config.height = 700;
       config.autoGrow_onStartup = false;
     };
-    var editor = CKEDITOR.replace( 'editor2', {
+
+    CKEDITOR.replace( 'editor2', {
       toolbarGroups: [
           { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
           { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
           { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
         ]
     } );
-    CKEDITOR.on('instanceReady', function(evt){
-      evt.editor.setData('Texto del estudio ID:' + $routeParams.id);
-      //resize(evt.editor);
-    });
 
+    CKEDITOR.on('instanceReady', function(evt){
+      TIRAPIservice.getTurno( $routeParams.id).success(
+            function(data){
+                evt.editor.setData(data);
+            }
+      );
+    });
 
     CKEDITOR.plugins.registered['save'] = {
         init: function (editor) {
@@ -129,7 +136,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
                   var study = {};
                   study.Report = editor.getData();
                   study.IdStudy = $routeParams.id;
-                  study.IdUser = TIRAPIservice.user.id;
+                  study.IdProfessional = TIRAPIservice.user.idprofessional;
                   $.ajax({
                     type: 'POST', 
                     url: '/cgi-bin/tir/study',

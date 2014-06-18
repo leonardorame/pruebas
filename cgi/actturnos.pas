@@ -21,7 +21,7 @@ type
   TStudy = class
   private
     FIdStudy: Integer;
-    FPatient_BirthDate: TDate;
+    FPatient_BirthDate: string;
     FPatient_FirstName: string;
     FPatient_LastName: string;
     FPatient_Sex: string;
@@ -30,15 +30,15 @@ type
     FReport_FirstName: string;
     FReport_LastName: string;
     FStatus: string;
-    FStudyDate: TDateTime;
+    FStudyDate: string;
   published
     property IdStudy: Integer read FIdStudy write FIdStudy;
-    property StudyDate: TDateTime read FStudyDate write FStudyDate;
+    property StudyDate: string read FStudyDate write FStudyDate;
     property Status: string read FStatus write FStatus;
     property Patient_FirstName: string read FPatient_FirstName write FPatient_FirstName;
     property Patient_LastName: string read FPatient_LastName write FPatient_LastName;
     property Patient_Sex: string read FPatient_Sex write FPatient_Sex;
-    property Patient_BirthDate: TDate read FPatient_BirthDate write FPatient_BirthDate;
+    property Patient_BirthDate: string read FPatient_BirthDate write FPatient_BirthDate;
     property Perform_FirstName: string read FPerform_FirstName write FPerform_FirstName;
     property Perform_LastName: string read FPerform_LastName write FPerform_LastName;
     property Report_FirstName: string read FReport_FirstName write FReport_FirstName;
@@ -66,6 +66,7 @@ var
   I: Integer;
   lStart: Integer;
   lLength: Integer;
+  lTotalRecords: Integer;
 begin
   lStreamer := TJSONStreamer.Create(nil);
   lList := TStudyList.Create;
@@ -81,13 +82,14 @@ begin
     while not lSql.EOF do
     begin
       lStudy := TStudy.Create;
+      lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
       lStudy.IdStudy := lSql.FieldByName('IdStudy').AsInteger;
-      lStudy.StudyDate := lSql.FieldByName('StudyDate').AsDateTime;
+      lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lSql.FieldByName('StudyDate').AsDateTime);
       lStudy.Status := lSql.FieldByName('Status').AsString;
       lStudy.Patient_FirstName := lSql.FieldByName('Patient_FirstName').AsString;
       lStudy.Patient_LastName := lSql.FieldByName('Patient_LastName').AsString;
       lStudy.Patient_Sex := lSql.FieldByName('Patient_Sex').AsString;
-      lStudy.Patient_BirthDate := lSql.FieldByName('Patient_BirthDate').AsDateTime;
+      lStudy.Patient_BirthDate := FormatDateTime('YYYY-MM-DD', lSql.FieldByName('Patient_BirthDate').AsDateTime);
       lStudy.Perform_FirstName := lSql.FieldByName('Perform_FirstName').AsString;
       lStudy.Perform_LastName := lSql.FieldByName('Perform_LastName').AsString;
       lStudy.Report_FirstName := lSql.FieldByName('Report_FirstName').AsString;
@@ -101,9 +103,8 @@ begin
     // se convierte el objeto en JSON
     lData := TJsonObject.Create;
     lData.Add('data', lArray);
-    lData.Add('draw', lLength);
-    lData.Add('recordsTotal', 20);
-    lData.Add('recordsFiltered', 20);
+    lData.Add('recordsTotal', lTotalRecords);
+    lData.Add('recordsFiltered', lList.Count);
 
     Write(ldata.AsJSON);
   finally

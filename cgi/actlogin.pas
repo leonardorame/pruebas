@@ -39,9 +39,10 @@ begin
     lQuery := TSQLQuery.Create(nil);
     try
       lQuery.DataBase := dmdatabase.datamodule1.PGConnection1;
-      lSql := 'select ug.usergroup, u.iduser, u.username, u.password, u.fullname ' +
+      lSql := 'select ug.usergroup, u.iduser, u.username, u.password, p.idprofessional, p.lastname||'', ''||p.firstname as fullname ' +
         'from users u ' +
         'join user_groups ug on u.idusergroup=ug.idusergroup ' +
+        'join professional p on p.idprofessional = u.idprofessional ' +
         'where u.username='''+Params.Values['user']+''' and u.password='''+Params.Values['password']+'''';
       lQuery.SQL.Text := lSql;
       lQuery.Open;
@@ -50,6 +51,7 @@ begin
           lJson := TJSONObject.Create;
           try
             lJson.Strings['id'] := lQuery.FieldByName('iduser').AsString;
+            lJson.Integers['idprofessional'] := lQuery.FieldByName('idprofessional').AsInteger;
             lJson.Strings['name'] := lQuery.FieldByName('username').AsString;
             lJson.Strings['profile'] := lQuery.FieldByName('usergroup').AsString;
             lJson.Strings['fullname'] := lQuery.FieldByName('fullname').AsString;

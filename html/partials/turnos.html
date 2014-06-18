@@ -6,11 +6,11 @@
   </ol>
 
 <div ng-controller="GridCtrl">
-  <h1>Found ({{itemCount}}) Items</h1>
+  <!--h1>Found ({{itemCount}}) Items</h1-->
   <table class="table table-striped">
     <thead>
       <tr>
-        <th ng-repeat="header in headers">
+        <th ng-repeat="header in headers" style="width: {{header.width}}">
           <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
         </th>
       </tr>

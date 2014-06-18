@@ -19,10 +19,10 @@ angular.module('TIRApp.services', [])
       });
     }
 
-    TIRAPI.getTurno = function(id) {
+    TIRAPI.getTurno = function(idturno) {
       return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/2013/drivers/'+ id +'/driverStandings.json?callback=JSON_CALLBACK'
+        method: 'GET', 
+        url: '/cgi-bin/tir/study?IdStudy=' + idturno
       });
     }
 

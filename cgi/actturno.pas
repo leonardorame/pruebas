@@ -17,6 +17,7 @@ type
 
   TStudy = class
   private
+    FIdProfessional: Integer;
     FReport: string;
     FIdStudy: Integer;
     FIdUser: Integer;
@@ -24,11 +25,15 @@ type
     property IdStudy: Integer read FIdStudy write FIdStudy;
     property Report: string read FReport write FReport;
     property IdUser: Integer read FIdUser write FIdUser;
+    property IdProfessional: Integer read FIdProfessional write FIdProfessional;
   end;
+
+  { TActStudy }
 
   TActStudy = class(specialize TBaseGAction<TStudy>)
   public
     procedure Post; override;
+    procedure Get; override;
   end;
 
 implementation
@@ -44,12 +49,12 @@ begin
   try
     try
       lQuery.DataBase := datamodule1.PGConnection1;
-      lSql := 'update study set report = :report, idprimaryinterpreterphysician = :iduser ' +
+      lSql := 'update study set report = :report, idprimaryinterpreterphysician = :idprofessional ' +
         'where idstudy = :idstudy';
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
-      lQuery.ParamByName('iduser').AsInteger:= lTurno.IdUser;
+      lQuery.ParamByName('idprofessional').AsInteger:= lTurno.IdProfessional;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
@@ -59,6 +64,32 @@ begin
         TheResponse.Code := 401;
         TheResponse.CodeText := E.message;
       end;
+    end;
+  finally
+    lQuery.Free;
+  end;
+end;
+
+procedure TActStudy.Get;
+var
+  lQuery: TSQLQuery;
+  lSql: String;
+  lTurno: TStudy;
+begin
+  lTurno := Entity;
+  lQuery := TSQLQuery.Create(nil);
+  try
+    try
+      lQuery.DataBase := datamodule1.PGConnection1;
+      lSql := 'select report from study where idstudy = :idstudy';
+      lQuery.SQL.Text := lSql;
+      lQuery.ParamByName('idstudy').AsInteger:= 6; //lTurno.IdStudy;
+      lQuery.Open;
+      Write(lQuery.FieldByName('report').AsString);
+
+    except
+      on E: Exception do
+        write(E.message);
     end;
   finally
     lQuery.Free;
