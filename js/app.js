@@ -4,6 +4,13 @@ angular.module('TIRApp', [
   'ngRoute'
 ]).
 
+run(['TIRAPIservice','$location' ,function(TIRAPIservice, $location){
+    if(!TIRAPIservice.user.id){
+        if(!TIRAPIservice.retrieveUserInfo())
+            $location.path('/login');
+    }
+}]).
+
 /* directiva main-menu */
 directive("mainMenu", function(){
     return {

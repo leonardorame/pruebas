@@ -85,6 +85,13 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
 
   /* login controller */
   controller('loginController', function($scope, TIRAPIservice, $location) {
+      $scope.$watch('loginForm', function(frm) {
+        if(frm){
+            frm.$setPristine();
+            frm.username = "";
+        }
+      }, true);
+  
       $scope.submit = function(){
         TIRAPIservice.login($scope.username, $scope.password).
           success(function(data, status, headers, config){
@@ -109,7 +116,6 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
       config.height = 700;
       config.autoGrow_onStartup = false;
     };
-
     CKEDITOR.replace( 'editor2', {
       toolbarGroups: [
           { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.

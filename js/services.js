@@ -19,6 +19,12 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    // retrieve user info from server by passing a cookie
+    // if cookie is expired redirect to login
+    TIRAPI.retrieveUserInfo = function() {
+      return false;  
+    }
+
     TIRAPI.getTurno = function(idturno) {
       return $http({
         method: 'GET', 
