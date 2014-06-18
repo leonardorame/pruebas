@@ -26,6 +26,7 @@ type
     constructor Create(ADatabase: TSQLConnection);
     function NewSession(ASessionData: string): string;
     function FindSessionRecord(ASessionId: string): boolean;
+    function GetSessionData(ASessionId: string): string;
     procedure DeleteSession(ASessionId: string);
     procedure UpdateExpiration;
     property Token: String read FToken write FToken;
@@ -94,7 +95,7 @@ end;
 
 function TSession.Match(ASql: string): boolean;
 var
-   lQuery: TSQLQuery;
+  lQuery: TSQLQuery;
 begin
   lQuery := TSQLQuery.Create(nil);
   try
@@ -129,6 +130,24 @@ begin
   except
     on E: Exception do
       raise Exception.Create(E.message);
+  end;
+end;
+
+function TSession.GetSessionData(ASessionId: string): string;
+var
+  lQuery: TSQLQuery;
+begin
+  lQuery := TSQLQuery.Create(nil);
+  try
+    lQuery.DataBase := FSessionDatabase;
+    lQuery.SQL.Text:= Format('select SESSIONID, SESSIONTIMESTAMP, SESSIONDATA from SESSIONS Where SESSIONID = %s', [ASessionID]);
+    lQuery.Open;
+    if lQuery.RecordCount > 0 then
+    begin
+      Result := lQuery.FieldByName('SESSIONDATA').AsString;
+    end;
+  finally
+    lQuery.Free;
   end;
 end;
 

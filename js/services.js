@@ -22,6 +22,10 @@ angular.module('TIRApp.services', [])
     // retrieve user info from server by passing a cookie
     // if cookie is expired redirect to login
     TIRAPI.retrieveUserInfo = function() {
+      return $http({
+        method: 'GET', 
+        url: '/cgi-bin/tir/sessiondata'
+      });
       return false;  
     }
 
