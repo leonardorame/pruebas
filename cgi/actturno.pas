@@ -9,6 +9,7 @@ uses
   dmdatabase,
   sqldb,
   BaseAction,
+  fpjsonrtti,
   SysUtils;
 
 type
@@ -81,9 +82,12 @@ begin
   try
     try
       lQuery.DataBase := datamodule1.PGConnection1;
-      lSql := 'select report from study where idstudy = :idstudy';
+      lSql := 'select report from study where idstudy = ' + TheRequest.QueryFields.Values['IdStudy'];
+      IntToStr(lTurno.IdStudy);
+      //Write(TJSONStreamer.Create(nil).ObjectToJSON(lTurno).AsJson);
+      //BrookLog.Info(lSql);
       lQuery.SQL.Text := lSql;
-      lQuery.ParamByName('idstudy').AsInteger:= 6; //lTurno.IdStudy;
+      //lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.Open;
       Write(lQuery.FieldByName('report').AsString);
 

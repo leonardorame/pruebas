@@ -30,7 +30,6 @@ create table professional(
   primary key(IdProfessional)
 );
 
-
 create table study(
   IdStudy serial not null,
   IdPatient Integer not null references patient(IdPatient),
@@ -50,23 +49,14 @@ create table user_groups(
   primary key(IdUserGroup)
  );
 
-delete from users;
-delete from user_groups;
-insert into user_groups(UserGroup) values('Administrators');
-insert into user_groups(UserGroup) values('Reporters');
-insert into user_groups(UserGroup) values('ReadOnly');
-
 create table users(
   IdUser serial not null,
   IdUserGroup integer not null references user_groups(IdUserGroup),
   IdProfessional integer not null references professional(IdProfessional),
   UserName varchar(8),
   Password varchar(8),
-  FullName varchar(100), 
   primary key(IdUser)
 ); 
-
-insert into users(IdUserGroup, Username, Password, FullName) values(3, 'admin', '123', 'Leonardo M. Ramé');
 
 create table sessions(
   SessionId serial not null,
@@ -83,3 +73,23 @@ create table study_status(
   IdStatus Integer not null references status(IdStatus),
   primary key(IdStudyStatus)
 );
+
+insert into status(status) values('Ingresado');
+insert into status(status) values('Transcripto');
+insert into status(status) values('Corregido');
+insert into status(status) values('Entregado');
+insert into user_groups(UserGroup) values('Administrators');
+insert into user_groups(UserGroup) values('Reporters');
+insert into user_groups(UserGroup) values('ReadOnly');
+insert into professional(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Carlos', 'Gonzalez', '1965-02-10', 'M', 'Laprida 2222', '883838');
+insert into users(IdUserGroup, IdProfessional, Username, Password) values(1, 1, 'admin', '123');
+insert into users(IdUserGroup, IdProfessional, Username, Password) values(2, 1, 'medico', 'medico');
+insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Juan', 'Pérez', '2001-04-20', 'M', '9 de Julio 123', '1212312');
+insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Romina', 'García', '1990-08-12', 'F', 'Juncal 123', '1231231');
+insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Lucas', 'Trejo', '1995-02-10', 'M', 'Santa Fe 444', '9999999');
+insert into study(IdPatient, IdPerformingPhysician, IdPrimaryInterpreterPhysician, IdStatus, StudyDate)
+  values(1, 1, 1, 1, current_timestamp);
+insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysician, idstatus, studydate)
+  values(2, 1, 1, 1, current_timestamp);
+insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysician, idstatus, studydate)
+  values(2, 1, 1, 1, current_timestamp);

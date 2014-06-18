@@ -11,7 +11,7 @@ object datamodule1: Tdatamodule1
     DatabaseName = 'tir'
     KeepConnection = False
     Params.Strings = (
-      'port=5432'
+      'port=5434'
     )
     Password = 'postgres'
     Transaction = SQLTransaction1

@@ -134,6 +134,22 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
 
     CKEDITOR.plugins.registered['save'] = {
         init: function (editor) {
+           // Print command
+           var command = editor.addCommand('print',
+           {
+                modes: { wysiwyg: 1, source: 1 },
+                exec: function (editor) { // Add here custom function for the save button
+                  var study = {};
+                  study.Report = editor.getData();
+                  study.IdStudy = $routeParams.id;
+                  $("#print-form").attr("action", "/cgi-bin/tir/print");
+                  $("#print-form-documento").val( study.Report );
+                  $("#print-form-idstudy").val( study.IdStudy );
+                  $("#print-form").submit();
+                }
+           });
+           editor.ui.addButton('Print', { label: 'Print', command: 'print', toolbar: 'document, 2' });
+
            // Save Command
            var command = editor.addCommand('save',
            {
