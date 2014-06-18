@@ -25,7 +25,7 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
             width: '100px;'
           },
           {
-            title: 'State',
+            title: 'Estado',
             value: 'state'
           }];
          
@@ -163,8 +163,12 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
   }).
 
   /* Turnos controller */
-  controller('turnosController', function($scope, TIRAPIservice) {
+  controller('turnosController', function($scope, $location, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
+    $scope.go = function(turno){
+        var url = '/turnos/' + turno.IdStudy;
+        $location.path(url);
+    };
   });
 
