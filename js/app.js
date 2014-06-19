@@ -4,15 +4,7 @@ angular.module('TIRApp', [
   'ngRoute'
 ]).
 
-run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $route, $location){
-    // Adds Header and Footer on route change success
-    $rootScope.$on('$stateChangeSuccess', function (ev, current, prev) {
-        $rootScope.flexyLayout = function(partialName) { 
-            console.log(partialName);
-            return current.$$route[partialName] 
-        };
-    });
-
+run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
     $rootScope.$on( "$routeChangeStart", function(event, next, current){
         if(!TIRAPIservice.user.id){
             TIRAPIservice.retrieveUserInfo().
@@ -42,6 +34,102 @@ directive("mainMenu", function(){
         transclude: false
     }
 }).
+
+directive('ckEditor', [function(){
+        return {
+            require: '?ngModel',
+            restrict: 'C',
+            link: function (scope, elm, attr, model) {
+                var isReady = false;
+                var data = [];
+                CKEDITOR.editorConfig = function( config ) {
+                  config.width = 600;
+                  config.height = 700;
+                  config.autoGrow_onStartup = false;
+                };
+                CKEDITOR.plugins.registered['save'] = {
+                    init: function (editor) {
+                       // Save Command
+                       var command = editor.addCommand('save',
+                       {
+                            modes: { wysiwyg: 1, source: 1 },
+                            exec: function (editor) { // Add here custom function for the save button
+                              var study = {};
+                              study.Report = editor.getData();
+                              study.IdStudy = $routeParams.id;
+                              study.IdProfessional = TIRAPIservice.user.idprofessional;
+                              $.ajax({
+                                type: 'POST', 
+                                url: '/cgi-bin/tir/study',
+                                data: study,
+                                success: function(data, textStatus, request){
+                                  // se inserta el texto
+                                  alert("Documento almacenado correctamente");
+                                },
+                                error: function(req, status, error){
+                                  alert(error);
+                                }
+                              })
+                            }
+                       });
+                       editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });
+                    }
+                }
+                var ck = CKEDITOR.replace( elm[0], {
+                  toolbarGroups: [
+                      { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+                      { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+                      { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+                    ]
+                } );
+                function setData(){
+                    if(!data.length) {
+                        return;
+                    }
+
+                    var d = data.splice(0, 1);
+                    ck.setData(d[0] || '<span></span>', function() {
+                        setData();
+                        isReady = true;
+                    });
+                }
+                
+                ck.on('instanceReady', function(e) {
+                    if(model) {
+                        setData();
+                    }
+                });
+
+                elm.bind('$destroy', function() {
+                    ck.destroy(false);
+                });
+
+                if(model){
+                    ck.on('change', function(){
+                        scope.$apply(function(){
+                            var data = ck.getData();
+                            if(data == '<span></span>'){
+                                data = null;
+                            }
+                            model.$setViewValue(data);
+                        });
+                    });
+                    
+                    model.$render = function(value) {
+                        if (model.$viewValue === undefined) {
+                            model.$setViewValue(null);
+                            model.$viewValue = null;
+                        }
+                        data.push(model.$viewValue);
+                        if(isReady) {
+                            isReady = false;
+                            setData();
+                        }
+                    }
+                }
+            }
+        }
+    }]).
 
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.

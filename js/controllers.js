@@ -110,72 +110,13 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
 
   /* Turno controller */
   controller('turnoController', function($scope, $routeParams, TIRAPIservice) {
-    $scope.userName = TIRAPIservice.user.fullname;
-    CKEDITOR.editorConfig = function( config ) {
-      config.width = 600;
-      config.height = 700;
-      config.autoGrow_onStartup = false;
-    };
-    CKEDITOR.replace( 'editor2', {
-      toolbarGroups: [
-          { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
-          { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
-          { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
-        ]
-    } );
-
-    CKEDITOR.on('instanceReady', function(evt){
+      $scope.userName = TIRAPIservice.user.fullname;
       TIRAPIservice.getTurno( $routeParams.id).success(
             function(data){
-                evt.editor.setData(data);
+                $scope.text = data;
             }
       );
-    });
 
-    CKEDITOR.plugins.registered['save'] = {
-        init: function (editor) {
-           // Print command
-           var command = editor.addCommand('print',
-           {
-                modes: { wysiwyg: 1, source: 1 },
-                exec: function (editor) { // Add here custom function for the save button
-                  var study = {};
-                  study.Report = editor.getData();
-                  study.IdStudy = $routeParams.id;
-                  $("#print-form").attr("action", "/cgi-bin/tir/print");
-                  $("#print-form-documento").val( study.Report );
-                  $("#print-form-idstudy").val( study.IdStudy );
-                  $("#print-form").submit();
-                }
-           });
-           editor.ui.addButton('Print', { label: 'Print', command: 'print', toolbar: 'document, 2' });
-
-           // Save Command
-           var command = editor.addCommand('save',
-           {
-                modes: { wysiwyg: 1, source: 1 },
-                exec: function (editor) { // Add here custom function for the save button
-                  var study = {};
-                  study.Report = editor.getData();
-                  study.IdStudy = $routeParams.id;
-                  study.IdProfessional = TIRAPIservice.user.idprofessional;
-                  $.ajax({
-                    type: 'POST', 
-                    url: '/cgi-bin/tir/study',
-                    data: study,
-                    success: function(data, textStatus, request){
-                      // se inserta el texto
-                      alert("Documento almacenado correctamente");
-                    },
-                    error: function(req, status, error){
-                      alert(error);
-                    }
-                  })
-                }
-           });
-           editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });
-        }
-    }
   }).
 
   /* Turnos controller */
