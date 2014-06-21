@@ -26,13 +26,35 @@
         </div>
         <div class="study-table-row">
             <div class="study-table-col study-label">
+                &nbsp;
+            </div>
+            <div class="study-table-col study-caption">
+                Estado:
+            </div>
+            <div class="study-table-col" style="width: 500px;">
+                <div class="btn-group" data-toggle="buttons">
+                <label class='btn btn-default' ng-class='{active: option == study.Status}'
+                    ng-repeat='option in study.Statuses' ng-click='activate(option)'>
+                    <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
+                </label>
+                </div>
+            </div>
+        </div>
+        <div class="study-table-row">
+            <div class="study-table-col study-label">
                 Paciente
             </div>
             <div class="study-table-col study-caption">
                 Nombre:
             </div>
             <div class="study-table-col study-data">
-                {{study.Patient_LastName + ', ' + study.Patient_FirstName}}
+                {{study.Patient_FirstName}}
+            </div>
+            <div class="study-table-col study-caption">
+                Apellido:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Patient_LastName}}
             </div>
             <div class="study-table-col study-caption">
                 Sexo:
@@ -55,7 +77,13 @@
                 Nombre:
             </div>
             <div class="study-table-col study-data">
-                {{study.Perform_LastName + ', ' + study.Perform_FirstName}}
+                {{study.Perform_FirstName}}
+            </div>
+            <div class="study-table-col study-caption">
+                Apellido:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Perform_LastName}}
             </div>
         </div>
         <div class="study-table-row">
@@ -66,9 +94,14 @@
                 Nombre:
             </div>
             <div class="study-table-col study-data">
-                {{study.Report_LastName + ', ' + study.Report_FirstName}}
+                {{study.Report_FirstName}}
+            </div>
+            <div class="study-table-col study-caption">
+                Apellido:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Report_LastName}}
             </div>
         </div>
       </div>
-
-      <div class="ck-editor" ng-model="text"></div>
+      <div class="ck-editor" ng-model="study.Report"></div>

@@ -5,17 +5,18 @@ angular.module('TIRApp', [
 ]).
 
 run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
-    $rootScope.$on( "$routeChangeStart", function(event, next, current){
+    $rootScope.$on( "$routeChangeSuccess", function(event, next, current){
         if(!TIRAPIservice.user.id){
+            console.log('empty userid');
             TIRAPIservice.retrieveUserInfo().
                 success(function(data){
+                    console.log('userid retrieved');
                     TIRAPIservice.user.id = data.id;
                     TIRAPIservice.user.name = data.name;
                     TIRAPIservice.user.fullname = data.fullname;
                     TIRAPIservice.user.profile = data.profile;
                     TIRAPIservice.user.idprofessional = data.idprofessional;
-                    //$location.path('/turnos');
-                    //$route.reload();
+                    $rootScope.userName = data.fullname;
                 }).
                 error(function(data, status, headers, config){
                     $location.path('/login');

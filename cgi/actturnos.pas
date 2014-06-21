@@ -44,7 +44,7 @@ begin
     // se ejecuta la consulta y se la convierte en un objeto
     lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
-    lSql := datamodule1.studies;
+    lSql := datamodule1.qryStudies;
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
     lSql.Open;
 

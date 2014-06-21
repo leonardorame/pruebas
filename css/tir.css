@@ -64,3 +64,16 @@ footer {
     margin-bottom: 5px;
 }
 
+.btn {
+  margin:0px;
+  padding-left: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  vertical-align: top;
+}
+
+.btn-group {
+  margin:0px;
+  padding: 0px;
+  vertical-align: top;
+}

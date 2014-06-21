@@ -114,9 +114,15 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
       $scope.userName = TIRAPIservice.user.fullname;
       TIRAPIservice.getStudy($routeParams.id).success(
             function(data){
-                $scope.text = data;
+                TIRAPIservice.study = data
+                $scope.study = TIRAPIservice.study;
             }
       );
+
+      $scope.$watch('TIRAPIservice.study.Status', function(v){
+            console.log('changed', v);
+      });
+
       $scope.saveStudy = function(document) {
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){
@@ -132,6 +138,8 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
   controller('turnosController', function($scope, $location, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
+    console.log($scope.userName);
+
     $scope.go = function(study){
         TIRAPIservice.study = study;
         var url = '/turnos/' + study.IdStudy;

@@ -27,7 +27,7 @@ object datamodule1: Tdatamodule1
     left = 48
     top = 112
   end
-  object studies: TSQLQuery
+  object qryStudies: TSQLQuery
     FieldDefs = <>
     Database = PGConnection1
     Transaction = SQLTransaction1
@@ -58,5 +58,59 @@ object datamodule1: Tdatamodule1
     ParseSQL = False
     left = 167
     top = 65
+  end
+  object qryStudy: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'st.idstudy,'
+      'st.studydate,'
+      's.status,'
+      'p.idpatient as "Patient_IdPatient",'
+      'p.firstname as "Patient_FirstName",'
+      'p.lastname as "Patient_LastName",'
+      'p.sex as "Patient_Sex",'
+      'p.birthdate as "Patient_BirthDate",'
+      'pf.idprofessional as "Perform_IdProfessional",'
+      'pf.firstname as "Perform_FirstName",'
+      'pf.lastname as "Perform_LastName",'
+      'rf.firstname as "Report_FirstName",'
+      'rf.idprofessional as "Report_IdProfessional",'
+      'rf.lastname as "Report_LastName",'
+      'st.report as "Report"'
+      'from study st'
+      'join patient p on st.idpatient = p.idpatient'
+      'join status s on st.idstatus = s.idstatus'
+      'join professional pf on st.idperformingphysician = pf.idprofessional'
+      'join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      'where st.idstudy = :IdStudy'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'IdStudy'
+        ParamType = ptInput
+      end>
+    ParseSQL = False
+    left = 167
+    top = 136
+  end
+  object qryStatuses: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      ' IdStatus,'
+      ' Status'
+      'from status'
+    )
+    Params = <>
+    ParseSQL = False
+    left = 48
+    top = 208
   end
 end
