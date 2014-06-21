@@ -23,3 +23,44 @@ footer {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #006699;
 }
+
+.study-table{
+  display:table;         
+  width:auto;         
+  margin-bottom: 5px;
+  border-spacing:5px;/*cellspacing:poor IE support for  this*/
+}
+
+.study-table-row{
+  display:table-row;
+  width:auto;
+  clear:both;
+}
+
+.study-table-col{
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;         
+  width:150px;         
+  padding-right: 4px;
+}
+
+.study-label{
+  width:100px;         
+  text-align: right;
+  color: gray;
+}
+
+.study-caption{
+  width:100px;         
+  text-align: right;
+  color: white;
+}
+
+.study-data{
+  background-color: #383838;
+}
+
+.breadcrumb {
+    margin-bottom: 5px;
+}
+

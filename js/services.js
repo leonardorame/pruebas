@@ -1,8 +1,8 @@
 angular.module('TIRApp.services', [])
   .factory('TIRAPIservice', function($http) {
-
     var TIRAPI = {};
     TIRAPI.user = {};
+    TIRAPI.study = {};
 
     TIRAPI.getTurnos = function(filter) {
       return $http({
@@ -19,6 +19,24 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.saveStudy = function(report){
+      TIRAPI.study.Report = report;
+      return $http({
+            method: 'POST',
+            data: TIRAPI.study, 
+            url: '/cgi-bin/tir/study',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            // without transformRequest posted data is json
+            transformRequest: function(obj) {
+                console.log(obj);
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            }
+        });
+    };
+
     // retrieve user info from server by passing a cookie
     // if cookie is expired redirect to login
     TIRAPI.retrieveUserInfo = function() {
@@ -29,10 +47,10 @@ angular.module('TIRApp.services', [])
       return false;  
     }
 
-    TIRAPI.getTurno = function(idturno) {
+    TIRAPI.getStudy = function(idstudy) {
       return $http({
         method: 'GET', 
-        url: '/cgi-bin/tir/study?IdStudy=' + idturno
+        url: '/cgi-bin/tir/study?IdStudy=' + idstudy
       });
     }
 

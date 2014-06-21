@@ -6,4 +6,69 @@
         <li class="active">Estudio</li>
       </ol>
 
+      <div class="study-table">
+        <div class="study-table-row">
+            <div class="study-table-col study-label">
+                Estudio
+            </div>
+            <div class="study-table-col study-caption">
+                Id.:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.IdStudy}}
+            </div>
+            <div class="study-table-col study-caption">
+                Fecha:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.StudyDate}}
+            </div>
+        </div>
+        <div class="study-table-row">
+            <div class="study-table-col study-label">
+                Paciente
+            </div>
+            <div class="study-table-col study-caption">
+                Nombre:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Patient_LastName + ', ' + study.Patient_FirstName}}
+            </div>
+            <div class="study-table-col study-caption">
+                Sexo:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Patient_Sex}}
+            </div>
+            <div class="study-table-col study-caption">
+                Fecha Nac.:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Patient_BirthDate}}
+            </div>
+        </div>
+        <div class="study-table-row">
+            <div class="study-table-col study-label">
+                Prof. Efectúa
+            </div>
+            <div class="study-table-col study-caption">
+                Nombre:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Perform_LastName + ', ' + study.Perform_FirstName}}
+            </div>
+        </div>
+        <div class="study-table-row">
+            <div class="study-table-col study-label">
+                Prof. Informa
+            </div>
+            <div class="study-table-col study-caption">
+                Nombre:
+            </div>
+            <div class="study-table-col study-data">
+                {{study.Report_LastName + ', ' + study.Report_FirstName}}
+            </div>
+        </div>
+      </div>
+
       <div class="ck-editor" ng-model="text"></div>

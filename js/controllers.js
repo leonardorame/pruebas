@@ -110,21 +110,31 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
 
   /* Turno controller */
   controller('turnoController', function($scope, $routeParams, TIRAPIservice) {
+      $scope.study = TIRAPIservice.study;
       $scope.userName = TIRAPIservice.user.fullname;
-      TIRAPIservice.getTurno( $routeParams.id).success(
+      TIRAPIservice.getStudy($routeParams.id).success(
             function(data){
                 $scope.text = data;
             }
       );
-
+      $scope.saveStudy = function(document) {
+          TIRAPIservice.saveStudy(document).
+            success(function(data, status, headers, config){
+                console.log('success');
+            }).
+            error(function(data, status, headers, config){
+                console.log('error');
+            })
+      };
   }).
 
   /* Turnos controller */
   controller('turnosController', function($scope, $location, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
-    $scope.go = function(turno){
-        var url = '/turnos/' + turno.IdStudy;
+    $scope.go = function(study){
+        TIRAPIservice.study = study;
+        var url = '/turnos/' + study.IdStudy;
         $location.path(url);
     };
   });

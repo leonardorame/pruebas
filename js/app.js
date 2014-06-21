@@ -14,7 +14,6 @@ run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootSc
                     TIRAPIservice.user.fullname = data.fullname;
                     TIRAPIservice.user.profile = data.profile;
                     TIRAPIservice.user.idprofessional = data.idprofessional;
-                    console.log(TIRAPIservice.user);
                     //$location.path('/turnos');
                     //$route.reload();
                 }).
@@ -38,6 +37,7 @@ directive("mainMenu", function(){
 directive('ckEditor', [function(){
         return {
             require: '?ngModel',
+            controller: 'turnoController',
             restrict: 'C',
             link: function (scope, elm, attr, model) {
                 var isReady = false;
@@ -54,22 +54,7 @@ directive('ckEditor', [function(){
                        {
                             modes: { wysiwyg: 1, source: 1 },
                             exec: function (editor) { // Add here custom function for the save button
-                              var study = {};
-                              study.Report = editor.getData();
-                              study.IdStudy = $routeParams.id;
-                              study.IdProfessional = TIRAPIservice.user.idprofessional;
-                              $.ajax({
-                                type: 'POST', 
-                                url: '/cgi-bin/tir/study',
-                                data: study,
-                                success: function(data, textStatus, request){
-                                  // se inserta el texto
-                                  alert("Documento almacenado correctamente");
-                                },
-                                error: function(req, status, error){
-                                  alert(error);
-                                }
-                              })
+                              scope.saveStudy(editor.getData());
                             }
                        });
                        editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });

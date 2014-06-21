@@ -10,25 +10,10 @@ uses
   sqldb,
   BaseAction,
   fpjsonrtti,
+  study,
   SysUtils;
 
 type
-
-  { TStudy }
-
-  TStudy = class
-  private
-    FIdProfessional: Integer;
-    FReport: string;
-    FIdStudy: Integer;
-    FIdUser: Integer;
-  published
-    property IdStudy: Integer read FIdStudy write FIdStudy;
-    property Report: string read FReport write FReport;
-    property IdUser: Integer read FIdUser write FIdUser;
-    property IdProfessional: Integer read FIdProfessional write FIdProfessional;
-  end;
-
   { TActStudy }
 
   TActStudy = class(specialize TBaseGAction<TStudy>)
@@ -55,7 +40,7 @@ begin
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
-      lQuery.ParamByName('idprofessional').AsInteger:= lTurno.IdProfessional;
+      lQuery.ParamByName('idprofessional').AsInteger:= lTurno.Report_IdProfessional;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
@@ -84,13 +69,9 @@ begin
       lQuery.DataBase := datamodule1.PGConnection1;
       lSql := 'select report from study where idstudy = ' + TheRequest.QueryFields.Values['IdStudy'];
       IntToStr(lTurno.IdStudy);
-      //Write(TJSONStreamer.Create(nil).ObjectToJSON(lTurno).AsJson);
-      //BrookLog.Info(lSql);
       lQuery.SQL.Text := lSql;
-      //lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.Open;
       Write(lQuery.FieldByName('report').AsString);
-
     except
       on E: Exception do
         write(E.message);
