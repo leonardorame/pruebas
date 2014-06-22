@@ -36,8 +36,8 @@ directive("mainMenu", function(){
 directive('ckEditor', [function(){
         return {
             require: '?ngModel',
-            controller: 'turnoController',
-            restrict: 'C',
+            //controller: 'turnoController',
+            restrict: 'CE',
             link: function (scope, elm, attr, model) {
                 var isReady = false;
                 var data = [];
@@ -53,7 +53,7 @@ directive('ckEditor', [function(){
                        {
                             modes: { wysiwyg: 1, source: 1 },
                             exec: function (editor) { // Add here custom function for the save button
-                              scope.saveStudy(editor.getData());
+                              scope.save(editor.getData());
                             }
                        });
                        editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });

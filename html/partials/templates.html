@@ -35,3 +35,7 @@
     <pagination total-items="itemCount" page="filterCriteria.pageNumber" max-size="10" class="pagination-sm" boundary-links="true" on-select-page="selectPage(page)"></pagination>
   </div>
 </div>
+
+<div ng-model="template" ng-show="isShown(template.IdTemplate)">
+    <div class="ck-editor" ng-model="template.Template"></div>
+</div>

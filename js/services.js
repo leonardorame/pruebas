@@ -3,6 +3,7 @@ angular.module('TIRApp.services', [])
     var TIRAPI = {};
     TIRAPI.user = {};
     TIRAPI.study = {};
+    TIRAPI.template = {};
 
     TIRAPI.getTurnos = function(filter) {
       return $http({
@@ -36,7 +37,6 @@ angular.module('TIRApp.services', [])
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             // without transformRequest posted data is json
             transformRequest: function(obj) {
-                console.log(obj);
                 var str = [];
                 for(var p in obj)
                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
@@ -45,6 +45,23 @@ angular.module('TIRApp.services', [])
         });
     };
 
+
+    TIRAPI.saveTemplate = function(template){
+      TIRAPI.template.Template = template;
+      return $http({
+            method: 'POST',
+            data: TIRAPI.template, 
+            url: '/cgi-bin/tir/template',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            // without transformRequest posted data is json
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            }
+        });
+    };
     // retrieve user info from server by passing a cookie
     // if cookie is expired redirect to login
     TIRAPI.retrieveUserInfo = function() {
@@ -59,6 +76,14 @@ angular.module('TIRApp.services', [])
       return $http({
         method: 'GET', 
         url: '/cgi-bin/tir/study?IdStudy=' + idstudy
+      });
+    }
+
+
+    TIRAPI.getTemplate = function(idtemplate) {
+      return $http({
+        method: 'GET', 
+        url: '/cgi-bin/tir/template?IdTemplate=' + idtemplate
       });
     }
 

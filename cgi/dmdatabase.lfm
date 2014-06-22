@@ -132,4 +132,27 @@ object datamodule1: Tdatamodule1
     left = 256
     top = 72
   end
+  object qryTemplate: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      '  idtemplate as "IdTemplate",'
+      '  code as "Code",'
+      '  name as "Name",'
+      '  template as "Template"'
+      'from templates'
+      'where idtemplate = :IdTemplate'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'IdTemplate'
+        ParamType = ptInput
+      end>
+    ParseSQL = False
+    left = 256
+    top = 144
+  end
 end

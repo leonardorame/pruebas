@@ -17,6 +17,7 @@ type
     PGConnection1: TPQConnection;
     qryStudies: TSQLQuery;
     qryStatuses: TSQLQuery;
+    qryTemplate: TSQLQuery;
     qryTemplates: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     qryStudy: TSQLQuery;

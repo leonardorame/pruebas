@@ -123,7 +123,8 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
           TIRAPIservice.study.IdStatus = study.IdStatus;
       };
 
-      $scope.saveStudy = function(document) {
+      $scope.save = function(document) {
+          console.log('on saveStudy');
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){
                 console.log('success');
@@ -205,11 +206,31 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
     //manually select a page to trigger an ajax request to populate the grid on page load
     $scope.selectPage(1);
 
-    $scope.go = function(template){
-        TIRAPIservice.template = template;
-        var url = '/templates/' + template.IdTemplate;
-        $location.path(url);
+    // displays the div containing the editor
+    // depending on template object is not undefined
+    $scope.isShown = function(template){
+        return (template);
     };
+
+    $scope.go = function(template){
+        TIRAPIservice.getTemplate(template.IdTemplate).success(
+            function(data){
+                console.log(data);
+                TIRAPIservice.template = data
+                $scope.template = TIRAPIservice.template;
+            }
+        );
+    };
+
+    $scope.save = function(document) {
+      TIRAPIservice.saveTemplate(document).
+        success(function(data, status, headers, config){
+            console.log('success');
+        }).
+        error(function(data, status, headers, config){
+            console.log('error');
+        })
+      };
   }).
 
   /* Turnos controller */
