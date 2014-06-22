@@ -74,6 +74,13 @@ create table study_status(
   primary key(IdStudyStatus)
 );
 
+
+create table templates(
+  IdTemplate serial not null,
+  Template text,
+  primary key(IdTemplate)
+);
+
 insert into status(status) values('Ingresado');
 insert into status(status) values('Transcripto');
 insert into status(status) values('Corregido');
