@@ -104,4 +104,9 @@
             </div>
         </div>
       </div>
+
+      <span ng-if="alert">
+        <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
+      </span>
+
       <div class="ck-editor" ng-model="study.Report"></div>

@@ -77,3 +77,9 @@ footer {
   padding: 0px;
   vertical-align: top;
 }
+
+.alert {
+    border-radius: 0px;
+    padding: 2px;
+    margin: 2px;
+}

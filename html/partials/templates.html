@@ -36,6 +36,10 @@
   </div>
 </div>
 
+<span ng-if="alert">
+    <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
+</span>
+
 <div ng-model="template" ng-show="isShown(template.IdTemplate)">
     <div class="ck-editor" ng-model="template.Template"></div>
 </div>

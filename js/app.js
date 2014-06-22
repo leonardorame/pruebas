@@ -2,8 +2,7 @@ angular.module('TIRApp', [
   'TIRApp.services',
   'TIRApp.controllers',
   'ngRoute',
-  'ui.bootstrap',
-  'dialogs.main'
+  'ui.bootstrap'
 ]).
 
 run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
