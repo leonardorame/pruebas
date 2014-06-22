@@ -77,6 +77,8 @@ create table study_status(
 
 create table templates(
   IdTemplate serial not null,
+  Name varchar(100) unique not null,
+  Code varchar(20) unique not null,
   Template text,
   primary key(IdTemplate)
 );

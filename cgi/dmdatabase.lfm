@@ -122,6 +122,8 @@ object datamodule1: Tdatamodule1
       'select'
       'count(*) over() as TotalRecords,'
       'IdTemplate,'
+      'Code,'
+      'Name,'
       'Template'
       'from templates'
     )

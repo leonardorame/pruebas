@@ -53,7 +53,9 @@ begin
       lTemplate := TTemplate.Create;
       lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
       lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
-      lTemplate.Template := lSql.FieldByName('Template').AsString;
+      lTemplate.Code := lSql.FieldByName('Code').AsString;
+      lTemplate.Name := lSql.FieldByName('Name').AsString;
+      //lTemplate.Template := lSql.FieldByName('Template').AsString;
       lItem := lStreamer.ObjectToJSON(lTemplate);
       lArray.Add(lItem);
       lList.Add(lTemplate);

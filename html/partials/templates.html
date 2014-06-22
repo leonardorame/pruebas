@@ -1,0 +1,37 @@
+<div main-menu=""></div>
+
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li class="active">Plantillas</li>
+  </ol>
+
+<div>
+  <!--h1>Found ({{itemCount}}) Items</h1-->
+  <table class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th ng-repeat="header in headers">
+          <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdTemplate" type="text" /></td>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Code" type="text" /></td>
+      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Name" type="text" /></td>
+    </tr>
+    <tr ng-repeat="template in templates" ng-click="go(template)">
+      <td>{{template.IdTemplate}}</td>
+      <td>{{template.Code}}</td>
+      <td>{{template.Name}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div ng-show="itemCount == 0">
+    <h3>No se han encontrado plantillas</h3>
+  </div>
+  <div ng-show="totalPages > 1" class="align-center">
+    <pagination total-items="itemCount" page="filterCriteria.pageNumber" max-size="10" class="pagination-sm" boundary-links="true" on-select-page="selectPage(page)"></pagination>
+  </div>
+</div>
