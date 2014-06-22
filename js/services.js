@@ -12,6 +12,14 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getTemplates = function(filter) {
+      return $http({
+        method: 'POST', 
+        params: filter,
+        url: '/cgi-bin/tir/templates'
+      });
+    }
+
     TIRAPI.login = function(user, pass) {
       return $http({
         method: 'GET', 

@@ -17,6 +17,7 @@ type
     PGConnection1: TPQConnection;
     qryStudies: TSQLQuery;
     qryStatuses: TSQLQuery;
+    qryTemplates: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     qryStudy: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);

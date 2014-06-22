@@ -114,4 +114,20 @@ object datamodule1: Tdatamodule1
     left = 48
     top = 208
   end
+  object qryTemplates: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'IdTemplate,'
+      'Template'
+      'from templates'
+    )
+    Params = <>
+    ParseSQL = False
+    left = 256
+    top = 72
+  end
 end
