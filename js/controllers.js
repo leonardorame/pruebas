@@ -117,6 +117,7 @@ angular.module('TIRApp.controllers', []).
             function(data){
                 TIRAPIservice.study = data
                 $scope.study = TIRAPIservice.study;
+                $scope.alert = undefined;
             }
       );
 
@@ -225,6 +226,7 @@ angular.module('TIRApp.controllers', []).
     $scope.go = function(template){
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
+                $scope.alert = undefined;
                 TIRAPIservice.template = data
                 $scope.template = TIRAPIservice.template;
             }
