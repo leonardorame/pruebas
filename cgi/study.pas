@@ -13,6 +13,7 @@ type
 
   TStudy = class
   private
+    FIdStatus: Integer;
     FIdStudy: Integer;
     FPatient_BirthDate: string;
     FPatient_FirstName: string;
@@ -31,6 +32,7 @@ type
   published
     property IdStudy: Integer read FIdStudy write FIdStudy;
     property StudyDate: string read FStudyDate write FStudyDate;
+    property IdStatus: Integer read FIdStatus write FIdStatus;
     property Status: string read FStatus write FStatus;
     property Patient_IdPatient: Integer read FPatient_IdPatient write FPatient_IdPatient;
     property Patient_FirstName: string read FPatient_FirstName write FPatient_FirstName;

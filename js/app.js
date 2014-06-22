@@ -7,10 +7,8 @@ angular.module('TIRApp', [
 run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
     $rootScope.$on( "$routeChangeSuccess", function(event, next, current){
         if(!TIRAPIservice.user.id){
-            console.log('empty userid');
             TIRAPIservice.retrieveUserInfo().
                 success(function(data){
-                    console.log('userid retrieved');
                     TIRAPIservice.user.id = data.id;
                     TIRAPIservice.user.name = data.name;
                     TIRAPIservice.user.fullname = data.fullname;

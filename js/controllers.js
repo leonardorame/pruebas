@@ -1,6 +1,6 @@
 angular.module('TIRApp.controllers', ['ui.bootstrap']).
     
-    controller('GridCtrl', function ($scope, TIRAPIservice) {
+    controller('GridCtrl', function ($scope, $location, TIRAPIservice) {
           $scope.totalPages = 0;
           $scope.itemCount = 0;
           $scope.headers = [
@@ -41,15 +41,16 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
          
           //The function that is responsible of fetching the result from the server and setting the grid to the new result
           $scope.fetchResult = function () {
-            return TIRAPIservice.getTurnos($scope.filterCriteria).then(function (data) {
-              $scope.turnos = data.data.data;
-              $scope.totalPages = data.data.recordsTotal / 10; // page size = 10
-              $scope.itemCount = data.data.recordsTotal;
-            }, function () {
-              $scope.turnos = [];
-              $scope.totalPages = 0;
-              $scope.itemCount = 0;
-            });
+            return TIRAPIservice.getTurnos($scope.filterCriteria).
+                then(function(response){
+                  // success handler
+                  $scope.turnos = response.data.data;
+                  $scope.totalPages = response.data.recordsTotal / 10; // page size = 10
+                  $scope.itemCount = response.data.recordsTotal;
+                },function(response){
+                    // error handler
+                    $location.path('/login');
+                });
           };
          
           //called when navigate to another page in the pagination
@@ -80,7 +81,6 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
          
           //manually select a page to trigger an ajax request to populate the grid on page load
           $scope.selectPage(1);
-         
         }).
 
   /* login controller */
@@ -119,9 +119,9 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
             }
       );
 
-      $scope.$watch('TIRAPIservice.study.Status', function(v){
-            console.log('changed', v);
-      });
+      $scope.activate = function(study){
+          TIRAPIservice.study.IdStatus = study.IdStatus;
+      };
 
       $scope.saveStudy = function(document) {
           TIRAPIservice.saveStudy(document).
@@ -138,7 +138,6 @@ angular.module('TIRApp.controllers', ['ui.bootstrap']).
   controller('turnosController', function($scope, $location, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
-    console.log($scope.userName);
 
     $scope.go = function(study){
         TIRAPIservice.study = study;

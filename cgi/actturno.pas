@@ -36,11 +36,12 @@ begin
   try
     try
       lQuery.DataBase := datamodule1.PGConnection1;
-      lSql := 'update study set report = :report, idprimaryinterpreterphysician = :idprofessional ' +
+      lSql := 'update study set idstatus = :idstatus, report = :report, idprimaryinterpreterphysician = :idprofessional ' +
         'where idstudy = :idstudy';
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
+      lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
       lQuery.ParamByName('idprofessional').AsInteger:= lTurno.Report_IdProfessional;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
@@ -74,6 +75,7 @@ begin
       lStudy.IdStudy := lQuery.FieldByName('IdStudy').AsInteger;
       lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lQuery.FieldByName('StudyDate').AsDateTime);
       lStudy.Status := lQuery.FieldByName('Status').AsString;
+      lStudy.IdStatus := lQuery.FieldByName('IdStatus').AsInteger;
       lStudy.Patient_IdPatient := lQuery.FieldByName('Patient_IdPatient').AsInteger;
       lStudy.Patient_FirstName := lQuery.FieldByName('Patient_FirstName').AsString;
       lStudy.Patient_LastName := lQuery.FieldByName('Patient_LastName').AsString;
