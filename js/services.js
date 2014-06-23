@@ -21,6 +21,14 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getPatients = function(filter) {
+      return $http({
+        method: 'POST', 
+        params: filter,
+        url: '/cgi-bin/tir/patients'
+      });
+    }
+
     TIRAPI.login = function(user, pass) {
       return $http({
         method: 'GET', 
@@ -79,11 +87,17 @@ angular.module('TIRApp.services', [])
       });
     }
 
-
     TIRAPI.getTemplate = function(idtemplate) {
       return $http({
         method: 'GET', 
         url: '/cgi-bin/tir/template?IdTemplate=' + idtemplate
+      });
+    }
+
+    TIRAPI.getPatient = function(idpatient) {
+      return $http({
+        method: 'GET', 
+        url: '/cgi-bin/tir/patient?IdPatient=' + idpatient
       });
     }
 

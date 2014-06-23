@@ -2,8 +2,8 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 543
-  VerticalOffset = 168
+  HorizontalOffset = 1591
+  VerticalOffset = 320
   Width = 410
   object PGConnection1: TPQConnection
     Connected = False
@@ -11,7 +11,7 @@ object datamodule1: Tdatamodule1
     DatabaseName = 'tir'
     KeepConnection = False
     Params.Strings = (
-      'port=5432'
+      'port=5434'
     )
     Password = 'postgres'
     Transaction = SQLTransaction1
@@ -154,5 +154,25 @@ object datamodule1: Tdatamodule1
     ParseSQL = False
     left = 256
     top = 144
+  end
+  object qryPatients: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      '  count(*) over() as TotalRecords,'
+      '  idpatient as "IdPatient",'
+      '  firstname as "FirstName",'
+      '  lastname as "LastName",'
+      '  birthdate as "BirthDate",'
+      '  sex as "Sex"'
+      'from patient'
+      ''
+    )
+    Params = <>
+    ParseSQL = False
+    left = 160
+    top = 216
   end
 end

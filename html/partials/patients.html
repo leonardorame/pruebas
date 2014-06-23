@@ -1,0 +1,45 @@
+<div main-menu=""></div>
+
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li class="active">Pacientes</li>
+  </ol>
+
+<div>
+  <!--h1>Found ({{itemCount}}) Items</h1-->
+  <table class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th ng-repeat="header in headers">
+          <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdPatient" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.FirstName" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.LastName" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.BirthDate" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Sex" type="text" /></td>
+    </tr>
+    <tr ng-repeat="patient in patients" ng-click="go(patient)" ng-class="{selected: patient.IdPatient == currentpatient.IdPatient}">
+      <td>{{patient.IdPatient}}</td>
+      <td>{{patient.FirstName}}</td>
+      <td>{{patient.LastName}}</td>
+      <td>{{patient.BirthDate}}</td>
+      <td>{{patient.Sex}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div ng-show="itemCount == 0">
+    <h3>No se han encontrado pacientes</h3>
+  </div>
+  <div ng-show="totalPages > 1" class="align-center">
+    <pagination total-items="itemCount" page="filterCriteria.pageNumber" max-size="10" class="pagination-sm" boundary-links="true" on-select-page="selectPage(page)"></pagination>
+  </div>
+</div>
+
+<span ng-if="alert">
+    <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
+</span>
