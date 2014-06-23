@@ -108,6 +108,96 @@ angular.module('TIRApp.controllers', []).
         }
   }).
 
+  /* templatesTableModel */
+  controller('templatesTableModel', function($scope, $modalInstance, TIRAPIservice) {
+    $scope.templates = [];
+
+    $scope.totalPages = 0;
+    $scope.itemCount = 0;
+    $scope.headers = [
+    {
+        title: 'IdPlantilla',
+        value: 'IdTemplate',
+        width: '50px;'
+    },
+    {
+        title: 'Código',
+        value: 'Code'
+    },
+    {
+        title: 'Nombre',
+        value: 'Name'
+    }];
+    //default criteria that will be sent to the server
+    $scope.filterCriteria = {
+        pageNumber: 1,
+        sortDir: 'asc',
+        sortedBy: 'id'
+    };
+
+    $scope.alert = undefined;
+    $scope.closeAlert = function(){
+      $scope.alert = undefined;
+    };
+    //The function that is responsible of fetching the result from the server and setting the grid to the new result
+    $scope.fetchResult = function () {
+    return TIRAPIservice.getTemplates($scope.filterCriteria).
+        then(function(response){
+          // success handler
+          $scope.templates = response.data.data;
+          $scope.totalPages = response.data.recordsTotal / 10; // page size = 10
+          $scope.itemCount = response.data.recordsTotal;
+        },function(response){
+            // error handler
+            $location.path('/login');
+        });
+    };
+
+    //called when navigate to another page in the pagination
+    $scope.selectPage = function (page) {
+        $scope.filterCriteria.pageNumber = page;
+        $scope.fetchResult();
+    };
+
+    //Will be called when filtering the grid, will reset the page number to one
+    $scope.filterResult = function () {
+        $scope.filterCriteria.pageNumber = 1;
+        $scope.fetchResult().then(function () {
+          //The request fires correctly but sometimes the ui doesn't update, that's a fix
+          $scope.filterCriteria.pageNumber = 1;
+        });
+    };
+
+    //call back function that we passed to our custom directive sortBy, will be called when clicking on any field to sort
+    $scope.onSort = function (sortedBy, sortDir) {
+        $scope.filterCriteria.sortDir = sortDir;
+        $scope.filterCriteria.sortedBy = sortedBy;
+        $scope.filterCriteria.pageNumber = 1;
+        $scope.fetchResult().then(function () {
+          //The request fires correctly but sometimes the ui doesn't update, that's a fix
+          $scope.filterCriteria.pageNumber = 1;
+        });
+    };
+
+    //manually select a page to trigger an ajax request to populate the grid on page load
+    $scope.selectPage(1);
+
+    $scope.ok = function(){
+        $modalInstance.close($scope.template);
+    };        
+
+    $scope.cancel = function(){
+        $modalInstance.dismiss('cancel');
+    };        
+    $scope.go = function(template){
+        TIRAPIservice.getTemplate(template.IdTemplate).success(
+            function(data){
+                $scope.template = data;
+            }
+        );
+    };
+  }).
+
   /* Turno controller */
   controller('turnoController', function($scope, $routeParams, TIRAPIservice, $modal) {
       $scope.study = TIRAPIservice.study;
@@ -128,6 +218,17 @@ angular.module('TIRApp.controllers', []).
       $scope.closeAlert = function(){
         $scope.alert = undefined;
       };
+
+      $scope.selectTemplate = function(){
+            $modal.open({
+                controller: 'templatesTableModel',
+                templateUrl: 'partials/templatestable.html'
+            }).result.then(function(template){
+                if(template)
+                    $scope.study.Report = template.Template;
+            });
+      };
+
       $scope.save = function(document) {
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){

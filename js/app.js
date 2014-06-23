@@ -47,6 +47,19 @@ directive('ckEditor', [function(){
                   config.height = 700;
                   config.autoGrow_onStartup = false;
                 };
+                CKEDITOR.plugins.registered['templates'] = {
+                    init: function (editor) {
+                       // click template Command
+                       var command = editor.addCommand('templates',
+                       {
+                            modes: { wysiwyg: 1, source: 1 },
+                            exec: function (editor) { // Add here custom function for the save button
+                              scope.selectTemplate();
+                            }
+                       });
+                       editor.ui.addButton('Templates', { label: 'Templates', command: 'templates', toolbar: 'document, 2' });
+                    }
+                }
                 CKEDITOR.plugins.registered['save'] = {
                     init: function (editor) {
                        // Save Command
