@@ -20,8 +20,12 @@ footer {
   margin-bottom: -20px;
 } 
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+.table-hover tbody tr:not(:first-child):hover td, .table-hover tbody tr:not(:first-child):hover th {
   background-color: #006699;
+}
+
+.table-hover tbody tr:first-child td, .table-hover tbody tr:first-child th {
+  background-color: #444444;
 }
 
 .study-table{
@@ -82,4 +86,28 @@ footer {
     border-radius: 0px;
     padding: 2px;
     margin: 2px;
+}
+
+.selected td {
+    background-color: #005f6a !important;
+}
+
+.table-striped > tbody > tr > td {
+    padding: 2px;
+}
+
+.table-filter {
+  display: block;
+  padding: 4px; 
+  width: 100%;
+  appearance: none;
+  outline: none;
+  color: white;
+  background-color: #555555;
+  border: solid 0px #333333;
+}
+
+.table-filter:focus {
+  background-color: #707070;
+  border: solod 1px #333333;
 }

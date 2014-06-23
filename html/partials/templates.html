@@ -17,11 +17,11 @@
     </thead>
     <tbody>
     <tr>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdTemplate" type="text" /></td>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Code" type="text" /></td>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Name" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdTemplate" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Code" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Name" type="text" /></td>
     </tr>
-    <tr ng-repeat="template in templates" ng-click="go(template)">
+    <tr ng-repeat="template in templates" ng-click="go(template)" ng-class="{selected: template.IdTemplate == currenttpl.IdTemplate}">
       <td>{{template.IdTemplate}}</td>
       <td>{{template.Code}}</td>
       <td>{{template.Name}}</td>

@@ -17,10 +17,10 @@
     </thead>
     <tbody>
     <tr>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.id" type="text" /></td>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.name" type="text" /></td>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.email" type="text" /></td>
-      <td><input on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.city" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.id" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.name" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.email" type="text" /></td>
+      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.city" type="text" /></td>
       <td>
         <select ng-change="filterResult()" ng-model="filterCriteria.state" ng-options="state for state in states" >
           <option value=""> </option>

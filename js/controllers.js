@@ -228,6 +228,7 @@ angular.module('TIRApp.controllers', []).
             function(data){
                 $scope.alert = undefined;
                 TIRAPIservice.template = data
+                $scope.currenttpl = data;
                 $scope.template = TIRAPIservice.template;
             }
         );
