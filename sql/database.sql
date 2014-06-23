@@ -96,6 +96,9 @@ insert into users(IdUserGroup, IdProfessional, Username, Password) values(2, 1, 
 insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Juan', 'Pérez', '2001-04-20', 'M', '9 de Julio 123', '1212312');
 insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Romina', 'García', '1990-08-12', 'F', 'Juncal 123', '1231231');
 insert into patient(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Lucas', 'Trejo', '1995-02-10', 'M', 'Santa Fe 444', '9999999');
+insert into templates(name, code) values('Mammo', '001');
+insert into templates(name, code) values('Radiology', '002');
+insert into templates(name, code) values('Ultrasound', '003');
 insert into study(IdPatient, IdPerformingPhysician, IdPrimaryInterpreterPhysician, IdStatus, StudyDate)
   values(1, 1, 1, 1, current_timestamp);
 insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysician, idstatus, studydate)
