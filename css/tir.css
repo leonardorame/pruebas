@@ -30,9 +30,10 @@ footer {
 
 .study-table{
   display:table;         
-  width:auto;         
+  width:100%;         
   margin-bottom: 5px;
   border-spacing:5px;/*cellspacing:poor IE support for  this*/
+  background-color: #222222;
 }
 
 .study-table-row{
