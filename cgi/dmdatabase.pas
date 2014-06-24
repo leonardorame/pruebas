@@ -6,6 +6,7 @@ interface
 
 uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
+  inifiles,
   fpJson, db,
   fgl;
 
@@ -38,7 +39,19 @@ implementation
 { Tdatamodule1 }
 
 procedure Tdatamodule1.DataModuleCreate(Sender: TObject);
+var
+  lIni: TIniFile;
 begin
+  lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
+  try
+    PGConnection1.HostName:= lIni.ReadString('db', 'host', '127.0.0.1');
+    PGConnection1.DatabaseName:= lIni.ReadString('db', 'db', 'tir');
+    PGConnection1.UserName:= lIni.ReadString('db', 'user', 'postgres');
+    PGConnection1.Password:= lIni.ReadString('db', 'pass', 'postgres');
+    PGConnection1.Params.Add('port=' + lIni.ReadString('db', 'port', '5452'));
+  finally
+    lIni.free;
+  end;
   PGConnection1.Connected:= True;
 end;
 

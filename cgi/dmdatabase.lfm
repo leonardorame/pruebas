@@ -2,7 +2,7 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 1591
+  HorizontalOffset = 820
   VerticalOffset = 320
   Width = 410
   object PGConnection1: TPQConnection

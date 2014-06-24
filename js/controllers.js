@@ -103,7 +103,7 @@ angular.module('TIRApp.controllers', []).
             $location.path('/turnos');
           }).
           error(function(data, status, headers, config){
-            dialogs.error(status);
+            alert(status);
           });
         }
   }).
