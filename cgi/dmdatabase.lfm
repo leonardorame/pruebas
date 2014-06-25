@@ -2,8 +2,8 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 820
-  VerticalOffset = 320
+  HorizontalOffset = 789
+  VerticalOffset = 234
   Width = 410
   object PGConnection1: TPQConnection
     Connected = False
@@ -174,5 +174,29 @@ object datamodule1: Tdatamodule1
     ParseSQL = False
     left = 160
     top = 216
+  end
+  object qryProcedures: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      '  p.CodProcedure as "CodProcedure",'
+      '  p.Procedure as "ProcedureName",'
+      '  sp.Qty as "Qty"'
+      'from studyprocedure sp'
+      'join study s on sp.idstudy = s.idstudy'
+      'join procedure p on p.idprocedure = sp.idprocedure'
+      'where s.idstudy = :IdStudy'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'IdStudy'
+        ParamType = ptInput
+      end>
+    ParseSQL = False
+    left = 272
+    top = 224
   end
 end

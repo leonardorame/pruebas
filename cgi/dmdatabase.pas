@@ -19,6 +19,7 @@ type
     qryStudies: TSQLQuery;
     qryStatuses: TSQLQuery;
     qryPatients: TSQLQuery;
+    qryProcedures: TSQLQuery;
     qryTemplate: TSQLQuery;
     qryTemplates: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
@@ -27,6 +28,7 @@ type
   private
   public
     procedure AddStatusesToJson(AJson: TJSONObject);
+    procedure AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
   end;
 
 var
@@ -72,6 +74,27 @@ begin
   end;
   AJson.Add('Statuses', lArray);
   qryStatuses.Close;
+end;
+
+procedure Tdatamodule1.AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
+var
+  lArray: TJSONArray;
+  lItem: TJSONObject;
+begin
+  lArray := TJSONArray.Create;
+  qryProcedures.ParamByName('IdStudy').AsInteger:= IdStudy;
+  qryProcedures.Open;
+  while not qryProcedures.EOF do
+  begin
+    lItem := TJSONObject.Create;
+    lItem.Add('CodProcedure', qryProcedures.FieldByName('CodProcedure').AsString);
+    lItem.Add('ProcedureName', qryProcedures.FieldByName('ProcedureName').AsString);
+    lItem.Add('Qty', qryProcedures.FieldByName('Qty').AsInteger);
+    lArray.Add(lItem);
+    qryProcedures.Next;
+  end;
+  AJson.Add('Procedures', lArray);
+  qryProcedures.Close;
 end;
 
 end.
