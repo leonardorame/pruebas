@@ -241,10 +241,13 @@ angular.module('TIRApp.controllers', []).
 
       $scope.print = function(document) {
           TIRAPIservice.printStudy(document).
-            success(function(data, status, headers, config){
+            success(function(response, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Documento impreso exitosamente!'};
+                var file = new Blob([response], {type: 'application/pdf'});
+                var fileURL = URL.createObjectURL(file);
+                window.open(fileURL);
             }).
-            error(function(data, status, headers, config){
+            error(function(response, status, headers, config){
                 $scope.alert = {type: 'danger', msg: 'Error al intentar imprimit documento. COD: ' + status};
             })
       };

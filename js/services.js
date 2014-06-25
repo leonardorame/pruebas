@@ -60,6 +60,7 @@ angular.module('TIRApp.services', [])
             method: 'POST',
             data: TIRAPI.study, 
             url: '/cgi-bin/tir/print',
+            responseType: 'arraybuffer',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             // without transformRequest posted data is json
             transformRequest: function(obj) {
