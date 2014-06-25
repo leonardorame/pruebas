@@ -42,14 +42,13 @@ begin
   lErrStream := TMemoryStream.Create;
   lProcess := TProcess.Create(nil);
   try
-    lProcess.Executable := '/usr/bin/python';
+    lProcess.Executable := '/usr/bin/python3';
     lProcess.Parameters.Add( ExtractFilePath(ParamStr(0)) + 'crear_documento.py' );
     lProcess.Options := [poUsePipes];
     lProcess.Execute;
 
     lIdStudy := TheRequest.ContentFields.Values['IdStudy'];
-    lStr.Text := TheRequest.ContentFields.Values['documento'] + LineEnding;
-
+    lStr.Text := TheRequest.ContentFields.Values['Report'] + LineEnding;
 
     lProcess.Input.Write(lStr.Text[1], Length(lStr.Text));
     lProcess.CloseInput;
@@ -78,6 +77,7 @@ begin
       'attachment; filename=' + lIdStudy + '.pdf';
     TheResponse.ContentLength := TheResponse.ContentStream.Size;
     TheResponse.SendContent;
+
   finally
     lStr.Free;
     lProcess.Free;
@@ -87,6 +87,6 @@ begin
 end;
 
 initialization
-  TPrint.Register('/print/');
+  TPrint.Register('/print');
 
 end.

@@ -42,9 +42,6 @@
         <tab heading="Estudio">
           <div class="study-table">
             <div class="study-table-row">
-                <div class="study-table-col study-label">
-                    Estudio
-                </div>
                 <div class="study-table-col study-caption">
                     Id.:
                 </div>
@@ -59,9 +56,6 @@
                 </div>
             </div>
             <div class="study-table-row">
-                <div class="study-table-col study-label">
-                    &nbsp;
-                </div>
                 <div class="study-table-col study-caption">
                     Estado:
                 </div>
@@ -72,6 +66,26 @@
                         <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
                     </label>
                     </div>
+                </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Procedimientos">
+          <div class="study-table">
+            <div ng-repeat="procedure in study.Procedures" class="study-table-row">
+                <div class="study-table-col study-caption">
+                  Proc.:
+                </div>
+                <div class="study-table-col study-data" style="width: 300px;">
+                    [{{procedure.CodProcedure}}] {{procedure.ProcedureName}}
+
+                </div>
+                <div class="study-table-col study-caption">
+                    Cant.:
+                </div>
+                <div class="study-table-col study-data">
+                    {{procedure.Qty}}
+
                 </div>
             </div>
           </div>

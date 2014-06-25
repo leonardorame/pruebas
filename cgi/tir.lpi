@@ -44,7 +44,7 @@
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <TopLine Value="1"/>
         <CursorPos X="79" Y="8"/>
@@ -99,7 +99,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="71"/>
@@ -181,8 +180,8 @@
         <UnitName Value="actturno"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="84"/>
-        <CursorPos X="60" Y="93"/>
+        <TopLine Value="90"/>
+        <CursorPos X="5" Y="108"/>
         <UsageCount Value="120"/>
         <Loaded Value="True"/>
       </Unit17>
@@ -198,7 +197,7 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="74"/>
         <CursorPos X="5" Y="92"/>
@@ -215,10 +214,13 @@
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actprint"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="50"/>
-        <CursorPos X="28" Y="52"/>
+        <TopLine Value="73"/>
+        <CursorPos X="26" Y="89"/>
         <UsageCount Value="110"/>
+        <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="actuserdata.pas"/>
@@ -233,7 +235,7 @@
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="22"/>
         <CursorPos X="62" Y="13"/>
@@ -244,7 +246,7 @@
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplates"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <TopLine Value="45"/>
         <CursorPos X="1" Y="58"/>
@@ -255,7 +257,7 @@
         <Filename Value="template.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="template"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="14"/>
         <CursorPos X="48" Y="23"/>
@@ -274,7 +276,7 @@
       <Unit27>
         <Filename Value="actpatients.pas"/>
         <UnitName Value="actpatients"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <TopLine Value="42"/>
         <CursorPos X="46" Y="53"/>
@@ -285,7 +287,7 @@
         <Filename Value="procedures.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="procedures"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <TopLine Value="9"/>
         <CursorPos X="41" Y="22"/>
@@ -293,7 +295,7 @@
         <Loaded Value="True"/>
       </Unit28>
     </Units>
-    <JumpHistory Count="24" HistoryIndex="23">
+    <JumpHistory Count="26" HistoryIndex="25">
       <Position1>
         <Filename Value="actturnos.pas"/>
         <Caret Line="3" Column="25" TopLine="1"/>
@@ -390,6 +392,14 @@
         <Filename Value="actturno.pas"/>
         <Caret Line="93" Column="60" TopLine="84"/>
       </Position24>
+      <Position25>
+        <Filename Value="actprint.pas"/>
+        <Caret Line="54" Column="10" TopLine="44"/>
+      </Position25>
+      <Position26>
+        <Filename Value="actturno.pas"/>
+        <Caret Line="93" Column="53" TopLine="84"/>
+      </Position26>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

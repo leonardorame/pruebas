@@ -73,6 +73,19 @@ directive('ckEditor', [function(){
                        editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });
                     }
                 }
+                CKEDITOR.plugins.registered['print'] = {
+                    init: function (editor) {
+                       // Save Command
+                       var command = editor.addCommand('print',
+                       {
+                            modes: { wysiwyg: 1, source: 1 },
+                            exec: function (editor) { // Add here custom function for the save button
+                              scope.print(editor.getData());
+                            }
+                       });
+                       editor.ui.addButton('Print', { label: 'Print', command: 'print', toolbar: 'document, 5' });
+                    }
+                }
                 var ck = CKEDITOR.replace( elm[0], {
                   toolbarGroups: [
                       { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.

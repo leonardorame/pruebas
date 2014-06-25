@@ -233,12 +233,19 @@ angular.module('TIRApp.controllers', []).
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Documento guardado exitosamente!'};
-                /*$modal.open({
-                    templateUrl: 'partials/success.html'
-                });*/
             }).
             error(function(data, status, headers, config){
                 $scope.alert = {type: 'danger', msg: 'Error al intentar guardar documento. COD: ' + status};
+            })
+      };
+
+      $scope.print = function(document) {
+          TIRAPIservice.printStudy(document).
+            success(function(data, status, headers, config){
+                $scope.alert = {type: 'success', msg: 'Documento impreso exitosamente!'};
+            }).
+            error(function(data, status, headers, config){
+                $scope.alert = {type: 'danger', msg: 'Error al intentar imprimit documento. COD: ' + status};
             })
       };
   }).

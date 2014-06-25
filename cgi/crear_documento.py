@@ -1,8 +1,14 @@
+# soffice --headless "--accept=socket,host=127.0.0.1,port=2002;urp"
+
+# En ubuntu 14.04
+# sudo apt-get install libreoffice-script-provider-python
+# usar python3 en vez de python
+
 import uno
 import unohelper
 import string
 import sys
-import StringIO
+import io
 import os
 from com.sun.star.beans import PropertyValue
 from unohelper import Base
@@ -10,19 +16,22 @@ from com.sun.star.io import IOException, XOutputStream, XInputStream, XSeekable
 
 currDir = os.path.dirname( os.path.realpath(__file__) )
 
+# esto debe definirse sino intenta escribir temporales en /var/www
+os.environ['HOME'] = '/tmp'
+
 # Se obtiene el documento por stdin.
 input = ""
 for line in sys.stdin:
   input = input + line
 
 # convertimos el string a un stream
-inputStream = StringIO.StringIO(input)
+inputStream = io.StringIO(input)
 
 #Setup config
 localContext = uno.getComponentContext()
 resolver = localContext.ServiceManager.createInstanceWithContext(
-				"com.sun.star.bridge.UnoUrlResolver", localContext )
-ctx = resolver.resolve( "uno:socket,host=localhost,port=2002;urp;StarOffice.ComponentContext" )
+	"com.sun.star.bridge.UnoUrlResolver", localContext )
+ctx = resolver.resolve( "uno:socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext" )
 smgr = ctx.ServiceManager
 desktop = smgr.createInstanceWithContext( "com.sun.star.frame.Desktop",ctx)
 
@@ -71,10 +80,10 @@ class InputStream(unohelper.Base, XInputStream, XSeekable):
         self.stream.seek(int(posn))
 
     def getPosition(self):
-        return long(self.stream.tell())
+        return int(self.stream.tell())
 
     def getLength(self):
-        return long(self.size)
+        return int(self.size)
 
 inProps = (
     PropertyValue( "FilterName" , 0, "HTML" , 0 ),
@@ -93,7 +102,7 @@ class OutputStream( Base, XOutputStream ):
     def closeOutput(self):
         self.closed = 1
     def writeBytes( self, seq ):
-        sys.stdout.write( seq.value )
+        sys.stdout.buffer.write( seq.value )
     def flush( self ):
         pass
 
@@ -107,10 +116,9 @@ outProps = (
 	   
 try:
   document.storeToURL("private:stream", outProps)
-except IOException, e:
-    sys.stderr.write("Error: " + e.Message)
+except IOException as e:
+  sys.stderr.write("Error: " + e.Message)
 
 # se guarda el documento
-#document.store()
 document.dispose()
 
