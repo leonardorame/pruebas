@@ -83,6 +83,22 @@ create table templates(
   primary key(IdTemplate)
 );
 
+
+create table procedure(
+  IdProcedure serial not null,
+  CodProcedure varchar(100) unique not null,
+  Procedure varchar(100), 
+  primary key(IdProcedure)
+);
+
+create table studyprocedure(
+  IdStudyProcedure serial not null,
+  IdStudy Integer not null references study(IdStudy),
+  IdProcedure Integer not null references procedure(IdProcedure),
+  Qty Integer not null default 1,
+  primary key(IdStudyProcedure)
+);
+
 insert into status(status) values('Ingresado');
 insert into status(status) values('Transcripto');
 insert into status(status) values('Corregido');
@@ -90,6 +106,12 @@ insert into status(status) values('Entregado');
 insert into user_groups(UserGroup) values('Administrators');
 insert into user_groups(UserGroup) values('Reporters');
 insert into user_groups(UserGroup) values('ReadOnly');
+insert into procedure(CodProcedure, Procedure) values ('001', 'RX de columna');
+insert into procedure(CodProcedure, Procedure) values ('002', 'RX de hombro');
+insert into procedure(CodProcedure, Procedure) values ('003', 'RX de cadera');
+insert into procedure(CodProcedure, Procedure) values ('004', 'Resonancia mamográfica');
+insert into procedure(CodProcedure, Procedure) values ('005', 'Mamografía');
+insert into procedure(CodProcedure, Procedure) values ('006', 'Ecografía abdominal');
 insert into professional(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Carlos', 'Gonzalez', '1965-02-10', 'M', 'Laprida 2222', '883838');
 insert into users(IdUserGroup, IdProfessional, Username, Password) values(1, 1, 'admin', '123');
 insert into users(IdUserGroup, IdProfessional, Username, Password) values(2, 1, 'medico', 'medico');
@@ -105,3 +127,6 @@ insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysicia
   values(2, 1, 1, 1, current_timestamp);
 insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysician, idstatus, studydate)
   values(2, 1, 1, 1, current_timestamp);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(1, 2, 1);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(2, 1, 1);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(2, 4, 1);
