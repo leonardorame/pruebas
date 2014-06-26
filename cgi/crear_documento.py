@@ -99,6 +99,20 @@ text.insertControlCharacter(cursor, PARAGRAPH_BREAK, 0)
 
 cursor.insertDocumentFromURL("file://" + currDir + "/templates/footer.odt", ());
 
+# una vez creado el documento 
+# se hace el search & replace
+
+cursor.gotoStart(False)
+replace = document.createReplaceDescriptor()
+def search(aReplace, _from, _to ):
+  aReplace.SearchString = _from
+  aReplace.ReplaceString = _to
+  document.replaceAll(aReplace)
+  return None 
+
+for key, value in jsondata.items():
+  search(replace, "$" + key, value)
+
 class OutputStream( Base, XOutputStream ):
     def __init__( self ):
         self.closed = 0
