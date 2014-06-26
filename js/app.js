@@ -80,7 +80,7 @@ directive('ckEditor', [function(){
                        {
                             modes: { wysiwyg: 1, source: 1 },
                             exec: function (editor) { // Add here custom function for the save button
-                              scope.print(editor.getData());
+                              scope.print();
                             }
                        });
                        editor.ui.addButton('Print', { label: 'Print', command: 'print', toolbar: 'document, 5' });

@@ -9,6 +9,7 @@ uses
   sqldb,
   BrookAction,
   BaseAction,
+  BrookLogger,
   fpjson,
   jsonparser,
   sysutils,
@@ -29,28 +30,29 @@ implementation
 procedure TPrint.Post;
 var
   lProcess: TProcess;
-  lStr: TStringList;
   lErrStream: TMemoryStream;
   lReadCount: Integer;
   lCharBuffer: array[0..511] of char;
   lOutput: TMemoryStream;
-  lIdStudy: string;
+  lStudy: TJsonObject;
+  lParser: TJSONParser;
 
 begin
-  lStr := TStringList.Create;
   lOutput := TMemoryStream.Create;
   lErrStream := TMemoryStream.Create;
   lProcess := TProcess.Create(nil);
   try
+    lParser := TJSONParser.Create(TheRequest.Content);
+    lStudy := TJsonObject(lParser.Parse);
+    lProcess.Environment.Add('PYTHONIOENCODING=utf-8');
     lProcess.Executable := '/usr/bin/python3';
     lProcess.Parameters.Add( ExtractFilePath(ParamStr(0)) + 'crear_documento.py' );
     lProcess.Options := [poUsePipes];
     lProcess.Execute;
 
-    lIdStudy := TheRequest.ContentFields.Values['IdStudy'];
-    lStr.Text := TheRequest.ContentFields.Values['Report'] + LineEnding;
-
-    lProcess.Input.Write(lStr.Text[1], Length(lStr.Text));
+    // el contenido es JSON
+    //BrookLog.Debug(lStudy.AsJSON);
+    lProcess.Input.Write(  lStudy.AsJSON[1], Length(lStudy.AsJSON));
     lProcess.CloseInput;
 
     while lProcess.Running or (lProcess.Output.NumBytesAvailable > 0) do
@@ -69,17 +71,25 @@ begin
       end;
     end;
 
+    if (lErrStream.Size > 0) then
+    begin
+      lErrStream.SaveToFile('/tmp/salida.err');
+      Write('Error');
+      exit;
+    end;
+
     lOutput.Position:= 0;
     TheResponse.ContentStream := lOutput;
     TheResponse.ContentStream.Position:= 0;
     TheResponse.ContentType := 'application/pdf';
     TheResponse.CustomHeaders.Values['Content-Disposition'] :=
-      'attachment; filename=' + lIdStudy + '.pdf';
+      'attachment; filename=' + IntToStr(lStudy.Integers['IdStudy']) + '.pdf';
     TheResponse.ContentLength := TheResponse.ContentStream.Size;
     TheResponse.SendContent;
 
   finally
-    lStr.Free;
+    lParser.Free;
+    lStudy.Free;
     lProcess.Free;
     lOutput.Free;
     lErrStream.Free;

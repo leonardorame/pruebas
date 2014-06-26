@@ -54,21 +54,13 @@ angular.module('TIRApp.services', [])
     };
 
 
-    TIRAPI.printStudy = function(report){
-      TIRAPI.study.Report = report;
+    TIRAPI.printStudy = function(){
       return $http({
             method: 'POST',
             data: TIRAPI.study, 
             url: '/cgi-bin/tir/print',
             responseType: 'arraybuffer',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            // without transformRequest posted data is json
-            transformRequest: function(obj) {
-                var str = [];
-                for(var p in obj)
-                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                return str.join("&");
-            }
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
     };
 

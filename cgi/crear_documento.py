@@ -10,23 +10,24 @@ import string
 import sys
 import io
 import os
+import json
+import codecs
 from com.sun.star.beans import PropertyValue
 from unohelper import Base
 from com.sun.star.io import IOException, XOutputStream, XInputStream, XSeekable
-
+from com.sun.star.text.ControlCharacter import PARAGRAPH_BREAK
 currDir = os.path.dirname( os.path.realpath(__file__) )
 
 # esto debe definirse sino intenta escribir temporales en /var/www
 os.environ['HOME'] = '/tmp'
 
-# Se obtiene el documento por stdin.
-input = ""
-for line in sys.stdin:
-  input = input + line
+# Se obtiene el documento (json) por stdin.
+input = sys.stdin.read()
+jsondata = json.loads(input)
 
+content = jsondata["Report"].join("\n\r")
 # convertimos el string a un stream
-inputStream = io.StringIO(input)
-
+inputStream = io.StringIO(content)
 #Setup config
 localContext = uno.getComponentContext()
 resolver = localContext.ServiceManager.createInstanceWithContext(
@@ -52,6 +53,7 @@ cursor = text.createTextCursor()
 cursor.insertDocumentFromURL("file://" + currDir + "/templates/header.odt", ());
 
 cursor.gotoEnd(False)
+text.insertControlCharacter(cursor, PARAGRAPH_BREAK, 0)
 
 class InputStream(unohelper.Base, XInputStream, XSeekable):
     """ Minimal Implementation of XInputStream """
@@ -93,6 +95,7 @@ inProps = (
 cursor.insertDocumentFromURL("private:stream", inProps)
 
 cursor.gotoEnd(False)
+text.insertControlCharacter(cursor, PARAGRAPH_BREAK, 0)
 
 cursor.insertDocumentFromURL("file://" + currDir + "/templates/footer.odt", ());
 

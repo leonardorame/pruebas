@@ -239,8 +239,8 @@ angular.module('TIRApp.controllers', []).
             })
       };
 
-      $scope.print = function(document) {
-          TIRAPIservice.printStudy(document).
+      $scope.print = function() {
+          TIRAPIservice.printStudy().
             success(function(response, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Documento impreso exitosamente!'};
                 var file = new Blob([response], {type: 'application/pdf'});
