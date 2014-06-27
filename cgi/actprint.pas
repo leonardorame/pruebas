@@ -73,9 +73,9 @@ begin
 
     if (lErrStream.Size > 0) then
     begin
-      lErrStream.SaveToFile('/tmp/salida.err');
-      Write('Error');
-      exit;
+     // lErrStream.SaveToFile('/tmp/salida.err');
+     // Write('Error');
+     // exit;
     end;
 
     lOutput.Position:= 0;

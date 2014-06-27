@@ -110,8 +110,12 @@ def search(aReplace, _from, _to ):
   document.replaceAll(aReplace)
   return None 
 
+# Por ahora sólo se reemplazan los valores
+# tipo string o número. Los arrays
+# quedan para más adelante.
 for key, value in jsondata.items():
-  search(replace, "$" + key, value)
+  if not hasattr(value, '__iter__'):
+    search(replace, "$" + key, value)
 
 class OutputStream( Base, XOutputStream ):
     def __init__( self ):
