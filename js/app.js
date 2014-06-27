@@ -1,6 +1,10 @@
 angular.module('TIRApp', [
   'TIRApp.services',
   'TIRApp.controllers',
+  'TIRApp.controllers.login',
+  'TIRApp.controllers.templates',
+  'TIRApp.controllers.patient',
+  'TIRApp.controllers.turno',
   'ngRoute',
   'ui.bootstrap'
 ]).
