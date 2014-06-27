@@ -17,11 +17,11 @@
     </thead>
     <tbody>
     <tr>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdPatient" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.FirstName" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.LastName" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.BirthDate" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Sex" type="text" /></td>
+      <td><input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria.IdPatient" type="text" /></td>
+      <td><input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria.FirstName" type="text" /></td>
+      <td><input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria.LastName" type="text" /></td>
+      <td><input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria.BirthDate" type="text" /></td>
+      <td><input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria.Sex" type="text" /></td>
     </tr>
     <tr ng-repeat="patient in patients" ng-click="go(patient)" ng-class="{selected: patient.IdPatient == currentpatient.IdPatient}">
       <td>{{patient.IdPatient}}</td>

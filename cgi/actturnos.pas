@@ -45,7 +45,12 @@ begin
     lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryStudies;
+    // filtros
+    if TheRequest.QueryFields.IndexOfName('name') > -1 then
+      lSql.Sql.Add('where p.lastname like ''' + TheRequest.QueryFields.Values['name'] + '%''');
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
+    //write(lSql.SQL.Text);
+    //exit;
     lSql.Open;
 
     while not lSql.EOF do
