@@ -22,7 +22,7 @@ angular.module('TIRApp.controllers',
           },
           {
             title: 'Nombre',
-            value: 'Patient_Nombre',
+            value: 'Patient_FirstName',
             width: '300px;'
           },
           {

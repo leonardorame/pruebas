@@ -36,21 +36,34 @@ var
   lStart: Integer;
   lLength: Integer;
   lTotalRecords: Integer;
+  lWhere: string;
 begin
+  lTotalRecords := 0;
   lStreamer := TJSONStreamer.Create(nil);
   lList := TStudyList.Create;
   lArray := TJSONArray.Create;
+  lData := TJsonObject.Create;
   try
     // se ejecuta la consulta y se la convierte en un objeto
     lStart := (StrToInt(TheRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryStudies;
     // filtros
-    if TheRequest.ContentFields.IndexOfName('name') > -1 then
-      lSql.Sql.Add('where p.lastname like ''' + TheRequest.ContentFields.Values['name'] + '%''');
+    lStudy := Entity;
+    lWhere := '';
+    if lStudy.Patient_LastName <> '' then
+      lWhere := lWhere + 'p.lastname like ''' + lStudy.Patient_LastName + '%'' and ';
+    if lStudy.Patient_FirstName <> '' then
+      lWhere := lWhere + 'p.firstname like ''' + lStudy.Patient_FirstName + '%'' and ';
+    if lWhere <> '' then
+    begin
+      // eliminamos el ultimo " and "
+      lWhere := Copy(lWhere, 1, Length(lWhere) - 4);
+      lSql.SQL.Add('where ' + lWhere);
+    end;
+
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
-    //write(lSql.SQL.Text);
-    //exit;
+
     lSql.Open;
 
     while not lSql.EOF do
@@ -78,7 +91,6 @@ begin
     end;
     lSql.Close;
     // se convierte el objeto en JSON
-    lData := TJsonObject.Create;
     lData.Add('data', lArray);
     lData.Add('recordsTotal', lTotalRecords);
     lData.Add('recordsFiltered', lList.Count);

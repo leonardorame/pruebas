@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     <tr>
-      <td>
+      <td ng-repeat="header in headers">
         <input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
       </td>
     </tr>
