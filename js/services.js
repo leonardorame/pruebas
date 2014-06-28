@@ -8,7 +8,7 @@ angular.module('TIRApp.services', [])
     TIRAPI.getTurnos = function(filter) {
       return $http({
         method: 'POST', 
-        params: filter,
+        data: filter,
         url: '/cgi-bin/tir/studies'
       });
     }

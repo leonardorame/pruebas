@@ -42,12 +42,12 @@ begin
   lArray := TJSONArray.Create;
   try
     // se ejecuta la consulta y se la convierte en un objeto
-    lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
+    lStart := (StrToInt(TheRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryStudies;
     // filtros
-    if TheRequest.QueryFields.IndexOfName('name') > -1 then
-      lSql.Sql.Add('where p.lastname like ''' + TheRequest.QueryFields.Values['name'] + '%''');
+    if TheRequest.ContentFields.IndexOfName('name') > -1 then
+      lSql.Sql.Add('where p.lastname like ''' + TheRequest.ContentFields.Values['name'] + '%''');
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
     //write(lSql.SQL.Text);
     //exit;
