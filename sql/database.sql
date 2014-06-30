@@ -8,6 +8,7 @@ create table status(
 
 create table patient(
   IdPatient serial not null,
+  OtherIds varchar(100),
   FirstName varchar(100), 
   LastName varchar(100),
   BirthDate date,
@@ -20,6 +21,7 @@ create table patient(
 
 create table professional(
   IdProfessional serial not null,
+  OtherIds varchar(100),
   FirstName varchar(100), 
   LastName varchar(100),
   BirthDate date,
@@ -38,6 +40,7 @@ create table study(
   IdPrimaryInterpreterPhysician Integer references professional(IdProfessional),
   IdSecondaryInterpreterPhysician Integer references professional(IdProfessional),
   IdStatus Integer not null references status(IdStatus),
+  AccessionNumber varchar(16),
   StudyDate date not null,
   Report text,
   primary key(IdStudy)
@@ -98,6 +101,26 @@ create table studyprocedure(
   Qty Integer not null default 1,
   primary key(IdStudyProcedure)
 );
+
+
+CREATE OR REPLACE FUNCTION insertar_turno(_accession character varying, _fecha_de_creacion timestamp without time zone, _modalidad character varying, _patient_class character varying, _admission_type character varying, _institucion character varying, _fecha_desde timestamp without time zone, _fecha_hasta timestamp without time zone, _domicilio character varying, _fecha_nacimiento date, _apellidos character varying, _nombres character varying, _nro_doc character varying, _sexo character varying, _telefono character varying, _pro_der_ape_pat character varying, _pro_der_nombres character varying, _pro_efe_ape_pat character varying, _pro_efe_nombres character varying, _prestacionqty integer, _prestacioncod integer, _prestacionnombre character varying, _aetitle character varying, _id_paciente integer)
+  RETURNS void AS
+$BODY$
+BEGIN
+  /* Inserta datos de paciente */
+  insert into patient(FirstName, LastName, BirthDate, Sex, Address, OtherIds, Phone1) values
+    (nombres, apellidos, fecha_nacimiento, sexo, nro_doc, telefono);
+  /* Inserta datos de profesional deriva */
+  insert into proffesional(FirstName, LastName) values (pro_der_nombres, pro_der_nombres);
+  /* Inserta datos de profesional efectua */
+  insert into proffesional(FirstName, LastName) values (pro_efe_nombres, pro_efe_nombres);
+  /* Inserta datos de prestacion */
+  insert into procedure(CodProcedure, Procedure) values(prestacioncod, prestacionnombre);
+  /* Inserta datos de turno */
+END
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
 
 insert into status(status) values('Ingresado');
 insert into status(status) values('Transcripto');
