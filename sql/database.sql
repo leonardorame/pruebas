@@ -119,6 +119,7 @@ declare
   _IdProfEfe integer;
   _IdProfDer integer;
   _IdProcedure integer;
+  _IdStudy integer;
 BEGIN
 /* Inserta datos de paciente */
   _IdPatient = (select IdPatient from patient where FirstName = nombres and LastName = apellidos);
@@ -146,11 +147,12 @@ BEGIN
   end if;
 
   /* Inserta datos de turno */
-  if ((select AccessionNumber from study where AccessionNumber = _accession) is not null) then
+  _IdStudy = (select IdStudy from study where AccessionNumber = _accession);
+  if ( _IdStudy is not null) then
     insert into study(IdPatient, IdRequestingPhysician, IdPerformingPhysician, IdStatus,  AccessionNumber,  StudyDate)
       values(_IdPatient, _IdProfDer, _IdProfEfe, 1, _accession, _fecha_desde);
+    insert into studyprocedure(IdStudy, IdProcedure, Qty) values(_IdStudy, _IdProcedure, _prestacionqty);
   end if;      
-  
 END
 $$
 LANGUAGE plpgsql;
