@@ -102,25 +102,58 @@ create table studyprocedure(
   primary key(IdStudyProcedure)
 );
 
-
-CREATE OR REPLACE FUNCTION insertar_turno(_accession character varying, _fecha_de_creacion timestamp without time zone, _modalidad character varying, _patient_class character varying, _admission_type character varying, _institucion character varying, _fecha_desde timestamp without time zone, _fecha_hasta timestamp without time zone, _domicilio character varying, _fecha_nacimiento date, _apellidos character varying, _nombres character varying, _nro_doc character varying, _sexo character varying, _telefono character varying, _pro_der_ape_pat character varying, _pro_der_nombres character varying, _pro_efe_ape_pat character varying, _pro_efe_nombres character varying, _prestacionqty integer, _prestacioncod integer, _prestacionnombre character varying, _aetitle character varying, _id_paciente integer)
-  RETURNS void AS
-$BODY$
+CREATE OR REPLACE FUNCTION insert_study(
+  _accession character varying, _fecha_de_creacion timestamp without time zone, _modalidad character varying, 
+  _patient_class character varying, _admission_type character varying, _institucion character varying, 
+  _fecha_desde timestamp without time zone, _fecha_hasta timestamp without time zone, _domicilio character varying, 
+  _fecha_nacimiento date, _apellidos character varying, _nombres character varying, _nro_doc character varying, 
+  _sexo character varying, _telefono character varying, _pro_der_ape_pat character varying, 
+  _pro_der_nombres character varying, _pro_efe_ape_pat character varying, _pro_efe_nombres character varying, 
+  _prestacionqty integer, _prestacioncod integer, _prestacionnombre character varying, _aetitle character varying, 
+  _id_paciente integer)
+  RETURNS void 
+AS 
+$$
+declare 
+  _IdPatient integer;
+  _IdProfEfe integer;
+  _IdProfDer integer;
+  _IdProcedure integer;
 BEGIN
-  /* Inserta datos de paciente */
-  insert into patient(FirstName, LastName, BirthDate, Sex, Address, OtherIds, Phone1) values
-    (nombres, apellidos, fecha_nacimiento, sexo, nro_doc, telefono);
+/* Inserta datos de paciente */
+  _IdPatient = (select IdPatient from patient where FirstName = nombres and LastName = apellidos);
+  if _IdPatient is not null then
+    insert into patient(FirstName, LastName, BirthDate, Sex, Address, OtherIds, Phone1) values
+      (nombres, apellidos, fecha_nacimiento, domicilio, sexo, nro_doc, telefono);
+  end if;
+
   /* Inserta datos de profesional deriva */
-  insert into proffesional(FirstName, LastName) values (pro_der_nombres, pro_der_nombres);
+  _IdProfDer = (select IdProfessional from profesional where FirstName = pro_der_nombres and LastName = pro_der_apellido);
+  if (_IdProfDer is not null) then
+    insert into proffesional(FirstName, LastName) values (pro_der_nombres, pro_der_apellido);
+  end if;
+
   /* Inserta datos de profesional efectua */
-  insert into proffesional(FirstName, LastName) values (pro_efe_nombres, pro_efe_nombres);
+  _IdProfEfe = (select IdProfessional from profesional where FirstName = pro_efe_nombres and LastName = pro_efe_apellido);
+  if (_IdProfEfe is not null) then
+    insert into proffesional(FirstName, LastName) values (pro_efe_nombres, pro_efe_apellido);
+  end if;
+
   /* Inserta datos de prestacion */
-  insert into procedure(CodProcedure, Procedure) values(prestacioncod, prestacionnombre);
+  _IdProcedure = (select IdProcedure from procedure where CodProcedure = prestacioncod and Procedure = prestacionnombre);
+  if (_IdProcedure is not null) then
+    insert into procedure(CodProcedure, Procedure) values(prestacioncod, prestacionnombre);
+  end if;
+
   /* Inserta datos de turno */
+  if ((select AccessionNumber from study where AccessionNumber = _accession) is not null) then
+    insert into study(IdPatient, IdRequestingPhysician, IdPerformingPhysician, IdStatus,  AccessionNumber,  StudyDate)
+      values(_IdPatient, _IdProfDer, _IdProfEfe, 1, _accession, _fecha_desde);
+  end if;      
+  
 END
-$BODY$
-  LANGUAGE plpgsql VOLATILE
-  COST 100;
+$$
+LANGUAGE plpgsql;
 
 insert into status(status) values('Ingresado');
 insert into status(status) values('Transcripto');
