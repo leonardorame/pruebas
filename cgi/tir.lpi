@@ -39,15 +39,14 @@
         <PackageName Value="BrookRT"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="29">
+    <Units Count="30">
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="36" Y="11"/>
-        <UsageCount Value="151"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="152"/>
       </Unit0>
       <Unit1>
         <Filename Value="countries.pas"/>
@@ -56,17 +55,16 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="42"/>
         <CursorPos Y="64"/>
-        <UsageCount Value="151"/>
+        <UsageCount Value="152"/>
       </Unit1>
       <Unit2>
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="45" Y="19"/>
-        <UsageCount Value="151"/>
+        <CursorPos X="44" Y="15"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -81,8 +79,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseaction"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="31" Y="10"/>
-        <UsageCount Value="151"/>
+        <TopLine Value="35"/>
+        <CursorPos X="11" Y="19"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -98,22 +97,24 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="42"/>
         <CursorPos Y="57"/>
-        <UsageCount Value="151"/>
+        <UsageCount Value="152"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <UnitName Value="session"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="126"/>
-        <CursorPos X="59" Y="147"/>
-        <UsageCount Value="151"/>
+        <TopLine Value="86"/>
+        <CursorPos X="37" Y="96"/>
+        <UsageCount Value="152"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../lazarus/lcl/interfaces/win32/win32wsdialogs.pp"/>
@@ -140,11 +141,11 @@
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
         <TopLine Value="57"/>
         <CursorPos X="37" Y="66"/>
-        <UsageCount Value="134"/>
+        <UsageCount Value="135"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -184,11 +185,14 @@
       <Unit17>
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <UnitName Value="actturno"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="89"/>
-        <CursorPos X="5" Y="107"/>
-        <UsageCount Value="120"/>
+        <TopLine Value="17"/>
+        <CursorPos Y="45"/>
+        <UsageCount Value="121"/>
+        <Loaded Value="True"/>
       </Unit17>
       <Unit18>
         <Filename Value="../../fpc/packages/fcl-db/src/sqldb/sqldb.pp"/>
@@ -201,11 +205,13 @@
       <Unit19>
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <UnitName Value="actturnos"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="74"/>
-        <CursorPos X="5" Y="92"/>
-        <UsageCount Value="117"/>
+        <TopLine Value="23"/>
+        <CursorPos X="75" Y="67"/>
+        <UsageCount Value="118"/>
+        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="../../fpc/packages/fcl-json/src/fpjsonrtti.pp"/>
@@ -220,7 +226,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="28" Y="52"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="111"/>
       </Unit21>
       <Unit22>
         <Filename Value="actuserdata.pas"/>
@@ -228,21 +234,25 @@
         <WindowIndex Value="1"/>
         <TopLine Value="46"/>
         <CursorPos X="53" Y="61"/>
-        <UsageCount Value="106"/>
+        <UsageCount Value="107"/>
       </Unit22>
       <Unit23>
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <UnitName Value="study"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="105"/>
+        <TopLine Value="10"/>
+        <CursorPos X="27" Y="30"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
       </Unit23>
       <Unit24>
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="59"/>
       </Unit24>
       <Unit25>
         <Filename Value="template.pas"/>
@@ -251,7 +261,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="15"/>
         <CursorPos Y="32"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="30"/>
       </Unit25>
       <Unit26>
         <Filename Value="acttemplate.pas"/>
@@ -260,7 +270,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="66"/>
         <CursorPos X="40" Y="70"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="29"/>
       </Unit26>
       <Unit27>
         <Filename Value="actpatients.pas"/>
@@ -269,7 +279,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="30"/>
         <CursorPos X="43" Y="41"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
       </Unit27>
       <Unit28>
         <Filename Value="patient.pas"/>
@@ -278,10 +288,20 @@
         <WindowIndex Value="1"/>
         <TopLine Value="8"/>
         <CursorPos X="38" Y="22"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="24"/>
       </Unit28>
+      <Unit29>
+        <Filename Value="user.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="user"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="35" Y="19"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit29>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
         <Filename Value="baseaction.pas"/>
         <Caret Line="40" Column="37" TopLine="34"/>
@@ -294,6 +314,42 @@
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="54" Column="5" TopLine="41"/>
       </Position3>
+      <Position4>
+        <Filename Value="actturno.pas"/>
+        <Caret Line="44" Column="26"/>
+      </Position4>
+      <Position5>
+        <Filename Value="actturno.pas"/>
+        <Caret Line="38" TopLine="11"/>
+      </Position5>
+      <Position6>
+        <Filename Value="baseaction.pas"/>
+        <Caret Line="19" Column="11" TopLine="35"/>
+      </Position6>
+      <Position7>
+        <Filename Value="user.pas"/>
+        <Caret Line="16"/>
+      </Position7>
+      <Position8>
+        <Filename Value="session.pas"/>
+        <Caret Line="29" Column="34" TopLine="11"/>
+      </Position8>
+      <Position9>
+        <Filename Value="session.pas"/>
+        <Caret Line="35" Column="28" TopLine="20"/>
+      </Position9>
+      <Position10>
+        <Filename Value="session.pas"/>
+        <Caret Line="152" Column="7" TopLine="138"/>
+      </Position10>
+      <Position11>
+        <Filename Value="session.pas"/>
+        <Caret Line="184" TopLine="152"/>
+      </Position11>
+      <Position12>
+        <Filename Value="session.pas"/>
+        <Caret Line="26" Column="54" TopLine="9"/>
+      </Position12>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

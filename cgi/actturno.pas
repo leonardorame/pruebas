@@ -42,7 +42,7 @@ begin
       lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
-      lQuery.ParamByName('idprofessional').AsInteger:= lTurno.Report_IdProfessional;
+      lQuery.ParamByName('idprofessional').AsInteger:= Session.User.IdProfessional;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
