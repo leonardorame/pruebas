@@ -8,6 +8,7 @@ create table status(
 
 create table patient(
   IdPatient serial not null,
+  OtherIds varchar(100),
   FirstName varchar(100), 
   LastName varchar(100),
   BirthDate date,
@@ -20,6 +21,7 @@ create table patient(
 
 create table professional(
   IdProfessional serial not null,
+  OtherIds varchar(100),
   FirstName varchar(100), 
   LastName varchar(100),
   BirthDate date,
@@ -38,6 +40,7 @@ create table study(
   IdPrimaryInterpreterPhysician Integer references professional(IdProfessional),
   IdSecondaryInterpreterPhysician Integer references professional(IdProfessional),
   IdStatus Integer not null references status(IdStatus),
+  AccessionNumber varchar(16),
   StudyDate date not null,
   Report text,
   primary key(IdStudy)
@@ -83,6 +86,82 @@ create table templates(
   primary key(IdTemplate)
 );
 
+
+create table procedure(
+  IdProcedure serial not null,
+  CodProcedure varchar(100) unique not null,
+  Procedure varchar(100), 
+  primary key(IdProcedure)
+);
+
+create table studyprocedure(
+  IdStudyProcedure serial not null,
+  IdStudy Integer not null references study(IdStudy),
+  IdProcedure Integer not null references procedure(IdProcedure),
+  Qty Integer not null default 1,
+  primary key(IdStudyProcedure)
+);
+
+CREATE OR REPLACE FUNCTION insert_study(
+  _accession character varying, _fecha_de_creacion timestamp without time zone, _modalidad character varying, 
+  _patient_class character varying, _admission_type character varying, _institucion character varying, 
+  _fecha_desde timestamp without time zone, _fecha_hasta timestamp without time zone, _domicilio character varying, 
+  _fecha_nacimiento date, _apellidos character varying, _nombres character varying, _nro_doc character varying, 
+  _sexo sex_type, _telefono character varying, _pro_der_ape_pat character varying, 
+  _pro_der_nombres character varying, _pro_efe_ape_pat character varying, _pro_efe_nombres character varying, 
+  _prestacionqty integer, _prestacioncod integer, _prestacionnombre character varying, _aetitle character varying, 
+  _id_paciente integer)
+  RETURNS void 
+AS 
+$$
+declare 
+  _IdPatient integer;
+  _IdProfEfe integer;
+  _IdProfDer integer;
+  _IdProcedure integer;
+  _IdStudy integer;
+BEGIN
+/* Inserta datos de paciente */
+  _IdPatient = (select IdPatient from patient where FirstName = _nombres and LastName = _apellidos);
+  if _IdPatient is null then
+    insert into patient(FirstName, LastName, BirthDate, Sex, Address, OtherIds, Phone1) values
+      (_nombres, _apellidos, _fecha_nacimiento, _sexo, _domicilio, _nro_doc, _telefono);
+    _IdPatient = (select currval('patient_idpatient_seq'));
+  end if;
+
+  /* Inserta datos de profesional deriva */
+  _IdProfDer = (select IdProfessional from professional where FirstName = _pro_der_nombres and LastName = _pro_der_ape_pat);
+  if (_IdProfDer is null) then
+    insert into professional(FirstName, LastName) values (_pro_der_nombres, _pro_der_ape_pat);
+    _IdProfDer = (select currval('professional_idprofessional_seq'));
+  end if;
+
+  /* Inserta datos de profesional efectua */
+  _IdProfEfe = (select IdProfessional from professional where FirstName = _pro_efe_nombres and LastName = _pro_efe_ape_pat);
+  if (_IdProfEfe is null) then
+    insert into professional(FirstName, LastName) values (_pro_efe_nombres, _pro_efe_ape_pat);
+    _IdProfEfe = (select currval('professional_idprofessional_seq'));
+  end if;
+
+  /* Inserta datos de prestacion */
+  _IdProcedure = (select IdProcedure from procedure where CodProcedure = _prestacioncod::varchar and Procedure = _prestacionnombre);
+  if (_IdProcedure is null) then
+    insert into procedure(CodProcedure, Procedure) values(_prestacioncod, _prestacionnombre);
+    _IdProcedure = (select currval('procedure_idprocedure_seq'));
+  end if;
+
+  /* Inserta datos de turno */
+  _IdStudy = (select IdStudy from study where AccessionNumber = _accession);
+  if ( _IdStudy is null) then
+    insert into study(IdPatient, IdRequestingPhysician, IdPerformingPhysician, IdStatus,  AccessionNumber,  StudyDate)
+      values(_IdPatient, _IdProfDer, _IdProfEfe, 1, _accession, _fecha_desde);
+    _IdStudy = (select currval('study_idstudy_seq'));
+    insert into studyprocedure(IdStudy, IdProcedure, Qty) values(_IdStudy, _IdProcedure, _prestacionqty);
+  end if;      
+END
+$$
+LANGUAGE plpgsql;
+
 insert into status(status) values('Ingresado');
 insert into status(status) values('Transcripto');
 insert into status(status) values('Corregido');
@@ -90,6 +169,12 @@ insert into status(status) values('Entregado');
 insert into user_groups(UserGroup) values('Administrators');
 insert into user_groups(UserGroup) values('Reporters');
 insert into user_groups(UserGroup) values('ReadOnly');
+insert into procedure(CodProcedure, Procedure) values ('001', 'RX de columna');
+insert into procedure(CodProcedure, Procedure) values ('002', 'RX de hombro');
+insert into procedure(CodProcedure, Procedure) values ('003', 'RX de cadera');
+insert into procedure(CodProcedure, Procedure) values ('004', 'Resonancia mamográfica');
+insert into procedure(CodProcedure, Procedure) values ('005', 'Mamografía');
+insert into procedure(CodProcedure, Procedure) values ('006', 'Ecografía abdominal');
 insert into professional(FirstName, LastName, BirthDate, Sex, Address, Phone1) values('Carlos', 'Gonzalez', '1965-02-10', 'M', 'Laprida 2222', '883838');
 insert into users(IdUserGroup, IdProfessional, Username, Password) values(1, 1, 'admin', '123');
 insert into users(IdUserGroup, IdProfessional, Username, Password) values(2, 1, 'medico', 'medico');
@@ -105,3 +190,6 @@ insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysicia
   values(2, 1, 1, 1, current_timestamp);
 insert into study(idpatient, idperformingphysician, idprimaryinterpreterphysician, idstatus, studydate)
   values(2, 1, 1, 1, current_timestamp);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(1, 2, 1);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(2, 1, 1);
+insert into studyprocedure(IdStudy, IdProcedure, Qty) values(2, 4, 1);

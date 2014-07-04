@@ -6,6 +6,7 @@ interface
 
 uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
+  inifiles,
   fpJson, db,
   BrookLogger,
   inifiles,
@@ -20,6 +21,7 @@ type
     qryStudies: TSQLQuery;
     qryStatuses: TSQLQuery;
     qryPatients: TSQLQuery;
+    qryProcedures: TSQLQuery;
     qryTemplate: TSQLQuery;
     qryTemplates: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
@@ -28,6 +30,7 @@ type
   private
   public
     procedure AddStatusesToJson(AJson: TJSONObject);
+    procedure AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
   end;
 
 var
@@ -43,6 +46,7 @@ procedure Tdatamodule1.DataModuleCreate(Sender: TObject);
 var
   lIni: TIniFile;
 begin
+<<<<<<< HEAD
   try
     PGConnection1.Params.Clear;
     lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
@@ -58,6 +62,19 @@ begin
     on E: Exception do
       BrookLog.Info(E.Message);
   end;
+=======
+  lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
+  try
+    PGConnection1.HostName:= lIni.ReadString('db', 'host', '127.0.0.1');
+    PGConnection1.DatabaseName:= lIni.ReadString('db', 'db', 'tir');
+    PGConnection1.UserName:= lIni.ReadString('db', 'user', 'postgres');
+    PGConnection1.Password:= lIni.ReadString('db', 'pass', 'postgres');
+    PGConnection1.Params.Add('port=' + lIni.ReadString('db', 'port', '5452'));
+  finally
+    lIni.free;
+  end;
+  PGConnection1.Connected:= True;
+>>>>>>> 0459cbf11eb0fdbfb0d574796e5eb21ef1a96421
 end;
 
 procedure Tdatamodule1.AddStatusesToJson(AJson: TJSONObject);
@@ -77,6 +94,27 @@ begin
   end;
   AJson.Add('Statuses', lArray);
   qryStatuses.Close;
+end;
+
+procedure Tdatamodule1.AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
+var
+  lArray: TJSONArray;
+  lItem: TJSONObject;
+begin
+  lArray := TJSONArray.Create;
+  qryProcedures.ParamByName('IdStudy').AsInteger:= IdStudy;
+  qryProcedures.Open;
+  while not qryProcedures.EOF do
+  begin
+    lItem := TJSONObject.Create;
+    lItem.Add('CodProcedure', qryProcedures.FieldByName('CodProcedure').AsString);
+    lItem.Add('ProcedureName', qryProcedures.FieldByName('ProcedureName').AsString);
+    lItem.Add('Qty', qryProcedures.FieldByName('Qty').AsInteger);
+    lArray.Add(lItem);
+    qryProcedures.Next;
+  end;
+  AJson.Add('Procedures', lArray);
+  qryProcedures.Close;
 end;
 
 end.

@@ -6,105 +6,129 @@
         <li class="active">Estudio</li>
       </ol>
 
-      <div class="study-table">
-        <div class="study-table-row">
-            <div class="study-table-col study-label">
-                Estudio
-            </div>
-            <div class="study-table-col study-caption">
-                Id.:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.IdStudy}}
-            </div>
-            <div class="study-table-col study-caption">
-                Fecha:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.StudyDate}}
-            </div>
-        </div>
-        <div class="study-table-row">
-            <div class="study-table-col study-label">
-                &nbsp;
-            </div>
-            <div class="study-table-col study-caption">
-                Estado:
-            </div>
-            <div class="study-table-col" style="width: 500px;">
-                <div class="btn-group" data-toggle="buttons">
-                <label class='btn btn-default' ng-class='{active: option.IdStatus == study.IdStatus}'
-                    ng-repeat='option in study.Statuses' ng-click='activate(option)'>
-                    <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
-                </label>
+      <tabset>
+        <tab heading="Paciente">
+          <div class="study-table">
+            <div class="study-table-row">
+                <div class="study-table-col study-caption">
+                    Nombre:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Patient_FirstName}}
+                </div>
+                <div class="study-table-col study-caption">
+                    Apellido:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Patient_LastName}}
                 </div>
             </div>
-        </div>
-        <div class="study-table-row">
-            <div class="study-table-col study-label">
-                Paciente
+            <div class="study-table-row">
+                <div class="study-table-col study-caption">
+                    Sexo:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Patient_Sex}}
+                </div>
+                <div class="study-table-col study-caption">
+                    Fecha Nac.:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Patient_BirthDate}}
+                </div>
             </div>
-            <div class="study-table-col study-caption">
-                Nombre:
+          </div>
+        </tab>
+        <tab heading="Estudio">
+          <div class="study-table">
+            <div class="study-table-row">
+                <div class="study-table-col study-caption">
+                    Id.:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.IdStudy}}
+                </div>
+                <div class="study-table-col study-caption">
+                    Fecha:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.StudyDate}}
+                </div>
             </div>
-            <div class="study-table-col study-data">
-                {{study.Patient_FirstName}}
+            <div class="study-table-row">
+                <div class="study-table-col study-caption">
+                    Estado:
+                </div>
+                <div class="study-table-col" style="width: 500px;">
+                    <div class="btn-group" data-toggle="buttons">
+                    <label class='btn btn-default' ng-class='{active: option.IdStatus == study.IdStatus}'
+                        ng-repeat='option in study.Statuses' ng-click='activate(option)'>
+                        <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
+                    </label>
+                    </div>
+                </div>
             </div>
-            <div class="study-table-col study-caption">
-                Apellido:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Patient_LastName}}
-            </div>
-            <div class="study-table-col study-caption">
-                Sexo:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Patient_Sex}}
-            </div>
-            <div class="study-table-col study-caption">
-                Fecha Nac.:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Patient_BirthDate}}
-            </div>
-        </div>
-        <div class="study-table-row">
-            <div class="study-table-col study-label">
-                Prof. Efectúa
-            </div>
-            <div class="study-table-col study-caption">
-                Nombre:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Perform_FirstName}}
-            </div>
-            <div class="study-table-col study-caption">
-                Apellido:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Perform_LastName}}
-            </div>
-        </div>
-        <div class="study-table-row">
-            <div class="study-table-col study-label">
-                Prof. Informa
-            </div>
-            <div class="study-table-col study-caption">
-                Nombre:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Report_FirstName}}
-            </div>
-            <div class="study-table-col study-caption">
-                Apellido:
-            </div>
-            <div class="study-table-col study-data">
-                {{study.Report_LastName}}
-            </div>
-        </div>
-      </div>
+          </div>
+        </tab>
+        <tab heading="Procedimientos">
+          <div class="study-table">
+            <div ng-repeat="procedure in study.Procedures" class="study-table-row">
+                <div class="study-table-col study-caption">
+                  Proc.:
+                </div>
+                <div class="study-table-col study-data" style="width: 300px;">
+                    [{{procedure.CodProcedure}}] {{procedure.ProcedureName}}
 
+                </div>
+                <div class="study-table-col study-caption">
+                    Cant.:
+                </div>
+                <div class="study-table-col study-data">
+                    {{procedure.Qty}}
+
+                </div>
+            </div>
+          </div>
+        </tab>
+        <tab heading="Profesionales">
+          <div class="study-table">
+            <div class="study-table-row">
+                <div class="study-table-col study-label">
+                    Prof. Efectúa
+                </div>
+                <div class="study-table-col study-caption">
+                    Nombre:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Perform_FirstName}}
+                </div>
+                <div class="study-table-col study-caption">
+                    Apellido:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Perform_LastName}}
+                </div>
+            </div>
+            <div class="study-table-row">
+                <div class="study-table-col study-label">
+                    Prof. Informa
+                </div>
+                <div class="study-table-col study-caption">
+                    Nombre:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Report_FirstName}}
+                </div>
+                <div class="study-table-col study-caption">
+                    Apellido:
+                </div>
+                <div class="study-table-col study-data">
+                    {{study.Report_LastName}}
+                </div>
+            </div>
+          </div>
+        </tab>
+      </tabset>
       <span ng-if="alert">
         <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
       </span>

@@ -90,6 +90,7 @@ begin
       lStudy.Report := lQuery.FieldByName('Report').AsString;
       lJson := lStreamer.ObjectToJSON(lStudy);
       datamodule1.AddStatusesToJson(lJson);
+      datamodule1.AddProceduresToJson(lJson, lStudy.IdStudy);
       Write(lJson.AsJSON);
     finally
       lJson.Free;

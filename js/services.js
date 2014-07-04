@@ -8,7 +8,7 @@ angular.module('TIRApp.services', [])
     TIRAPI.getTurnos = function(filter) {
       return $http({
         method: 'POST', 
-        params: filter,
+        data: filter,
         url: '/cgi-bin/tir/studies'
       });
     }
@@ -50,6 +50,17 @@ angular.module('TIRApp.services', [])
                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 return str.join("&");
             }
+        });
+    };
+
+
+    TIRAPI.printStudy = function(){
+      return $http({
+            method: 'POST',
+            data: TIRAPI.study, 
+            url: '/cgi-bin/tir/print',
+            responseType: 'arraybuffer',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
     };
 
