@@ -7,6 +7,8 @@ interface
 uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
   fpJson, db,
+  BrookLogger,
+  inifiles,
   fgl;
 
 type
@@ -38,8 +40,24 @@ implementation
 { Tdatamodule1 }
 
 procedure Tdatamodule1.DataModuleCreate(Sender: TObject);
+var
+  lIni: TIniFile;
 begin
-  PGConnection1.Connected:= True;
+  try
+    PGConnection1.Params.Clear;
+    lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
+    try
+      PGConnection1.DatabaseName:= lIni.ReadString('default', 'db', 'defaultdb');
+      PGConnection1.HostName:= lIni.ReadString('default', 'host', '127.0.0.1');
+      PGConnection1.Params.Add('port=' + lIni.ReadString('default', 'port', '5432'));
+      PGConnection1.Connected:= True;
+    finally
+      lIni.Free;
+    end;
+  except
+    on E: Exception do
+      BrookLog.Info(E.Message);
+  end;
 end;
 
 procedure Tdatamodule1.AddStatusesToJson(AJson: TJSONObject);

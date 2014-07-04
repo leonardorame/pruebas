@@ -2,7 +2,7 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 1591
+  HorizontalOffset = 900
   VerticalOffset = 320
   Width = 410
   object PGConnection1: TPQConnection
@@ -11,7 +11,7 @@ object datamodule1: Tdatamodule1
     DatabaseName = 'tir'
     KeepConnection = False
     Params.Strings = (
-      'port=5434'
+      'port=5432'
     )
     Password = 'postgres'
     Transaction = SQLTransaction1
