@@ -8,7 +8,10 @@ uses
   DmDatabase,
   sqldb,
   Classes,
+  fpjson,
+  jsonparser,
   lazutf8sysutils,
+  user,
   SysUtils;
 
 type
@@ -19,11 +22,14 @@ type
     FSessionDatabase: TSQLConnection;
     FToken: string;
     FExpire: TDateTime;
+    FUser: TUser;
+    procedure ParseSessionData(ASessionData: string);
     procedure DeleteExpiredSessions;
     procedure ExecQuery(ASql: string);
     function Match(ASql: string): boolean;
   public
     constructor Create(ADatabase: TSQLConnection);
+    destructor Destroy; override;
     function NewSession(ASessionData: string): string;
     function FindSessionRecord(ASessionId: string): boolean;
     function GetSessionData(ASessionId: string): string;
@@ -31,6 +37,7 @@ type
     procedure UpdateExpiration;
     property Token: String read FToken write FToken;
     property Expire: TDateTime read FExpire;
+    property User: TUser read FUser;
   end;
 
 
@@ -43,6 +50,13 @@ constructor TSession.Create(ADatabase: TSQLConnection);
 begin
   inherited Create;
   FSessionDatabase := ADatabase;
+  FUser := TUser.Create;
+end;
+
+destructor TSession.Destroy;
+begin
+  FUser.Free;
+  inherited Destroy;
 end;
 
 function TSession.NewSession(ASessionData: string): string;
@@ -63,9 +77,26 @@ begin
     'VALUES (%d, ''%s'', ''%s'')';
 
   lSql := Format(lSql, [SID, FormatDateTime('yyyy-mm-dd hh:mm:ss', FExpire), ASessionData]);
+  ParseSessionData(ASessionData);
   ExecQuery(lSql);
 
   Result := FToken;
+end;
+
+procedure TSession.ParseSessionData(ASessionData: string);
+var
+  lJson: TJSONObject;
+  lParser: TJSONParser;
+begin
+  lParser := TJSONParser.Create(ASessionData);
+  lJson := TJSONObject(lParser.Parse);
+  try
+    FUser.IdUser:= lJson.Integers['id'];
+    FUser.IdProfessional:= lJson.Integers['idprofessional'];
+  finally
+    lJson.Free;
+    lParser.Free;
+  end;
 end;
 
 procedure TSession.DeleteExpiredSessions;
@@ -145,6 +176,7 @@ begin
     if lQuery.RecordCount > 0 then
     begin
       Result := lQuery.FieldByName('SESSIONDATA').AsString;
+      ParseSessionData(Result);
     end;
   finally
     lQuery.Free;

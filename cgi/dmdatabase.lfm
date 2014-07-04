@@ -51,8 +51,8 @@ object datamodule1: Tdatamodule1
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
       'join status s on st.idstatus = s.idstatus'
-      'join professional pf on st.idperformingphysician = pf.idprofessional'
-      'join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      'left join professional pf on st.idperformingphysician = pf.idprofessional'
+      'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
     )
     Params = <>
     ParseSQL = False
@@ -85,8 +85,8 @@ object datamodule1: Tdatamodule1
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
       'join status s on st.idstatus = s.idstatus'
-      'join professional pf on st.idperformingphysician = pf.idprofessional'
-      'join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      'left join professional pf on st.idperformingphysician = pf.idprofessional'
+      'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
       'where st.idstudy = :IdStudy'
     )
     Params = <    
