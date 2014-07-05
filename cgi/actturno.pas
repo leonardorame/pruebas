@@ -36,6 +36,8 @@ begin
   try
     try
       lQuery.DataBase := datamodule1.PGConnection1;
+      datamodule1.SQLTransaction1.StartTransaction;
+      // update study
       lSql := 'update study set idstatus = :idstatus, report = :report, idprimaryinterpreterphysician = :idprofessional ' +
         'where idstudy = :idstudy';
       lQuery.SQL.Text := lSql;
@@ -43,6 +45,14 @@ begin
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
       lQuery.ParamByName('idprofessional').AsInteger:= Session.User.IdProfessional;
+      lQuery.ExecSQL;
+      // update study status
+      lSql := 'insert into study_status(idstudy, idstatus, iduser) ' +
+        'values(:idstudy, :idstatus, :iduser)';
+      lQuery.SQL.Text := lSql;
+      lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
+      lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
+      lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except

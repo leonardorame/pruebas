@@ -9,7 +9,6 @@ uses
   inifiles,
   fpJson, db,
   BrookLogger,
-  inifiles,
   fgl;
 
 type
@@ -46,7 +45,6 @@ procedure Tdatamodule1.DataModuleCreate(Sender: TObject);
 var
   lIni: TIniFile;
 begin
-<<<<<<< HEAD
   try
     PGConnection1.Params.Clear;
     lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
@@ -62,19 +60,6 @@ begin
     on E: Exception do
       BrookLog.Info(E.Message);
   end;
-=======
-  lIni := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'tir.ini');
-  try
-    PGConnection1.HostName:= lIni.ReadString('db', 'host', '127.0.0.1');
-    PGConnection1.DatabaseName:= lIni.ReadString('db', 'db', 'tir');
-    PGConnection1.UserName:= lIni.ReadString('db', 'user', 'postgres');
-    PGConnection1.Password:= lIni.ReadString('db', 'pass', 'postgres');
-    PGConnection1.Params.Add('port=' + lIni.ReadString('db', 'port', '5452'));
-  finally
-    lIni.free;
-  end;
-  PGConnection1.Connected:= True;
->>>>>>> 0459cbf11eb0fdbfb0d574796e5eb21ef1a96421
 end;
 
 procedure Tdatamodule1.AddStatusesToJson(AJson: TJSONObject);
