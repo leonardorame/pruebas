@@ -102,6 +102,34 @@ create table studyprocedure(
   primary key(IdStudyProcedure)
 );
 
+CREATE OR REPLACE FUNCTION update_study(
+  _idstudy integer,
+  _report text,
+  _idrequestingphysician integer,
+  _idperformingphysician integer,
+  _idprimaryinterpretingphysician integer,
+  _idsecondaryinterpreteingphysician integer,
+  _idstatus integer,
+  _iduser integer)
+  RETURNS void
+AS
+$$
+BEGIN
+  update study set
+    report = _report,
+    IdRequestingPhysician = _idrequestingphysician,
+    IdPerformingPhysician = _idperformingphysician,
+    IdPrimaryInterpreterPhysician = _idprimaryinterpretingphysician,
+    IdSecondaryInterpreterPhysician = _idsecondaryinterpreteingphysician,
+    idstatus = _idstatus
+  where idstudy = _idstudy;
+
+  insert into study_status(idstudy, idstatus, iduser) 
+    values(_idstudy, _idstatus, _iduser);
+END
+$$
+LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION insert_study(
   _accession character varying, _fecha_de_creacion timestamp without time zone, _modalidad character varying, 
   _patient_class character varying, _admission_type character varying, _institucion character varying, 

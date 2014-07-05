@@ -38,13 +38,25 @@ begin
       lQuery.DataBase := datamodule1.PGConnection1;
       datamodule1.SQLTransaction1.StartTransaction;
       // update study
-      lSql := 'update study set idstatus = :idstatus, report = :report, idprimaryinterpreterphysician = :idprofessional ' +
-        'where idstudy = :idstudy';
+      lSql := 'select update_study(' +
+        ':idstudy, ' +
+        ':report, ' +
+        ':IdRequestingPhysician, ' +
+        ':IdPerformingPhysician, ' +
+        ':IdPrimaryInterpreterPhysician, ' +
+        ':IdSecondaryInterpreterPhysician, ' +
+        ':idstatus, ' +
+        ':iduser)';
+
       lQuery.SQL.Text := lSql;
-      lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
+      lQuery.ParamByName('report').AsString:= lTurno.Report;
+      lQuery.ParamByName('IdRequestingPhysician').Value := null;
+      lQuery.ParamByName('IdPerformingPhysician').Value := null;
+      lQuery.ParamByName('IdPrimaryInterpreterPhysician').AsInteger := Session.User.IdProfessional;
+      lQuery.ParamByName('IdSecondaryInterpreterPhysician').Value := null;
       lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
-      lQuery.ParamByName('idprofessional').AsInteger:= Session.User.IdProfessional;
+      lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
       lQuery.ExecSQL;
       // update study status
       lSql := 'insert into study_status(idstudy, idstatus, iduser) ' +
