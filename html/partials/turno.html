@@ -128,6 +128,16 @@
             </div>
           </div>
         </tab>
+        <tab select="initAudio()">
+          <tab-heading>
+            Audio
+          </tab-heading>
+          
+          <div class="study-table">
+            <button ng-click="startRecording(this)">Record</button>
+            <button ng-click="stopRecording(this)">Stop</button>
+          </div>
+        </tab>
       </tabset>
       <span ng-if="alert">
         <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
