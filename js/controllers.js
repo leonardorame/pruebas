@@ -26,6 +26,11 @@ angular.module('TIRApp.controllers',
             width: '300px;'
           },
           {
+            title: 'Procedimiento',
+            value: 'ProcedureName',
+            width: '100px;'
+          },
+          {
             title: 'Fecha',
             value: 'StudyDate',
             width: '100px;'

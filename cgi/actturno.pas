@@ -52,17 +52,12 @@ begin
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.ParamByName('report').AsString:= lTurno.Report;
       lQuery.ParamByName('IdRequestingPhysician').Value := null;
-      lQuery.ParamByName('IdPerformingPhysician').Value := null;
-      lQuery.ParamByName('IdPrimaryInterpreterPhysician').AsInteger := Session.User.IdProfessional;
+      lQuery.ParamByName('IdPerformingPhysician').AsInteger := lTurno.Perform_IdProfessional;
+      if lTurno.Report_IdProfessional <> 0 then
+        lQuery.ParamByName('IdPrimaryInterpreterPhysician').AsInteger := lTurno.Report_IdProfessional
+      else
+        lQuery.ParamByName('IdPrimaryInterpreterPhysician').AsInteger := Session.User.IdProfessional;
       lQuery.ParamByName('IdSecondaryInterpreterPhysician').Value := null;
-      lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
-      lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
-      lQuery.ExecSQL;
-      // update study status
-      lSql := 'insert into study_status(idstudy, idstatus, iduser) ' +
-        'values(:idstudy, :idstatus, :iduser)';
-      lQuery.SQL.Text := lSql;
-      lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
       lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
       lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
       lQuery.ExecSQL;

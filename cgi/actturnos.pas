@@ -51,6 +51,12 @@ begin
     // filtros
     lStudy := Entity;
     lWhere := '';
+    if TheRequest.ContentFields.Values['IdStudy'] <> '' then
+      lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudy.IdStudy) + ' and ';
+    if TheRequest.ContentFields.Values['StudyDate'] <> '' then
+      lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
+    if TheRequest.ContentFields.Values['Status'] <> '' then
+      lWhere := lWhere + 's.status like ''' + lStudy.Status + '%'' and ';
     if lStudy.Patient_LastName <> '' then
       lWhere := lWhere + 'p.lastname like ''' + lStudy.Patient_LastName + '%'' and ';
     if lStudy.Patient_FirstName <> '' then
@@ -63,6 +69,7 @@ begin
     end;
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
+    BrookLog.Info(lSql.Sql.Text);
 
     lSql.Open;
 
@@ -84,6 +91,8 @@ begin
       lStudy.Report_IdProfessional := lSql.FieldByName('Report_IdProfessional').AsInteger;
       lStudy.Report_FirstName := lSql.FieldByName('Report_FirstName').AsString;
       lStudy.Report_LastName := lSql.FieldByName('Report_LastName').AsString;
+      lStudy.ProcedureName := lSql.FieldByName('Procedure').AsString;
+      lStudy.IdProcedure := lSql.FieldByName('IdProcedure').AsInteger;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);

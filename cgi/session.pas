@@ -12,6 +12,7 @@ uses
   jsonparser,
   lazutf8sysutils,
   user,
+  BrookLogger,
   SysUtils;
 
 type
@@ -115,8 +116,11 @@ var
 begin
   lQuery := TSQLQuery.Create(nil);
   try
+    BrookLog.Info(ASql);
     lQuery.DataBase := FSessionDatabase;
     lQuery.SQL.Text:= ASql;
+    if not datamodule1.SQLTransaction1.Active then
+      datamodule1.SQLTransaction1.StartTransaction;
     lQuery.ExecSQL;
     datamodule1.SQLTransaction1.Commit;
   finally
@@ -156,6 +160,7 @@ begin
     lSql := Format(lSql, [
       FormatDateTime('yyyy-mm-dd hh:mm:ss', IncMinute(Now, 30)), ASessionId]);
     ExecQuery(lSql);
+    GetSessionData(ASessionId);
   end;
 
   except
@@ -171,6 +176,7 @@ begin
   lQuery := TSQLQuery.Create(nil);
   try
     lQuery.DataBase := FSessionDatabase;
+    FSessionDatabase.Transaction.StartTransaction;
     lQuery.SQL.Text:= Format('select SESSIONID, SESSIONTIMESTAMP, SESSIONDATA from SESSIONS Where SESSIONID = %s', [ASessionID]);
     lQuery.Open;
     if lQuery.RecordCount > 0 then
@@ -179,6 +185,7 @@ begin
       ParseSessionData(Result);
     end;
   finally
+    FSessionDatabase.Transaction.Commit;
     lQuery.Free;
   end;
 end;
