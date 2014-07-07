@@ -2,6 +2,10 @@ angular.module('TIRApp.controllers.turno', []).
 
   /* Turno controller */
   controller('turnoController', function($scope, $routeParams, TIRAPIservice, $modal) {
+      var audioCtx = null;
+      var recorder = null;
+      var source = null;
+      var analyser = null;
       $scope.study = TIRAPIservice.study;
       $scope.userName = TIRAPIservice.user.fullname;
       $scope.alert = undefined;
@@ -24,50 +28,117 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.initAudio = function(){
          try {
              // webkit shim
-             window.AudioContext = window.AudioContext || window.webkitAudioContext;
-             navigator.getUserMedia = ( navigator.getUserMedia ||
-             navigator.webkitGetUserMedia ||
-             navigator.mozGetUserMedia ||
-             navigator.msGetUserMedia);
-             window.URL = window.URL || window.webkitURL;
-             
-             audio_context = new AudioContext;
-             //alert('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+             if(!audioCtx){
+                 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                 navigator.getUserMedia = ( navigator.getUserMedia ||
+                     navigator.webkitGetUserMedia ||
+                     navigator.mozGetUserMedia ||
+                     navigator.msGetUserMedia);
+                 window.URL = window.URL || window.webkitURL;
+                 
+                 audioCtx = new AudioContext;
+                 navigator.getUserMedia({audio: true}, 
+                    $scope.startUserMedia,
+                    function(e) {
+                    alert('No live audio input: ' + e);
+                 });
+             }
          } catch (e) {
              alert('No web audio support in this browser!');
          }
-         
-         navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
-             alert('No live audio input: ' + e);
-         });
       }
 
-      function startUserMedia(stream) {
-        var input = audio_context.createMediaStreamSource(stream);
-        //alert("input sample rate " +input.context.sampleRate);
-        
-        input.connect(audio_context.destination);
-        //alert('Input connected to audio context destination.');
-        
-        recorder = new Recorder(input);
-        //alert('Recorder initialised.');
+      $scope.visualize = function (stream) {
+          source = audioCtx.createMediaStreamSource(stream);
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 2048;
+          var bufferLength = analyser.frequencyBinCount;
+          var dataArray = new Uint8Array(bufferLength);
+
+          source.connect(analyser);
+          
+          var canvas = document.getElementById('histograma');
+          var canvasCtx = canvas.getContext("2d");
+          WIDTH = canvas.width
+          HEIGHT = canvas.height;
+
+          draw()
+
+          function draw() {
+            requestAnimationFrame(draw);
+            analyser.getByteTimeDomainData(dataArray);
+            canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+            canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+            canvasCtx.lineWidth = 2;
+            canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+            canvasCtx.beginPath();
+            var sliceWidth = WIDTH * 1.0 / bufferLength;
+            var x = 0;
+            for(var i = 0; i < bufferLength; i++) {
+              var v = dataArray[i] / 128.0;
+              var y = v * HEIGHT/2;
+              if(i === 0) {
+                canvasCtx.moveTo(x, y);
+              } else {
+                canvasCtx.lineTo(x, y);
+              }
+              x += sliceWidth;
+            }
+            canvasCtx.lineTo(canvas.width, canvas.height/2);
+            canvasCtx.stroke();
+          }
+        }
+
+      $scope.startUserMedia = function (stream) {
+            recorder = new MediaRecorder(stream);
+            recorder.ondataavailable = $scope.ondataavailable;
+      }
+
+      $scope.record = function (){
+            if(recorder.state == "paused")
+                recorder.resume();
+            else
+                recorder.start();
+            $scope.visualize(recorder.stream);
+      }
+
+      $scope.ondataavailable = function (e) {
+            var clipContainer = document.createElement('article');
+            var clipLabel = document.createElement('p');
+            var audio = document.createElement('audio');
+            var deleteButton = document.createElement('button');
+
+            clipContainer.classList.add('clip');
+            audio.setAttribute('controls', '');
+            deleteButton.innerHTML = "Delete";
+            clipLabel.innerHTML = "asdasd";
+
+            clipContainer.appendChild(audio);
+            clipContainer.appendChild(clipLabel);
+            clipContainer.appendChild(deleteButton);
+            var soundClips = document.getElementById("soundClips");
+            soundClips.appendChild(clipContainer);
+
+            var audioURL = window.URL.createObjectURL(e.data);
+            audio.src = audioURL;
       }
 
       $scope.startRecording = function(button){
-        recorder && recorder.record();
+        button.disabled = false;
+        $scope.record();
+      }
+
+      $scope.pauseRecording = function(button) {
+        recorder.pause();
         button.disabled = true;
-        alert('Recording...');
+        source.disconnect(analyser);
       }
 
       $scope.stopRecording = function(button) {
-        recorder && recorder.stop();
+        recorder.stop();
         button.disabled = true;
-        alert('Stopped recording.');
-        
-        // create WAV download link using audio data blob
-        createDownloadLink();
-        
-        recorder.clear();
+        source.disconnect(analyser);
+
       }
 
       $scope.playbackRecorderAudio = function (recorder, context) {

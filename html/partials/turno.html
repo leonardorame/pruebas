@@ -135,7 +135,10 @@
           
           <div class="study-table">
             <button ng-click="startRecording(this)">Record</button>
+            <button ng-click="pauseRecording(this)">Pause</button>
             <button ng-click="stopRecording(this)">Stop</button>
+            <canvas id="histograma" width=150 height=30></canvas> 
+            <div id="soundClips"></div>
           </div>
         </tab>
       </tabset>
