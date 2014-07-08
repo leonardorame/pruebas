@@ -36,6 +36,27 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.saveAudioStream = function(stream) {
+      var postData = { 
+        idstudy: TIRAPI.study.IdStudy,
+        data: stream
+      };
+      console.log(postData);
+      return $http({
+            method: 'POST',
+            data: postData, 
+            url: '/cgi-bin/tir/audio',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            // without transformRequest posted data is json
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            }
+        });
+    };
+
     TIRAPI.saveStudy = function(report){
       TIRAPI.study.Report = report;
       return $http({
@@ -52,7 +73,6 @@ angular.module('TIRApp.services', [])
             }
         });
     };
-
 
     TIRAPI.printStudy = function(){
       return $http({

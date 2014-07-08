@@ -135,10 +135,11 @@
           
           <div class="study-table">
             <img ng-click="startRecording(this)" src="../images/rec.png">
-            <img ng-click="pauseRecording(this)" src="../images/pause.png">
+            <!--img ng-click="pauseRecording(this)" src="../images/pause.png"-->
             <img ng-click="stopRecording(this)" src="../images/stop.png">
             <canvas id="histograma" width=100 height=32></canvas> 
-            <audio id="audioPlayer" controls />
+            <audio id="audioPlayer" controls></audio>
+            <button style="color: #333333;" ng-click="saveAudio()">Guardar Audio</button>
           </div>
         </tab>
       </tabset>

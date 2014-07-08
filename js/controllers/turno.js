@@ -6,6 +6,7 @@ angular.module('TIRApp.controllers.turno', []).
       var recorder = null;
       var source = null;
       var analyser = null;
+      $scope.audioBlob = null;
       $scope.study = TIRAPIservice.study;
       $scope.userName = TIRAPIservice.user.fullname;
       $scope.alert = undefined;
@@ -93,6 +94,10 @@ angular.module('TIRApp.controllers.turno', []).
           }
         }
 
+      $scope.saveAudio = function(){
+          TIRAPIservice.saveAudioStream($scope.audioBlob);
+      }
+
       $scope.startUserMedia = function (stream) {
             recorder = new MediaRecorder(stream);
             recorder.ondataavailable = $scope.ondataavailable;
@@ -114,6 +119,7 @@ angular.module('TIRApp.controllers.turno', []).
 
             var audioURL = window.URL.createObjectURL(e.data);
             audio.src = audioURL;
+            $scope.audioBlob = e.data;
       }
 
       $scope.startRecording = function(button){
