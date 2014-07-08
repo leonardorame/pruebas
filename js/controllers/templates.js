@@ -91,7 +91,7 @@ angular.module('TIRApp.controllers.templates', []).
   }).
 
   /* Templates controller */
-  controller('templatesController', function($scope, $location, TIRAPIservice, $modal) {
+  controller('templatesController', function($filter, $scope, $location, TIRAPIservice, $modal) {
     $scope.templates = [];
     $scope.userName = TIRAPIservice.user.fullname;
 
@@ -171,6 +171,16 @@ angular.module('TIRApp.controllers.templates', []).
         return (template);
     };
 
+    $scope.new = function(){
+        TIRAPIservice.newTemplate().
+            success(function(data, status, headers, config){
+                $scope.alert = {type: 'success', msg: 'Plantilla creada exitosamente!'};
+            }).
+            error(function(data, status, headers, config){
+                $scope.alert = {type: 'danger', msg: 'Error al intentar crear plantilla. COD: ' + status};
+            });
+    }
+
     $scope.go = function(template){
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
@@ -187,6 +197,13 @@ angular.module('TIRApp.controllers.templates', []).
       TIRAPIservice.saveTemplate(document).
         success(function(data, status, headers, config){
             $scope.alert = {type: 'success', msg: 'Plantilla guardada exitosamente!'};
+            var found = $filter('filter')($scope.templates, {IdTemplate: data.IdTemplate})[0];
+            if (found) {
+                found.Code = data.Code;
+                found.Name = data.Name;
+            } else {
+                //console.log("not found");
+            }
         }).
         error(function(data, status, headers, config){
             $scope.alert = {type: 'danger', msg: 'Error al intentar guardar plantilla. COD: ' + status};

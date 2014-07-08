@@ -5,6 +5,9 @@
     <li class="active">Plantillas</li>
   </ol>
 
+<div class="toolbar">
+  <button ng-click="new()">Nueva Plantilla</button>
+</div>
 <div>
   <!--h1>Found ({{itemCount}}) Items</h1-->
   <table class="table table-striped table-hover table-condensed">
@@ -41,5 +44,7 @@
 </span>
 
 <div ng-model="template" ng-show="isShown(template.IdTemplate)">
+    <label>Código:</label> <input ng-model="template.Code" />
+    <label>Nombre:</label> <input ng-model="template.Name" />
     <div class="ck-editor" ng-model="template.Template"></div>
 </div>

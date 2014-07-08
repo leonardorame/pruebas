@@ -16,12 +16,17 @@ uses
   template;
 
 type
+
+  { TTemplates }
+
   TTemplates = class(specialize TBaseGAction<TTemplate>)
   public
     procedure Post; override;
   end;
 
 implementation
+
+
 
 procedure TTemplates.Post;
 var

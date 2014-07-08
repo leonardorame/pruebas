@@ -113,3 +113,9 @@ footer {
   background-color: #707070;
   border: solod 1px #333333;
 }
+
+.toolbar{
+  color: black;
+  margin-bottom: 4px;
+  padding: 4px;
+}

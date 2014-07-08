@@ -41,7 +41,6 @@ angular.module('TIRApp.services', [])
         idstudy: TIRAPI.study.IdStudy,
         data: stream
       };
-      console.log(postData);
       return $http({
             method: 'POST',
             data: postData, 
@@ -122,6 +121,13 @@ angular.module('TIRApp.services', [])
       return $http({
         method: 'GET', 
         url: '/cgi-bin/tir/template?IdTemplate=' + idtemplate
+      });
+    }
+
+    TIRAPI.newTemplate = function() {
+      return $http({
+        method: 'GET', 
+        url: '/cgi-bin/tir/template/new'
       });
     }
 
