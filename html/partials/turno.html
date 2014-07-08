@@ -134,11 +134,11 @@
           </tab-heading>
           
           <div class="study-table">
-            <button ng-click="startRecording(this)">Record</button>
-            <button ng-click="pauseRecording(this)">Pause</button>
-            <button ng-click="stopRecording(this)">Stop</button>
-            <canvas id="histograma" width=150 height=30></canvas> 
-            <div id="soundClips"></div>
+            <img ng-click="startRecording(this)" src="../images/rec.png">
+            <img ng-click="pauseRecording(this)" src="../images/pause.png">
+            <img ng-click="stopRecording(this)" src="../images/stop.png">
+            <canvas id="histograma" width=100 height=32></canvas> 
+            <audio id="audioPlayer" controls />
           </div>
         </tab>
       </tabset>

@@ -62,21 +62,25 @@ angular.module('TIRApp.controllers.turno', []).
           WIDTH = canvas.width
           HEIGHT = canvas.height;
 
-          draw()
+          draw();
 
           function draw() {
+            var AX = 0;
+            var AY = 10;
+            var AWidth = WIDTH;
+            var AHeight = HEIGHT - 10;
             requestAnimationFrame(draw);
             analyser.getByteTimeDomainData(dataArray);
-            canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-            canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-            canvasCtx.lineWidth = 2;
-            canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+            canvasCtx.fillStyle = '#222222';
+            canvasCtx.fillRect(AX, AY, AWidth, AHeight);
+            canvasCtx.lineWidth = 1;
+            canvasCtx.strokeStyle = 'rgb(50, 255, 0)';
             canvasCtx.beginPath();
-            var sliceWidth = WIDTH * 1.0 / bufferLength;
+            var sliceWidth = AWidth * 1.0 / bufferLength;
             var x = 0;
             for(var i = 0; i < bufferLength; i++) {
               var v = dataArray[i] / 128.0;
-              var y = v * HEIGHT/2;
+              var y = AY + (v * AHeight / 2);
               if(i === 0) {
                 canvasCtx.moveTo(x, y);
               } else {
@@ -84,7 +88,7 @@ angular.module('TIRApp.controllers.turno', []).
               }
               x += sliceWidth;
             }
-            canvasCtx.lineTo(canvas.width, canvas.height/2);
+            canvasCtx.lineTo(AWidth, AY + (AHeight /2));
             canvasCtx.stroke();
           }
         }
@@ -105,19 +109,8 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.ondataavailable = function (e) {
             var clipContainer = document.createElement('article');
             var clipLabel = document.createElement('p');
-            var audio = document.createElement('audio');
-            var deleteButton = document.createElement('button');
-
-            clipContainer.classList.add('clip');
-            audio.setAttribute('controls', '');
-            deleteButton.innerHTML = "Delete";
-            clipLabel.innerHTML = "asdasd";
-
-            clipContainer.appendChild(audio);
-            clipContainer.appendChild(clipLabel);
-            clipContainer.appendChild(deleteButton);
             var soundClips = document.getElementById("soundClips");
-            soundClips.appendChild(clipContainer);
+            var audio = document.getElementById("audioPlayer");
 
             var audioURL = window.URL.createObjectURL(e.data);
             audio.src = audioURL;
