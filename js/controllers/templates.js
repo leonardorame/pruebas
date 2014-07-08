@@ -175,6 +175,8 @@ angular.module('TIRApp.controllers.templates', []).
         TIRAPIservice.newTemplate().
             success(function(data, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Plantilla creada exitosamente!'};
+                $scope.fetchResult();
+                $scope.go(data);
             }).
             error(function(data, status, headers, config){
                 $scope.alert = {type: 'danger', msg: 'Error al intentar crear plantilla. COD: ' + status};
