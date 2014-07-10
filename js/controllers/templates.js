@@ -168,10 +168,10 @@ angular.module('TIRApp.controllers.templates', []).
     // displays the div containing the editor
     // depending on template object is not undefined
     $scope.isShown = function(template){
-        return (template);
+        return template;
     };
 
-    $scope.new = function(){
+    $scope.newTemplate = function(){
         TIRAPIservice.newTemplate().
             success(function(data, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Plantilla creada exitosamente!'};
