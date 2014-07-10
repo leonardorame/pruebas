@@ -17,6 +17,7 @@ initialization
   //BrookSettings.Port := 1024;
   BrookSettings.LogActive := True;
   BrookSettings.LogFile := '/tmp/tir.log';
+  BrookSettings.DirectoryForUploads:= '/tmp/';
 
 
 end.

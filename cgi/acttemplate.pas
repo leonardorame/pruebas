@@ -64,9 +64,9 @@ begin
     except
       on E: exception do
       begin
-        BrookLog.Error(E.Message);
-        TheResponse.Code := 500;
-        TheResponse.CodeText := E.message;
+        TBrookLogger.Service.Error(E.Message);
+        HttpResponse.Code := 500;
+        HttpResponse.CodeText := E.message;
       end;
     end;
   finally
@@ -105,9 +105,9 @@ begin
     except
       on E: exception do
       begin
-        BrookLog.Error(E.Message);
-        TheResponse.Code := 401;
-        TheResponse.CodeText := E.message;
+        TBrookLogger.Service.Error(E.Message);
+        HttpResponse.Code := 401;
+        HttpResponse.CodeText := E.message;
       end;
     end;
   finally
@@ -127,7 +127,7 @@ begin
   try
     try
       lQuery := datamodule1.qryTemplate;
-      lQuery.ParamByName('IdTemplate').AsInteger := StrToInt(TheRequest.QueryFields.Values['IdTemplate']);
+      lQuery.ParamByName('IdTemplate').AsInteger := StrToInt(HttpRequest.QueryFields.Values['IdTemplate']);
       lQuery.Open;
       lTemplate.IdTemplate := lQuery.FieldByName('IdTemplate').AsInteger;
       lTemplate.Code := lQuery.FieldByName('Code').AsString;;

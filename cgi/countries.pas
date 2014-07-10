@@ -40,8 +40,8 @@ begin
   lArray := TJsonArray.Create;
 
   try
-    lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
-    lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
+    lStart := (StrToInt(HttpRequest.QueryFields.Values['pageNumber']) * 10) - 10;
+    lLength := 10; //StrToInt(HttpRequest.ContentFields.Values['iDisplayLength']);
     for I := lStart to (lStart + lLength) - 1 do
     begin
       lArrayItem := TJsonObject.Create;
@@ -61,11 +61,11 @@ begin
     lData.Add('recordsFiltered', 20);
 
     Write(lData.AsJson);
-    BrookLog.Info(ldata.AsJSON);
+    TBrookLogger.Service.Info(ldata.AsJSON);
 
   except
     on E: exception do
-      Write(TheRequest.Content);
+      Write(HttpRequest.Content);
   end;
 
 end;

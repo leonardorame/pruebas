@@ -47,7 +47,7 @@ begin
   lArray := TJSONArray.Create;
   try
     // se ejecuta la consulta y se la convierte en un objeto
-    lStart := (StrToInt(TheRequest.QueryFields.Values['pageNumber']) * 10) - 10;
+    lStart := (StrToInt(HttpRequest.QueryFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryTemplates;
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));

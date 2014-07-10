@@ -63,8 +63,8 @@ begin
         end
         else
         begin
-          TheResponse.Code:=401;
-          TheResponse.CodeText:= 'User name or password invalid';
+          HttpResponse.Code:=401;
+          HttpResponse.CodeText:= 'User name or password invalid';
         end;
     finally
       lQuery.Free;

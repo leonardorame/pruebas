@@ -42,7 +42,7 @@ begin
   lErrStream := TMemoryStream.Create;
   lProcess := TProcess.Create(nil);
   try
-    lParser := TJSONParser.Create(TheRequest.Content);
+    lParser := TJSONParser.Create(HttpRequest.Content);
     lStudy := TJsonObject(lParser.Parse);
     lProcess.Environment.Add('PYTHONIOENCODING=utf-8');
     lProcess.Executable := '/usr/bin/python3';
@@ -79,13 +79,13 @@ begin
     end;
 
     lOutput.Position:= 0;
-    TheResponse.ContentStream := lOutput;
-    TheResponse.ContentStream.Position:= 0;
-    TheResponse.ContentType := 'application/pdf';
-    TheResponse.CustomHeaders.Values['Content-Disposition'] :=
+    HttpResponse.ContentStream := lOutput;
+    HttpResponse.ContentStream.Position:= 0;
+    HttpResponse.ContentType := 'application/pdf';
+    HttpResponse.CustomHeaders.Values['Content-Disposition'] :=
       'attachment; filename=' + IntToStr(lStudy.Integers['IdStudy']) + '.pdf';
-    TheResponse.ContentLength := TheResponse.ContentStream.Size;
-    TheResponse.SendContent;
+    HttpResponse.ContentLength := HttpResponse.ContentStream.Size;
+    HttpResponse.SendContent;
 
   finally
     lParser.Free;

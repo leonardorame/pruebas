@@ -45,13 +45,13 @@ end;
 
 procedure TUserData.Get;
 begin
-  if TheRequest.CookieFields.IndexOfName('GTIRTOKEN') > -1 then
+  if HttpRequest.CookieFields.IndexOfName('GTIRTOKEN') > -1 then
   begin
-    FSession.Token := TheRequest.CookieFields.Values['GTIRTOKEN'];
+    FSession.Token := HttpRequest.CookieFields.Values['GTIRTOKEN'];
     if not FSession.FindSessionRecord(FSession.Token) then
     begin
-      TheResponse.Code:=401;
-      TheResponse.CodeText:= 'Session not found.';
+      HttpResponse.Code:=401;
+      HttpResponse.CodeText:= 'Session not found.';
     end
     else
     begin
@@ -60,8 +60,8 @@ begin
   end
   else
   begin
-    TheResponse.Code:=401;
-    TheResponse.CodeText:= 'Session not found.';
+    HttpResponse.Code:=401;
+    HttpResponse.CodeText:= 'Session not found.';
   end;
 end;
 
