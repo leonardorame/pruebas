@@ -58,7 +58,7 @@ begin
     end;
   except
     on E: Exception do
-      BrookLog.Info(E.Message);
+      TBrookLogger.Service.Info(E.Message);
   end;
 end;
 

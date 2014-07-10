@@ -1,7 +1,7 @@
 angular.module('TIRApp.controllers.turno', []).
 
   /* Turno controller */
-  controller('turnoController', function($scope, $routeParams, TIRAPIservice, $modal) {
+  controller('turnoController', function($window, $scope, $routeParams, TIRAPIservice, $modal) {
       var audioCtx = null;
       var recorder = null;
       var source = null;
@@ -109,6 +109,10 @@ angular.module('TIRApp.controllers.turno', []).
             else
                 recorder.start();
             $scope.visualize(recorder.stream);
+      }
+
+      $scope.openViewer = function() {
+        $window.open("http://192.168.1.124/masterview/mv.jsp?user_name=url&password=url1234&accession_number=" + TIRAPIservice.study.IdStudy, "Carestream", "height=600, width=800");
       }
 
       $scope.ondataavailable = function (e) {

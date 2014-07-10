@@ -116,7 +116,7 @@ var
 begin
   lQuery := TSQLQuery.Create(nil);
   try
-    BrookLog.Info(ASql);
+    TBrookLogger.Service.Info(ASql);
     lQuery.DataBase := FSessionDatabase;
     lQuery.SQL.Text:= ASql;
     if not datamodule1.SQLTransaction1.Active then

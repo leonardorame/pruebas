@@ -65,9 +65,9 @@ begin
     except
       on E: exception do
       begin
-        BrookLog.Error(E.Message);
-        TheResponse.Code := 401;
-        TheResponse.CodeText := E.message;
+        TBrookLogger.Service.Error(E.Message);
+        HttpResponse.Code := 401;
+        HttpResponse.CodeText := E.message;
       end;
     end;
   finally
@@ -87,7 +87,7 @@ begin
   try
     try
       lQuery := datamodule1.qryStudy;
-      lQuery.ParamByName('IdStudy').AsInteger := StrToInt(TheRequest.QueryFields.Values['IdStudy']);
+      lQuery.ParamByName('IdStudy').AsInteger := StrToInt(HttpRequest.QueryFields.Values['IdStudy']);
       lQuery.Open;
       lStudy.IdStudy := lQuery.FieldByName('IdStudy').AsInteger;
       lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lQuery.FieldByName('StudyDate').AsDateTime);

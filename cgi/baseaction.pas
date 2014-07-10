@@ -50,9 +50,9 @@ begin
     FSession.Token := '';
     // Primero se fija si el cliente envió una cookie
     // llamada GTIRTOKEN con el token.
-    if TheRequest.CookieFields.IndexOfName('GTIRTOKEN') > -1 then
+    if ARequest.CookieFields.IndexOfName('GTIRTOKEN') > -1 then
     begin
-      FSession.Token := TheRequest.CookieFields.Values['GTIRTOKEN'];
+      FSession.Token := ARequest.CookieFields.Values['GTIRTOKEN'];
     end;
     if FSession.Token <> '' then
     begin
@@ -83,7 +83,7 @@ end;
 
 procedure TBaseGAction.ActualizarCookie;
 begin
-  with TheResponse.Cookies.Add do
+  with HttpResponse.Cookies.Add do
   begin
     Name:= 'GTIRTOKEN';
     Value:= FSession.Token;
@@ -96,9 +96,9 @@ end;
 procedure TBaseGAction.ActualizarOffSet;
 begin
   try
-  StartIndex:= StrToInt(TheRequest.QueryFields.Values['jtStartIndex']);
-  PageSize:=  StrToInt(TheRequest.QueryFields.Values['jtPageSize']);
-  Sorting:=  TheRequest.QueryFields.Values['jtSorting'];
+  StartIndex:= StrToInt(HttpRequest.QueryFields.Values['jtStartIndex']);
+  PageSize:=  StrToInt(HttpRequest.QueryFields.Values['jtPageSize']);
+  Sorting:=  HttpRequest.QueryFields.Values['jtSorting'];
 
   if Sorting = 'undefined' then
     Sorting := '';
@@ -115,9 +115,9 @@ procedure TBaseGAction.Post;
 begin
   inherited Post;
   try
-  StartIndex:= StrToInt(TheRequest.QueryFields.Values['jtStartIndex']);
-  PageSize:=  StrToInt(TheRequest.QueryFields.Values['jtPageSize']);
-  Sorting:=  TheRequest.QueryFields.Values['jtSorting'];
+  StartIndex:= StrToInt(HttpRequest.QueryFields.Values['jtStartIndex']);
+  PageSize:=  StrToInt(HttpRequest.QueryFields.Values['jtPageSize']);
+  Sorting:=  HttpRequest.QueryFields.Values['jtSorting'];
   except
     StartIndex:= 0;
     PageSize:=  0;

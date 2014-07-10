@@ -45,17 +45,17 @@ begin
   lData := TJsonObject.Create;
   try
     // se ejecuta la consulta y se la convierte en un objeto
-    lStart := (StrToInt(TheRequest.ContentFields.Values['pageNumber']) * 10) - 10;
+    lStart := (StrToInt(HttpRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryStudies;
     // filtros
     lStudy := Entity;
     lWhere := '';
-    if TheRequest.ContentFields.Values['IdStudy'] <> '' then
+    if HttpRequest.ContentFields.Values['IdStudy'] <> '' then
       lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudy.IdStudy) + ' and ';
-    if TheRequest.ContentFields.Values['StudyDate'] <> '' then
+    if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
-    if TheRequest.ContentFields.Values['Status'] <> '' then
+    if HttpRequest.ContentFields.Values['Status'] <> '' then
       lWhere := lWhere + 's.status like ''' + lStudy.Status + '%'' and ';
     if lStudy.Patient_LastName <> '' then
       lWhere := lWhere + 'p.lastname like ''' + lStudy.Patient_LastName + '%'' and ';
@@ -69,7 +69,7 @@ begin
     end;
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
-    BrookLog.Info(lSql.Sql.Text);
+    TBrookLogger.Service.Info(lSql.Sql.Text);
 
     lSql.Open;
 

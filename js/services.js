@@ -37,21 +37,16 @@ angular.module('TIRApp.services', [])
     }
 
     TIRAPI.saveAudioStream = function(stream) {
-      var postData = { 
-        idstudy: TIRAPI.study.IdStudy,
-        data: stream
-      };
       return $http({
             method: 'POST',
-            data: postData, 
             url: '/cgi-bin/tir/audio',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            // without transformRequest posted data is json
-            transformRequest: function(obj) {
-                var str = [];
-                for(var p in obj)
-                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                return str.join("&");
+            data: '',
+            headers: {'Content-Type': undefined},
+            transformRequest: function(data){
+                var fd = new FormData();
+                fd.append('file', stream);
+                fd.append('IdStudy', TIRAPI.study.IdStudy);
+                return fd;
             }
         });
     };

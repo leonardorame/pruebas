@@ -5,7 +5,8 @@ unit actaudio;
 interface
 
 uses
-  BrookAction;
+  BrookAction, BrookHttpDefs, BrookConsts, BrookUtils, SysUtils,
+  BrookLogger;
 
 type
   TActAudio = class(TBrookAction)
@@ -13,11 +14,13 @@ type
     procedure Post; override;
   end;
 
+
 implementation
 
 procedure TActAudio.Post;
 begin
-  //TheRequest.ContentFields.Values['];
+  Write(Files[0].FileName);
+  Write(Fields.Text);
 end;
 
 initialization
