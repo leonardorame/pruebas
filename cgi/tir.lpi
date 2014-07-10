@@ -10,7 +10,6 @@
       <Title Value="tir"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
-      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -44,9 +43,8 @@
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="0"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
         <CursorPos X="36" Y="11"/>
         <UsageCount Value="165"/>
         <Loaded Value="True"/>
@@ -55,7 +53,7 @@
         <Filename Value="countries.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="countries"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <TopLine Value="59"/>
         <CursorPos X="17" Y="68"/>
@@ -66,9 +64,8 @@
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="5"/>
         <CursorPos X="45" Y="20"/>
         <UsageCount Value="168"/>
         <Loaded Value="True"/>
@@ -84,10 +81,11 @@
         <Filename Value="baseaction.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseaction"/>
-        <EditorIndex Value="10"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="109"/>
-        <CursorPos X="18" Y="120"/>
+        <TopLine Value="44"/>
+        <CursorPos X="44" Y="69"/>
         <UsageCount Value="168"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -104,7 +102,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="53"/>
         <CursorPos X="7" Y="61"/>
@@ -116,7 +114,7 @@
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="session"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
         <TopLine Value="110"/>
         <CursorPos X="26" Y="119"/>
@@ -133,7 +131,7 @@
       <Unit9>
         <Filename Value="../../brookframework/core/brookaction.pas"/>
         <UnitName Value="BrookAction"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="283"/>
         <CursorPos X="3" Y="32"/>
@@ -151,7 +149,7 @@
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <TopLine Value="57"/>
         <CursorPos X="15" Y="67"/>
@@ -182,10 +180,9 @@
       <Unit15>
         <Filename Value="../../brookframework/brokers/brookfcleventlogbroker.pas"/>
         <UnitName Value="BrookFCLEventLogBroker"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <TopLine Value="3"/>
-        <CursorPos X="1" Y="1"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit15>
@@ -199,7 +196,7 @@
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="82"/>
         <CursorPos X="63" Y="90"/>
@@ -217,7 +214,7 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="63"/>
         <CursorPos X="25" Y="72"/>
@@ -235,7 +232,7 @@
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actprint"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
         <TopLine Value="73"/>
         <CursorPos X="9" Y="82"/>
@@ -246,7 +243,7 @@
         <Filename Value="actuserdata.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actuserdata"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
         <TopLine Value="53"/>
         <CursorPos X="9" Y="64"/>
@@ -257,7 +254,7 @@
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <TopLine Value="41"/>
         <CursorPos X="70" Y="52"/>
@@ -268,7 +265,7 @@
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplates"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <TopLine Value="42"/>
         <CursorPos X="29" Y="50"/>
@@ -279,9 +276,8 @@
         <Filename Value="template.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="template"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
         <CursorPos X="58" Y="24"/>
         <UsageCount Value="43"/>
         <Loaded Value="True"/>
@@ -290,7 +286,7 @@
         <Filename Value="acttemplate.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplate"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
         <TopLine Value="122"/>
         <CursorPos X="66" Y="130"/>
@@ -301,7 +297,7 @@
         <Filename Value="actpatients.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actpatients"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
         <TopLine Value="40"/>
         <CursorPos X="29" Y="49"/>
@@ -312,18 +308,16 @@
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actaudio"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="26"/>
-        <CursorPos X="6" Y="42"/>
+        <CursorPos X="6" Y="29"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <UnitName Value="HTTPDefs"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <TopLine Value="382"/>
         <CursorPos X="15" Y="396"/>
@@ -333,10 +327,9 @@
       <Unit30>
         <Filename Value="../../brookframework/core/brooklogger.pas"/>
         <UnitName Value="BrookLogger"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="38"/>
-        <CursorPos X="1" Y="1"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit30>
@@ -368,7 +361,7 @@
       </Position6>
       <Position7>
         <Filename Value="actturno.pas"/>
-        <Caret Line="59" Column="1" TopLine="46"/>
+        <Caret Line="59" TopLine="46"/>
       </Position7>
       <Position8>
         <Filename Value="actturno.pas"/>
@@ -412,7 +405,7 @@
       </Position17>
       <Position18>
         <Filename Value="acttemplates.pas"/>
-        <Caret Line="85" Column="1" TopLine="53"/>
+        <Caret Line="85" TopLine="53"/>
       </Position18>
       <Position19>
         <Filename Value="acttemplate.pas"/>
@@ -472,9 +465,6 @@
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
     </SearchPaths>
-    <Other>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
@@ -489,5 +479,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-  <EditorMacros Count="0"/>
 </CONFIG>

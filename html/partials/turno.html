@@ -6,8 +6,8 @@
         <li class="active">Estudio</li>
       </ol>
 
-      <tabset>
-        <tab heading="Estudio">
+      <ul tabset>
+        <div tab heading="Estudio">
           <div class="study-table">
             <div class="study-table-row">
                 <div class="study-table-col study-caption">
@@ -28,7 +28,7 @@
                     Estado:
                 </div>
                 <div class="study-table-col" style="width: 500px;">
-                    <div class="btn-group" data-toggle="buttons">
+                    <div class="btn-group" data-toggle="buttons" style="width: 100%;">
                     <label class='btn btn-default' ng-class='{active: option.IdStatus == study.IdStatus}'
                         ng-repeat='option in study.Statuses' ng-click='activate(option)'>
                         <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
@@ -38,8 +38,8 @@
                 </div>
             </div>
           </div>
-        </tab>
-        <tab heading="Paciente">
+        </div>
+        <div tab heading="Paciente">
           <div class="study-table">
             <div class="study-table-row">
                 <div class="study-table-col study-caption">
@@ -70,8 +70,8 @@
                 </div>
             </div>
           </div>
-        </tab>
-        <tab heading="Procedimientos">
+        </div>
+        <div tab heading="Procedimientos">
           <div class="study-table">
             <div ng-repeat="procedure in study.Procedures" class="study-table-row">
                 <div class="study-table-col study-caption">
@@ -90,8 +90,8 @@
                 </div>
             </div>
           </div>
-        </tab>
-        <tab heading="Profesionales">
+        </div>
+        <div tab heading="Profesionales">
           <div class="study-table">
             <div class="study-table-row">
                 <div class="study-table-col study-label">
@@ -128,8 +128,8 @@
                 </div>
             </div>
           </div>
-        </tab>
-        <tab select="initAudio()">
+        </div>
+        <div tab select="initAudio()">
           <tab-heading>
             Audio
           </tab-heading>
@@ -142,8 +142,8 @@
             <audio id="audioPlayer" controls></audio>
             <button style="color: #333333;" ng-click="saveAudio()">Guardar Audio</button>
           </div>
-        </tab>
-      </tabset>
+        </div>
+      </ul>
       <span ng-if="alert">
         <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
       </span>
