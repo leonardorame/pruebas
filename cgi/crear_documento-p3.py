@@ -3,6 +3,7 @@
 # En ubuntu 14.04
 # sudo apt-get install libreoffice-script-provider-python
 # usar python3 en vez de python
+# ESTE SCRIPT ES PARA PYTHON 3
 
 import uno
 import unohelper
@@ -19,7 +20,7 @@ from com.sun.star.text.ControlCharacter import PARAGRAPH_BREAK
 currDir = os.path.dirname( os.path.realpath(__file__) )
 
 # esto debe definirse sino intenta escribir temporales en /var/www
-os.environ['HOME'] = "/tmp"
+os.environ['HOME'] = '/tmp'
 
 # Se obtiene el documento (json) por stdin.
 input = sys.stdin.read()
@@ -32,7 +33,7 @@ inputStream = io.StringIO(content)
 localContext = uno.getComponentContext()
 resolver = localContext.ServiceManager.createInstanceWithContext(
 	"com.sun.star.bridge.UnoUrlResolver", localContext )
-ctx = resolver.resolve( "uno:socket,host=127.0.0.1,port=8100;urp;StarOffice.ComponentContext" )
+ctx = resolver.resolve( "uno:socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext" )
 smgr = ctx.ServiceManager
 desktop = smgr.createInstanceWithContext( "com.sun.star.frame.Desktop",ctx)
 
@@ -47,11 +48,12 @@ document = desktop.loadComponentFromURL("file://" + currDir + "/templates/planti
 text = document.Text
 cursor = text.createTextCursor()
 
-cursor.gotoEnd(False)
+
+#cursor.gotoEnd(False)
 
 cursor.insertDocumentFromURL("file://" + currDir + "/templates/header.odt", ());
 
-#cursor.gotoEnd(False)
+cursor.gotoEnd(False)
 text.insertControlCharacter(cursor, PARAGRAPH_BREAK, 0)
 
 class InputStream(unohelper.Base, XInputStream, XSeekable):
@@ -63,7 +65,7 @@ class InputStream(unohelper.Base, XInputStream, XSeekable):
        
     def readBytes(self, retSeq, nByteCount):
         retSeq = self.stream.read(nByteCount)
-        return (len(retSeq), uno.ByteSequence(str(retSeq)))
+        return (len(retSeq), uno.ByteSequence(retSeq))
    
     def readSomeBytes(self, foo, n):
         return self.readBytes(foo, n)
@@ -109,12 +111,11 @@ def search(aReplace, _from, _to ):
   document.replaceAll(aReplace)
   return None 
 
-# Por ahora solo se reemplazan los valores
-# tipo string o numero. Los arrays
-# quedan para mas adelante.
-
+# Por ahora sólo se reemplazan los valores
+# tipo string o número. Los arrays
+# quedan para más adelante.
 for key, value in jsondata.items():
- if not hasattr(value, '__iter__'):
+  if not hasattr(value, '__iter__'):
     search(replace, "$" + key, value)
 
 class OutputStream( Base, XOutputStream ):
@@ -123,7 +124,7 @@ class OutputStream( Base, XOutputStream ):
     def closeOutput(self):
         self.closed = 1
     def writeBytes( self, seq ):
-        sys.stdout.write( seq.value )
+        sys.stdout.buffer.write( seq.value )
     def flush( self ):
         pass
 
