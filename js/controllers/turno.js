@@ -184,7 +184,7 @@ angular.module('TIRApp.controllers.turno', []).
                 window.open(fileURL);
             }).
             error(function(response, status, headers, config){
-                $scope.alert = {type: 'danger', msg: 'Error al intentar imprimit documento. COD: ' + status};
+                $scope.alert = {type: 'danger', msg: 'Error al intentar imprimir documento. COD: ' + status};
             })
       };
   }).
