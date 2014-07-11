@@ -38,7 +38,12 @@ angular.module('TIRApp.controllers',
           {
             title: 'Estado',
             value: 'Status'
-          }];
+          },
+          {
+            title: 'Accession',
+            value: 'AccessionNumber'
+          }
+        ];
          
           //Will make an ajax call to fill the drop down menu in the filter of the states
           //$scope.states = TIRAPIservice.getTurnos();

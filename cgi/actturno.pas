@@ -90,6 +90,7 @@ begin
       lQuery.ParamByName('IdStudy').AsInteger := StrToInt(HttpRequest.QueryFields.Values['IdStudy']);
       lQuery.Open;
       lStudy.IdStudy := lQuery.FieldByName('IdStudy').AsInteger;
+      lStudy.AccessionNumber := lQuery.FieldByName('accessionnumber').AsString;
       lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lQuery.FieldByName('StudyDate').AsDateTime);
       lStudy.Status := lQuery.FieldByName('Status').AsString;
       lStudy.IdStatus := lQuery.FieldByName('IdStatus').AsInteger;

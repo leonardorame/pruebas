@@ -13,6 +13,7 @@ type
 
   TStudy = class
   private
+    FAccessionNumber: string;
     FIdProcedure: Integer;
     FIdStatus: Integer;
     FIdStudy: Integer;
@@ -33,6 +34,7 @@ type
     FStudyDate: string;
   published
     property IdStudy: Integer read FIdStudy write FIdStudy;
+    property AccessionNumber: string read FAccessionNumber write FAccessionNumber;
     property StudyDate: string read FStudyDate write FStudyDate;
     property IdStatus: Integer read FIdStatus write FIdStatus;
     property Status: string read FStatus write FStatus;

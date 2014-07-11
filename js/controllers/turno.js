@@ -112,7 +112,7 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.openViewer = function() {
-        $window.open("http://192.168.1.124/masterview/mv.jsp?user_name=url&password=url1234&accession_number=" + TIRAPIservice.study.IdStudy, "Carestream", "height=600, width=800");
+        $window.open("http://192.168.1.124/masterview/mv.jsp?user_name=url&password=url1234&accession_number=" + TIRAPIservice.study.AccessionNumber, "Carestream", "height=600, width=800");
       }
 
       $scope.ondataavailable = function (e) {
