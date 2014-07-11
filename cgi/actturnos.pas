@@ -61,6 +61,8 @@ begin
       lWhere := lWhere + 'p.lastname like ''' + lStudy.Patient_LastName + '%'' and ';
     if lStudy.Patient_FirstName <> '' then
       lWhere := lWhere + 'p.firstname like ''' + lStudy.Patient_FirstName + '%'' and ';
+    if lStudy.ProcedureName <> '' then
+      lWhere := lWhere + 'pr.procedure like ''' + lStudy.ProcedureName + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "

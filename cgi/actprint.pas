@@ -45,7 +45,11 @@ begin
     lParser := TJSONParser.Create(HttpRequest.Content);
     lStudy := TJsonObject(lParser.Parse);
     lProcess.Environment.Add('PYTHONIOENCODING=utf-8');
-    lProcess.Executable := '/usr/bin/python3';
+    if FileExists('/usr/bin/python3') then
+      lProcess.Executable := '/usr/bin/python3'
+    else
+      lProcess.Executable := '/usr/bin/python';
+
     lProcess.Parameters.Add( ExtractFilePath(ParamStr(0)) + 'crear_documento.py' );
     lProcess.Options := [poUsePipes];
     lProcess.Execute;
