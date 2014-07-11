@@ -71,10 +71,10 @@ angular.module('TIRApp.services', [])
     TIRAPI.printStudy = function(){
       return $http({
             method: 'POST',
-            data: TIRAPI.study, 
+            data: JSON.stringify(TIRAPI.study), 
             url: '/cgi-bin/tir/print',
-            responseType: 'arraybuffer',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            responseType: 'arraybuffer'
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
     };
 
