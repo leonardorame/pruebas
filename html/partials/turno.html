@@ -14,7 +14,7 @@
                     Id.:
                 </div>
                 <div class="study-table-col study-data">
-                    {{study.IdStudy}}
+                    {{study.IdStudy}} (# {{study.AccessionNumber}})
                 </div>
                 <div class="study-table-col study-caption">
                     Fecha:
@@ -145,7 +145,7 @@
         </div>
       </ul>
       <span ng-if="alert">
-        <alert type="alert.type" close="closeAlert()">{{alert.msg}}</alert>
+        <div alert type="alert.type" close="closeAlert()">{{alert.msg}}</div>
       </span>
 
       <div class="ck-editor" ng-model="study.Report"></div>

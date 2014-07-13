@@ -72,6 +72,7 @@ object datamodule1: Tdatamodule1
       'count(*) over() as TotalRecords,'
       'st.idstudy,'
       'st.studydate,'
+      'st.accessionnumber,'
       's.status as "Status",'
       'st.idstatus as "IdStatus",'
       'p.idpatient as "Patient_IdPatient",'

@@ -10,7 +10,6 @@
       <Title Value="tir"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
-      <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -44,9 +43,8 @@
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="0"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
         <CursorPos X="36" Y="11"/>
         <UsageCount Value="165"/>
         <Loaded Value="True"/>
@@ -55,7 +53,7 @@
         <Filename Value="countries.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="countries"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="59"/>
         <CursorPos X="17" Y="68"/>
@@ -66,12 +64,11 @@
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="2"/>
         <CursorPos X="45" Y="20"/>
         <UsageCount Value="168"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="../../fpc/packages/fcl-json/src/fpjson.pp"/>
@@ -84,7 +81,7 @@
         <Filename Value="baseaction.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="baseaction"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="24" Y="58"/>
@@ -104,19 +101,17 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="53"/>
         <CursorPos X="7" Y="61"/>
         <UsageCount Value="165"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="session"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
         <TopLine Value="110"/>
         <CursorPos X="26" Y="119"/>
@@ -133,12 +128,11 @@
       <Unit9>
         <Filename Value="../../brookframework/core/brookaction.pas"/>
         <UnitName Value="BrookAction"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="283"/>
         <CursorPos X="3" Y="32"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="../../brookframework/core/brookrouter.pas"/>
@@ -151,12 +145,11 @@
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="57"/>
         <CursorPos X="15" Y="67"/>
         <UsageCount Value="151"/>
-        <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="../../brookframework/brokers/brookfclhttpappbroker.pas"/>
@@ -182,10 +175,9 @@
       <Unit15>
         <Filename Value="../../brookframework/brokers/brookfcleventlogbroker.pas"/>
         <UnitName Value="BrookFCLEventLogBroker"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <TopLine Value="3"/>
-        <CursorPos X="1" Y="1"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit15>
@@ -199,10 +191,11 @@
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
-        <EditorIndex Value="2"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="9"/>
-        <CursorPos X="63" Y="90"/>
+        <TopLine Value="85"/>
+        <CursorPos X="81" Y="93"/>
         <UsageCount Value="134"/>
         <Loaded Value="True"/>
       </Unit17>
@@ -219,10 +212,9 @@
         <UnitName Value="actturnos"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="50"/>
-        <CursorPos X="71" Y="65"/>
+        <TopLine Value="32"/>
+        <CursorPos X="22" Y="64"/>
         <UsageCount Value="130"/>
-        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="../../fpc/packages/fcl-json/src/fpjsonrtti.pp"/>
@@ -241,27 +233,25 @@
         <TopLine Value="40"/>
         <CursorPos X="7" Y="46"/>
         <UsageCount Value="123"/>
-        <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="actuserdata.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actuserdata"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="53"/>
+        <TopLine Value="37"/>
         <CursorPos X="9" Y="64"/>
         <UsageCount Value="123"/>
-        <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="70" Y="52"/>
+        <TopLine Value="26"/>
+        <CursorPos X="81" Y="37"/>
         <UsageCount Value="122"/>
         <Loaded Value="True"/>
       </Unit23>
@@ -269,61 +259,54 @@
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplates"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="42"/>
         <CursorPos X="29" Y="50"/>
         <UsageCount Value="71"/>
-        <Loaded Value="True"/>
       </Unit24>
       <Unit25>
         <Filename Value="template.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="template"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
         <CursorPos X="58" Y="24"/>
         <UsageCount Value="43"/>
-        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="acttemplate.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplate"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="122"/>
+        <TopLine Value="118"/>
         <CursorPos X="66" Y="130"/>
         <UsageCount Value="42"/>
-        <Loaded Value="True"/>
       </Unit26>
       <Unit27>
         <Filename Value="actpatients.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actpatients"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="40"/>
         <CursorPos X="29" Y="49"/>
         <UsageCount Value="45"/>
-        <Loaded Value="True"/>
       </Unit27>
       <Unit28>
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actaudio"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
         <CursorPos X="6" Y="29"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <UnitName Value="HTTPDefs"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="382"/>
         <CursorPos X="15" Y="396"/>
@@ -333,127 +316,65 @@
       <Unit30>
         <Filename Value="../../brookframework/core/brooklogger.pas"/>
         <UnitName Value="BrookLogger"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="38"/>
-        <CursorPos X="1" Y="1"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit30>
     </Units>
-    <JumpHistory Count="28" HistoryIndex="27">
+    <JumpHistory Count="13" HistoryIndex="12">
       <Position1>
         <Filename Value="baseaction.pas"/>
-        <Caret Line="86" Column="12" TopLine="78"/>
+        <Caret Line="101" Column="18" TopLine="90"/>
       </Position1>
       <Position2>
-        <Filename Value="baseaction.pas"/>
-        <Caret Line="101" Column="18" TopLine="90"/>
+        <Filename Value="countries.pas"/>
+        <Caret Line="49" Column="36" TopLine="42"/>
       </Position2>
       <Position3>
         <Filename Value="countries.pas"/>
-        <Caret Line="49" Column="36" TopLine="42"/>
+        <Caret Line="44" Column="35" TopLine="34"/>
       </Position3>
       <Position4>
         <Filename Value="countries.pas"/>
-        <Caret Line="44" Column="35" TopLine="34"/>
+        <Caret Line="64" Column="25" TopLine="55"/>
       </Position4>
       <Position5>
-        <Filename Value="countries.pas"/>
-        <Caret Line="64" Column="25" TopLine="55"/>
-      </Position5>
-      <Position6>
-        <Filename Value="actlogin.pas"/>
-        <Caret Line="51" Column="41" TopLine="40"/>
-      </Position6>
-      <Position7>
         <Filename Value="actturno.pas"/>
         <Caret Line="70" Column="13" TopLine="59"/>
-      </Position7>
-      <Position8>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="95" Column="41" TopLine="44"/>
-      </Position8>
-      <Position9>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="48" Column="29" TopLine="39"/>
-      </Position9>
-      <Position10>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="58" Column="12" TopLine="45"/>
-      </Position10>
-      <Position11>
-        <Filename Value="actprint.pas"/>
-        <Caret Line="78" Column="8" TopLine="63"/>
-      </Position11>
-      <Position12>
-        <Filename Value="actprint.pas"/>
-        <Caret Line="45" Column="39" TopLine="37"/>
-      </Position12>
-      <Position13>
-        <Filename Value="actprint.pas"/>
-        <Caret Line="82" Column="5" TopLine="73"/>
-      </Position13>
-      <Position14>
-        <Filename Value="actuserdata.pas"/>
-        <Caret Line="61" Column="53" TopLine="46"/>
-      </Position14>
-      <Position15>
-        <Filename Value="actuserdata.pas"/>
-        <Caret Line="48" Column="10" TopLine="39"/>
-      </Position15>
-      <Position16>
-        <Filename Value="actuserdata.pas"/>
-        <Caret Line="54" Column="11" TopLine="44"/>
-      </Position16>
-      <Position17>
-        <Filename Value="acttemplate.pas"/>
-        <Caret Line="104" Column="17" TopLine="99"/>
-      </Position17>
-      <Position18>
-        <Filename Value="acttemplate.pas"/>
-        <Caret Line="69" Column="13" TopLine="59"/>
-      </Position18>
-      <Position19>
-        <Filename Value="acttemplate.pas"/>
-        <Caret Line="110" Column="13" TopLine="99"/>
-      </Position19>
-      <Position20>
-        <Filename Value="actpatients.pas"/>
-        <Caret Line="41" Column="43" TopLine="30"/>
-      </Position20>
-      <Position21>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="20" Column="9" TopLine="7"/>
-      </Position21>
-      <Position22>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="21" Column="62" TopLine="9"/>
-      </Position22>
-      <Position23>
+      </Position5>
+      <Position6>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Caret Line="396" Column="49" TopLine="381"/>
-      </Position23>
-      <Position24>
+      </Position6>
+      <Position7>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Caret Line="506" Column="60" TopLine="490"/>
-      </Position24>
-      <Position25>
+      </Position7>
+      <Position8>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Caret Line="1078" Column="39" TopLine="1060"/>
-      </Position25>
-      <Position26>
+      </Position8>
+      <Position9>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Caret Line="1094" Column="13" TopLine="1078"/>
-      </Position26>
-      <Position27>
+      </Position9>
+      <Position10>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Caret Line="1097" Column="12" TopLine="1081"/>
-      </Position27>
-      <Position28>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="21" Column="21" TopLine="9"/>
-      </Position28>
+      </Position10>
+      <Position11>
+        <Filename Value="actturno.pas"/>
+        <Caret Line="93" Column="15" TopLine="78"/>
+      </Position11>
+      <Position12>
+        <Filename Value="actturno.pas"/>
+        <Caret Line="80" Column="3" TopLine="63"/>
+      </Position12>
+      <Position13>
+        <Filename Value="study.pas"/>
+        <Caret Line="37" Column="83" TopLine="27"/>
+      </Position13>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -470,9 +391,6 @@
         <StripSymbols Value="True"/>
       </Debugging>
     </Linking>
-    <Other>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
@@ -487,5 +405,4 @@
       </Item3>
     </Exceptions>
   </Debugging>
-  <EditorMacros Count="0"/>
 </CONFIG>
