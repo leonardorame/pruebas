@@ -68,7 +68,7 @@
         <UnitName Value="Brokers"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
+        <TopLine Value="2"/>
         <CursorPos X="45" Y="20"/>
         <UsageCount Value="168"/>
         <Loaded Value="True"/>
@@ -217,7 +217,6 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
@@ -236,10 +235,11 @@
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actprint"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="37"/>
-        <CursorPos X="5" Y="52"/>
+        <TopLine Value="40"/>
+        <CursorPos X="7" Y="46"/>
         <UsageCount Value="123"/>
         <Loaded Value="True"/>
       </Unit21>

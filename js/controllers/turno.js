@@ -176,7 +176,15 @@ angular.module('TIRApp.controllers.turno', []).
       };
 
       $scope.print = function() {
-          TIRAPIservice.printStudy().
+           var dataset = JSON.stringify(TIRAPIservice.study);
+           var body = $('body');
+           var hiddenForm = "<form action='/cgi-bin/tir/print' method='POST' target='_blank'><input type='hidden' name='dataset' value='" + dataset + "'/ ><button id='submitPrint' type='submit'></button></form>";
+           body.append(hiddenForm);
+           $('#submitPrint').click();
+           $('#submitPrint').remove();
+          
+           // este método sólo funciona en Firefox/Chrome
+          /*TIRAPIservice.printStudy().
             success(function(response, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Documento impreso exitosamente!'};
                 var file = new Blob([response], {type: 'application/pdf'});
@@ -186,6 +194,7 @@ angular.module('TIRApp.controllers.turno', []).
             error(function(response, status, headers, config){
                 $scope.alert = {type: 'danger', msg: 'Error al intentar imprimit documento. COD: ' + status};
             })
+        */
       };
   }).
 

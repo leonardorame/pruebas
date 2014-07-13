@@ -42,7 +42,8 @@ begin
   lErrStream := TMemoryStream.Create;
   lProcess := TProcess.Create(nil);
   try
-    lParser := TJSONParser.Create(HttpRequest.Content);
+    lParser := TJSONParser.Create(HttpRequest.ContentFields.Values['dataset']);
+    //lParser := TJSONParser.Create(HttpRequest.Content);
     lStudy := TJsonObject(lParser.Parse);
     lProcess.Environment.Add('PYTHONIOENCODING=utf-8');
     if FileExists('/usr/bin/python3') then
@@ -77,9 +78,9 @@ begin
 
     if (lErrStream.Size > 0) then
     begin
-     // lErrStream.SaveToFile('/tmp/salida.err');
-     // Write('Error');
-     // exit;
+      lErrStream.SaveToFile('/tmp/salida.err');
+      Write('Error');
+      exit;
     end;
 
     lOutput.Position:= 0;
