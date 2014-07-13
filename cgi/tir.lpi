@@ -225,11 +225,13 @@
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actprint"/>
-        <EditorIndex Value="14"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="7" Y="46"/>
+        <TopLine Value="41"/>
+        <CursorPos X="53" Y="49"/>
         <UsageCount Value="123"/>
+        <Loaded Value="True"/>
       </Unit21>
       <Unit22>
         <Filename Value="actuserdata.pas"/>
@@ -244,7 +246,6 @@
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="26"/>

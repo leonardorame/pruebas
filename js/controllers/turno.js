@@ -178,7 +178,7 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.print = function() {
            var dataset = JSON.stringify(TIRAPIservice.study);
            var body = $('body');
-           var hiddenForm = "<form action='/cgi-bin/tir/print' method='POST' target='_blank'><input type='hidden' name='dataset' value='" + dataset + "'/ ><button id='submitPrint' type='submit'></button></form>";
+           var hiddenForm = "<form action='/cgi-bin/tir/print' method='POST'><input type='hidden' name='dataset' value='" + dataset + "'/ ><button id='submitPrint' type='submit'></button></form>";
            body.append(hiddenForm);
            $('#submitPrint').click();
            $('#submitPrint').remove();
