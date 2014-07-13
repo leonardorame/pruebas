@@ -1,7 +1,7 @@
 angular.module('TIRApp.controllers.templates', []).
     
   /* templatesTableModel */
-  controller('templatesTableModel', function($scope, $modalInstance, TIRAPIservice) {
+  controller('templatesTableModel', function($scope, $location, $modalInstance, TIRAPIservice) {
     $scope.templates = [];
 
     $scope.totalPages = 0;
@@ -41,6 +41,7 @@ angular.module('TIRApp.controllers.templates', []).
           $scope.itemCount = response.data.recordsTotal;
         },function(response){
             // error handler
+            console.log(response);
             $location.path('/login');
         });
     };
