@@ -1,7 +1,6 @@
 angular.module('TIRApp.controllers.templates', []).
     
-  /* templatesTableModel */
-  controller('templatesTableModel', function($scope, $location, $modalInstance, TIRAPIservice) {
+  controller('templatesTableController', function($scope, $location, $modalInstance, TIRAPIservice) {
     $scope.templates = [];
 
     $scope.totalPages = 0;
@@ -86,6 +85,7 @@ angular.module('TIRApp.controllers.templates', []).
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
                 $scope.template = data;
+                $scope.currenttpl = data;
             }
         );
     };

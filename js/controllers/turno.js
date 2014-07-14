@@ -157,7 +157,7 @@ angular.module('TIRApp.controllers.turno', []).
 
       $scope.selectTemplate = function(){
             $modal.open({
-                controller: 'templatesTableModel',
+                controller: 'templatesTableController',
                 templateUrl: 'partials/templatestable.html'
             }).result.then(function(template){
                 if(template)
