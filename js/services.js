@@ -16,7 +16,7 @@ angular.module('TIRApp.services', [])
     TIRAPI.getTemplates = function(filter) {
       return $http({
         method: 'POST', 
-        params: filter,
+        data: filter,
         url: '/cgi-bin/tir/templates'
       });
     }
@@ -24,7 +24,7 @@ angular.module('TIRApp.services', [])
     TIRAPI.getPatients = function(filter) {
       return $http({
         method: 'POST', 
-        params: filter,
+        data: filter,
         url: '/cgi-bin/tir/patients'
       });
     }

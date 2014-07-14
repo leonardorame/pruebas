@@ -36,6 +36,7 @@ var
   lStart: Integer;
   lLength: Integer;
   lTotalRecords: Integer;
+  lWhere: string;
 begin
   lStreamer := TJSONStreamer.Create(nil);
   lList := TPatientList.Create;
@@ -46,9 +47,30 @@ begin
     try
     // se ejecuta la consulta y se la convierte en un objeto
 
-    lStart := (StrToInt(HttpRequest.QueryFields.Values['pageNumber']) * 10) - 10;
+    lStart := (StrToInt(HttpRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryPatients;
+
+    // filtros
+    lPatient := Entity;
+    lWhere := '';
+    if HttpRequest.ContentFields.Values['IdPatient'] <> '' then
+      lWhere := lWhere + 'IdPatient=' + IntToStr(lPatient.IdPatient) + ' and ';
+    if HttpRequest.ContentFields.Values['BirthDate'] <> '' then
+      lWhere := lWhere + 'BirthDate::varchar like ''' + lPatient.BirthDate + '%'' and ';
+    if HttpRequest.ContentFields.Values['FirstName'] <> '' then
+      lWhere := lWhere + 'Upper(FirstName) like ''' + UpperCase(lPatient.FirstName) + '%'' and ';
+    if HttpRequest.ContentFields.Values['LastName'] <> '' then
+      lWhere := lWhere + 'Upper(LastName) like ''' + UpperCase(lPatient.LastName) + '%'' and ';
+    if HttpRequest.ContentFields.Values['Sex'] <> '' then
+      lWhere := lWhere + 'sex = ''' + UpperCase(lPatient.Sex) + ''' and ';
+    if lWhere <> '' then
+    begin
+      // eliminamos el ultimo " and "
+      lWhere := Copy(lWhere, 1, Length(lWhere) - 4);
+      lSql.SQL.Add('where ' + lWhere);
+    end;
+
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
     lSql.Open;
 

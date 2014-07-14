@@ -56,13 +56,13 @@ begin
     if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
     if HttpRequest.ContentFields.Values['Status'] <> '' then
-      lWhere := lWhere + 's.status like ''' + lStudy.Status + '%'' and ';
+      lWhere := lWhere + 'Upper(s.status) like ''' + UpperCase(lStudy.Status) + '%'' and ';
     if lStudy.Patient_LastName <> '' then
-      lWhere := lWhere + 'p.lastname like ''' + lStudy.Patient_LastName + '%'' and ';
+      lWhere := lWhere + 'Upper(p.lastname) like ''' + UpperCase(lStudy.Patient_LastName) + '%'' and ';
     if lStudy.Patient_FirstName <> '' then
-      lWhere := lWhere + 'p.firstname like ''' + lStudy.Patient_FirstName + '%'' and ';
+      lWhere := lWhere + 'Upper(p.firstname) like ''' + UpperCase(lStudy.Patient_FirstName) + '%'' and ';
     if lStudy.ProcedureName <> '' then
-      lWhere := lWhere + 'pr.procedure like ''' + lStudy.ProcedureName + '%'' and ';
+      lWhere := lWhere + 'Upper(pr.procedure) like ''' + UpperCase(lStudy.ProcedureName) + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "
