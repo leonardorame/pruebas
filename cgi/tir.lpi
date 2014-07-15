@@ -99,7 +99,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
         <TopLine Value="37"/>
         <CursorPos X="33" Y="59"/>
@@ -253,7 +253,7 @@
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplates"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="41"/>
         <CursorPos X="75" Y="60"/>
@@ -279,20 +279,23 @@
         <Filename Value="actpatients.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actpatients"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <TopLine Value="21"/>
-        <CursorPos X="44" Y="34"/>
+        <CursorPos X="60" Y="31"/>
         <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit27>
       <Unit28>
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actaudio"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="6" Y="29"/>
+        <CursorPos Y="23"/>
         <UsageCount Value="24"/>
+        <Loaded Value="True"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>

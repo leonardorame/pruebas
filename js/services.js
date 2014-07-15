@@ -36,21 +36,6 @@ angular.module('TIRApp.services', [])
       });
     }
 
-    TIRAPI.saveAudioStream = function(stream) {
-      return $http({
-            method: 'POST',
-            url: '/cgi-bin/tir/audio',
-            data: '',
-            headers: {'Content-Type': undefined},
-            transformRequest: function(data){
-                var fd = new FormData();
-                fd.append('file', stream);
-                fd.append('IdStudy', TIRAPI.study.IdStudy);
-                return fd;
-            }
-        });
-    };
-
     TIRAPI.saveStudy = function(report){
       TIRAPI.study.Report = report;
       return $http({

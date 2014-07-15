@@ -19,11 +19,10 @@ implementation
 
 procedure TActAudio.Post;
 begin
-  Write(Files[0].FileName);
-  Write(Fields.Text);
+  Write('--->' + Files.FileByName('name').FileName);
 end;
 
 initialization
-  TActAudio.Register('/audio');
+  TActAudio.Register('/audio/:file');
 
 end.

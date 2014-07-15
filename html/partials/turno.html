@@ -134,13 +134,12 @@
             Audio
           </tab-heading>
           
-          <div class="study-table">
-            <img ng-click="startRecording(this)" src="../images/rec.png">
-            <!--img ng-click="pauseRecording(this)" src="../images/pause.png"-->
-            <img ng-click="stopRecording(this)" src="../images/stop.png">
-            <canvas id="histograma" width=100 height=32></canvas> 
-            <audio id="audioPlayer" controls></audio>
-            <button style="color: #333333;" ng-click="saveAudio()">Guardar Audio</button>
+          <div class="study-table" id="audioRecorder">
+            <a href="" ng-click="startRecording()">Record</a>
+            <a href="" ng-click="stopRecording()">Stop</a>
+            <a href="" ng-click="play()">Play</a><br>
+            <span id="time">0:00</span><br>
+            <a href="" ng-click="saveAudio()">Save</a>
           </div>
         </div>
       </ul>
