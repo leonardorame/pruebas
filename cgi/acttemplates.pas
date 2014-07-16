@@ -44,6 +44,7 @@ var
   lWhere: string;
 begin
   lStreamer := TJSONStreamer.Create(nil);
+  lData := TJsonObject.Create;
   lList := TTemplateList.Create;
   lArray := TJSONArray.Create;
   try
@@ -74,36 +75,37 @@ begin
     lSql.Open;
 
     try
-    while not lSql.EOF do
-    begin
-      //lTemplate := TTemplate.Create;
-      lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
-      lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
-      lTemplate.Code := lSql.FieldByName('Code').AsString;
-      lTemplate.Name := lSql.FieldByName('Name').AsString;
-      lItem := lStreamer.ObjectToJSON(lTemplate);
-      lArray.Add(lItem);
-      lList.Add(lTemplate);
-      lSql.Next;
-    end;
+      while not lSql.EOF do
+      begin
+        //lTemplate := TTemplate.Create;
+        lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
+        lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
+        lTemplate.Code := lSql.FieldByName('Code').AsString;
+        lTemplate.Name := lSql.FieldByName('Name').AsString;
+        lItem := lStreamer.ObjectToJSON(lTemplate);
+        lArray.Add(lItem);
+        lList.Add(lTemplate);
+        lSql.Next;
+      end;
     except
       on E: exception do
         TBrookLogger.Service.Error(E.message);
     end;
     lSql.Close;
     // se convierte el objeto en JSON
-    lData := TJsonObject.Create;
-    try
-      lData.Add('data', lArray);
-      lData.Add('recordsTotal', lTotalRecords);
-      lData.Add('recordsFiltered', lList.Count);
-      Write(lData.AsJSON);
-    finally
-      lData.Free;
-    end;
+    lData.Add('data', lArray);
+    lData.Add('recordsTotal', lTotalRecords);
+    lData.Add('recordsFiltered', lList.Count);
+    Write(lData.AsJSON);
+    TBrookLogger.Service.Error('--1--');
   finally
-    lList.Free;
+    TBrookLogger.Service.Error('--a--');
     lStreamer.Free;
+    TBrookLogger.Service.Error('--b--');
+    lList.Free;
+    TBrookLogger.Service.Error('--c--');
+    lData.Free;
+    TBrookLogger.Service.Error('--d--');
   end;
 end;
 
