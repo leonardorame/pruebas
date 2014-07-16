@@ -47,15 +47,14 @@ begin
   lList := TTemplateList.Create;
   lArray := TJSONArray.Create;
   try
-    TBrookLogger.Service.Info('----1---');
     // se ejecuta la consulta y se la convierte en un objeto
     lStart := (StrToInt(HttpRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryTemplates;
-    TBrookLogger.Service.Info(lSql.SQL.Text);
     // filtros
     lTemplate := Entity;
     lWhere := '';
+
     if HttpRequest.ContentFields.Values['IdTemplate'] <> '' then
       lWhere := lWhere + 'IdTemplate=' + IntToStr(lTemplate.IdTemplate) + ' and ';
     if HttpRequest.ContentFields.Values['Code'] <> '' then
@@ -70,10 +69,11 @@ begin
     end;
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
-    TBrookLogger.Service.Info(lSql.Sql.Text);
+    TBrookLogger.Service.Debug(lSql.Sql.Text);
 
     lSql.Open;
 
+    try
     while not lSql.EOF do
     begin
       //lTemplate := TTemplate.Create;
@@ -86,6 +86,10 @@ begin
       lList.Add(lTemplate);
       lSql.Next;
     end;
+    except
+      on E: exception do
+        TBrookLogger.Service.Error(E.message);
+    end;
     lSql.Close;
     // se convierte el objeto en JSON
     lData := TJsonObject.Create;
@@ -93,11 +97,10 @@ begin
       lData.Add('data', lArray);
       lData.Add('recordsTotal', lTotalRecords);
       lData.Add('recordsFiltered', lList.Count);
+      Write(lData.AsJSON);
     finally
       lData.Free;
     end;
-
-    Write(ldata.AsJSON);
   finally
     lList.Free;
     lStreamer.Free;
