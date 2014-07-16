@@ -40,7 +40,6 @@ angular.module('TIRApp.controllers.templates', []).
           $scope.itemCount = response.data.recordsTotal;
         },function(response){
             // error handler
-            console.log(response);
             $location.path('/login');
         });
     };

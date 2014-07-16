@@ -48,7 +48,6 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.saveAudio = function(){
-        console.log($scope.study);
         var fileName = $scope.study.IdStudy + '.wav';
         Recorder.upload({
           url: "/cgi-bin/tir/audio",
