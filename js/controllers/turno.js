@@ -145,4 +145,8 @@ angular.module('TIRApp.controllers.turno', []).
         var url = '/turnos/' + study.IdStudy;
         $location.path(url);
     };
+
+    $scope.toTranscriptionist = function(turnos){
+        console.log(turnos);
+    };
   });

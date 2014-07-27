@@ -13,42 +13,51 @@ angular.module('TIRApp.controllers',
           {
             title: 'IdStudy',
             value: 'IdStudy',
-            width: '50px;'
+            width: '50px;',
+            align: 'right'
           },
           {
             title: 'Apellido',
             value: 'Patient_LastName',
-            width: '300px;'
+            width: '200px;',
+            align: 'left'
           },
           {
             title: 'Nombre',
             value: 'Patient_FirstName',
-            width: '300px;'
+            width: '200px;',
+            align: 'left'
           },
           {
             title: 'DNI',
             value: 'Patient_OtherIDs',
-            width: '100px;'
+            width: '100px;',
+            align: 'left'
           },
           {
             title: 'Procedimiento',
             value: 'ProcedureName',
-            width: '100px;'
+            width: '50px;',
+            align: 'left'
           },
           {
             title: 'Fecha',
             value: 'StudyDate',
-            width: '100px;'
+            width: '100px;',
+            align: 'left'
           },
           {
             title: 'Estado',
-            value: 'Status'
+            value: 'Status',
+            align: 'left'
           },
           {
             title: 'Accession Number',
-            value: 'AccessionNumber'
+            value: 'AccessionNumber',
+            align: 'left'
           }
         ];
+
          
           //Will make an ajax call to fill the drop down menu in the filter of the states
           //$scope.states = TIRAPIservice.getTurnos();
