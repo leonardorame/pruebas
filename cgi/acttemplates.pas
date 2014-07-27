@@ -47,12 +47,11 @@ begin
   lList := TTemplateList.Create;
   lArray := TJSONArray.Create;
   try
-    TBrookLogger.Service.Info('----1---');
     // se ejecuta la consulta y se la convierte en un objeto
     lStart := (StrToInt(HttpRequest.ContentFields.Values['pageNumber']) * 10) - 10;
     lLength := 10; //StrToInt(TheRequest.ContentFields.Values['iDisplayLength']);
     lSql := datamodule1.qryTemplates;
-    TBrookLogger.Service.Info(lSql.SQL.Text);
+    TBrookLogger.Service.Info(HttpRequest.ContentFields.Text);
     // filtros
     lTemplate := Entity;
     lWhere := '';
@@ -93,11 +92,11 @@ begin
       lData.Add('data', lArray);
       lData.Add('recordsTotal', lTotalRecords);
       lData.Add('recordsFiltered', lList.Count);
+      Write(ldata.AsJSON);
     finally
       lData.Free;
     end;
 
-    Write(ldata.AsJSON);
   finally
     lList.Free;
     lStreamer.Free;

@@ -64,6 +64,8 @@ begin
       lWhere := lWhere + 'Upper(LastName) like ''' + UpperCase(lPatient.LastName) + '%'' and ';
     if HttpRequest.ContentFields.Values['Sex'] <> '' then
       lWhere := lWhere + 'sex = ''' + UpperCase(lPatient.Sex) + ''' and ';
+    if HttpRequest.ContentFields.Values['OtherIDs'] <> '' then
+      lWhere := lWhere + 'Upper(OtherIDs) like ''' + UpperCase(lPatient.OtherIDs) + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "
@@ -81,7 +83,9 @@ begin
       lPatient.IdPatient := lSql.FieldByName('IdPatient').AsInteger;
       lPatient.FirstName := lSql.FieldByName('FirstName').AsString;
       lPatient.LastName := lSql.FieldByName('LastName').AsString;
+      lPatient.LastName := lSql.FieldByName('LastName').AsString;
       lPatient.Sex := lSql.FieldByName('Sex').AsString;
+      lPatient.OtherIDs := lSql.FieldByName('OtherIDs').AsString;
       lPatient.BirthDate := FormatDateTime('YYYY-MM-DD', lSql.FieldByName('BirthDate').AsDateTime);
       lItem := lStreamer.ObjectToJSON(lPatient);
       lArray.Add(lItem);

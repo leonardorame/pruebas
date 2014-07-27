@@ -17,20 +17,19 @@
     </thead>
     <tbody>
     <tr>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.IdStudy" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Patient_LastName" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Patient_FirstName" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.ProcedureName" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.StudyDate" type="text" /></td>
-      <td><input class="table-filter" on-enter-blur on-blur-change="filterResult()" ng-model="filterCriteria.Status" type="text" /></td>
+      <td ng-repeat="header in headers">
+        <input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
+      </td>
     </tr>
     <tr ng-repeat="turno in turnos" ng-click="go(turno)">
       <td>{{turno.IdStudy}}</td>
       <td>{{turno.Patient_LastName}}</td>
       <td>{{turno.Patient_FirstName}}</td>
+      <td>{{turno.Patient_OtherIDs}}</td>
       <td>{{turno.ProcedureName}}</td>
       <td>{{turno.StudyDate}}</td>
       <td>{{turno.Status}}</td>
+      <td>{{turno.AccessionNumber}}</td>
     </tr>
     </tbody>
   </table>

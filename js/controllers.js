@@ -26,6 +26,11 @@ angular.module('TIRApp.controllers',
             width: '300px;'
           },
           {
+            title: 'DNI',
+            value: 'Patient_OtherIDs',
+            width: '100px;'
+          },
+          {
             title: 'Procedimiento',
             value: 'ProcedureName',
             width: '100px;'
@@ -40,7 +45,7 @@ angular.module('TIRApp.controllers',
             value: 'Status'
           },
           {
-            title: 'Accession',
+            title: 'Accession Number',
             value: 'AccessionNumber'
           }
         ];

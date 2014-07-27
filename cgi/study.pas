@@ -21,6 +21,7 @@ type
     FPatient_FirstName: string;
     FPatient_IdPatient: Integer;
     FPatient_LastName: string;
+    FPatient_OtherIDs: string;
     FPatient_Sex: string;
     FPerform_FirstName: string;
     FPerform_IdProfessional: Integer;
@@ -42,6 +43,7 @@ type
     property Patient_FirstName: string read FPatient_FirstName write FPatient_FirstName;
     property Patient_LastName: string read FPatient_LastName write FPatient_LastName;
     property Patient_Sex: string read FPatient_Sex write FPatient_Sex;
+    property Patient_OtherIDs: string read FPatient_OtherIDs write FPatient_OtherIds;
     property Patient_BirthDate: string read FPatient_BirthDate write FPatient_BirthDate;
     property Perform_IdProfessional: Integer read FPerform_IdProfessional write FPerform_IdProfessional;
     property Perform_FirstName: string read FPerform_FirstName write FPerform_FirstName;

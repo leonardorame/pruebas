@@ -55,12 +55,16 @@ begin
       lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudy.IdStudy) + ' and ';
     if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
+    if HttpRequest.ContentFields.Values['AccessionNumber'] <> '' then
+      lWhere := lWhere + 'st.AccessionNumber like ''' + lStudy.AccessionNumber + '%'' and ';
     if HttpRequest.ContentFields.Values['Status'] <> '' then
       lWhere := lWhere + 'Upper(s.status) like ''' + UpperCase(lStudy.Status) + '%'' and ';
     if lStudy.Patient_LastName <> '' then
       lWhere := lWhere + 'Upper(p.lastname) like ''' + UpperCase(lStudy.Patient_LastName) + '%'' and ';
     if lStudy.Patient_FirstName <> '' then
       lWhere := lWhere + 'Upper(p.firstname) like ''' + UpperCase(lStudy.Patient_FirstName) + '%'' and ';
+    if lStudy.Patient_OtherIDs <> '' then
+      lWhere := lWhere + 'Upper(p.otherids) like ''' + UpperCase(lStudy.Patient_OtherIDs) + '%'' and ';
     if lStudy.ProcedureName <> '' then
       lWhere := lWhere + 'Upper(pr.procedure) like ''' + UpperCase(lStudy.ProcedureName) + '%'' and ';
     if lWhere <> '' then
@@ -82,10 +86,12 @@ begin
       lStudy.IdStudy := lSql.FieldByName('IdStudy').AsInteger;
       lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lSql.FieldByName('StudyDate').AsDateTime);
       lStudy.Status := lSql.FieldByName('Status').AsString;
+      lStudy.AccessionNumber := lSql.FieldByName('AccessionNumber').AsString;
       lStudy.Patient_IdPatient := lSql.FieldByName('Patient_IdPatient').AsInteger;
       lStudy.Patient_FirstName := lSql.FieldByName('Patient_FirstName').AsString;
       lStudy.Patient_LastName := lSql.FieldByName('Patient_LastName').AsString;
       lStudy.Patient_Sex := lSql.FieldByName('Patient_Sex').AsString;
+      lStudy.Patient_OtherIDs := lSql.FieldByName('Patient_OtherIDs').AsString;
       lStudy.Patient_BirthDate := FormatDateTime('YYYY-MM-DD', lSql.FieldByName('Patient_BirthDate').AsDateTime);
       lStudy.Perform_IdProfessional := lSql.FieldByName('Perform_IdProfessional').AsInteger;
       lStudy.Perform_FirstName := lSql.FieldByName('Perform_FirstName').AsString;

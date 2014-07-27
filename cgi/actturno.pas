@@ -98,6 +98,7 @@ begin
       lStudy.Patient_FirstName := lQuery.FieldByName('Patient_FirstName').AsString;
       lStudy.Patient_LastName := lQuery.FieldByName('Patient_LastName').AsString;
       lStudy.Patient_Sex := lQuery.FieldByName('Patient_Sex').AsString;
+      lStudy.Patient_OtherIDs := lQuery.FieldByName('Patient_OtherIDs').AsString;
       lStudy.Patient_BirthDate := FormatDateTime('YYYY-MM-DD', lQuery.FieldByName('Patient_BirthDate').AsDateTime);
       lStudy.Perform_IdProfessional := lQuery.FieldByName('Perform_IdProfessional').AsInteger;
       lStudy.Perform_FirstName := lQuery.FieldByName('Perform_FirstName').AsString;

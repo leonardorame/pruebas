@@ -22,6 +22,10 @@ angular.module('TIRApp.controllers.patient', []).
         value: 'LastName'
     },
     {
+        title: 'DNI',
+        value: 'OtherIDs'
+    },
+    {
         title: 'Fecha Nac.',
         value: 'BirthDate'
     },
