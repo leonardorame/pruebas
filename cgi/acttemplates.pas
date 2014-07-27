@@ -44,6 +44,7 @@ var
   lWhere: string;
 begin
   lStreamer := TJSONStreamer.Create(nil);
+  lData := TJsonObject.Create;
   lList := TTemplateList.Create;
   lArray := TJSONArray.Create;
   try
@@ -55,6 +56,7 @@ begin
     // filtros
     lTemplate := Entity;
     lWhere := '';
+
     if HttpRequest.ContentFields.Values['IdTemplate'] <> '' then
       lWhere := lWhere + 'IdTemplate=' + IntToStr(lTemplate.IdTemplate) + ' and ';
     if HttpRequest.ContentFields.Values['Code'] <> '' then
@@ -69,21 +71,26 @@ begin
     end;
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
-    TBrookLogger.Service.Info(lSql.Sql.Text);
+    TBrookLogger.Service.Debug(lSql.Sql.Text);
 
     lSql.Open;
 
-    while not lSql.EOF do
-    begin
-      //lTemplate := TTemplate.Create;
-      lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
-      lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
-      lTemplate.Code := lSql.FieldByName('Code').AsString;
-      lTemplate.Name := lSql.FieldByName('Name').AsString;
-      lItem := lStreamer.ObjectToJSON(lTemplate);
-      lArray.Add(lItem);
-      lList.Add(lTemplate);
-      lSql.Next;
+    try
+      while not lSql.EOF do
+      begin
+        //lTemplate := TTemplate.Create;
+        lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
+        lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
+        lTemplate.Code := lSql.FieldByName('Code').AsString;
+        lTemplate.Name := lSql.FieldByName('Name').AsString;
+        lItem := lStreamer.ObjectToJSON(lTemplate);
+        lArray.Add(lItem);
+        lList.Add(lTemplate);
+        lSql.Next;
+      end;
+    except
+      on E: exception do
+        TBrookLogger.Service.Error(E.message);
     end;
     lSql.Close;
     // se convierte el objeto en JSON
@@ -96,10 +103,9 @@ begin
     finally
       lData.Free;
     end;
-
   finally
-    lList.Free;
     lStreamer.Free;
+    lList.Free;
   end;
 end;
 
