@@ -23,6 +23,8 @@ type
     qryProcedures: TSQLQuery;
     qryTemplate: TSQLQuery;
     qryTemplates: TSQLQuery;
+    qryUsers: TSQLQuery;
+    qryUser: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
     qryStudy: TSQLQuery;
     procedure DataModuleCreate(Sender: TObject);

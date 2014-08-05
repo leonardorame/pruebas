@@ -136,7 +136,7 @@ angular.module('TIRApp.controllers.turno', []).
   }).
 
   /* Turnos controller */
-  controller('turnosController', function($scope, $location, TIRAPIservice) {
+  controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
 
@@ -147,6 +147,13 @@ angular.module('TIRApp.controllers.turno', []).
     };
 
     $scope.toTranscriptionist = function(turnos){
-        console.log(turnos);
+        $modal.open({
+            controller: 'usersTableController',
+            templateUrl: 'partials/userstable.html'
+        }).result.then(function(user){
+            if(user)
+                alert(user);
+                $scope.study.Report = template.Template;
+        });
     };
   });

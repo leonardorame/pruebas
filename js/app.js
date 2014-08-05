@@ -5,6 +5,7 @@ angular.module('TIRApp', [
   'TIRApp.controllers.templates',
   'TIRApp.controllers.patient',
   'TIRApp.controllers.turno',
+  'TIRApp.controllers.users',
   'ngRoute',
   'ui.bootstrap'
 ], function($httpProvider) {

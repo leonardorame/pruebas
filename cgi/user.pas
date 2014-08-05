@@ -5,7 +5,8 @@ unit user;
 interface
 
 uses
-  Classes;
+  Classes,
+  Fgl;
 
 type
 
@@ -15,10 +16,16 @@ type
   private
     FIdProfessional: Integer;
     FIdUser: Integer;
+    FUserName: string;
+    FUserGroup: string;
   published
     property IdUser: Integer read FIdUser write FIdUser;
     property IdProfessional: Integer read FIdProfessional write FIdProfessional;
+    property UserName: string read FUserName write FUserName;
+    property UserGroup: string read FUserGroup write FUserGroup;
   end;
+
+  TUserList = class (specialize TFPGList<TUser>);
 
 implementation
 

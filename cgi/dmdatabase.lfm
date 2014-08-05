@@ -208,4 +208,46 @@ object datamodule1: Tdatamodule1
     left = 272
     top = 224
   end
+  object qryUsers: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'u.IdUser,'
+      'u.UserName,'
+      'ug.UserGroup'
+      'from users u'
+      'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
+    )
+    Params = <>
+    ParseSQL = False
+    left = 320
+    top = 32
+  end
+  object qryUser: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'u.IdUser,'
+      'u.UserName,'
+      'ug.UserGroup'
+      'from users u'
+      'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
+      'where u.iduser = :iduser'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'iduser'
+        ParamType = ptInput
+      end>
+    ParseSQL = False
+    left = 336
+    top = 112
+  end
 end

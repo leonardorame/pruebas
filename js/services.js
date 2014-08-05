@@ -21,6 +21,14 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getUsers = function(filter) {
+      return $http({
+        method: 'POST', 
+        data: filter,
+        url: '/cgi-bin/tir/users'
+      });
+    }
+
     TIRAPI.getPatients = function(filter) {
       return $http({
         method: 'POST', 
