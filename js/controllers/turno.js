@@ -269,7 +269,11 @@ angular.module('TIRApp.controllers.turno', []).
                         studies.push(turnos[i].IdStudy);
                 }
                 TIRAPIservice.assignStudiesToUser(studies, user);
-                $scope.fe
+                console.log($scope.filterCriteria.pageNumber);
+                $scope.fetchResult().then(function (){
+                        $scope.filterCriteria.pageNumber = 1;
+                    }
+                );
             }
         });
     };
