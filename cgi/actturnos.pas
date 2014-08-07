@@ -67,6 +67,8 @@ begin
       lWhere := lWhere + 'Upper(p.otherids) like ''' + UpperCase(lStudy.Patient_OtherIDs) + '%'' and ';
     if lStudy.ProcedureName <> '' then
       lWhere := lWhere + 'Upper(pr.procedure) like ''' + UpperCase(lStudy.ProcedureName) + '%'' and ';
+    if lStudy.UserName <> '' then
+      lWhere := lWhere + 'Upper(u.username) like ''' + UpperCase(lStudy.UserName) + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "
@@ -102,6 +104,8 @@ begin
       lStudy.Report_LastName := lSql.FieldByName('Report_LastName').AsString;
       lStudy.ProcedureName := lSql.FieldByName('Procedure').AsString;
       lStudy.IdProcedure := lSql.FieldByName('IdProcedure').AsInteger;
+      lStudy.UserName:= lSql.FieldByName('UserName').AsString;
+      lStudy.IdCurrentUser:= lSql.FieldByName('IdCurrentUser').AsInteger;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);
