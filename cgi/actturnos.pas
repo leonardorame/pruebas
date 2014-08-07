@@ -73,6 +73,7 @@ begin
       lWhere := Copy(lWhere, 1, Length(lWhere) - 4);
       lSql.SQL.Add('where ' + lWhere);
     end;
+    lSql.SQL.Add('order by StudyDate desc, IdStudy desc ');
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
     TBrookLogger.Service.Info(lSql.Sql.Text);

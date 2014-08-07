@@ -151,9 +151,15 @@ angular.module('TIRApp.controllers.turno', []).
             controller: 'usersTableController',
             templateUrl: 'partials/userstable.html'
         }).result.then(function(user){
-            if(user)
-                alert(user);
-                $scope.study.Report = template.Template;
+            if(user){
+                // traverse checked studies
+                var studies = [];
+                for (var i in turnos){
+                    if(turnos[i].checked)
+                        studies.push(turnos[i].IdStudy);
+                }
+                TIRAPIservice.assignStudiesToUser(studies, user);
+            }
         });
     };
   });

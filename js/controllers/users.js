@@ -80,6 +80,7 @@ angular.module('TIRApp.controllers.users', []).
     $scope.cancel = function(){
         $modalInstance.dismiss('cancel');
     };        
+
     $scope.go = function(user){
         TIRAPIservice.getUser(user.IdUser).success(
             function(data){

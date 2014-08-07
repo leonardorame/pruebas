@@ -126,5 +126,24 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getUser = function(iduser) {
+      return $http({
+        method: 'GET', 
+        url: '/cgi-bin/tir/users/' + iduser
+      });
+    }
+
+    TIRAPI.assignStudiesToUser = function(studies, user) {
+      var assignTo = {
+        "studies": studies,
+        "user": user
+      };
+      return $http({
+            method: 'POST',
+            data: JSON.stringify(assignTo), 
+            url: '/cgi-bin/tir/assignto',
+        });
+    }
+
     return TIRAPI;
   });

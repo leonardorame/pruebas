@@ -21,11 +21,42 @@ type
 
   TUsers = class(specialize TBaseGAction<TUser>)
   public
+    procedure Get; override;
     procedure Post; override;
   end;
 
+
 implementation
 
+procedure TUsers.Get;
+var
+  lUser: TUser;
+  lStreamer: TJSONStreamer;
+  lQuery: TSqlQuery;
+  lJson: TJSONObject;
+begin
+  lStreamer := TJSONStreamer.Create(nil);
+  lUser := TUser.Create;
+  try
+    try
+      lQuery := datamodule1.qryUser;
+      lQuery.ParamByName('IdUser').AsInteger := StrToInt(Variable['iduser']);
+      lQuery.Open;
+      lUser.IdUser := lQuery.FieldByName('IdUser').AsInteger;
+      lUser.IdProfessional := lQuery.FieldByName('IdProfessional').AsInteger;
+      lUser.UserName := lQuery.FieldByName('UserName').AsString;
+      lUser.UserGroup := lQuery.FieldByName('UserGroup').AsString;
+      lJson := lStreamer.ObjectToJSON(lUser);
+      Write(lJson.AsJSON);
+    finally
+      lJson.Free;
+      lUser.Free;
+    end;
+  except
+    on E: Exception do
+      write(E.message);
+  end;
+end;
 
 procedure TUsers.Post;
 var
@@ -107,5 +138,6 @@ end;
 
 initialization
   TUsers.Register('/users');
+  TUsers.Register('/users/:iduser');
 
 end.

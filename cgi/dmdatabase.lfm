@@ -232,8 +232,8 @@ object datamodule1: Tdatamodule1
     Transaction = SQLTransaction1
     SQL.Strings = (
       'select'
-      'count(*) over() as TotalRecords,'
       'u.IdUser,'
+      'u.IdProfessional,'
       'u.UserName,'
       'ug.UserGroup'
       'from users u'
