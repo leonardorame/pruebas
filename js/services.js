@@ -21,6 +21,14 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getStatuses = function(filter) {
+      return $http({
+        method: 'POST', 
+        data: filter,
+        url: '/cgi-bin/tir/statuses'
+      });
+    }
+
     TIRAPI.getUsers = function(filter) {
       return $http({
         method: 'POST', 
@@ -145,5 +153,16 @@ angular.module('TIRApp.services', [])
         });
     }
 
+    TIRAPI.changeStatus = function(studies, status) {
+      var assignTo = {
+        "studies": studies,
+        "status": status
+      };
+      return $http({
+            method: 'POST',
+            data: JSON.stringify(assignTo), 
+            url: '/cgi-bin/tir/assignto',
+        });
+    }
     return TIRAPI;
   });

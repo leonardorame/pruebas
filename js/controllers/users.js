@@ -192,8 +192,8 @@ angular.module('TIRApp.controllers.users', []).
     // simplemente selecciona la fila 
     // actual al hacer click
     $scope.selectUser = function(user){
-        console.log(user);
         $scope.user = user;
+        $scope.currentuser = user;
     };
 
     // abre el dialogo de edición de datos

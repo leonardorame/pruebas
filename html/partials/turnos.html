@@ -8,8 +8,12 @@
 <div ng-controller="turnosController">
   <!--h1>Found ({{itemCount}}) Items</h1-->
   <div class="toolbar">
-    <button ng-click="toTranscriptionist(turnos)">Asignar a Transcripcionista</button>
+    <button ng-click="toTranscriptionist(turnos)">Asignar a Usuario</button>
+    <button ng-click="changeStatus(turnos)">Cambiar Estado</button>
   </div>
+  <span ng-if="alert">
+    <div alert type="alert.type" close="closeAlert()">{{alert.msg}}</div>
+  </span>
   <table class="table table-striped table-hover table-condensed">
     <thead>
       <tr>

@@ -116,6 +116,7 @@ object datamodule1: Tdatamodule1
     Transaction = SQLTransaction1
     SQL.Strings = (
       'select'
+      ' count(*) over () as TotalRecords,'
       ' IdStatus,'
       ' Status'
       'from status'

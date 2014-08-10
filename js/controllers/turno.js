@@ -139,7 +139,7 @@ angular.module('TIRApp.controllers.turno', []).
   controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
-
+    $scope.alert = undefined;
     $scope.totalPages = 0;
     $scope.itemCount = 0;
     $scope.headers = [
@@ -256,7 +256,21 @@ angular.module('TIRApp.controllers.turno', []).
         $location.path(url);
     };
 
+    $scope.closeAlert = function(){
+      $scope.alert = undefined;
+    };
+
     $scope.toTranscriptionist = function(turnos){
+        var lChecked = false;
+        $scope.alert = undefined;
+        angular.forEach(turnos, function(turno){
+            lChecked = lChecked || turno.checked;
+        });
+        if(!lChecked) {
+            $scope.alert = {type: 'danger', msg: 'Debe seleccionar al menos un estudio.'};
+            return;
+        };
+
         $modal.open({
             controller: 'usersTableController',
             templateUrl: 'partials/userstable.html'
@@ -270,6 +284,37 @@ angular.module('TIRApp.controllers.turno', []).
                 }
                 TIRAPIservice.assignStudiesToUser(studies, user);
                 console.log($scope.filterCriteria.pageNumber);
+                $scope.fetchResult().then(function (){
+                        $scope.filterCriteria.pageNumber = 1;
+                    }
+                );
+            }
+        });
+    };
+
+    $scope.changeStatus = function(turnos){
+        var lChecked = false;
+        $scope.alert = undefined;
+        angular.forEach(turnos, function(turno){
+            lChecked = lChecked || turno.checked;
+        });
+        if(!lChecked) {
+            $scope.alert = {type: 'danger', msg: 'Debe seleccionar al menos un estudio.'};
+            return;
+        };
+
+        $modal.open({
+            controller: 'statusTableController',
+            templateUrl: 'partials/statustable.html'
+        }).result.then(function(turnos){
+            if(user){
+                // traverse checked studies
+                var studies = [];
+                for (var i in turnos){
+                    if(turnos[i].checked)
+                        studies.push(turnos[i].IdStudy);
+                }
+                TIRAPIservice.changeStatus(studies, status);
                 $scope.fetchResult().then(function (){
                         $scope.filterCriteria.pageNumber = 1;
                     }
