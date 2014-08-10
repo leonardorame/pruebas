@@ -76,12 +76,9 @@ angular.module('TIRApp.controllers.status', []).
     $scope.cancel = function(){
         $modalInstance.dismiss('cancel');
     };        
+
     $scope.go = function(status){
-        TIRAPIservice.getStatus(status.IdStatus).success(
-            function(data){
-                $scope.status = data;
-                $scope.currentstatus = data;
-            }
-        );
+            $scope.status = status;
+            $scope.currentstatus = status;
     };
 });

@@ -283,7 +283,6 @@ angular.module('TIRApp.controllers.turno', []).
                         studies.push(turnos[i].IdStudy);
                 }
                 TIRAPIservice.assignStudiesToUser(studies, user);
-                console.log($scope.filterCriteria.pageNumber);
                 $scope.fetchResult().then(function (){
                         $scope.filterCriteria.pageNumber = 1;
                     }
@@ -306,8 +305,8 @@ angular.module('TIRApp.controllers.turno', []).
         $modal.open({
             controller: 'statusTableController',
             templateUrl: 'partials/statustable.html'
-        }).result.then(function(turnos){
-            if(user){
+        }).result.then(function(status){
+            if(status){
                 // traverse checked studies
                 var studies = [];
                 for (var i in turnos){

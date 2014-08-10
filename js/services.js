@@ -154,15 +154,16 @@ angular.module('TIRApp.services', [])
     }
 
     TIRAPI.changeStatus = function(studies, status) {
-      var assignTo = {
+      var changestatus = {
         "studies": studies,
         "status": status
       };
       return $http({
             method: 'POST',
-            data: JSON.stringify(assignTo), 
-            url: '/cgi-bin/tir/assignto',
+            data: JSON.stringify(changestatus), 
+            url: '/cgi-bin/tir/changestatus',
         });
     }
+
     return TIRAPI;
   });

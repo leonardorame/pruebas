@@ -210,7 +210,6 @@ angular.module('TIRApp.controllers.users', []).
                     controller: 'userDialogController',
                     templateUrl: 'partials/userDialog.html'
                 }).result.then(function(user){
-                    console.log(user);
                 });
             }
         );

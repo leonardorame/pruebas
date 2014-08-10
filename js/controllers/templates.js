@@ -204,7 +204,6 @@ angular.module('TIRApp.controllers.templates', []).
                 found.Code = data.Code;
                 found.Name = data.Name;
             } else {
-                //console.log("not found");
             }
         }).
         error(function(data, status, headers, config){
