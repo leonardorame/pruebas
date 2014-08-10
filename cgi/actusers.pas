@@ -44,9 +44,11 @@ begin
       lQuery.Open;
       lUser.IdUser := lQuery.FieldByName('IdUser').AsInteger;
       lUser.IdProfessional := lQuery.FieldByName('IdProfessional').AsInteger;
+      lUser.IdUserGroup := lQuery.FieldByName('IdUserGroup').AsInteger;
       lUser.UserName := lQuery.FieldByName('UserName').AsString;
       lUser.UserGroup := lQuery.FieldByName('UserGroup').AsString;
       lJson := lStreamer.ObjectToJSON(lUser);
+      datamodule1.AddProfilesToJson(lJson);
       Write(lJson.AsJSON);
     finally
       lJson.Free;
@@ -109,6 +111,7 @@ begin
         lTotalRecords := lSql.FieldByName('TotalRecords').AsInteger;
         lUser.IdUser := lSql.FieldByName('IdUser').AsInteger;
         lUser.UserName := lSql.FieldByName('UserName').AsString;
+        lUser.IdUserGroup := lSql.FieldByName('IdUserGroup').AsInteger;
         lUser.UserGroup := lSql.FieldByName('UserGroup').AsString;
         lItem := lStreamer.ObjectToJSON(lUser);
         lArray.Add(lItem);

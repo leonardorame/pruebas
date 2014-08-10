@@ -2,8 +2,8 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 820
-  VerticalOffset = 320
+  HorizontalOffset = 696
+  VerticalOffset = 243
   Width = 410
   object PGConnection1: TPQConnection
     Connected = False
@@ -123,7 +123,7 @@ object datamodule1: Tdatamodule1
     Params = <>
     ParseSQL = False
     left = 48
-    top = 208
+    top = 184
   end
   object qryTemplates: TSQLQuery
     FieldDefs = <>
@@ -220,6 +220,7 @@ object datamodule1: Tdatamodule1
       'count(*) over() as TotalRecords,'
       'u.IdUser,'
       'u.UserName,'
+      'ug.IdUserGroup,'
       'ug.UserGroup'
       'from users u'
       'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
@@ -238,6 +239,7 @@ object datamodule1: Tdatamodule1
       'u.IdUser,'
       'u.IdProfessional,'
       'u.UserName,'
+      'ug.IdUserGroup,'
       'ug.UserGroup'
       'from users u'
       'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
@@ -252,5 +254,20 @@ object datamodule1: Tdatamodule1
     ParseSQL = False
     left = 336
     top = 112
+  end
+  object qryProfiles: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      ' IdUserGroup,'
+      ' UserGroup'
+      'from user_groups'
+    )
+    Params = <>
+    ParseSQL = False
+    left = 48
+    top = 248
   end
 end

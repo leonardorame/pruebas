@@ -1,7 +1,7 @@
 angular.module('TIRApp.controllers.users', []).
     
   controller('usersTableController', function($scope, $location, $modalInstance, TIRAPIservice) {
-    $scope.templates = [];
+    $scope.users = [];
 
     $scope.totalPages = 0;
     $scope.itemCount = 0;
@@ -105,6 +105,11 @@ angular.module('TIRApp.controllers.users', []).
         width: '50px;'
     },
     {
+        title: 'IdUserGroup',
+        value: 'IdUserGroup',
+        width: '50px;'
+    },
+    {
         title: 'Nombre',
         value: 'UserName'
     },
@@ -125,7 +130,7 @@ angular.module('TIRApp.controllers.users', []).
     };
     //The function that is responsible of fetching the result from the server and setting the grid to the new result
     $scope.fetchResult = function () {
-    return TIRAPIservice.getTemplates($scope.filterCriteria).
+    return TIRAPIservice.getUsers($scope.filterCriteria).
         then(function(response){
           // success handler
           $scope.users = response.data.data;
@@ -184,14 +189,42 @@ angular.module('TIRApp.controllers.users', []).
             });
     }
 
-    $scope.go = function(template){
+    // simplemente selecciona la fila 
+    // actual al hacer click
+    $scope.selectUser = function(user){
+        console.log(user);
+        $scope.user = user;
+    };
+
+    // abre el dialogo de edición de datos
+    // de usuario
+    $scope.go = function(user){
         TIRAPIservice.getUser(user.IdUser).success(
             function(data){
                 $scope.alert = undefined;
                 TIRAPIservice.user = data
                 $scope.currentuser = data;
-                $scope.user = TIRAPIservice.user;
+                $scope.user = data;
+                // se abre el dialogo
+                $modal.open({
+                    controller: 'userDialogController',
+                    templateUrl: 'partials/userDialog.html'
+                }).result.then(function(user){
+                    console.log(user);
+                });
             }
         );
     };
-});
+
+  }).
+
+  controller('userDialogController', function($filter, $scope, $location, TIRAPIservice, $modalInstance) {
+    $scope.user = TIRAPIservice.user;
+    $scope.ok = function(){
+        $modalInstance.close($scope.user);
+    };        
+
+    $scope.cancel = function(){
+        $modalInstance.dismiss('cancel');
+    };        
+  });

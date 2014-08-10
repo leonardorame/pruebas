@@ -17,6 +17,7 @@ type
 
   Tdatamodule1 = class(TDataModule)
     PGConnection1: TPQConnection;
+    qryProfiles: TSQLQuery;
     qryStudies: TSQLQuery;
     qryStatuses: TSQLQuery;
     qryPatients: TSQLQuery;
@@ -31,6 +32,7 @@ type
   private
   public
     procedure AddStatusesToJson(AJson: TJSONObject);
+    procedure AddProfilesToJson(AJson: TJSONObject);
     procedure AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
   end;
 
@@ -81,6 +83,25 @@ begin
   end;
   AJson.Add('Statuses', lArray);
   qryStatuses.Close;
+end;
+
+procedure Tdatamodule1.AddProfilesToJson(AJson: TJSONObject);
+var
+  lArray: TJSONArray;
+  lItem: TJSONObject;
+begin
+  lArray := TJSONArray.Create;
+  qryProfiles.Open;
+  while not qryProfiles.EOF do
+  begin
+    lItem := TJSONObject.Create;
+    lItem.Add('IdUserGroup', qryProfiles.FieldByName('IdUserGroup').AsInteger);
+    lItem.Add('UserGroup', qryProfiles.FieldByName('UserGroup').AsString);
+    lArray.Add(lItem);
+    qryProfiles.Next;
+  end;
+  AJson.Add('Profiles', lArray);
+  qryProfiles.Close;
 end;
 
 procedure Tdatamodule1.AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
