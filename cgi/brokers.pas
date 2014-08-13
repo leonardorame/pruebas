@@ -17,7 +17,14 @@ initialization
   //BrookSettings.Port := 1024;
   BrookSettings.LogActive := True;
   BrookSettings.LogFile := '/tmp/tir.log';
-  BrookSettings.DirectoryForUploads:= '/tmp';
+
+  // Nota: Aplicar estos permisos al directorio de upload
+  // de lo contrario Apache no podrá escribir allí.
+  // sudo mkdir /tmp/upload
+  // sudo chown www-data:www-data /tmp/upload
+  BrookSettings.KeepUploadedNames:= True;
+  BrookSettings.DeleteUploadedFiles:= False;
+  BrookSettings.DirectoryForUploads:= '/tmp/';
 
 
 end.
