@@ -75,13 +75,17 @@ create table informes_wl(
 create function onstatuschange() returns trigger as
 $$
 BEGIN
+  IF NEW.report IS NULL THEN
+    NEW.report = (select report from study where idstudy=NEW.idstudy);
+  END IF;
+
   IF NEW.idstatus = (select idstatus from status where status = 'Corregido') THEN
     insert into informes_wl(id_estudio, prestacioncod, fecha_informe, informe, mp_informante, modalidad) values
       (NEW.idstudy,
        (select codprocedure from studyprocedure sp 
          join procedure pr on sp.idprocedure=pr.idprocedure
          where sp.idstudy=NEW.idstudy limit 1)::integer,
-       NEW.studydate,
+       current_date,
        NEW.report,
        (select p.license from professional p where p.idprofessional = NEW.idprimaryinterpreterphysician),
        NEW.modality);
