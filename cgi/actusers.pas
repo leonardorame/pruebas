@@ -91,8 +91,10 @@ begin
 
     if HttpRequest.ContentFields.Values['IdUser'] <> '' then
       lWhere := lWhere + 'IdUser=' + IntToStr(lUser.IdUser) + ' and ';
-    if HttpRequest.ContentFields.Values['Name'] <> '' then
-      lWhere := lWhere + 'Upper(Name) like ''' + UpperCase(lUser.UserName) + '%'' and ';
+    if HttpRequest.ContentFields.Values['UserName'] <> '' then
+      lWhere := lWhere + 'Upper(UserName) like ''' + UpperCase(lUser.UserName) + '%'' and ';
+    if HttpRequest.ContentFields.Values['UserGroup'] <> '' then
+      lWhere := lWhere + 'Upper(UserGroup) like ''' + UpperCase(lUser.UserGroup) + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "

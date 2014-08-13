@@ -42,7 +42,6 @@ angular.module('TIRApp.controllers.turno', []).
             
       $scope.initAudio = function(){
           Recorder.initialize({
-            workerPath: "../js/recorderWorker.js",
             swfSrc: "../swf/recorder.swf"
           });
       }
@@ -50,10 +49,8 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
         Recorder.upload({
-          url: "/cgi-bin/tir/audio",
-          params: {
-            "FileName": fileName
-          },
+          url: "/cgi-bin/tir/audio/" + fileName,
+          audioParam: "your_file",
           success: function(){
             alert("your file was uploaded!");
           }

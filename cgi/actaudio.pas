@@ -2,6 +2,7 @@ unit actaudio;
 
 {$mode objfpc}{$H+}
 
+
 interface
 
 uses
@@ -19,10 +20,19 @@ implementation
 
 procedure TActAudio.Post;
 begin
-  Write('--->' + Files.FileByName('name').FileName);
+  try
+  write(BrookSettings.DirectoryForUploads);
+  write(IntToStr(Files.Count));
+
+  except
+    on E: Exception do
+      write(E.message);
+  end;
+  exit;
+  Write('--->' + Files.FileByName('Filename').FileName);
 end;
 
 initialization
-  TActAudio.Register('/audio/:file');
+  TActAudio.Register('/audio/:filename');
 
 end.
