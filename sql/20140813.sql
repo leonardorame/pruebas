@@ -86,7 +86,7 @@ BEGIN
          join procedure pr on sp.idprocedure=pr.idprocedure
          where sp.idstudy=NEW.idstudy limit 1)::integer,
        current_date,
-       NEW.report,
+       extract_contents_from_html(NEW.report),
        (select p.license from professional p where p.idprofessional = NEW.idprimaryinterpreterphysician),
        NEW.modality);
   END IF;
