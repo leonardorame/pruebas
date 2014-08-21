@@ -1,3 +1,0 @@
-/*
- *  TODO:Insert proper header.
- */
