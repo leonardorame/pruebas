@@ -35,9 +35,7 @@ begin
     on E: Exception do
       write(E.message); // here I get: Unable to create file "/tmp/test.tmp"
   end;}
-  write(IntToStr(Files.Count));
-  exit;
-  Write('--->' + Files.FileByName('Filename').FileName);
+  Write('--->' + IntToStr(Files.Count));
 end;
 
 initialization

@@ -5,7 +5,7 @@ program tir;
 uses
   pthreads, BrookApplication, BrookUtils, Brokers, countries, baseaction,
   dmdatabase, session, actLogin, actturno, actturnos, actprint, actuserdata,
-  study, acttemplates, template, acttemplate, actpatients, patient, user, 
+  study, acttemplates, template, acttemplate, actpatients, patient, user,
   actaudio, actusers, actassignto, actstatuses, status, actchangestatus;
 
 begin

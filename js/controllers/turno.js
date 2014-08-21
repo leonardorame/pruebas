@@ -41,19 +41,19 @@ angular.module('TIRApp.controllers.turno', []).
       };
             
       $scope.initAudio = function(){
-          Recorder.initialize({
-            swfSrc: "../swf/recorder.swf"
-          });
+        Wami.setup("wami");
       }
 
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
-        Recorder.upload({
+        var aData = null;
+
+        /*Recorder.upload({
           url: "/cgi-bin/tir/audio/" + fileName,
           success: function(){
             alert("your file was uploaded!");
           }
-        });
+        });*/
       }
 
       $scope.openViewer = function() {
@@ -61,31 +61,22 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.startRecording = function(){
-        Recorder.record({
-          start: function(){
-            //alert("recording starts now. press stop when youre done. and then play or upload if you want.");
-          },
-          progress: function(milliseconds){
-            document.getElementById("time").innerHTML = timecode(milliseconds);
-          }
-        });
+        console.log("startRecording");
+        Wami.startRecording('/tir/audio/1.wav');
       }
 
       $scope.pauseRecording = function() {
-        Recorder.stop();
+        Wami.stopRecording();
+        Wami.stopPlaying(); 
       }
 
       $scope.stopRecording = function() {
-        Recorder.stop();
+        Wami.stopRecording();
+        Wami.stopPlaying(); 
       }
 
       $scope.play = function() {
-        Recorder.stop();
-        Recorder.play({
-            progress: function(miliseconds){
-                document.getElementById("time").innerHTML = timecode(miliseconds);
-            }
-        });
+        Wami.startPlaying("/cgi-bin/tir/audio/1.wav");
       }
 
       $scope.selectTemplate = function(){
