@@ -44,7 +44,6 @@
       <Unit0>
         <Filename Value="tir.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="1"/>
         <TopLine Value="1"/>
@@ -67,8 +66,8 @@
         <UnitName Value="Brokers"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1"/>
-        <CursorPos X="11" Y="7"/>
+        <TopLine Value="10"/>
+        <CursorPos X="5" Y="9"/>
         <UsageCount Value="220"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -114,8 +113,8 @@
         <UnitName Value="BrookAction"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="21"/>
-        <CursorPos X="15" Y="225"/>
+        <TopLine Value="59"/>
+        <CursorPos X="3" Y="32"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
       </Unit7>
@@ -226,10 +225,11 @@
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actaudio"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="25"/>
-        <CursorPos X="1" Y="38"/>
+        <TopLine Value="21"/>
+        <CursorPos X="48" Y="29"/>
         <UsageCount Value="133"/>
         <Loaded Value="True"/>
       </Unit20>
@@ -372,11 +372,15 @@
         <UsageCount Value="19"/>
       </Unit36>
     </Units>
-    <JumpHistory Count="1" HistoryIndex="0">
+    <JumpHistory Count="2" HistoryIndex="1">
       <Position1>
         <Filename Value="tir.lpr"/>
         <Caret Line="9" Column="73" TopLine="1"/>
       </Position1>
+      <Position2>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="29" Column="46" TopLine="6"/>
+      </Position2>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
@@ -398,7 +402,7 @@
     </Other>
   </CompilerOptions>
   <Debugging>
-    <BreakPoints Count="4">
+    <BreakPoints Count="2">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
@@ -413,20 +417,6 @@
         <Source Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
         <Line Value="1113"/>
       </Item2>
-      <Item3>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="actaudio.pas"/>
-        <Line Value="38"/>
-      </Item3>
-      <Item4>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="actaudio.pas"/>
-        <Line Value="38"/>
-      </Item4>
     </BreakPoints>
     <Exceptions Count="3">
       <Item1>

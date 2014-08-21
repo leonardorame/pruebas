@@ -61,8 +61,8 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.startRecording = function(){
-        console.log("startRecording");
-        Wami.startRecording('/tir/audio/1.wav');
+        var fileName = $scope.study.IdStudy + '.wav';
+        Wami.startRecording('/cgi-bin/tir/audio/' +  fileName);
       }
 
       $scope.pauseRecording = function() {
@@ -76,7 +76,8 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.play = function() {
-        Wami.startPlaying("/cgi-bin/tir/audio/1.wav");
+        var fileName = $scope.study.IdStudy + '.wav';
+        Wami.stopPlaying('/cgi-bin/tir/audio/' +  fileName);
       }
 
       $scope.selectTemplate = function(){

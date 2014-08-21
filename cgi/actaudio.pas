@@ -19,23 +19,18 @@ type
 implementation
 
 procedure TActAudio.Post;
-Var
-  D : String;
-  F : TFileStream;
+var
+  lWav: TMemoryStream;
 begin
-  {try
-  F:=TFileStream.Create(BrookSettings.DirectoryForUploads + 'test2.tmp',fmCreate);
-  Try
-    D:='aaa';
-    F.Write(D[1],Length(D));
+  Write(IntToStr(HttpRequest.ContentLength));
+  lWav := TMemoryStream.Create;
+  try
+    lWav.WriteAnsiString(HttpRequest.Content);
+    lWav.Position:= 0;
+    lWav.SaveToFile('/tmp/' + Variable['filename']);
   finally
-    F.Free;
+    lWav.Free;
   end;
-  except
-    on E: Exception do
-      write(E.message); // here I get: Unable to create file "/tmp/test.tmp"
-  end;}
-  Write('--->' + IntToStr(Files.Count));
 end;
 
 initialization
