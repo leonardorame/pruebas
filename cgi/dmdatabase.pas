@@ -31,6 +31,8 @@ type
     procedure DataModuleCreate(Sender: TObject);
   private
   public
+    function LoadWav(AWav: TMemoryStream; AStudyId: Integer): Boolean;
+    procedure SaveWav(AWav: TMemoryStream; AStudyId: Integer);
     procedure AddStatusesToJson(AJson: TJSONObject);
     procedure AddProfilesToJson(AJson: TJSONObject);
     procedure AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
@@ -63,6 +65,47 @@ begin
   except
     on E: Exception do
       TBrookLogger.Service.Info(E.Message);
+  end;
+end;
+
+procedure Tdatamodule1.SaveWav(AWav: TMemoryStream; AStudyId: Integer);
+var
+  lQry: TSQLQuery;
+begin
+  lQry := TSQLQuery.Create(nil);
+  try
+    lQry.DataBase := PGConnection1;
+    lQry.SQL.Text:= 'select savewav(:WAV, :StudyId)';
+    lQry.ParamByName('WAV').LoadFromStream(AWav, ftBlob);
+    lQry.ParamByName('StudyId').AsInteger := AStudyId;
+    SQLTransaction1.StartTransaction;
+    lQry.ExecSQL;
+    SQLTransaction1.Commit;
+    AWav.Position:= 0;
+  finally
+    lQry.Free;
+  end;
+end;
+
+function Tdatamodule1.LoadWav(AWav: TMemoryStream; AStudyId: Integer): Boolean;
+var
+  lQry: TSQLQuery;
+begin
+  Result := False;
+  lQry := TSQLQuery.Create(nil);
+  try
+    lQry.DataBase := PGConnection1;
+    lQry.SQL.Text:= 'select wav from studywav where idstudy = :idstudy';
+    lQry.ParamByName('idstudy').AsInteger := AStudyId;
+    lQry.Open;
+    if not lQry.EOF then
+    begin
+      (lQry.FieldByName('wav') as TBlobField).SaveToStream(AWav);
+      AWav.Position:= 0;
+      Result := True;
+    end;
+  finally
+    lQry.Free;
   end;
 end;
 
