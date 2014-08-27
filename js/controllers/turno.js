@@ -41,19 +41,22 @@ angular.module('TIRApp.controllers.turno', []).
       };
             
       $scope.initAudio = function(){
-        Wami.setup("wami");
+        Recorder.initialize({
+            swfSrc: "../swf/recorder.swf"
+        });
+        //Wami.setup("wami");
       }
 
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
         var aData = null;
 
-        /*Recorder.upload({
+        Recorder.upload({
           url: "/cgi-bin/tir/audio/" + fileName,
           success: function(){
             alert("your file was uploaded!");
           }
-        });*/
+        });
       }
 
       $scope.openViewer = function() {
@@ -62,24 +65,39 @@ angular.module('TIRApp.controllers.turno', []).
 
       $scope.startRecording = function(){
         var fileName = $scope.study.IdStudy + '.wav';
+        Recorder.record({
+            start: function(){
+            },
+            progress: function(milliseconds){
+                document.getElementById("time").innerHTML = timecode(milliseconds);
+            }
+        });
         //Wami.startRecording('/test.php/audio1.wav');
         //Wami.startRecording('/cgi-bin/cgiproject1/TFPWebAction0');
-        Wami.startRecording('/cgi-bin/tir/audio/' +  fileName);
+        //Wami.startRecording('/cgi-bin/tir/audio/' +  fileName);
       }
 
       $scope.pauseRecording = function() {
-        Wami.stopRecording();
-        Wami.stopPlaying(); 
+        //Wami.stopRecording();
+        //Wami.stopPlaying(); 
+        Recorder.stop();
       }
 
       $scope.stopRecording = function() {
-        Wami.stopRecording();
-        Wami.stopPlaying(); 
+        //Wami.stopRecording();
+        //Wami.stopPlaying(); 
+        Recorder.stop();
       }
 
       $scope.play = function() {
         var fileName = $scope.study.IdStudy + '.wav';
-        Wami.startPlaying('/cgi-bin/tir/audio/' +  fileName);
+        Recorder.stop();
+        Recorder.play({
+            progress: function(milliseconds){
+                document.getElementById("time").innerHTML = timecode(milliseconds);
+            }
+        });
+        //Wami.startPlaying('/cgi-bin/tir/audio/' +  fileName);
       }
 
       $scope.selectTemplate = function(){
