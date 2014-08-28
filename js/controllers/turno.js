@@ -5,12 +5,16 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.study = TIRAPIservice.study;
       $scope.userName = TIRAPIservice.user.fullname;
       $scope.alert = undefined;
+      $scope.mySound = null;
+      $scope.progressValue = 0;
+      $scope.progressMax = 100;
 
       function timecode(ms) {
         var hms = {
           h: Math.floor(ms/(60*60*1000)),
           m: Math.floor((ms/60000) % 60),
-          s: Math.floor((ms/1000) % 60)
+          s: Math.floor((ms/1000) % 60),
+          ms: Math.floor((ms%1000)/100)
         };
         var tc = []; // Timecode array to be joined with '.'
 
@@ -20,6 +24,7 @@ angular.module('TIRApp.controllers.turno', []).
 
         tc.push((hms.m < 10 && hms.h > 0 ? "0" + hms.m : hms.m));
         tc.push((hms.s < 10 ? "0" + hms.s : hms.s));
+        tc.push(hms.ms);
 
         return tc.join(':');
       }
@@ -41,10 +46,20 @@ angular.module('TIRApp.controllers.turno', []).
       };
             
       $scope.initAudio = function(){
-        Recorder.initialize({
-            swfSrc: "../swf/recorder.swf"
+        soundManager.setup({
+            url: '../swf/',
+            onready: function(){
+                var fileName = $scope.study.IdStudy + '.wav';
+                $scope.mySound = soundManager.createSound({
+                    url: '/cgi-bin/tir/audio/' + fileName
+                });
+                $scope.mySound.load({
+                    onload: function(success){
+                        $scope.progressMax = Math.floor($scope.mySound.duration);
+                    }
+                });
+            }
         });
-        //Wami.setup("wami");
       }
 
       $scope.saveAudio = function(){
@@ -77,27 +92,24 @@ angular.module('TIRApp.controllers.turno', []).
         //Wami.startRecording('/cgi-bin/tir/audio/' +  fileName);
       }
 
-      $scope.pauseRecording = function() {
-        //Wami.stopRecording();
-        //Wami.stopPlaying(); 
-        Recorder.stop();
+      $scope.pause = function() {
+        $scope.mySound.pause();
       }
 
-      $scope.stopRecording = function() {
+      $scope.stop = function() {
         //Wami.stopRecording();
         //Wami.stopPlaying(); 
-        Recorder.stop();
+        //Recorder.stop();
+        $scope.mySound.stop();
       }
 
       $scope.play = function() {
-        var fileName = $scope.study.IdStudy + '.wav';
-        Recorder.stop();
-        Recorder.play({
-            progress: function(milliseconds){
-                document.getElementById("time").innerHTML = timecode(milliseconds);
+        $scope.mySound.play({
+            multiShot: false,
+            whileplaying: function() {
+                $scope.progressValue = Math.floor(this.position);
             }
         });
-        //Wami.startPlaying('/cgi-bin/tir/audio/' +  fileName);
       }
 
       $scope.selectTemplate = function(){
@@ -264,6 +276,9 @@ angular.module('TIRApp.controllers.turno', []).
         $location.path(url);
     };
 
+    $scope.select = function(study){
+        $scope.currentstudy = study;
+    };
     $scope.closeAlert = function(){
       $scope.alert = undefined;
     };
