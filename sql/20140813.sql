@@ -72,14 +72,14 @@ create table informes_wl(
   enviado boolean,
   primary key(id_estudio));
 
-create function onstatuschange() returns trigger as
+create or replace function onstatuschange() returns trigger as
 $$
 BEGIN
   IF NEW.report IS NULL THEN
     NEW.report = (select report from study where idstudy=NEW.idstudy);
   END IF;
 
-  IF NEW.idstatus = (select idstatus from status where status = 'Corregido') THEN
+  IF NEW.idstatus = (select idstatus from status where status = 'Revisado') THEN
     insert into informes_wl(id_estudio, prestacioncod, fecha_informe, informe, mp_informante, modalidad) values
       (NEW.idstudy,
        (select codprocedure from studyprocedure sp 
@@ -94,5 +94,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+drop trigger tr_statuschange on study;
 create trigger tr_statuschange after update on study 
   for each row execute procedure onstatuschange();
