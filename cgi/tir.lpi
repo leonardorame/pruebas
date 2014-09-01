@@ -106,7 +106,6 @@
       </Unit6>
       <Unit7>
         <Filename Value="../../brookframework/core/brookaction.pas"/>
-        <UnitName Value="BrookAction"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="503"/>
@@ -466,6 +465,7 @@
     </SearchPaths>
     <Linking>
       <Debugging>
+        <GenerateDebugInfo Value="False"/>
         <StripSymbols Value="True"/>
       </Debugging>
     </Linking>
