@@ -135,18 +135,12 @@
             </div>
           </div>
         </div>
-        <div tab select="initAudio()">
-          <tab-heading>
-            Audio
-          </tab-heading>
-          
+        <div tab heading="Audio" select="initAudio()">
           <div class="study-table" id="audioRecorder">
-            <a href="" ng-click="startRecording()">Record</a>
-            <a href="" ng-click="stopRecording()">Stop</a>
-            <a href="" ng-click="play()">Play</a><br>
-            <span id="time">0:00</span><br>
-            <a href="" ng-click="saveAudio()">Save</a>
-            <div id="wami"></div>
+            <a href="" ng-click="play()">Play</a>&nbsp;
+            <a href="" ng-click="pause()">Pause</a>&nbsp;
+            <a href="" ng-click="stop()">Stop</a><br>
+            <!--div id="wami"></div-->
           </div>
         </div>
       </ul>

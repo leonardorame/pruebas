@@ -30,7 +30,7 @@
         <input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
       </td>
     </tr>
-    <tr ng-repeat="turno in turnos" ng-dblclick="go(turno)">
+    <tr ng-repeat="turno in turnos" ng-dblclick="go(turno)"  ng-click="select(turno)" ng-class="{selected: turno.IdStudy == currentstudy.IdStudy}">
       <td><input type=checkbox ng-model="turno['checked']" name="turno[{{turno.IdStudy}}]" />
       </td>
       <td ng-repeat="header in headers" align="{{header.align}}" width="{{header.width}}">

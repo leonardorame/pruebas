@@ -93,7 +93,7 @@ angular.module('TIRApp.controllers.patient', []).
                 $scope.alert = undefined;
                 TIRAPIservice.patient = data
                 $scope.currentpatient = data;
-                $scope.patien = TIRAPIservice.patient;
+                $scope.patient = TIRAPIservice.patient;
             }
         );
     };
