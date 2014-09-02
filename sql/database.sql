@@ -41,7 +41,7 @@ create table study(
   IdSecondaryInterpreterPhysician Integer references professional(IdProfessional),
   IdStatus Integer not null references status(IdStatus),
   AccessionNumber varchar(16),
-  StudyDate date not null,
+  StudyDate timestamp without time zone not null,
   Report text,
   primary key(IdStudy)
 );

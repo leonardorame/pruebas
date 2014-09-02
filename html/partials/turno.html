@@ -137,10 +137,15 @@
         </div>
         <div tab heading="Audio" select="initAudio()">
           <div class="study-table" id="audioRecorder">
-            <a href="" ng-click="play()">Play</a>&nbsp;
-            <a href="" ng-click="pause()">Pause</a>&nbsp;
-            <a href="" ng-click="stop()">Stop</a><br>
-            <!--div id="wami"></div-->
+            <div class="btn-group">
+              <button class="btn btn-primary" ng-click="begin()" ng-model="radioModel" btn-radio="'begin'"><span class="glyphicon glyphicon-step-backward"></span><br>Principio</button>
+              <button class="btn btn-primary" ng-click="rew()" ng-model="radioModel" btn-radio="'rw'"><span class="glyphicon glyphicon-backward"></span><br>Retroceder</button>
+              <button class="btn btn-primary" ng-click="play()" ng-model="radioModel" btn-radio="'play'"><span class="glyphicon glyphicon-play"></span><br>Reproducir</button>
+              <button class="btn btn-primary" ng-click="pause()" ng-model="radioModel" btn-radio="'pause'"><span class="glyphicon glyphicon-pause"></span><br>Pausa</button>
+              <button class="btn btn-primary" ng-click="ff()" ng-model="radioModel" btn-radio="'ff'"><span class="glyphicon glyphicon-forward"></span><br>Avanzar</button>
+              <button class="btn btn-primary" ng-click="end()" ng-model="radioModel" btn-radio="'end'"><span class="glyphicon glyphicon-step-forward"></span><br>Fin</button>
+              &nbsp;<span id="time" style="font-size:30px">00:00.00</span>
+            </div>
           </div>
         </div>
       </ul>

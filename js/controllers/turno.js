@@ -87,9 +87,30 @@ angular.module('TIRApp.controllers.turno', []).
                 document.getElementById("time").innerHTML = timecode(milliseconds);
             }
         });
-        //Wami.startRecording('/test.php/audio1.wav');
-        //Wami.startRecording('/cgi-bin/cgiproject1/TFPWebAction0');
-        //Wami.startRecording('/cgi-bin/tir/audio/' +  fileName);
+      }
+
+      $scope.begin = function() {
+        $scope.mySound.pause();
+        $scope.mySound.setPosition(0);
+        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+      }
+
+      $scope.end = function() {
+        $scope.mySound.pause();
+        $scope.mySound.setPosition($scope.mySound.duration);
+        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+      }
+
+      $scope.rew = function() {
+        $scope.mySound.setPosition($scope.mySound.position - 1000);
+        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+      }
+
+      $scope.ff = function() {
+        if($scope.mySound.position + 500 < $scope.mySound.duration) {
+            $scope.mySound.setPosition($scope.mySound.position + 1000);
+            document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+        }
       }
 
       $scope.pause = function() {
@@ -97,17 +118,14 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.stop = function() {
-        //Wami.stopRecording();
-        //Wami.stopPlaying(); 
-        //Recorder.stop();
-        $scope.mySound.stop();
+        $scope.mySound.pause();
       }
 
       $scope.play = function() {
         $scope.mySound.play({
             multiShot: false,
             whileplaying: function() {
-                $scope.progressValue = Math.floor(this.position);
+                document.getElementById("time").innerHTML = timecode($scope.mySound.position);
             }
         });
       }
