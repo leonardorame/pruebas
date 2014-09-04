@@ -60,11 +60,10 @@
         <Filename Value="brokers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Brokers"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="5" Y="9"/>
         <UsageCount Value="220"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="../../fpc/packages/fcl-json/src/fpjson.pp"/>
@@ -88,7 +87,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="89"/>
         <CursorPos X="30" Y="99"/>
@@ -130,10 +129,10 @@
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="38"/>
-        <CursorPos X="19" Y="39"/>
+        <TopLine Value="34"/>
+        <CursorPos X="7" Y="39"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
       </Unit10>
@@ -181,9 +180,9 @@
         <Filename Value="acttemplates.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplates"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="29"/>
+        <TopLine Value="14"/>
         <CursorPos Y="110"/>
         <UsageCount Value="288"/>
         <Loaded Value="True"/>
@@ -192,9 +191,9 @@
         <Filename Value="template.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="template"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="14"/>
+        <TopLine Value="7"/>
         <CursorPos X="3" Y="27"/>
         <UsageCount Value="261"/>
         <Loaded Value="True"/>
@@ -203,10 +202,11 @@
         <Filename Value="acttemplate.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="acttemplate"/>
-        <EditorIndex Value="7"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="74"/>
-        <CursorPos Y="119"/>
+        <TopLine Value="80"/>
+        <CursorPos X="53" Y="88"/>
         <UsageCount Value="260"/>
         <Loaded Value="True"/>
       </Unit18>
@@ -222,13 +222,11 @@
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actaudio"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="53"/>
-        <CursorPos X="35" Y="60"/>
+        <TopLine Value="50"/>
+        <CursorPos X="20" Y="62"/>
         <UsageCount Value="240"/>
-        <Loaded Value="True"/>
       </Unit20>
       <Unit21>
         <Filename Value="../../fpc/packages/fcl-web/src/base/httpdefs.pp"/>
@@ -303,22 +301,20 @@
       <Unit31>
         <Filename Value="../../brookframework/brokers/brookfclcgibroker.pas"/>
         <UnitName Value="BrookFCLCGIBroker"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="15" Y="59"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
       </Unit31>
       <Unit32>
         <Filename Value="../../fpc/packages/fcl-web/src/base/custcgi.pp"/>
         <UnitName Value="custcgi"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="38"/>
+        <TopLine Value="37"/>
         <CursorPos X="15" Y="41"/>
         <UsageCount Value="23"/>
-        <Loaded Value="True"/>
       </Unit32>
       <Unit33>
         <Filename Value="../../brookframework/core/brookclasses.pas"/>
@@ -343,115 +339,47 @@
         <UsageCount Value="23"/>
       </Unit35>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="10" HistoryIndex="9">
       <Position1>
         <Filename Value="tir.lpr"/>
         <Caret Line="9" Column="73"/>
       </Position1>
       <Position2>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="29" Column="48" TopLine="21"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="34" Column="62" TopLine="27"/>
       </Position2>
       <Position3>
         <Filename Value="dmdatabase.pas"/>
-        <Caret Line="34" Column="62" TopLine="27"/>
+        <Caret Line="78" Column="36" TopLine="69"/>
       </Position3>
       <Position4>
         <Filename Value="dmdatabase.pas"/>
-        <Caret Line="78" Column="36" TopLine="69"/>
+        <Caret Line="70" Column="63" TopLine="69"/>
       </Position4>
       <Position5>
         <Filename Value="dmdatabase.pas"/>
-        <Caret Line="70" Column="63" TopLine="69"/>
+        <Caret Line="80" Column="17" TopLine="69"/>
       </Position5>
       <Position6>
         <Filename Value="dmdatabase.pas"/>
-        <Caret Line="80" Column="17" TopLine="69"/>
+        <Caret Line="78" Column="5" TopLine="69"/>
       </Position6>
       <Position7>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="34" Column="70" TopLine="19"/>
-      </Position7>
-      <Position8>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="25" Column="20" TopLine="25"/>
-      </Position8>
-      <Position9>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="34" Column="16" TopLine="25"/>
-      </Position9>
-      <Position10>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="32" Column="22" TopLine="24"/>
-      </Position10>
-      <Position11>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="33" Column="54" TopLine="22"/>
-      </Position11>
-      <Position12>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="78" Column="5" TopLine="69"/>
-      </Position12>
-      <Position13>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="37" Column="22" TopLine="22"/>
-      </Position13>
-      <Position14>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="30" Column="17" TopLine="21"/>
-      </Position14>
-      <Position15>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="17" Column="15" TopLine="8"/>
-      </Position15>
-      <Position16>
-        <Filename Value="brokers.pas"/>
-        <Caret Line="9" Column="5"/>
-      </Position16>
-      <Position17>
-        <Filename Value="../../brookframework/brokers/brookfclcgibroker.pas"/>
-        <Caret Line="59" Column="15" TopLine="50"/>
-      </Position17>
-      <Position18>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="31" Column="5" TopLine="17"/>
-      </Position18>
-      <Position19>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="32" Column="10" TopLine="17"/>
-      </Position19>
-      <Position20>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="32" Column="32" TopLine="17"/>
-      </Position20>
-      <Position21>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="21" Column="18" TopLine="8"/>
-      </Position21>
-      <Position22>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="58" Column="5" TopLine="50"/>
-      </Position22>
-      <Position23>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="41" Column="3" TopLine="32"/>
-      </Position23>
-      <Position24>
+      </Position7>
+      <Position8>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="35" Column="19" TopLine="25"/>
-      </Position24>
-      <Position25>
+      </Position8>
+      <Position9>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="100" Column="13" TopLine="89"/>
-      </Position25>
-      <Position26>
+      </Position9>
+      <Position10>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="34" TopLine="27"/>
-      </Position26>
-      <Position27>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="60" Column="35" TopLine="53"/>
-      </Position27>
+      </Position10>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

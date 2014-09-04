@@ -184,12 +184,18 @@ angular.module('TIRApp.controllers.templates', []).
     }
 
     $scope.go = function(template){
+        $scope.alert = {type: 'success', msg: 'Cargando plantilla. Id: ' + template.IdTemplate};
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
-                $scope.alert = undefined;
+                $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' cargada exitosamente.'};
                 TIRAPIservice.template = data
                 $scope.currenttpl = data;
                 $scope.template = TIRAPIservice.template;
+            }
+        ).error(
+            function(data, status, headers, config){
+                alert(data);
+                alert(status);
             }
         );
     };

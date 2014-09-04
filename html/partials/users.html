@@ -22,6 +22,7 @@
       </td>
     <tr ng-repeat="user in users" ng-click="selectUser(user)" ng-dblclick="go(user)" ng-class="{selected: user.IdUser == currentuser.IdUser}">
       <td>{{user.IdUser}}</td>
+      <td>{{user.IdUserGroup}}</td>
       <td>{{user.UserName}}</td>
       <td>{{user.UserGroup}}</td>
     </tr>
