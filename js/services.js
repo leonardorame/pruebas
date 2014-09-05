@@ -109,14 +109,14 @@ angular.module('TIRApp.services', [])
     TIRAPI.getStudy = function(idstudy) {
       return $http({
         method: 'GET', 
-        url: '/cgi-bin/tir/study?IdStudy=' + idstudy
+        url: '/cgi-bin/tir/study?rnd=' + new Date().getTime() + '&IdStudy=' + idstudy
       });
     }
 
     TIRAPI.getTemplate = function(idtemplate) {
       return $http({
         method: 'GET', 
-        url: '/cgi-bin/tir/template?IdTemplate=' + idtemplate
+        url: '/cgi-bin/tir/template?rnd=' + new Date().getTime() + '&IdTemplate=' + idtemplate
       });
     }
 
@@ -130,7 +130,7 @@ angular.module('TIRApp.services', [])
     TIRAPI.getPatient = function(idpatient) {
       return $http({
         method: 'GET', 
-        url: '/cgi-bin/tir/patient?IdPatient=' + idpatient
+        url: '/cgi-bin/tir/patient?rnd=' + new Date().getTime() + '&IdPatient=' + idpatient
       });
     }
 

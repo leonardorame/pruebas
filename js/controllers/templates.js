@@ -188,9 +188,9 @@ angular.module('TIRApp.controllers.templates', []).
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
                 $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' cargada exitosamente.'};
-                TIRAPIservice.template = data
+                TIRAPIservice.template = data;
                 $scope.currenttpl = data;
-                $scope.template = TIRAPIservice.template;
+                $scope.template = data;
             }
         ).error(
             function(data, status, headers, config){
@@ -204,7 +204,7 @@ angular.module('TIRApp.controllers.templates', []).
 
       TIRAPIservice.saveTemplate(document).
         success(function(data, status, headers, config){
-            $scope.alert = {type: 'success', msg: 'Plantilla guardada exitosamente!'};
+            $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' guardada exitosamente!'};
             var found = $filter('filter')($scope.templates, {IdTemplate: data.IdTemplate})[0];
             if (found) {
                 found.Code = data.Code;
