@@ -18,6 +18,7 @@ type
     FIdProcedure: Integer;
     FIdStatus: Integer;
     FIdStudy: Integer;
+    FIdStudyProcedure: Integer;
     FPatient_BirthDate: string;
     FPatient_FirstName: string;
     FPatient_IdPatient: Integer;
@@ -28,6 +29,7 @@ type
     FPerform_IdProfessional: Integer;
     FPerform_LastName: string;
     FProcedure: string;
+    FQty: Integer;
     FReport: string;
     FReport_FirstName: string;
     FReport_IdProfessonal: Integer;
@@ -57,7 +59,9 @@ type
     property ProcedureName: string read FProcedure write FProcedure;
     property IdProcedure: Integer read FIdProcedure write FIdProcedure;
     property IdCurrentUser: Integer read FIdCurrentUser write FIdCurrentUser;
+    property Qty: Integer read FQty write FQty;
     property UserName: string read FUserName write FUserName;
+    property IdStudyProcedure: Integer read FIdStudyProcedure write FIdStudyProcedure;
   end;
 
   TStudyList = class (specialize TFPGList<TStudy>);

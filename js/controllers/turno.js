@@ -49,7 +49,7 @@ angular.module('TIRApp.controllers.turno', []).
         soundManager.setup({
             url: '../swf/',
             onready: function(){
-                var fileName = $scope.study.IdStudy + '.wav';
+                var fileName = $scope.study.IdStudyProcedure + '.wav';
                 $scope.mySound = soundManager.createSound({
                     url: '/cgi-bin/tir/audio/' + fileName
                 });
@@ -188,14 +188,8 @@ angular.module('TIRApp.controllers.turno', []).
         align: 'right'
       },
       {
-        title: 'Apellido',
+        title: 'Paciente',
         value: 'Patient_LastName',
-        width: '200px;',
-        align: 'left'
-      },
-      {
-        title: 'Nombre',
-        value: 'Patient_FirstName',
         width: '200px;',
         align: 'left'
       },
@@ -290,7 +284,7 @@ angular.module('TIRApp.controllers.turno', []).
 
     $scope.go = function(study){
         TIRAPIservice.study = study;
-        var url = '/turnos/' + study.IdStudy;
+        var url = '/turnos/' + study.IdStudyProcedure;
         $location.path(url);
     };
 

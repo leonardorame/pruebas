@@ -2,7 +2,7 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 1680
+  HorizontalOffset = 820
   VerticalOffset = 254
   Width = 410
   object PGConnection1: TPQConnection
@@ -53,13 +53,14 @@ object datamodule1: Tdatamodule1
       'rf.lastname as "Report_LastName",'
       'pr.idprocedure as "IdProcedure",'
       'u.username,'
-      'pr.procedure as "Procedure"'
+      'pr.procedure as "Procedure",'
+      'stpr.IdStudyProcedure as "IdStudyProcedure"'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
-      'join status s on st.idstatus = s.idstatus'
+      'join studyprocedure stpr on stpr.idstudy = st.idstudy'
+      'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
-      'left join studyprocedure stpr on stpr.idstudy = st.idstudy'
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
       'left join users u on u.iduser = st.idcurrentuser'
     )
@@ -79,7 +80,7 @@ object datamodule1: Tdatamodule1
       'st.studydate,'
       'st.accessionnumber,'
       's.status as "Status",'
-      'st.idstatus as "IdStatus",'
+      's.idstatus as "IdStatus",'
       'p.idpatient as "Patient_IdPatient",'
       'p.firstname as "Patient_FirstName",'
       'p.lastname as "Patient_LastName",'
@@ -92,18 +93,22 @@ object datamodule1: Tdatamodule1
       'rf.firstname as "Report_FirstName",'
       'rf.idprofessional as "Report_IdProfessional",'
       'rf.lastname as "Report_LastName",'
-      'st.report as "Report"'
+      'stpr.report as "Report",'
+      'stpr.IdStudyProcedure as "IdStudyProcedure",'
+      'stpr.IdProcedure as "IdProcedure",'
+      'stpr.Qty as "Qty"'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
-      'join status s on st.idstatus = s.idstatus'
+      'join studyprocedure stpr on stpr.idstudy = st.idstudy'
+      'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
-      'where st.idstudy = :IdStudy'
+      'where stpr.IdStudyProcedure = :IdStudyProcedure'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'IdStudy'
+        Name = 'IdStudyProcedure'
         ParamType = ptInput
       end>
     ParseSQL = False
@@ -200,12 +205,12 @@ object datamodule1: Tdatamodule1
       'from studyprocedure sp'
       'join study s on sp.idstudy = s.idstudy'
       'join procedure p on p.idprocedure = sp.idprocedure'
-      'where s.idstudy = :IdStudy'
+      'where sp.idstudyprocedure = :IdStudyProcedure'
     )
     Params = <    
       item
         DataType = ftUnknown
-        Name = 'IdStudy'
+        Name = 'IdStudyProcedure'
         ParamType = ptInput
       end>
     ParseSQL = False

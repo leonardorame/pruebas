@@ -106,10 +106,10 @@ angular.module('TIRApp.services', [])
       return false;  
     }
 
-    TIRAPI.getStudy = function(idstudy) {
+    TIRAPI.getStudy = function(idstudyprocedure) {
       return $http({
         method: 'GET', 
-        url: '/cgi-bin/tir/study?rnd=' + new Date().getTime() + '&IdStudy=' + idstudy
+        url: '/cgi-bin/tir/study?rnd=' + new Date().getTime() + '&IdStudyProcedure=' + idstudyprocedure
       });
     }
 

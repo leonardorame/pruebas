@@ -46,7 +46,9 @@ begin
         ':IdPrimaryInterpreterPhysician, ' +
         ':IdSecondaryInterpreterPhysician, ' +
         ':idstatus, ' +
-        ':iduser)';
+        ':iduser, ' +
+        ':idprocedure, ' +
+        ':qty)';
 
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
@@ -60,6 +62,8 @@ begin
       lQuery.ParamByName('IdSecondaryInterpreterPhysician').Value := null;
       lQuery.ParamByName('idstatus').AsInteger:= lTurno.IdStatus;
       lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
+      lQuery.ParamByName('IdProcedure').AsInteger := lTurno.IdProcedure;
+      lQuery.ParamByName('Qty').AsInteger := lTurno.Qty;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
@@ -87,7 +91,7 @@ begin
   try
     try
       lQuery := datamodule1.qryStudy;
-      lQuery.ParamByName('IdStudy').AsInteger := StrToInt(HttpRequest.QueryFields.Values['IdStudy']);
+      lQuery.ParamByName('IdStudyProcedure').AsInteger := StrToInt(HttpRequest.QueryFields.Values['IdStudyProcedure']);
       lQuery.Open;
       lStudy.IdStudy := lQuery.FieldByName('IdStudy').AsInteger;
       lStudy.AccessionNumber := lQuery.FieldByName('accessionnumber').AsString;
@@ -107,9 +111,12 @@ begin
       lStudy.Report_FirstName := lQuery.FieldByName('Report_FirstName').AsString;
       lStudy.Report_LastName := lQuery.FieldByName('Report_LastName').AsString;
       lStudy.Report := lQuery.FieldByName('Report').AsString;
+      lStudy.IdStudyProcedure := lQuery.FieldByName('IdStudyProcedure').AsInteger;
+      lStudy.IdProcedure := lQuery.FieldByName('IdProcedure').AsInteger;
+      lStudy.Qty:= lQuery.FieldByName('Qty').AsInteger;
       lJson := lStreamer.ObjectToJSON(lStudy);
       datamodule1.AddStatusesToJson(lJson);
-      datamodule1.AddProceduresToJson(lJson, lStudy.IdStudy);
+      datamodule1.AddProcedureToJson(lJson, lStudy.IdStudyProcedure);
       Write(lJson.AsJSON);
     finally
       lJson.Free;

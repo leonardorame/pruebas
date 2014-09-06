@@ -31,11 +31,11 @@ type
     procedure DataModuleCreate(Sender: TObject);
   private
   public
-    function LoadWav(AWav: TMemoryStream; AStudyId: Integer): Boolean;
+    function LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
     procedure SaveWav(AWav: TMemoryStream; AStudyId: Integer);
     procedure AddStatusesToJson(AJson: TJSONObject);
     procedure AddProfilesToJson(AJson: TJSONObject);
-    procedure AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
+    procedure AddProcedureToJson(AJson: TJSONObject; IdStudyProcedure: Integer);
   end;
 
 var
@@ -87,7 +87,7 @@ begin
   end;
 end;
 
-function Tdatamodule1.LoadWav(AWav: TMemoryStream; AStudyId: Integer): Boolean;
+function Tdatamodule1.LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
 var
   lQry: TSQLQuery;
 begin
@@ -95,8 +95,8 @@ begin
   lQry := TSQLQuery.Create(nil);
   try
     lQry.DataBase := PGConnection1;
-    lQry.SQL.Text:= 'select wav from studywav where idstudy = :idstudy';
-    lQry.ParamByName('idstudy').AsInteger := AStudyId;
+    lQry.SQL.Text:= 'select wav from studywav where idstudyprocedure = :idstudyprocedure';
+    lQry.ParamByName('idstudyprocedure').AsInteger := AIdStudyProcedure;
     lQry.Open;
     if not lQry.EOF then
     begin
@@ -147,13 +147,13 @@ begin
   qryProfiles.Close;
 end;
 
-procedure Tdatamodule1.AddProceduresToJson(AJson: TJSONObject; IdStudy: Integer);
+procedure Tdatamodule1.AddProcedureToJson(AJson: TJSONObject; IdStudyProcedure: Integer);
 var
   lArray: TJSONArray;
   lItem: TJSONObject;
 begin
   lArray := TJSONArray.Create;
-  qryProcedures.ParamByName('IdStudy').AsInteger:= IdStudy;
+  qryProcedures.ParamByName('IdStudyProcedure').AsInteger:= IdStudyProcedure;
   qryProcedures.Open;
   while not qryProcedures.EOF do
   begin

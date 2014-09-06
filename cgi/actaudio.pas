@@ -27,17 +27,15 @@ implementation
 procedure TActAudio.Post;
 var
   lWav: TMemoryStream;
-  lStudyId: string;
+  lIdStudyProcedure: string;
 begin
   lWav := TMemoryStream.Create;
   try
     lWav.Write(HttpRequest.Content[1], HttpRequest.ContentLength);
     lWav.Position:= 0;
-    lStudyId := Variable['filename'];
-    lStudyId := AnsiReplaceStr(lStudyId, '.wav', '');
-    datamodule1.SaveWav(lWav, StrToInt(lStudyId));
-    //lWav.Position:= 0;
-    //lWav.SaveToFile('/tmp/salida.wav');
+    lIdStudyProcedure := Variable['filename'];
+    lIdStudyProcedure := AnsiReplaceStr(lIdStudyProcedure, '.wav', '');
+    datamodule1.SaveWav(lWav, StrToInt(lIdStudyProcedure));
     Write('Size: ' + IntToStr(HttpRequest.ContentLength));
   finally
     lWav.Free;
@@ -47,14 +45,14 @@ end;
 procedure TActAudio.Get;
 var
   lWav: TMemoryStream;
-  lStudyId: string;
+  lIdStudyProcedure: string;
 begin
-  lStudyId := Variable['filename'];
-  lStudyId := AnsiReplaceStr(lStudyId, '.wav', '');
+  lIdStudyProcedure := Variable['filename'];
+  lIdStudyProcedure := AnsiReplaceStr(lIdStudyProcedure, '.wav', '');
 
   lWav := TMemoryStream.Create;
   try
-    if datamodule1.LoadWav(lWav, StrToInt(lStudyId)) then
+    if datamodule1.LoadWav(lWav, StrToInt(lIdStudyProcedure)) then
     begin
       lWav.Position := 0;
       HttpResponse.ContentStream := lWav;

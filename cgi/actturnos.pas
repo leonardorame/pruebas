@@ -106,6 +106,7 @@ begin
       lStudy.IdProcedure := lSql.FieldByName('IdProcedure').AsInteger;
       lStudy.UserName:= lSql.FieldByName('UserName').AsString;
       lStudy.IdCurrentUser:= lSql.FieldByName('IdCurrentUser').AsInteger;
+      lStudy.IdStudyProcedure := lSql.FieldByName('IdStudyProcedure').AsInteger;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);

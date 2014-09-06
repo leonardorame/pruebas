@@ -86,6 +86,7 @@ begin
     try
       lQuery.DataBase := datamodule1.PGConnection1;
       datamodule1.SQLTransaction1.StartTransaction;
+
       lSql := 'update templates set template = :template, code = :code, name = :name ' +
         'where idtemplate = :idtemplate';
       lQuery.SQL.Text := lSql;
