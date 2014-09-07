@@ -7,6 +7,15 @@ update studyprocedure set idstatus=1 where idstatus is null;
 alter table studyprocedure alter column idstatus set not null;
 alter table studyprocedure add constraint fk_studyprocedure_idstatus foreign key(idstatus) references status(idstatus);
 alter table study_status add column idprocedure integer references procedure(idprocedure);
+alter table studyprocedure add column idprimaryinterpretingphysician integer;
+alter table studyprocedure add column idsecondaryinterpretingphysician integer;
+alter table studyprocedure add constraint fk_studyprocedure_idpriphysician foreign key(idprimaryinterpretingphysician) references professional(idprofessional);
+alter table studyprocedure add constraint fk_studyprocedure_idsecphysician foreign key(idsecondaryinterpretingphysician) references professional(idprofessional);
+update studyprocedure stpr set idprimaryinterpretingphysician = (select idprimaryinterpretingphysician from study where idstudy=stpr.idstudy) where stpr.idprimaryinterpretingphysician is not null;
+update studyprocedure stpr set idsecondaryinterpretingphysician = (select idsecondaryinterpretingphysician from study where idstudy=stpr.idstudy)  where stpr.idsecondaryinterpretingphysician is not null;
+alter table study drop column idprimaryinterpretingphysician;
+alter table study drop column idsecondaryinterpretingphysician;
+
 
 DROP FUNCTION update_study(integer, text, integer, integer, integer, integer, integer, integer);
 
@@ -17,9 +26,7 @@ DECLARE _idstudyprocedure Integer;
 BEGIN
   update study set
     IdRequestingPhysician = _idrequestingphysician,
-    IdPerformingPhysician = _idperformingphysician,
-    IdPrimaryInterpreterPhysician = _idprimaryinterpretingphysician,
-    IdSecondaryInterpreterPhysician = _idsecondaryinterpreteingphysician
+    IdPerformingPhysician = _idperformingphysician
   where idstudy = _idstudy;
 
   _idstudyprocedure = (select idstudyprocedure from studyprocedure
@@ -30,6 +37,8 @@ BEGIN
       idprocedure = _idprocedure,
       qty = _qty,
       report = _report,
+      IdPrimaryInterpreteringPhysician = _idprimaryinterpretingphysician,
+      IdSecondaryInterpretingPhysician = _idsecondaryinterpreteingphysician,
       idstatus = _idstatus
       where idstudyprocedure = _idstudyprocedure;
   else  
@@ -45,13 +54,6 @@ $BODY$
   COST 100;
 
 DROP TRIGGER tr_statuschange on study cascade;
-
-CREATE TRIGGER tr_statuschange
-  AFTER UPDATE
-  ON studyprocedure
-  FOR EACH ROW
-  EXECUTE PROCEDURE onstatuschange();
-
 
 DROP FUNCTION onstatuschange() cascade;
 
@@ -80,6 +82,12 @@ $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
 
+
+CREATE TRIGGER tr_statuschange
+  AFTER UPDATE
+  ON studyprocedure
+  FOR EACH ROW
+  EXECUTE PROCEDURE onstatuschange();
 
 alter table studywav add column IdStudyProcedure integer;
 update studywav sw set idstudyprocedure=(select idstudyprocedure from studyprocedure where idstudy=sw.idstudy);
