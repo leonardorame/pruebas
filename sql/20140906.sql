@@ -37,7 +37,7 @@ BEGIN
       idprocedure = _idprocedure,
       qty = _qty,
       report = _report,
-      IdPrimaryInterpreteringPhysician = _idprimaryinterpretingphysician,
+      IdPrimaryInterpretingPhysician = _idprimaryinterpretingphysician,
       IdSecondaryInterpretingPhysician = _idsecondaryinterpreteingphysician,
       idstatus = _idstatus
       where idstudyprocedure = _idstudyprocedure;
@@ -73,8 +73,9 @@ BEGIN
          where sp.idstudy=NEW.idstudy limit 1)::integer,
        current_date,
        extract_contents_from_html(NEW.report),
-       (select p.license from professional p where p.idprofessional = NEW.idprimaryinterpreterphysician),
-       NEW.modality);
+       (select p.license from professional p where p.idprofessional = NEW.idprimaryinterpretingphysician),
+       (select modality from study where idstudy=NEW.idstudy)
+      );
   END IF;
   RETURN NULL;
 END;
