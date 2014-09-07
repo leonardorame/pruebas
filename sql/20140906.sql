@@ -1,7 +1,11 @@
 alter table studyprocedure add column report text;
 alter table study drop column report;
 alter table study drop column idstatus;
-alter table studyprocedure add column idstatus integer not null references status(idstatus);
+alter table studyprocedure add column idstatus integer;
+update studyprocedure stpr set idstatus=(select idstatus from study where idstudy=stpr.idstudy);
+update studyprocedure set idstatus=1 where idstatus is null;
+alter table studyprocedure alter column idstatus set not null;
+alter table studyprocedure add constraint fk_studyprocedure_idstatus foreign key(idstatus) references status(idstatus);
 alter table study_status add column idprocedure integer references procedure(idprocedure);
 
 DROP FUNCTION update_study(integer, text, integer, integer, integer, integer, integer, integer);
@@ -40,7 +44,7 @@ $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
 
-DROP TRIGGER tr_statuschange on study;
+DROP TRIGGER tr_statuschange on study cascade;
 
 CREATE TRIGGER tr_statuschange
   AFTER UPDATE
@@ -49,7 +53,7 @@ CREATE TRIGGER tr_statuschange
   EXECUTE PROCEDURE onstatuschange();
 
 
-DROP FUNCTION onstatuschange();
+DROP FUNCTION onstatuschange() cascade;
 
 CREATE OR REPLACE FUNCTION onstatuschange()
   RETURNS trigger AS
