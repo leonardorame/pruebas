@@ -60,7 +60,7 @@ object datamodule1: Tdatamodule1
       'join studyprocedure stpr on stpr.idstudy = st.idstudy'
       'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
-      'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
       'left join users u on u.iduser = st.idcurrentuser'
     )
@@ -102,7 +102,7 @@ object datamodule1: Tdatamodule1
       'join studyprocedure stpr on stpr.idstudy = st.idstudy'
       'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
-      'left join professional rf on st.idprimaryinterpreterphysician = rf.idprofessional'
+      'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
       'where stpr.IdStudyProcedure = :IdStudyProcedure'
     )
     Params = <    
