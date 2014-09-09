@@ -39,7 +39,8 @@ BEGIN
       report = _report,
       IdPrimaryInterpretingPhysician = _idprimaryinterpretingphysician,
       IdSecondaryInterpretingPhysician = _idsecondaryinterpreteingphysician,
-      idstatus = _idstatus
+      idstatus = _idstatus,
+      idcurrentuser = _iduser
       where idstudyprocedure = _idstudyprocedure;
   else  
     insert into studyprocedure(idstudy, idprocedure, qty, report, idstatus)

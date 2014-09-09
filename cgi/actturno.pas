@@ -114,6 +114,7 @@ begin
       lStudy.IdStudyProcedure := lQuery.FieldByName('IdStudyProcedure').AsInteger;
       lStudy.IdProcedure := lQuery.FieldByName('IdProcedure').AsInteger;
       lStudy.Qty:= lQuery.FieldByName('Qty').AsInteger;
+      lStudy.UserName:= lQuery.FieldByName('username').AsString;
       lJson := lStreamer.ObjectToJSON(lStudy);
       datamodule1.AddStatusesToJson(lJson);
       datamodule1.AddProcedureToJson(lJson, lStudy.IdStudyProcedure);

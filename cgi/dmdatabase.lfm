@@ -36,7 +36,7 @@ object datamodule1: Tdatamodule1
       'count(*) over() as TotalRecords,'
       'st.idstudy,'
       'st.studydate,'
-      'st.IdCurrentUser,'
+      'stpr.IdCurrentUser,'
       's.status,'
       'st.accessionnumber as "AccessionNumber",'
       'p.idpatient as "Patient_IdPatient",'
@@ -62,7 +62,7 @@ object datamodule1: Tdatamodule1
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
-      'left join users u on u.iduser = st.idcurrentuser'
+      'left join users u on u.iduser = stpr.idcurrentuser'
     )
     Params = <>
     ParseSQL = False
@@ -96,13 +96,15 @@ object datamodule1: Tdatamodule1
       'stpr.report as "Report",'
       'stpr.IdStudyProcedure as "IdStudyProcedure",'
       'stpr.IdProcedure as "IdProcedure",'
-      'stpr.Qty as "Qty"'
+      'stpr.Qty as "Qty",'
+      'u.username'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
       'join studyprocedure stpr on stpr.idstudy = st.idstudy'
       'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
+      'left join users u on u.iduser = stpr.idcurrentuser'
       'where stpr.IdStudyProcedure = :IdStudyProcedure'
     )
     Params = <    
