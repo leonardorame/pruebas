@@ -225,6 +225,11 @@ angular.module('TIRApp.controllers.turno', []).
         title: 'Usuario',
         value: 'UserName',
         align: 'left'
+      },
+      {
+        title: 'Audio',
+        value: 'HasWav',
+        align: 'center'
       }
     ];
      

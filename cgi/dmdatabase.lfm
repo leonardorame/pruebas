@@ -54,7 +54,11 @@ object datamodule1: Tdatamodule1
       'pr.idprocedure as "IdProcedure",'
       'u.username,'
       'pr.procedure as "Procedure",'
-      'stpr.IdStudyProcedure as "IdStudyProcedure"'
+      'stpr.IdStudyProcedure as "IdStudyProcedure",'
+      'case'
+      'when sw.idstudyprocedure is null then ''NO'''
+      'else ''SI'''
+      'end as HasWav'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
       'join studyprocedure stpr on stpr.idstudy = st.idstudy'
@@ -63,6 +67,7 @@ object datamodule1: Tdatamodule1
       'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
       'left join users u on u.iduser = stpr.idcurrentuser'
+      'left join studywav sw on sw.idstudyprocedure = stpr.idstudyprocedure'
     )
     Params = <>
     ParseSQL = False

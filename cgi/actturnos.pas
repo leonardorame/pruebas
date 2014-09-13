@@ -53,6 +53,8 @@ begin
     lWhere := '';
     if HttpRequest.ContentFields.Values['IdStudy'] <> '' then
       lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudy.IdStudy) + ' and ';
+    if AnsiUpperCase(HttpRequest.ContentFields.Values['HasWav']) = 'SI' then
+      lWhere := lWhere + 'not (sw.idstudyprocedure is null) and ';
     if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
     if HttpRequest.ContentFields.Values['AccessionNumber'] <> '' then
@@ -107,6 +109,7 @@ begin
       lStudy.UserName:= lSql.FieldByName('UserName').AsString;
       lStudy.IdCurrentUser:= lSql.FieldByName('IdCurrentUser').AsInteger;
       lStudy.IdStudyProcedure := lSql.FieldByName('IdStudyProcedure').AsInteger;
+      lStudy.HasWav := lSql.FieldByName('HasWav').AsString;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);

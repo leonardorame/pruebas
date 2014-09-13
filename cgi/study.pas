@@ -14,6 +14,7 @@ type
   TStudy = class
   private
     FAccessionNumber: string;
+    FHasWav: string;
     FIdCurrentUser: Integer;
     FIdProcedure: Integer;
     FIdStatus: Integer;
@@ -62,6 +63,7 @@ type
     property Qty: Integer read FQty write FQty;
     property UserName: string read FUserName write FUserName;
     property IdStudyProcedure: Integer read FIdStudyProcedure write FIdStudyProcedure;
+    property HasWav: string read FHasWav write FHasWav;
   end;
 
   TStudyList = class (specialize TFPGList<TStudy>);
