@@ -235,7 +235,8 @@ angular.module('TIRApp.controllers.turno', []).
     $scope.filterCriteria = {
       pageNumber: 1,
       sortDir: 'asc',
-      sortedBy: 'id'
+      sortedBy: 'id',
+      UserName: TIRAPIservice.user.name
     };
      
     //The function that is responsible of fetching the result from the server and setting the grid to the new result
