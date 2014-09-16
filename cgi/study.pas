@@ -35,6 +35,7 @@ type
     FReport_FirstName: string;
     FReport_IdProfessonal: Integer;
     FReport_LastName: string;
+    FReport_UserName: string;
     FStatus: string;
     FStudyDate: string;
     FUserName: string;
@@ -56,6 +57,7 @@ type
     property Report_IdProfessional: Integer read FReport_IdProfessonal write FReport_IdProfessonal;
     property Report_FirstName: string read FReport_FirstName write FReport_FirstName;
     property Report_LastName: string read FReport_LastName write FReport_LastName;
+    property Report_UserName: string read FReport_UserName write FReport_UserName;
     property Report: string read FReport write FReport;
     property ProcedureName: string read FProcedure write FProcedure;
     property IdProcedure: Integer read FIdProcedure write FIdProcedure;

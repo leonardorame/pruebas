@@ -61,6 +61,8 @@ begin
       lWhere := lWhere + 'st.AccessionNumber like ''' + lStudy.AccessionNumber + '%'' and ';
     if HttpRequest.ContentFields.Values['Status'] <> '' then
       lWhere := lWhere + 'Upper(s.status) like ''' + UpperCase(lStudy.Status) + '%'' and ';
+    if lStudy.Report_UserName <> '' then
+      lWhere := lWhere + 'Upper(rfu.username) like ''' + UpperCase(lStudy.Report_UserName) + '%'' and ';
     if lStudy.Patient_LastName <> '' then
       lWhere := lWhere + 'Upper(p.lastname) like ''' + UpperCase(lStudy.Patient_LastName) + '%'' and ';
     if lStudy.Patient_FirstName <> '' then
@@ -104,6 +106,7 @@ begin
       lStudy.Report_IdProfessional := lSql.FieldByName('Report_IdProfessional').AsInteger;
       lStudy.Report_FirstName := lSql.FieldByName('Report_FirstName').AsString;
       lStudy.Report_LastName := lSql.FieldByName('Report_LastName').AsString;
+      lStudy.Report_UserName := lSql.FieldByName('Report_UserName').AsString;
       lStudy.ProcedureName := lSql.FieldByName('Procedure').AsString;
       lStudy.IdProcedure := lSql.FieldByName('IdProcedure').AsInteger;
       lStudy.UserName:= lSql.FieldByName('UserName').AsString;

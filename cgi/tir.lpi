@@ -89,7 +89,7 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="33"/>
-        <CursorPos X="31" Y="43"/>
+        <CursorPos X="22" Y="43"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -150,8 +150,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="103"/>
-        <CursorPos X="43" Y="113"/>
+        <TopLine Value="6"/>
+        <CursorPos X="35" Y="12"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -177,8 +177,8 @@
         <UnitName Value="study"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="9"/>
-        <CursorPos X="20" Y="17"/>
+        <TopLine Value="50"/>
+        <CursorPos X="78" Y="60"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit15>
@@ -343,7 +343,7 @@
         <UsageCount Value="21"/>
       </Unit35>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="tir.lpr"/>
         <Caret Line="9" Column="73"/>
@@ -452,6 +452,14 @@
         <Filename Value="actturnos.pas"/>
         <Caret Line="57" Column="55" TopLine="51"/>
       </Position27>
+      <Position28>
+        <Filename Value="actturnos.pas"/>
+        <Caret Line="113" Column="43" TopLine="97"/>
+      </Position28>
+      <Position29>
+        <Filename Value="actturnos.pas"/>
+        <Caret Line="29" Column="3" TopLine="16"/>
+      </Position29>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
