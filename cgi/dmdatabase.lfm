@@ -285,4 +285,27 @@ object datamodule1: Tdatamodule1
     left = 48
     top = 248
   end
+  object qryStudyStatuses: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'ss.idstudy,'
+      'ss.idstudystatus,'
+      'ss.idstatus,'
+      's.status,'
+      'ss.updated,'
+      'u.username'
+      'from study_status ss'
+      'join status s on s.idstatus = ss.idstatus'
+      'join users u on u.iduser = ss.iduser'
+      ''
+    )
+    Params = <>
+    ParseSQL = False
+    left = 336
+    top = 200
+  end
 end

@@ -45,6 +45,14 @@ angular.module('TIRApp.services', [])
       });
     }
 
+    TIRAPI.getStudyStatuses = function(filter) {
+      return $http({
+        method: 'POST', 
+        data: filter,
+        url: '/cgi-bin/tir/studystatuses'
+      });
+    }
+
     TIRAPI.login = function(user, pass) {
       return $http({
         method: 'GET', 

@@ -22,6 +22,7 @@ type
     qryStatuses: TSQLQuery;
     qryPatients: TSQLQuery;
     qryProcedures: TSQLQuery;
+    qryStudyStatuses: TSQLQuery;
     qryTemplate: TSQLQuery;
     qryTemplates: TSQLQuery;
     qryUsers: TSQLQuery;
