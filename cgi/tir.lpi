@@ -69,7 +69,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="337"/>
         <CursorPos X="3" Y="335"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="12"/>
       </Unit3>
       <Unit4>
         <Filename Value="baseaction.pas"/>
@@ -108,7 +108,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="503"/>
         <CursorPos X="3" Y="508"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="88"/>
       </Unit7>
       <Unit8>
         <Filename Value="actlogin.pas"/>
@@ -122,16 +122,17 @@
         <Filename Value="../../brookframework/brokers/brookfcleventlogbroker.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="3"/>
-        <UsageCount Value="15"/>
+        <UsageCount Value="14"/>
       </Unit9>
       <Unit10>
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="57"/>
-        <CursorPos Y="67"/>
+        <TopLine Value="39"/>
+        <CursorPos X="16" Y="41"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
       </Unit10>
@@ -147,11 +148,10 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="103"/>
-        <CursorPos X="43" Y="113"/>
+        <TopLine Value="104"/>
+        <CursorPos X="15" Y="21"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -239,17 +239,17 @@
         <WindowIndex Value="1"/>
         <TopLine Value="246"/>
         <CursorPos X="14" Y="299"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="18"/>
       </Unit21>
       <Unit22>
         <Filename Value="../../brookframework/core/brooklogger.pas"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="15"/>
+        <UsageCount Value="14"/>
       </Unit22>
       <Unit23>
         <Filename Value="patient.pas"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="13"/>
       </Unit23>
       <Unit24>
         <Filename Value="user.pas"/>
@@ -302,7 +302,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="17"/>
         <CursorPos X="3" Y="25"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="71"/>
       </Unit30>
       <Unit31>
         <Filename Value="../../brookframework/brokers/brookfclcgibroker.pas"/>
@@ -310,7 +310,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="15" Y="59"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit31>
       <Unit32>
         <Filename Value="../../fpc/packages/fcl-web/src/base/custcgi.pp"/>
@@ -318,21 +318,21 @@
         <WindowIndex Value="1"/>
         <TopLine Value="37"/>
         <CursorPos X="15" Y="41"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit32>
       <Unit33>
         <Filename Value="../../brookframework/core/brookclasses.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="31"/>
         <CursorPos X="3" Y="40"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="70"/>
       </Unit33>
       <Unit34>
         <Filename Value="selfDebug.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="33"/>
         <CursorPos X="11" Y="34"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
       </Unit34>
       <Unit35>
         <Filename Value="../../fpc/rtl/objpas/classes/classesh.inc"/>
@@ -340,10 +340,10 @@
         <WindowIndex Value="1"/>
         <TopLine Value="902"/>
         <CursorPos X="3" Y="923"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="20"/>
       </Unit35>
     </Units>
-    <JumpHistory Count="27" HistoryIndex="26">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="tir.lpr"/>
         <Caret Line="9" Column="73"/>
@@ -452,6 +452,10 @@
         <Filename Value="actturnos.pas"/>
         <Caret Line="57" Column="55" TopLine="51"/>
       </Position27>
+      <Position28>
+        <Filename Value="actturnos.pas"/>
+        <Caret Line="56" Column="64" TopLine="52"/>
+      </Position28>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

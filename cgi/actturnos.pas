@@ -53,8 +53,10 @@ begin
     lWhere := '';
     if HttpRequest.ContentFields.Values['IdStudy'] <> '' then
       lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudy.IdStudy) + ' and ';
-    if AnsiUpperCase(HttpRequest.ContentFields.Values['HasWav']) = 'SI' then
+    if (HttpRequest.ContentFields.Values['HasWav'] <> '') and (AnsiUpperCase(HttpRequest.ContentFields.Values['HasWav']) = 'SI') then
       lWhere := lWhere + 'not (sw.idstudyprocedure is null) and ';
+    if (HttpRequest.ContentFields.Values['HasWav'] <> '') and (AnsiUpperCase(HttpRequest.ContentFields.Values['HasWav']) = 'NO') then
+      lWhere := lWhere + '(sw.idstudyprocedure is null) and ';
     if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
     if HttpRequest.ContentFields.Values['AccessionNumber'] <> '' then
