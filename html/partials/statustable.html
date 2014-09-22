@@ -16,9 +16,11 @@
         <input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
       </td>
     </tr>
-    <tr ng-repeat="status in statuses" ng-click="go(status)" ng-class="{selected: status.IdStatus == currentstatus.IdStatus}">
-      <td>{{status.IdStatus}}</td>
-      <td>{{status.Status}}</td>
+    <tr ng-repeat="studystatus in studystatuses" ng-click="go(studystatus)" ng-class="{selected: studystatus.IdStudyStatus == currentstudystatus.IdStudyStatus}">
+      <td>{{studystatus.IdStudyStatus}}</td>
+      <td>{{studystatus.DateTime}}</td>
+      <td>{{studystatus.Status}}</td>
+      <td>{{studystatus.UserName}}</td>
     </tr>
     </tbody>
   </table>

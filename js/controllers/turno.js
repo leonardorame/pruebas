@@ -222,8 +222,13 @@ angular.module('TIRApp.controllers.turno', []).
         align: 'left'
       },
       {
-        title: 'Usuario',
+        title: 'Usuario Actual',
         value: 'UserName',
+        align: 'left'
+      },
+      {
+        title: 'Informó',
+        value: 'Report_UserName',
         align: 'left'
       },
       {

@@ -51,6 +51,7 @@ object datamodule1: Tdatamodule1
       'rf.firstname as "Report_FirstName",'
       'rf.idprofessional as "Report_IdProfessional",'
       'rf.lastname as "Report_LastName",'
+      'rfu.username as "Report_UserName",'
       'pr.idprocedure as "IdProcedure",'
       'u.username,'
       'pr.procedure as "Procedure",'
@@ -65,6 +66,7 @@ object datamodule1: Tdatamodule1
       'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'
+      'left join users rfu on rf.idprofessional = rfu.idprofessional'
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
       'left join users u on u.iduser = stpr.idcurrentuser'
       'left join studywav sw on sw.idstudyprocedure = stpr.idstudyprocedure'
@@ -282,5 +284,28 @@ object datamodule1: Tdatamodule1
     ParseSQL = False
     left = 48
     top = 248
+  end
+  object qryStudyStatuses: TSQLQuery
+    FieldDefs = <>
+    Database = PGConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select'
+      'count(*) over() as TotalRecords,'
+      'ss.idstudy,'
+      'ss.idstudystatus,'
+      'ss.idstatus,'
+      's.status,'
+      'ss.updated,'
+      'u.username'
+      'from study_status ss'
+      'join status s on s.idstatus = ss.idstatus'
+      'join users u on u.iduser = ss.iduser'
+      ''
+    )
+    Params = <>
+    ParseSQL = False
+    left = 336
+    top = 200
   end
 end

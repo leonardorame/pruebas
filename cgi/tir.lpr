@@ -6,7 +6,8 @@ uses
   pthreads, BrookApplication, BrookUtils, Brokers, countries, baseaction,
   dmdatabase, session, actLogin, actturno, actturnos, actprint, actuserdata,
   study, acttemplates, template, acttemplate, actpatients, patient, user,
-  actaudio, actusers, actassignto, actstatuses, status, actchangestatus;
+  actaudio, actusers, actassignto, actstatuses, status, actchangestatus,
+actstudystatuses, studystatus;
 
 begin
   datamodule1 := Tdatamodule1.Create(nil);
