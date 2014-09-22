@@ -18,9 +18,10 @@
     </tr>
     <tr ng-repeat="studystatus in studystatuses" ng-click="go(studystatus)" ng-class="{selected: studystatus.IdStudyStatus == currentstudystatus.IdStudyStatus}">
       <td>{{studystatus.IdStudyStatus}}</td>
-      <td>{{studystatus.DateTime}}</td>
-      <td>{{studystatus.Status}}</td>
+      <td>{{studystatus.Updated}}</td>
       <td>{{studystatus.UserName}}</td>
+      <td>{{studystatus.IdStatus}}</td>
+      <td>{{studystatus.Status}}</td>
     </tr>
     </tbody>
   </table>

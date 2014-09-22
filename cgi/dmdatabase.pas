@@ -8,8 +8,7 @@ uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
   inifiles,
   fpJson, db,
-  BrookLogger,
-  fgl;
+  BrookLogger;
 
 type
 

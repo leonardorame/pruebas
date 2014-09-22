@@ -27,13 +27,13 @@
                 <div class="study-table-col study-caption">
                     Estado:
                 </div>
-                <div class="study-table-col" style="width: 500px;">
+                <div class="study-table-col" style="width: 600px;">
                     <div class="btn-group" data-toggle="buttons" style="width: 100%;">
                     <label class='btn btn-default' ng-class='{active: option.IdStatus == study.IdStatus}'
                         ng-repeat='option in study.Statuses' ng-click='activate(option)'>
                         <input type='radio' class='btn-group'  name='{{option.IdStatus}}'>{{option.Status}}
                     </label>
-                    &nbsp;<a ng-click="openViewer()">Abrir visualizador</a>
+                    &nbsp;<a ng-click="openViewer()">Abrir visualizador</a>&nbsp;<a ng-click="statusList()">Estados</a>
                     </div>
                 </div>
             </div>

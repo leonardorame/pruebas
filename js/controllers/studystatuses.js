@@ -1,6 +1,6 @@
 angular.module('TIRApp.controllers.studystatuses', []).
     
-  controller('studystatusTableController', function($scope, $location, $modalInstance, TIRAPIservice) {
+  controller('studystatusTableController', function($scope, $location, $modalInstance, TIRAPIservice, study) {
     $scope.studystatuses = [];
 
     $scope.totalPages = 0;
@@ -12,23 +12,28 @@ angular.module('TIRApp.controllers.studystatuses', []).
         width: '50px;'
     },
     {
-        title: 'Status',
-        value: 'Status'
-    },
-    {
-        title: 'DateTime',
-        value: 'DateTime'
+        title: 'Fecha',
+        value: 'Updated'
     },
     {
         title: 'UserName',
         value: 'UserName'
+    },
+    {
+        title: 'IdStatus',
+        value: 'IdStatus'
+    },
+    {
+        title: 'Status',
+        value: 'Status'
     }
     ];
     //default criteria that will be sent to the server
     $scope.filterCriteria = {
         pageNumber: 1,
         sortDir: 'asc',
-        sortedBy: 'id'
+        sortedBy: 'id',
+        IdStudy: study.IdStudy
     };
 
     $scope.alert = undefined;

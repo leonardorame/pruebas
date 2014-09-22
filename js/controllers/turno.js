@@ -140,6 +140,20 @@ angular.module('TIRApp.controllers.turno', []).
             });
       };
 
+      $scope.statusList = function(){
+            $modal.open({
+                controller: 'studystatusTableController',
+                templateUrl: 'partials/statustable.html',
+                resolve: {
+                    study: function(){
+                        return $scope.study;
+                    }
+                }
+            }).result.then(function(status){
+                // nothing to be done.
+            });
+      };
+
       $scope.save = function(document) {
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){

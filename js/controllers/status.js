@@ -7,6 +7,21 @@ angular.module('TIRApp.controllers.status', []).
     $scope.itemCount = 0;
     $scope.headers = [
     {
+        title: 'IdStudyStatus',
+        value: 'IdStudyStatus',
+        width: '50px;'
+    },
+    {
+        title: 'Fecha',
+        value: 'DateTime',
+        width: '100px;'
+    },
+    {
+        title: 'Usuario',
+        value: 'UserName',
+        width: '100px;'
+    },
+    {
         title: 'IdStatus',
         value: 'IdStatus',
         width: '50px;'

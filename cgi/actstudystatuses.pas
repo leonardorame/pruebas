@@ -19,14 +19,14 @@ type
 
   TStudystatuses = class(specialize TBaseGAction<TStudyStatus>)
   public
-    procedure Get; override;
+    procedure Post; override;
   end;
 
 implementation
 
 { TStudystatuses }
 
-procedure TStudystatuses.Get;
+procedure TStudystatuses.Post;
 var
   lList: TStudyStatusList;
   lStudyStatus: TStudyStatus;
@@ -35,7 +35,6 @@ var
   lItem: TJSONObject;
   lData: TJSONObject;
   lStreamer: TJSONStreamer;
-  I: Integer;
   lStart: Integer;
   lLength: Integer;
   lTotalRecords: Integer;
@@ -55,7 +54,7 @@ begin
     lStudyStatus := Entity;
     lWhere := '';
     if HttpRequest.ContentFields.Values['IdStudy'] <> '' then
-      lWhere := lWhere + 'st.idstudy=' + IntToStr(lStudyStatus.IdStudy) + ' and ';
+      lWhere := lWhere + 'ss.idstudy=' + IntToStr(lStudyStatus.IdStudy) + ' and ';
 
     if lWhere <> '' then
     begin
