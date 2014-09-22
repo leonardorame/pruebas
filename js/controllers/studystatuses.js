@@ -81,6 +81,4 @@ angular.module('TIRApp.controllers.studystatuses', []).
     $scope.cancel = function(){
         $modalInstance.dismiss('cancel');
     };        
-  });
-
 });
