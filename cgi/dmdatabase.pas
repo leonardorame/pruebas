@@ -116,17 +116,35 @@ procedure Tdatamodule1.SaveFilter(AObject: TObject; AGrid: string;
 var
   I: Integer;
   lPropList: PPropList;
-  lStr: TStringList;
+  lQry: TSqlQuery;
 begin
-  lStr := TStringList.Create;
+  lQry := TSQLQuery.Create(nil);
   try
+    lQry.DataBase := PGConnection1;
+    SQLTransaction1.StartTransaction;
+    // se eliminan los registros para esta grilla y usuario
+    lQry.SQL.Text:= 'delete from gridfilters where grid=:grid and iduser=:iduser';
+    lQry.ParamByName('grid').AsString := AGrid;
+    lQry.ParamByName('iduser').AsInteger := AIdUser;
+    lQry.ExecSQL;
+
+    // se hacen tantos inserts como propiedades haya
+    lQry.SQL.Text:= 'insert into gridfilters(grid, field, iduser, filter) ' +
+      'values(:grid, :field, :iduser, :filter)';
     for I := 0 to GetPropList(AObject, lPropList) - 1 do
     begin
-      lStr.Add(lPropList^[I]^.Name);
+      lQry.ParamByName('grid').AsString := AGrid;
+      lQry.ParamByName('field').AsString := lPropList^[I]^.Name;
+      lQry.ParamByName('iduser').AsInteger := AIdUser;
+      lQry.ParamByName('filter').AsString := String(GetPropValue(AObject, lPropList^[I]^.Name, True));
+      lQry.ExecSQL;
     end;
+    SQLTransaction1.Commit;
   finally
-    lStr.Free;
+    lQry.Free;
   end;
+
+
 
 end;
 
