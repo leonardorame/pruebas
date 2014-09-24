@@ -8,7 +8,8 @@ uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
   inifiles,
   fpJson, db,
-  BrookLogger;
+  BrookLogger,
+  typinfo;
 
 type
 
@@ -32,6 +33,7 @@ type
   private
   public
     function LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
+    procedure SaveFilter(AObject: TObject; AGrid: string; AIdUser: Integer);
     procedure SaveWav(AWav: TMemoryStream; AStudyId: Integer);
     procedure AddStatusesToJson(AJson: TJSONObject);
     procedure AddProfilesToJson(AJson: TJSONObject);
@@ -107,6 +109,25 @@ begin
   finally
     lQry.Free;
   end;
+end;
+
+procedure Tdatamodule1.SaveFilter(AObject: TObject; AGrid: string;
+  AIdUser: Integer);
+var
+  I: Integer;
+  lPropList: PPropList;
+  lStr: TStringList;
+begin
+  lStr := TStringList.Create;
+  try
+    for I := 0 to GetPropList(AObject, lPropList) - 1 do
+    begin
+      lStr.Add(lPropList^[I]^.Name);
+    end;
+  finally
+    lStr.Free;
+  end;
+
 end;
 
 procedure Tdatamodule1.AddStatusesToJson(AJson: TJSONObject);
