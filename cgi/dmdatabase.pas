@@ -8,8 +8,7 @@ uses
   Classes, SysUtils, pqconnection, sqldb, FileUtil,
   inifiles,
   fpJson, db,
-  BrookLogger,
-  typinfo;
+  BrookLogger;
 
 type
 
@@ -33,7 +32,6 @@ type
   private
   public
     function LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
-    procedure SaveFilter(AObject: TObject; AGrid: string; AIdUser: Integer);
     procedure SaveWav(AWav: TMemoryStream; AStudyId: Integer);
     procedure AddStatusesToJson(AJson: TJSONObject);
     procedure AddProfilesToJson(AJson: TJSONObject);
@@ -109,43 +107,6 @@ begin
   finally
     lQry.Free;
   end;
-end;
-
-procedure Tdatamodule1.SaveFilter(AObject: TObject; AGrid: string;
-  AIdUser: Integer);
-var
-  I: Integer;
-  lPropList: PPropList;
-  lQry: TSqlQuery;
-begin
-  lQry := TSQLQuery.Create(nil);
-  try
-    lQry.DataBase := PGConnection1;
-    SQLTransaction1.StartTransaction;
-    // se eliminan los registros para esta grilla y usuario
-    lQry.SQL.Text:= 'delete from gridfilters where grid=:grid and iduser=:iduser';
-    lQry.ParamByName('grid').AsString := AGrid;
-    lQry.ParamByName('iduser').AsInteger := AIdUser;
-    lQry.ExecSQL;
-
-    // se hacen tantos inserts como propiedades haya
-    lQry.SQL.Text:= 'insert into gridfilters(grid, field, iduser, filter) ' +
-      'values(:grid, :field, :iduser, :filter)';
-    for I := 0 to GetPropList(AObject, lPropList) - 1 do
-    begin
-      lQry.ParamByName('grid').AsString := AGrid;
-      lQry.ParamByName('field').AsString := lPropList^[I]^.Name;
-      lQry.ParamByName('iduser').AsInteger := AIdUser;
-      lQry.ParamByName('filter').AsString := String(GetPropValue(AObject, lPropList^[I]^.Name, True));
-      lQry.ExecSQL;
-    end;
-    SQLTransaction1.Commit;
-  finally
-    lQry.Free;
-  end;
-
-
-
 end;
 
 procedure Tdatamodule1.AddStatusesToJson(AJson: TJSONObject);

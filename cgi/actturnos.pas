@@ -86,9 +86,6 @@ begin
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
     TBrookLogger.Service.Info(lSql.Sql.Text);
 
-    // guardamos el filtro
-    datamodule1.SaveFilter(lStudy, 'turnos', Session.User.IdUser);
-
     lSql.Open;
 
     while not lSql.EOF do

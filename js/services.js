@@ -5,6 +5,13 @@ angular.module('TIRApp.services', [])
     TIRAPI.study = {};
     TIRAPI.template = {};
 
+    TIRAPI.studiesDefaultFilters = {
+      pageNumber: 1,
+      sortDir: 'asc',
+      sortedBy: 'id',
+      UserName: TIRAPI.user.name
+    };
+
     TIRAPI.getTurnos = function(filter) {
       return $http({
         method: 'POST', 

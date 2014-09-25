@@ -256,15 +256,14 @@ angular.module('TIRApp.controllers.turno', []).
     //$scope.states = TIRAPIservice.getTurnos();
      
     //default criteria that will be sent to the server
-    $scope.filterCriteria = {
-      pageNumber: 1,
-      sortDir: 'asc',
-      sortedBy: 'id',
-      UserName: TIRAPIservice.user.name
-    };
+    //$scope.filterCriteria = TIRAPIservice.getDefaultFilterCriteria('studies');
+    $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters;
+    $scope.filterCriteria.UserName = TIRAPIservice.user.name;
+    console.log($scope.filterCriteria);
      
     //The function that is responsible of fetching the result from the server and setting the grid to the new result
     $scope.fetchResult = function () {
+        TIRAPIservice.studiesDefaultFilters = $scope.filterCriteria;
         return TIRAPIservice.getTurnos($scope.filterCriteria).
             then(function(response){
               // success handler

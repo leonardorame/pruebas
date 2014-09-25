@@ -69,15 +69,18 @@
         <WindowIndex Value="1"/>
         <TopLine Value="337"/>
         <CursorPos X="3" Y="335"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="9"/>
       </Unit3>
       <Unit4>
         <Filename Value="baseaction.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="baseaction"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <TopLine Value="10"/>
         <CursorPos X="11" Y="19"/>
         <UsageCount Value="220"/>
+        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="dmdatabase.pas"/>
@@ -86,11 +89,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmdatabase"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="111"/>
-        <CursorPos Y="125"/>
+        <TopLine Value="27"/>
+        <CursorPos Y="35"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -98,10 +100,13 @@
       <Unit6>
         <Filename Value="session.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="session"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="110"/>
-        <CursorPos X="26" Y="119"/>
+        <CursorPos X="42" Y="11"/>
         <UsageCount Value="220"/>
+        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="../../brookframework/core/brookaction.pas"/>
@@ -109,21 +114,24 @@
         <WindowIndex Value="1"/>
         <TopLine Value="503"/>
         <CursorPos X="3" Y="508"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="85"/>
       </Unit7>
       <Unit8>
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actLogin"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="57"/>
+        <TopLine Value="9"/>
         <CursorPos X="15" Y="67"/>
         <UsageCount Value="203"/>
+        <Loaded Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="../../brookframework/brokers/brookfcleventlogbroker.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="3"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="11"/>
       </Unit9>
       <Unit10>
         <Filename Value="actturno.pas"/>
@@ -131,6 +139,7 @@
         <UnitName Value="actturno"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
+        <TopLine Value="106"/>
         <CursorPos X="13" Y="13"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
@@ -147,34 +156,40 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="67"/>
-        <CursorPos X="16" Y="90"/>
+        <TopLine Value="39"/>
+        <CursorPos X="2" Y="89"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actprint"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="41"/>
+        <TopLine Value="9"/>
         <CursorPos X="61" Y="53"/>
         <UsageCount Value="204"/>
+        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="actuserdata.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actuserdata"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="37"/>
-        <CursorPos X="9" Y="64"/>
+        <TopLine Value="49"/>
+        <CursorPos X="3" Y="48"/>
         <UsageCount Value="204"/>
+        <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="78" Y="60"/>
@@ -196,7 +211,7 @@
         <Filename Value="template.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="template"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="7"/>
         <CursorPos X="3" Y="27"/>
@@ -209,7 +224,7 @@
         <UnitName Value="acttemplate"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="80"/>
+        <TopLine Value="63"/>
         <CursorPos X="27" Y="89"/>
         <UsageCount Value="260"/>
         <Loaded Value="True"/>
@@ -217,10 +232,13 @@
       <Unit19>
         <Filename Value="actpatients.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actpatients"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="10"/>
         <CursorPos X="54" Y="19"/>
         <UsageCount Value="262"/>
+        <Loaded Value="True"/>
       </Unit19>
       <Unit20>
         <Filename Value="actaudio.pas"/>
@@ -228,7 +246,8 @@
         <UnitName Value="actaudio"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="13" Y="12"/>
+        <TopLine Value="31"/>
+        <CursorPos X="3" Y="50"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit20>
@@ -237,23 +256,23 @@
         <WindowIndex Value="1"/>
         <TopLine Value="246"/>
         <CursorPos X="14" Y="299"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="15"/>
       </Unit21>
       <Unit22>
         <Filename Value="../../brookframework/core/brooklogger.pas"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="11"/>
       </Unit22>
       <Unit23>
         <Filename Value="patient.pas"/>
         <WindowIndex Value="1"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="10"/>
       </Unit23>
       <Unit24>
         <Filename Value="user.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="user"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
         <TopLine Value="10"/>
         <CursorPos X="15" Y="30"/>
@@ -263,26 +282,35 @@
       <Unit25>
         <Filename Value="actusers.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actusers"/>
+        <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="95"/>
+        <TopLine Value="130"/>
         <CursorPos X="37" Y="95"/>
         <UsageCount Value="236"/>
+        <Loaded Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="actassignto.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actassignto"/>
+        <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="30"/>
+        <TopLine Value="38"/>
         <CursorPos X="57" Y="40"/>
         <UsageCount Value="235"/>
+        <Loaded Value="True"/>
       </Unit26>
       <Unit27>
         <Filename Value="actstatuses.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actstatuses"/>
+        <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="75"/>
+        <TopLine Value="94"/>
         <CursorPos X="48" Y="83"/>
         <UsageCount Value="231"/>
+        <Loaded Value="True"/>
       </Unit27>
       <Unit28>
         <Filename Value="status.pas"/>
@@ -295,17 +323,20 @@
       <Unit29>
         <Filename Value="actchangestatus.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="actchangestatus"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="9"/>
+        <TopLine Value="40"/>
         <CursorPos X="50" Y="14"/>
         <UsageCount Value="223"/>
+        <Loaded Value="True"/>
       </Unit29>
       <Unit30>
         <Filename Value="../../brookframework/core/brookhttpdefs.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="17"/>
         <CursorPos X="3" Y="25"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="68"/>
       </Unit30>
       <Unit31>
         <Filename Value="../../brookframework/brokers/brookfclcgibroker.pas"/>
@@ -313,7 +344,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="50"/>
         <CursorPos X="15" Y="59"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="17"/>
       </Unit31>
       <Unit32>
         <Filename Value="../../fpc/packages/fcl-web/src/base/custcgi.pp"/>
@@ -321,191 +352,144 @@
         <WindowIndex Value="1"/>
         <TopLine Value="37"/>
         <CursorPos X="15" Y="41"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="17"/>
       </Unit32>
       <Unit33>
         <Filename Value="../../brookframework/core/brookclasses.pas"/>
         <WindowIndex Value="1"/>
         <TopLine Value="31"/>
         <CursorPos X="3" Y="40"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="67"/>
       </Unit33>
       <Unit34>
-        <Filename Value="selfDebug.pas"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="33"/>
-        <CursorPos X="11" Y="34"/>
-        <UsageCount Value="2"/>
-      </Unit34>
-      <Unit35>
         <Filename Value="../../fpc/rtl/objpas/classes/classesh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="902"/>
         <CursorPos X="3" Y="923"/>
-        <UsageCount Value="20"/>
-      </Unit35>
-      <Unit36>
+        <UsageCount Value="17"/>
+      </Unit34>
+      <Unit35>
         <Filename Value="actstudystatuses.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actstudystatuses"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="68"/>
+        <TopLine Value="86"/>
         <CursorPos X="51" Y="81"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
-      </Unit36>
-      <Unit37>
+      </Unit35>
+      <Unit36>
         <Filename Value="studystatus.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="studystatus"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="8"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="48"/>
         <Loaded Value="True"/>
-      </Unit37>
-      <Unit38>
+      </Unit36>
+      <Unit37>
         <Filename Value="../../fpc/rtl/objpas/sysutils/sysstrh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="100"/>
         <CursorPos X="10" Y="113"/>
-        <UsageCount Value="10"/>
-      </Unit38>
-      <Unit39>
+        <UsageCount Value="7"/>
+      </Unit37>
+      <Unit38>
         <Filename Value="../../fpc/rtl/objpas/typinfo.pp"/>
         <UnitName Value="typinfo"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="288"/>
         <CursorPos X="7" Y="302"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="8"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="actgridfilter.pas"/>
+        <UnitName Value="actgridfilter"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="26"/>
+        <CursorPos X="39" Y="30"/>
+        <UsageCount Value="46"/>
       </Unit39>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="18" HistoryIndex="17">
       <Position1>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="99" Column="39" TopLine="89"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="44" Column="26" TopLine="32"/>
       </Position1>
       <Position2>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="62" Column="20" TopLine="50"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="13" Column="14"/>
       </Position2>
       <Position3>
-        <Filename Value="actaudio.pas"/>
-        <Caret Line="39" TopLine="27"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="43" Column="22" TopLine="33"/>
       </Position3>
       <Position4>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="110" Column="48" TopLine="100"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="53" Column="25" TopLine="41"/>
       </Position4>
       <Position5>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="32" Column="3" TopLine="22"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="55" Column="17" TopLine="49"/>
       </Position5>
       <Position6>
-        <Filename Value="study.pas"/>
-        <Caret Line="66" Column="57" TopLine="54"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="58" Column="63" TopLine="49"/>
       </Position6>
       <Position7>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="57" Column="55" TopLine="51"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="31" Column="26" TopLine="5"/>
       </Position7>
       <Position8>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="113" Column="43" TopLine="97"/>
+        <Filename Value="actstudystatuses.pas"/>
+        <Caret Line="79" Column="19" TopLine="74"/>
       </Position8>
       <Position9>
         <Filename Value="actturnos.pas"/>
-        <Caret Line="29" Column="3" TopLine="16"/>
+        <Caret Line="90" Column="16" TopLine="67"/>
       </Position9>
       <Position10>
-        <Filename Value="studystatus.pas"/>
-        <Caret Line="28" Column="62" TopLine="3"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="35" Column="77" TopLine="30"/>
       </Position10>
       <Position11>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="75" Column="64" TopLine="68"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="37" Column="49" TopLine="16"/>
       </Position11>
       <Position12>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="26" Column="24" TopLine="14"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="125" Column="30" TopLine="111"/>
       </Position12>
       <Position13>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="9" Column="9"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="123" Column="40" TopLine="111"/>
       </Position13>
       <Position14>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="10" Column="10"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="125" Column="21" TopLine="111"/>
       </Position14>
       <Position15>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="11" Column="14"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="38" Column="68" TopLine="33"/>
       </Position15>
       <Position16>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="44" Column="26" TopLine="32"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="105" Column="2" TopLine="97"/>
       </Position16>
       <Position17>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="13" Column="14"/>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="113" TopLine="98"/>
       </Position17>
       <Position18>
         <Filename Value="dmdatabase.pas"/>
-        <Caret Line="43" Column="22" TopLine="33"/>
+        <Caret Line="11" Column="14"/>
       </Position18>
-      <Position19>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="53" Column="25" TopLine="41"/>
-      </Position19>
-      <Position20>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="55" Column="17" TopLine="49"/>
-      </Position20>
-      <Position21>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="58" Column="63" TopLine="49"/>
-      </Position21>
-      <Position22>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="31" Column="26" TopLine="5"/>
-      </Position22>
-      <Position23>
-        <Filename Value="actstudystatuses.pas"/>
-        <Caret Line="79" Column="19" TopLine="74"/>
-      </Position23>
-      <Position24>
-        <Filename Value="actturnos.pas"/>
-        <Caret Line="90" Column="16" TopLine="67"/>
-      </Position24>
-      <Position25>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="35" Column="77" TopLine="30"/>
-      </Position25>
-      <Position26>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="37" Column="49" TopLine="16"/>
-      </Position26>
-      <Position27>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="125" Column="30" TopLine="111"/>
-      </Position27>
-      <Position28>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="123" Column="40" TopLine="111"/>
-      </Position28>
-      <Position29>
-        <Filename Value="../../fpc/rtl/objpas/typinfo.pp"/>
-        <Caret Line="301" Column="7" TopLine="287"/>
-      </Position29>
-      <Position30>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="125" Column="21" TopLine="111"/>
-      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
