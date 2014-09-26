@@ -63,7 +63,7 @@ object datamodule1: Tdatamodule1
       'Coalesce(suc.sucursal, ''N/D'') as Sucursal'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
-      'join studyprocedure stpr on stpr.idstudy = st.idstudy'
+      'left join studyprocedure stpr on stpr.idstudy = st.idstudy'
       'left join status s on stpr.idstatus = s.idstatus'
       'left join professional pf on st.idperformingphysician = pf.idprofessional'
       'left join professional rf on stpr.idprimaryinterpretingphysician = rf.idprofessional'

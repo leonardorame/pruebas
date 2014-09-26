@@ -134,10 +134,11 @@
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="106"/>
-        <CursorPos X="13" Y="13"/>
+        <TopLine Value="35"/>
+        <CursorPos X="19" Y="45"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
       </Unit10>
@@ -153,11 +154,10 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="65"/>
-        <CursorPos Y="79"/>
+        <CursorPos X="14" Y="70"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -371,7 +371,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="86"/>
         <CursorPos X="51" Y="81"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="51"/>
       </Unit35>
       <Unit36>
         <Filename Value="studystatus.pas"/>
@@ -380,7 +380,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="8"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="51"/>
       </Unit36>
       <Unit37>
         <Filename Value="../../fpc/rtl/objpas/sysutils/sysstrh.inc"/>
