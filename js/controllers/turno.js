@@ -249,6 +249,11 @@ angular.module('TIRApp.controllers.turno', []).
         title: 'Audio',
         value: 'HasWav',
         align: 'center'
+      },
+      {
+        title: 'Sucursal',
+        value: 'Sucursal',
+        align: 'center'
       }
     ];
      

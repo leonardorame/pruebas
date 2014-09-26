@@ -38,6 +38,7 @@ type
     FReport_UserName: string;
     FStatus: string;
     FStudyDate: string;
+    FSucursal: string;
     FUserName: string;
   published
     property IdStudy: Integer read FIdStudy write FIdStudy;
@@ -66,6 +67,7 @@ type
     property UserName: string read FUserName write FUserName;
     property IdStudyProcedure: Integer read FIdStudyProcedure write FIdStudyProcedure;
     property HasWav: string read FHasWav write FHasWav;
+    property Sucursal: string read FSucursal write FSucursal;
   end;
 
   TStudyList = class (specialize TFPGList<TStudy>);

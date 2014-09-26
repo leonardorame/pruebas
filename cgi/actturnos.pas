@@ -75,6 +75,8 @@ begin
       lWhere := lWhere + 'Upper(pr.procedure) like ''' + UpperCase(lStudy.ProcedureName) + '%'' and ';
     if lStudy.UserName <> '' then
       lWhere := lWhere + 'Upper(u.username) like ''' + UpperCase(lStudy.UserName) + '%'' and ';
+    if HttpRequest.ContentFields.Values['Sucursal'] <> '' then
+      lWhere := lWhere + 'suc.Sucursal like ''' + lStudy.Sucursal + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "
@@ -115,6 +117,7 @@ begin
       lStudy.IdCurrentUser:= lSql.FieldByName('IdCurrentUser').AsInteger;
       lStudy.IdStudyProcedure := lSql.FieldByName('IdStudyProcedure').AsInteger;
       lStudy.HasWav := lSql.FieldByName('HasWav').AsString;
+      lStudy.Sucursal:= lSql.FieldByName('Sucursal').AsString;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);

@@ -59,7 +59,8 @@ object datamodule1: Tdatamodule1
       'case'
       'when sw.idstudyprocedure is null then ''NO'''
       'else ''SI'''
-      'end as HasWav'
+      'end as HasWav,'
+      'Coalesce(suc.sucursal, ''N/D'') as Sucursal'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'
       'join studyprocedure stpr on stpr.idstudy = st.idstudy'
@@ -70,6 +71,7 @@ object datamodule1: Tdatamodule1
       'left join procedure pr on pr.idprocedure = stpr.idprocedure'
       'left join users u on u.iduser = stpr.idcurrentuser'
       'left join studywav sw on sw.idstudyprocedure = stpr.idstudyprocedure'
+      'left join sucursales suc on suc.idsucursal = st.idsucursal'
     )
     Params = <>
     ParseSQL = False
