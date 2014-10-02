@@ -89,8 +89,8 @@
         <UnitName Value="dmdatabase"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="27"/>
-        <CursorPos Y="35"/>
+        <TopLine Value="89"/>
+        <CursorPos X="3" Y="94"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -115,7 +115,7 @@
         <Filename Value="actlogin.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actLogin"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <TopLine Value="9"/>
         <CursorPos X="15" Y="67"/>
@@ -132,8 +132,7 @@
         <Filename Value="actturno.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturno"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <TopLine Value="107"/>
         <CursorPos X="53" Y="118"/>
@@ -152,10 +151,10 @@
         <Filename Value="actturnos.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actturnos"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="19"/>
-        <CursorPos X="3" Y="29"/>
+        <TopLine Value="78"/>
+        <CursorPos X="5" Y="91"/>
         <UsageCount Value="210"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -163,7 +162,7 @@
         <Filename Value="actprint.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actprint"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <TopLine Value="9"/>
         <CursorPos X="61" Y="53"/>
@@ -174,7 +173,7 @@
         <Filename Value="actuserdata.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actuserdata"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <TopLine Value="49"/>
         <CursorPos X="3" Y="48"/>
@@ -185,7 +184,7 @@
         <Filename Value="study.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="study"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="59"/>
         <CursorPos X="60" Y="72"/>
@@ -240,10 +239,11 @@
         <Filename Value="actaudio.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actaudio"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="31"/>
-        <CursorPos X="3" Y="50"/>
+        <TopLine Value="71"/>
+        <CursorPos X="42" Y="85"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit20>
@@ -267,17 +267,19 @@
       <Unit24>
         <Filename Value="user.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <UnitName Value="user"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="10"/>
         <CursorPos X="15" Y="30"/>
         <UsageCount Value="236"/>
+        <Loaded Value="True"/>
       </Unit24>
       <Unit25>
         <Filename Value="actusers.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="actusers"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <TopLine Value="130"/>
         <CursorPos X="37" Y="95"/>
@@ -364,7 +366,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="86"/>
         <CursorPos X="51" Y="81"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="52"/>
       </Unit35>
       <Unit36>
         <Filename Value="studystatus.pas"/>
@@ -372,7 +374,7 @@
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="8"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="52"/>
       </Unit36>
       <Unit37>
         <Filename Value="../../fpc/rtl/objpas/sysutils/sysstrh.inc"/>
@@ -399,7 +401,7 @@
         <UsageCount Value="46"/>
       </Unit39>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="23" HistoryIndex="21">
       <Position1>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="43" Column="22" TopLine="33"/>
@@ -472,6 +474,26 @@
         <Filename Value="study.pas"/>
         <Caret Line="72" Column="62" TopLine="60"/>
       </Position18>
+      <Position19>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="79" Column="46" TopLine="68"/>
+      </Position19>
+      <Position20>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="35" Column="26" TopLine="24"/>
+      </Position20>
+      <Position21>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="89" Column="24" TopLine="77"/>
+      </Position21>
+      <Position22>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="81" Column="39" TopLine="68"/>
+      </Position22>
+      <Position23>
+        <Filename Value="dmdatabase.pas"/>
+        <Caret Line="94" Column="3" TopLine="89"/>
+      </Position23>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
