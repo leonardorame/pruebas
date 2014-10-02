@@ -214,6 +214,12 @@ angular.module('TIRApp.controllers.turno', []).
         align: 'left'
       },
       {
+        title: 'Modalidad',
+        value: 'Modality',
+        width: '50px;',
+        align: 'left'
+      },
+      {
         title: 'Procedimiento',
         value: 'ProcedureName',
         width: '50px;',

@@ -59,6 +59,8 @@ begin
       lWhere := lWhere + '(sw.idstudyprocedure is null) and ';
     if HttpRequest.ContentFields.Values['StudyDate'] <> '' then
       lWhere := lWhere + 'st.studydate::varchar like ''' + lStudy.StudyDate + '%'' and ';
+    if HttpRequest.ContentFields.Values['Modality'] <> '' then
+      lWhere := lWhere + 'st.Modality like ''' + lStudy.Modality + '%'' and ';
     if HttpRequest.ContentFields.Values['AccessionNumber'] <> '' then
       lWhere := lWhere + 'st.AccessionNumber like ''' + lStudy.AccessionNumber + '%'' and ';
     if HttpRequest.ContentFields.Values['Status'] <> '' then
@@ -118,6 +120,7 @@ begin
       lStudy.IdStudyProcedure := lSql.FieldByName('IdStudyProcedure').AsInteger;
       lStudy.HasWav := lSql.FieldByName('HasWav').AsString;
       lStudy.Sucursal:= lSql.FieldByName('Sucursal').AsString;
+      lStudy.Modality := lSql.FieldByName('Modality').AsString;
       lItem := lStreamer.ObjectToJSON(lStudy);
       lArray.Add(lItem);
       lList.Add(lStudy);

@@ -20,6 +20,7 @@ type
     FIdStatus: Integer;
     FIdStudy: Integer;
     FIdStudyProcedure: Integer;
+    FModality: string;
     FPatient_BirthDate: string;
     FPatient_FirstName: string;
     FPatient_IdPatient: Integer;
@@ -68,6 +69,7 @@ type
     property IdStudyProcedure: Integer read FIdStudyProcedure write FIdStudyProcedure;
     property HasWav: string read FHasWav write FHasWav;
     property Sucursal: string read FSucursal write FSucursal;
+    property Modality: string read FModality write FModality;
   end;
 
   TStudyList = class (specialize TFPGList<TStudy>);
