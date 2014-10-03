@@ -210,7 +210,7 @@ angular.module('TIRApp').directive('onBlurChange', function ($parse) {
     var hasChanged = false;
 
     element.bind("keypress", function(event) {
-      if(event.which === 13) {
+      if(event.keyCode === 13) {
         hasChanged = true;
         scope.$apply(function () {
           fn(scope, {$event: event});
