@@ -45,9 +45,11 @@ angular.module('TIRApp.controllers.turno', []).
         $scope.alert = undefined;
       };
             
-      $scope.initAudio = function(){
+      //$scope.initAudio = function(){
         soundManager.setup({
             url: '../swf/',
+            preferFlash: true,
+            flashVersion: 9,
             onready: function(){
                 var fileName = $scope.study.IdStudyProcedure + '.wav';
                 $scope.mySound = soundManager.createSound({
@@ -60,7 +62,7 @@ angular.module('TIRApp.controllers.turno', []).
                 });
             }
         });
-      }
+      //}
 
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
@@ -107,7 +109,7 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.ff = function() {
-        if($scope.mySound.position + 500 < $scope.mySound.duration) {
+        if($scope.mySound.position + 1000 < $scope.mySound.duration) {
             $scope.mySound.setPosition($scope.mySound.position + 1000);
             document.getElementById("time").innerHTML = timecode($scope.mySound.position);
         }
