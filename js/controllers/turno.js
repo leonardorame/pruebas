@@ -163,6 +163,14 @@ angular.module('TIRApp.controllers.turno', []).
             }).
             error(function(data, status, headers, config){
                 $scope.alert = {type: 'danger', msg: 'Error al intentar guardar documento. COD: ' + status};
+                if(status = '401'){ 
+                    $modal.open({
+                        controller: 'popupLoginController',
+                        templateUrl: 'partials/loginPopup.html'
+                    }).result.then(function(){
+                        $scope.alert = {type: 'danger', msg: 'Por favor guarde nuevamente el documento.'};
+                    });
+                }
             })
       };
 
