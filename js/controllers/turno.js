@@ -48,6 +48,8 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.initAudio = function(){
         soundManager.setup({
             url: '../swf/',
+            flashVersion: 9,
+            preferFlash: true,
             onready: function(){
                 var fileName = $scope.study.IdStudyProcedure + '.wav';
                 $scope.mySound = soundManager.createSound({
@@ -217,7 +219,7 @@ angular.module('TIRApp.controllers.turno', []).
         title: 'Modalidad',
         value: 'Modality',
         width: '50px;',
-        align: 'left'
+        align: 'center'
       },
       {
         title: 'Procedimiento',
