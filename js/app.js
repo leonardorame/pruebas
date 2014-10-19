@@ -57,6 +57,7 @@ angular.module('TIRApp', [
 }).
 run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
     $rootScope.$on( "$routeChangeSuccess", function(event, next, current){
+        console.log('$routeChangeSuccess');
         if(!TIRAPIservice.user.id){
             TIRAPIservice.retrieveUserInfo().
                 success(function(data){
@@ -210,7 +211,7 @@ angular.module('TIRApp').directive('onBlurChange', function ($parse) {
     var hasChanged = false;
 
     element.bind("keypress", function(event) {
-      if(event.which === 13) {
+      if(event.keyCode === 13) {
         hasChanged = true;
         scope.$apply(function () {
           fn(scope, {$event: event});
