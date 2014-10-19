@@ -10,6 +10,7 @@
       <Title Value="tir"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
+      <ActiveWindowIndexAtStart Value="1"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -242,8 +243,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="71"/>
-        <CursorPos X="42" Y="85"/>
+        <TopLine Value="41"/>
+        <CursorPos X="28" Y="52"/>
         <UsageCount Value="240"/>
         <Loaded Value="True"/>
       </Unit20>
@@ -401,7 +402,7 @@
         <UsageCount Value="46"/>
       </Unit39>
     </Units>
-    <JumpHistory Count="23" HistoryIndex="21">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
         <Filename Value="dmdatabase.pas"/>
         <Caret Line="43" Column="22" TopLine="33"/>
@@ -491,9 +492,29 @@
         <Caret Line="81" Column="39" TopLine="68"/>
       </Position22>
       <Position23>
-        <Filename Value="dmdatabase.pas"/>
-        <Caret Line="94" Column="3" TopLine="89"/>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="22" Column="45" TopLine="11"/>
       </Position23>
+      <Position24>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="35" Column="23" TopLine="31"/>
+      </Position24>
+      <Position25>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="72" Column="9" TopLine="51"/>
+      </Position25>
+      <Position26>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="103" Column="5" TopLine="81"/>
+      </Position26>
+      <Position27>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="68" TopLine="62"/>
+      </Position27>
+      <Position28>
+        <Filename Value="actaudio.pas"/>
+        <Caret Line="49" Column="47" TopLine="39"/>
+      </Position28>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>
