@@ -1,7 +1,9 @@
 angular.module('TIRApp.controllers.insertupdatetpl', []).
     
   controller('insertUpdateTplController', function($scope, $location, $modalInstance, TIRAPIservice) {
-    $scope.insertTemplate = "insert";
+    $scope.insertTemplate = {
+        type: "update"
+    };
     $scope.ok = function(){
         $modalInstance.close($scope.insertTemplate);
     };        
@@ -9,8 +11,4 @@ angular.module('TIRApp.controllers.insertupdatetpl', []).
     $scope.cancel = function(){
         $modalInstance.dismiss('cancel');
     };        
-
-    $scope.go = function(insertTemplate){
-            $scope.insertTemplate = insertTemplate;
-    };
 });

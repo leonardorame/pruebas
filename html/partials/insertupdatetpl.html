@@ -6,13 +6,13 @@
     <div class="form-group">
         <div class="radio">
             <label>
-                <input type="radio" value="insert" checked="checked" ng-model="insertTemplate">
+                <input type="radio" value="insert" checked="true" name="inserttype" ng-model="insertTemplate.type">
                 Agregar al final
             </label>
         </div>
         <div class="radio">
             <label>
-                <input type="radio" value="update" ng-model="insertTemplate">
+                <input type="radio" value="update"  name="inserttype" ng-model="insertTemplate.type">
                 Sobreescribir
             </label>
         </div>

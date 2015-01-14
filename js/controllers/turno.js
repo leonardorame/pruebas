@@ -138,16 +138,21 @@ angular.module('TIRApp.controllers.turno', []).
                 templateUrl: 'partials/templatestable.html'
             }).result.then(function(template){
                 if(template){
+                    this.template = template;
                     $modal.open({
                         controller: 'insertUpdateTplController',
                         templateUrl: 'partials/insertupdatetpl.html',
                         resolve: {
                             template: function(){
-                                return template;
+                                return this.template;
                             }
                         }
-                    }).result.then(function(template){
-                        $scope.study.Report = template.Template;
+                    }).result.then(function(tipo){
+                        if(tipo.type == 'insert') {
+                          $scope.study.Report = $scope.study.Report + '<br>' + this.template.Template;
+                        } else {
+                          $scope.study.Report = this.template.Template;
+                        }
                     });
                 }
             });

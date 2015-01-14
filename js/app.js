@@ -8,6 +8,7 @@ angular.module('TIRApp', [
   'TIRApp.controllers.users',
   'TIRApp.controllers.status',
   'TIRApp.controllers.studystatuses',
+  'TIRApp.controllers.insertupdatetpl',
   'ngRoute',
   'ui.bootstrap'
 ], function($httpProvider) {
