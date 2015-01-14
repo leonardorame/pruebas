@@ -31,11 +31,14 @@ implementation
 procedure TActAudio.WavToMP3(AWav: TMemoryStream);
 var
   lOut: TMemoryStream;
+  lErr: TStringStream;
   lProcess: TProcess;
   lBuf: array[0..511] of byte;
   lReadCount: Integer;
 begin
+  AWav.SaveToFile('/tmp/file.wav');
   lOut := TMemoryStream.Create;
+  lErr := TStringStream.Create('');
   lProcess := TProcess.Create(nil);
   try
     lProcess.Executable := '/usr/bin/lame';
@@ -65,17 +68,19 @@ begin
         lReadCount := lProcess.StdErr.Read(lBuf, SizeOf(lBuf));
         if lReadCount > 0 then
         begin
-          // do something with Stderr data
+          lErr.Write(lBuf, lReadCount);
         end;
       end;
     end;
 
+    TBrookLogger.Service.Info(lErr.DataString);
     AWav.Clear;
     lOut.Position := 0;
     lOut.SaveToStream(AWav)
   finally
     lProcess.Free;
     lOut.Free;
+    lErr.Free;
   end;
 end;
 
