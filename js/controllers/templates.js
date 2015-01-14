@@ -179,7 +179,7 @@ angular.module('TIRApp.controllers.templates', []).
                 $scope.go(data);
             }).
             error(function(data, status, headers, config){
-                $scope.alert = {type: 'danger', msg: 'Error al intentar crear plantilla. COD: ' + status + ' - Probablemente el nombre y/o código esten duplicados'};
+                $scope.alert = {type: 'danger', msg: 'Error al intentar crear plantilla. COD: ' + status + ' - Probablemente el nombre y/o código esten duplicados (buscar NEW-CODE).'};
             });
     }
 
