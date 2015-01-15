@@ -34,7 +34,12 @@
       <td><input type=checkbox ng-model="turno['checked']" name="turno[{{turno.IdStudy}}]" />
       </td>
       <td ng-repeat="header in headers" align="{{header.align}}" width="{{header.width}}">
+        <span ng-if="$index==1" ng-click="go(turno)">
         {{turno[header.value]}}
+        </span>
+        <span ng-if="$index!=1">
+        {{turno[header.value]}}
+        </span>
       </td>
     </tr>
     </tbody>
