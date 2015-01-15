@@ -91,6 +91,7 @@ directive('ckEditor', [function(){
             //controller: 'turnoController',
             restrict: 'CE',
             link: function (scope, elm, attr, model) {
+                CKEDITOR.env.isCompatible = true;
                 var isReady = false;
                 var data = [];
                 CKEDITOR.editorConfig = function( config ) {
