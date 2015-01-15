@@ -97,7 +97,8 @@ directive('ckEditor', [function(){
                 CKEDITOR.editorConfig = function( config ) {
                   config.width = 600;
                   config.height = 700;
-                  config.autoGrow_onStartup = false;
+                  config.removePlugins = 'autogrow';
+                  //config.autoGrow_onStartup = false;
                 };
                 CKEDITOR.plugins.registered['templates'] = {
                     init: function (editor) {

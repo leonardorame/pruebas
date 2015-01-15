@@ -289,13 +289,8 @@ angular.module('TIRApp.controllers.turno', []).
       }
     ];
      
-    //Will make an ajax call to fill the drop down menu in the filter of the states
-    //$scope.states = TIRAPIservice.getTurnos();
-     
     //default criteria that will be sent to the server
-    //$scope.filterCriteria = TIRAPIservice.getDefaultFilterCriteria('studies');
     $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters;
-    //$scope.filterCriteria.UserName = TIRAPIservice.user.name;
      
     //The function that is responsible of fetching the result from the server and setting the grid to the new result
     $scope.fetchResult = function () {
@@ -315,6 +310,8 @@ angular.module('TIRApp.controllers.turno', []).
      
     //called when navigate to another page in the pagination
     $scope.selectPage = function (page) {
+        TIRAPIservice.studiesDefaultFilters.pageNumber = page;
+        console.log(TIRAPIservice.studiesDefaultFilters.pageNumber);
         $scope.filterCriteria.pageNumber = page;
         $scope.fetchResult();
     };
@@ -340,7 +337,7 @@ angular.module('TIRApp.controllers.turno', []).
     };
      
     //manually select a page to trigger an ajax request to populate the grid on page load
-    $scope.selectPage(1);
+    $scope.selectPage(TIRAPIservice.studiesDefaultFilters.pageNumber);
 
     $scope.go = function(study){
         TIRAPIservice.study = study;
