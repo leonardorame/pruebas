@@ -33,7 +33,7 @@ begin
   lSql.DataBase := datamodule1.PGConnection1;
   try
     lJson := TJSONObject(lParser.Parse);
-    lSql.SQL.Text := 'Update study set IdCurrentUser = :IdCurrentUser where IdStudy = :IdStudy';
+    lSql.SQL.Text := 'Update studyprocedure set IdCurrentUser = :IdCurrentUser where IdStudy = :IdStudy';
     datamodule1.SQLTransaction1.StartTransaction;
     for I := 0 to lJson.Arrays['studies'].Count - 1 do
     begin

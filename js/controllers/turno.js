@@ -395,7 +395,7 @@ angular.module('TIRApp.controllers.turno', []).
         };
 
         $modal.open({
-            controller: 'statusTableController',
+            controller: 'studystatusTableController',
             templateUrl: 'partials/statustable.html'
         }).result.then(function(status){
             if(status){
