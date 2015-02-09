@@ -77,7 +77,13 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.openViewer = function() {
-        $window.open("http://192.168.1.124/masterview/mv.jsp?user_name=url&password=url1234&accession_number=" + TIRAPIservice.study.AccessionNumber, "Carestream", "height=600, width=800");
+        var ip = '';
+        if (location.hostname == "192.168.1.121")
+            ip = '192.168.1.124';
+        else
+            ip = '186.153.167.91';
+
+        $window.open("http://" + ip + "/masterview/mv.jsp?user_name=url&password=url1234&accession_number=" + TIRAPIservice.study.AccessionNumber, "Carestream", "height=600, width=800");
       }
 
       $scope.startRecording = function(){
