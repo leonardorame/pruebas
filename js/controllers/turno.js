@@ -9,24 +9,14 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.progressValue = 0;
       $scope.progressMax = 100;
 
-      function timecode(ms) {
-        var hms = {
-          h: Math.floor(ms/(60*60*1000)),
-          m: Math.floor((ms/60000) % 60),
-          s: Math.floor((ms/1000) % 60),
-          ms: Math.floor((ms%1000)/100)
-        };
-        var tc = []; // Timecode array to be joined with '.'
-
-        if (hms.h > 0) {
-          tc.push(hms.h);
-        }
-
-        tc.push((hms.m < 10 && hms.h > 0 ? "0" + hms.m : hms.m));
-        tc.push((hms.s < 10 ? "0" + hms.s : hms.s));
-        tc.push(hms.ms);
-
-        return tc.join(':');
+      function secondstotime(secs)
+      {
+            var t = new Date(1970,0,1);
+            t.setSeconds(secs);
+            var s = t.toTimeString().substr(0,8);
+            if(secs > 86399)
+                s = Math.floor((t - Date.parse("1/1/70")) / 3600000) + s.substr(2);
+            return s;
       }
 
       TIRAPIservice.getStudy($routeParams.id).success(
@@ -44,26 +34,28 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.closeAlert = function(){
         $scope.alert = undefined;
       };
-            
-      //$scope.initAudio = function(){
-        soundManager.setup({
-            url: '../swf/',
-            preferFlash: true,
-            flashVersion: 9,
-            onready: function(){
+        
+      function initAudio(){
+        var audio5js = new Audio5js({
+            format_time: false,
+            throw_errors: true,
+            swf_path: '../swf/audio5js.swf',
+            ready: function() {
+                var audio = this;
                 var fileName = $scope.study.IdStudyProcedure + '.wav';
-                $scope.mySound = soundManager.createSound({
-                    url: '/cgi-bin/tir/audio/' + fileName
+                this.on('timeupdate', function(pos, dur){
+                    document.getElementById("time").innerHTML = secondstotime(pos);
+                }, this);
+                this.on('canplay', function(){
+                    $scope.mySound = audio;
                 });
-                $scope.mySound.load({
-                    onload: function(success){
-                        $scope.progressMax = Math.floor($scope.mySound.duration);
-                    }
-                });
+                this.load('/cgi-bin/tir/audio/' + fileName);
+                this.pause();
             }
         });
-      //}
-
+      }
+      initAudio();
+            
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
         var aData = null;
@@ -99,26 +91,24 @@ angular.module('TIRApp.controllers.turno', []).
 
       $scope.begin = function() {
         $scope.mySound.pause();
-        $scope.mySound.setPosition(0);
-        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+        $scope.mySound.seek(0);
       }
 
       $scope.end = function() {
         $scope.mySound.pause();
-        $scope.mySound.setPosition($scope.mySound.duration);
-        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+        $scope.mySound.seek($scope.mySound.duration);
       }
 
       $scope.rew = function() {
-        $scope.mySound.setPosition($scope.mySound.position - 1000);
-        document.getElementById("time").innerHTML = timecode($scope.mySound.position);
+        $scope.mySound.pause();
+        if($scope.mySound.position - 0.5 > 0)
+            $scope.mySound.seek($scope.mySound.position - 0.5);
       }
 
       $scope.ff = function() {
-        if($scope.mySound.position + 1000 < $scope.mySound.duration) {
-            $scope.mySound.setPosition($scope.mySound.position + 1000);
-            document.getElementById("time").innerHTML = timecode($scope.mySound.position);
-        }
+        $scope.mySound.pause();
+        if($scope.mySound.position + 0.5 < $scope.mySound.duration)
+            $scope.mySound.seek($scope.mySound.position + 0.5);
       }
 
       $scope.pause = function() {
@@ -130,12 +120,7 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.play = function() {
-        $scope.mySound.play({
-            multiShot: false,
-            whileplaying: function() {
-                document.getElementById("time").innerHTML = timecode($scope.mySound.position);
-            }
-        });
+        $scope.mySound.play();
       }
 
       $scope.selectTemplate = function(){
@@ -317,7 +302,6 @@ angular.module('TIRApp.controllers.turno', []).
     //called when navigate to another page in the pagination
     $scope.selectPage = function (page) {
         TIRAPIservice.studiesDefaultFilters.pageNumber = page;
-        console.log(TIRAPIservice.studiesDefaultFilters.pageNumber);
         $scope.filterCriteria.pageNumber = page;
         $scope.fetchResult();
     };
