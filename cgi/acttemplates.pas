@@ -63,6 +63,8 @@ begin
       lWhere := lWhere + 'Upper(Code) like ''' + UpperCase(lTemplate.Code) + '%'' and ';
     if HttpRequest.ContentFields.Values['Name'] <> '' then
       lWhere := lWhere + 'Upper(Name) like ''' + UpperCase(lTemplate.Name) + '%'' and ';
+    if HttpRequest.ContentFields.Values['Modality'] <> '' then
+      lWhere := lWhere + 'Upper(Modality) like ''' + UpperCase(lTemplate.Modality) + '%'' and ';
     if lWhere <> '' then
     begin
       // eliminamos el ultimo " and "
@@ -83,6 +85,7 @@ begin
         lTemplate.IdTemplate := lSql.FieldByName('IdTemplate').AsInteger;
         lTemplate.Code := lSql.FieldByName('Code').AsString;
         lTemplate.Name := lSql.FieldByName('Name').AsString;
+        lTemplate.Modality := lSql.FieldByName('Modality').AsString;
         lItem := lStreamer.ObjectToJSON(lTemplate);
         lArray.Add(lItem);
         lList.Add(lTemplate);

@@ -18,6 +18,10 @@ angular.module('TIRApp.controllers.templates', []).
     {
         title: 'Nombre',
         value: 'Name'
+    },
+    {
+        title: 'Modalidad',
+        value: 'Modality'
     }];
     //default criteria that will be sent to the server
     $scope.filterCriteria = {
@@ -110,6 +114,10 @@ angular.module('TIRApp.controllers.templates', []).
     {
         title: 'Nombre',
         value: 'Name'
+    },
+    {
+        title: 'Modalidad',
+        value: 'Modality'
     }];
     //default criteria that will be sent to the server
     $scope.filterCriteria = {
@@ -209,6 +217,7 @@ angular.module('TIRApp.controllers.templates', []).
             if (found) {
                 found.Code = data.Code;
                 found.Name = data.Name;
+                found.Modality = data.Modality;
             } else {
             }
         }).
