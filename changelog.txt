@@ -1,0 +1,7 @@
+2015-02-22 - v1.2.15 
+* Se fuerza el uso de SWF en vez de HTML5 audio.
+* Se agrega el campo Modality a la tabla templates.
+
+2015-01-10 - v1.2.13
+* Se reemplaza SoundManager2 por Audio5js para la 
+  reproducción de audio.
