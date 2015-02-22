@@ -24,6 +24,10 @@ angular.module('TIRApp.controllers.turno', []).
                 TIRAPIservice.study = data
                 $scope.study = TIRAPIservice.study;
                 $scope.alert = undefined;
+                // recien despues de 
+                // haber cargado los datos
+                // del estudio llamamos a initAudio
+                initAudio();
             }
       );
 
@@ -42,19 +46,21 @@ angular.module('TIRApp.controllers.turno', []).
             swf_path: '../swf/audio5js.swf',
             ready: function() {
                 var audio = this;
-                var fileName = $scope.study.IdStudyProcedure + '.wav';
+                var fileName = $scope.study.IdStudy + '.wav';
                 this.on('timeupdate', function(pos, dur){
                     document.getElementById("time").innerHTML = secondstotime(pos);
                 }, this);
                 this.on('canplay', function(){
                     $scope.mySound = audio;
                 });
+                this.on('error', function(error){
+                    console.log(error.message);
+                });
                 this.load('/cgi-bin/tir/audio/' + fileName);
                 this.pause();
             }
         });
       }
-      initAudio();
             
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
