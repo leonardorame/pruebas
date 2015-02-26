@@ -46,7 +46,13 @@ begin
       values(_idpatient, _idprofder, _idprofefe, _accession, _fecha_desde, _modalidad);
     _idstudy = (select currval('study_idstudy_seq'));
     insert into studyprocedure(idstudy, idprocedure, qty, idstatus) values(_idstudy, _idprocedure, _prestacionqty, 1);
-  end if;      
+  else
+    /* el estudio ya existe, se verifica que la prestacion no este cargada con anterioridad */
+    _idstudyprocedure = (select idstudyprocedure from studyprocedure where idstudy=_idstudy and idprocedure=_idprocedure);
+    if (_idstudyprocedure is null)
+      insert into studyprocedure(idstudy, idprocedure, qty, idstatus) values(_idstudy, _idprocedure, _prestacionqty, 1);
+    end if;
+  end if;
 end
 $body$
   language plpgsql volatile
