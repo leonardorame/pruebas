@@ -24,6 +24,10 @@ angular.module('TIRApp.controllers.turno', []).
                 TIRAPIservice.study = data
                 $scope.study = TIRAPIservice.study;
                 $scope.alert = undefined;
+                // recien despues de 
+                // haber cargado los datos
+                // del estudio llamamos a initAudio
+                initAudio();
             }
       );
 
@@ -40,21 +44,35 @@ angular.module('TIRApp.controllers.turno', []).
             format_time: false,
             throw_errors: true,
             swf_path: '../swf/audio5js.swf',
+            use_flash: true,
             ready: function() {
                 var audio = this;
-                var fileName = $scope.study.IdStudyProcedure + '.wav';
+                var fileName = $scope.study.IdStudy + '.wav';
                 this.on('timeupdate', function(pos, dur){
                     document.getElementById("time").innerHTML = secondstotime(pos);
                 }, this);
                 this.on('canplay', function(){
                     $scope.mySound = audio;
                 });
+                this.on('error', function(error){
+                    console.log(error.message);
+                });
+
+                this.on('seeking', function(error){
+                });
+
+                this.on('seeked', function(error){
+                });
+
                 this.load('/cgi-bin/tir/audio/' + fileName);
                 this.pause();
             }
         });
       }
-      initAudio();
+    
+      $scope.$on('$destroy', function leaving(){
+            $scope.mySound.destroy();
+        });
             
       $scope.saveAudio = function(){
         var fileName = $scope.study.IdStudy + '.wav';
@@ -100,13 +118,11 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.rew = function() {
-        $scope.mySound.pause();
         if($scope.mySound.position - 0.5 > 0)
             $scope.mySound.seek($scope.mySound.position - 0.5);
       }
 
       $scope.ff = function() {
-        $scope.mySound.pause();
         if($scope.mySound.position + 0.5 < $scope.mySound.duration)
             $scope.mySound.seek($scope.mySound.position + 0.5);
       }

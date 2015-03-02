@@ -87,12 +87,14 @@ begin
       lQuery.DataBase := datamodule1.PGConnection1;
       datamodule1.SQLTransaction1.StartTransaction;
 
-      lSql := 'update templates set template = :template, code = :code, name = :name ' +
+      lSql := 'update templates set template = :template, code = :code, ' +
+        'name = :name, modality = :modality ' +
         'where idtemplate = :idtemplate';
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('template').AsString:= lTemplate.Template;
       lQuery.ParamByName('code').AsString:= lTemplate.Code;
       lQuery.ParamByName('name').AsString:= lTemplate.Name;
+      lQuery.ParamByName('modality').AsString:= lTemplate.Modality;
       lQuery.ParamByName('idtemplate').AsInteger:= lTemplate.IdTemplate;
       lQuery.ExecSQL;
       With TJSONObject.Create do
@@ -100,6 +102,7 @@ begin
         Add('IdTemplate', lTemplate.IdTemplate);
         Add('Code', lTemplate.Code);
         Add('Name', lTemplate.Name);
+        Add('Modality', lTemplate.Modality);
         Write(AsJSON);
         Free;
       end;
@@ -134,6 +137,7 @@ begin
       lTemplate.IdTemplate := lQuery.FieldByName('IdTemplate').AsInteger;
       lTemplate.Code := lQuery.FieldByName('Code').AsString;;
       lTemplate.Name := lQuery.FieldByName('Name').AsString;;
+      lTemplate.Modality := lQuery.FieldByName('Modality').AsString;;
       lTemplate.Template := lQuery.FieldByName('Template').AsString;;
       lJson := lStreamer.ObjectToJSON(lTemplate);
       Write(lJson.AsJSON);

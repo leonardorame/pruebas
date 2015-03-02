@@ -15,6 +15,7 @@ type
   private
     FCode: string;
     FIdTemplate: Integer;
+    FModality: string;
     FName: string;
     FTemplate: string;
   published
@@ -22,6 +23,7 @@ type
     property Code: string read FCode write FCode;
     property Name: string read FName write FName;
     property Template: string read FTemplate write FTemplate;
+    property Modality: string read FModality write FModality;
   end;
 
   TTemplateList = class (specialize TFPGList<TTemplate>);
