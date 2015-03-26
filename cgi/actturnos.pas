@@ -88,7 +88,7 @@ begin
     lSql.SQL.Add('order by StudyDate desc, IdStudy desc ');
 
     lSql.SQL.Add(Format('limit %d offset %d', [lLength, lStart]));
-    TBrookLogger.Service.Info(lSql.Sql.Text);
+    //TBrookLogger.Service.Info(lSql.Sql.Text);
 
     lSql.Open;
 

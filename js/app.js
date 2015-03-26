@@ -94,13 +94,6 @@ directive('ckEditor', [function(){
                 CKEDITOR.env.isCompatible = true;
                 var isReady = false;
                 var data = [];
-                CKEDITOR.editorConfig = function( config ) {
-                    config.width = 600;
-                    config.height = 700;
-                    config.removePlugins = 'autogrow';
-                    config.disableNativeSpellChecker = false; // enable spellcheck
-                  //config.autoGrow_onStartup = false;
-                };
                 CKEDITOR.plugins.registered['templates'] = {
                     init: function (editor) {
                        // click template Command

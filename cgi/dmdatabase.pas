@@ -31,7 +31,7 @@ type
     procedure DataModuleCreate(Sender: TObject);
   private
   public
-    function LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
+    function LoadWav(AWav: TMemoryStream; AIdStudy: Integer): Boolean;
     procedure SaveWav(AWav: TMemoryStream; AStudyId: Integer);
     procedure AddStatusesToJson(AJson: TJSONObject);
     procedure AddProfilesToJson(AJson: TJSONObject);
@@ -87,7 +87,7 @@ begin
   end;
 end;
 
-function Tdatamodule1.LoadWav(AWav: TMemoryStream; AIdStudyProcedure: Integer): Boolean;
+function Tdatamodule1.LoadWav(AWav: TMemoryStream; AIdStudy: Integer): Boolean;
 var
   lQry: TSQLQuery;
 begin
@@ -95,8 +95,9 @@ begin
   lQry := TSQLQuery.Create(nil);
   try
     lQry.DataBase := PGConnection1;
-    lQry.SQL.Text:= 'select wav from studywav where idstudyprocedure = :idstudyprocedure';
-    lQry.ParamByName('idstudyprocedure').AsInteger := AIdStudyProcedure;
+    //lQry.SQL.Text:= 'select wav from studywav where idstudyprocedure = :idstudyprocedure';
+    lQry.SQL.Text:= 'select wav from studywav where idstudy = :idstudy';
+    lQry.ParamByName('idstudy').AsInteger := AIdStudy;
     lQry.Open;
     if not lQry.EOF then
     begin
