@@ -116,6 +116,8 @@ begin
       lStudy.Qty:= lQuery.FieldByName('Qty').AsInteger;
       lStudy.UserName:= lQuery.FieldByName('username').AsString;
       lStudy.Modality:= lQuery.FieldByName('Modality').AsString;
+      lStudy.DiagnosticoPresuntivo := lQuery.FieldByName('DiagnosticoPresuntivo').AsString;
+      lStudy.Observaciones := lQuery.FieldByName('Observaciones').AsString;
       lJson := lStreamer.ObjectToJSON(lStudy);
       datamodule1.AddStatusesToJson(lJson);
       datamodule1.AddProcedureToJson(lJson, lStudy.IdStudyProcedure);

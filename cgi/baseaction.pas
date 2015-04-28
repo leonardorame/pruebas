@@ -16,7 +16,7 @@ uses
 type
 
   { TBaseAction }
-  generic TBaseGAction<T> = class(specialize TBrookGAction<T>)
+  generic TBaseGAction<T: TObject> = class(specialize TBrookGAction<T>)
   private
     FPageSize: integer;
     FSession: TSession;
@@ -58,8 +58,8 @@ begin
     begin
       if not FSession.FindSessionRecord(FSession.Token) then
       begin
-        AResponse.Code:=401;
-        AResponse.CodeText:= 'Session not found.';
+        AResponse.Code := 401;
+        AResponse.CodeText := 'Session not found.';
       end
       else
       begin
@@ -70,8 +70,8 @@ begin
     else
     begin
       // no mandó ni cookie ni token
-      AResponse.Code:=401;
-      AResponse.CodeText:= 'Session not found.';
+      AResponse.Code := 401;
+      AResponse.CodeText := 'Session not found.';
     end;
   end
   else

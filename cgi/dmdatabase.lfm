@@ -2,8 +2,8 @@ object datamodule1: Tdatamodule1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 315
-  HorizontalOffset = 820
-  VerticalOffset = 254
+  HorizontalOffset = 576
+  VerticalOffset = 221
   Width = 410
   object PGConnection1: TPQConnection
     Connected = False
@@ -18,12 +18,14 @@ object datamodule1: Tdatamodule1
     UserName = 'postgres'
     HostName = '127.0.0.1'
     LogEvents = []
+    Options = []
     left = 48
     top = 40
   end
   object SQLTransaction1: TSQLTransaction
     Active = False
     Database = PGConnection1
+    Options = []
     left = 48
     top = 112
   end
@@ -74,6 +76,7 @@ object datamodule1: Tdatamodule1
       'left join studywav sw on sw.idstudyprocedure = stpr.idstudyprocedure'
       'left join sucursales suc on suc.idsucursal = st.idsucursal'
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 167
@@ -86,6 +89,8 @@ object datamodule1: Tdatamodule1
     SQL.Strings = (
       'select'
       'count(*) over() as TotalRecords,'
+      'st.DiagnosticoPresuntivo as "DiagnosticoPresuntivo",'
+      'st.Observaciones as "Observaciones",'
       'st.idstudy,'
       'st.studydate,'
       'st.accessionnumber,'
@@ -118,6 +123,7 @@ object datamodule1: Tdatamodule1
       'left join users u on u.iduser = stpr.idcurrentuser'
       'where stpr.IdStudyProcedure = :IdStudyProcedure'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -139,6 +145,7 @@ object datamodule1: Tdatamodule1
       ' Status'
       'from status'
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 48
@@ -158,6 +165,7 @@ object datamodule1: Tdatamodule1
       'Modality'
       'from templates'
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 256
@@ -177,6 +185,7 @@ object datamodule1: Tdatamodule1
       'from templates'
       'where idtemplate = :IdTemplate'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -203,6 +212,7 @@ object datamodule1: Tdatamodule1
       'from patient'
       ''
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 160
@@ -222,6 +232,7 @@ object datamodule1: Tdatamodule1
       'join procedure p on p.idprocedure = sp.idprocedure'
       'where sp.idstudyprocedure = :IdStudyProcedure'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -246,6 +257,7 @@ object datamodule1: Tdatamodule1
       'from users u'
       'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 320
@@ -266,6 +278,7 @@ object datamodule1: Tdatamodule1
       'join user_groups ug on ug.IdUserGroup = u.IdUserGroup'
       'where u.iduser = :iduser'
     )
+    Options = []
     Params = <    
       item
         DataType = ftUnknown
@@ -286,6 +299,7 @@ object datamodule1: Tdatamodule1
       ' UserGroup'
       'from user_groups'
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 48
@@ -309,6 +323,7 @@ object datamodule1: Tdatamodule1
       'join users u on u.iduser = ss.iduser'
       ''
     )
+    Options = []
     Params = <>
     ParseSQL = False
     left = 336

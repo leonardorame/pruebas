@@ -179,6 +179,20 @@ angular.module('TIRApp.controllers.turno', []).
             });
       };
 
+      $scope.diagnostico = function(){
+            $modal.open({
+               controller: 'diagnosticoController',
+                templateUrl: 'partials/diagnostico.html',
+                resolve: {
+                    study: function(){
+                        return $scope.study;
+                    }
+                }
+            }).result.then(function(status){
+                // nothing to be done.
+            });
+      };
+
       $scope.save = function(document) {
           TIRAPIservice.saveStudy(document).
             success(function(data, status, headers, config){

@@ -41,6 +41,8 @@ type
     FStudyDate: string;
     FSucursal: string;
     FUserName: string;
+    FDiagnosticoPresuntivo: string;
+    FObservaciones: string;
   published
     property IdStudy: Integer read FIdStudy write FIdStudy;
     property AccessionNumber: string read FAccessionNumber write FAccessionNumber;
@@ -70,6 +72,8 @@ type
     property HasWav: string read FHasWav write FHasWav;
     property Sucursal: string read FSucursal write FSucursal;
     property Modality: string read FModality write FModality;
+    property DiagnosticoPresuntivo: string read FDiagnosticoPresuntivo write FDiagnosticoPresuntivo;
+    property Observaciones: string read FObservaciones write FObservaciones;
   end;
 
   TStudyList = class (specialize TFPGList<TStudy>);
