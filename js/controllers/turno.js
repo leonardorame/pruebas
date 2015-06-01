@@ -19,6 +19,21 @@ angular.module('TIRApp.controllers.turno', []).
             return s;
       }
 
+      $scope.keyUp = function(event) {
+        console.log('keyUp');
+        //console.log(event);
+      };
+
+      $scope.keyDown = function(event) {
+        console.log('keyDown');
+        //console.log(event);
+      };
+
+      $scope.keyPress = function(event) {
+        console.log('keyPress');
+        //console.log(event);
+      };
+
       TIRAPIservice.getStudy($routeParams.id).success(
             function(data){
                 TIRAPIservice.study = data

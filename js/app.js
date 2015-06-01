@@ -140,6 +140,18 @@ directive('ckEditor', [function(){
                       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
                     ]
                 } );
+                var edt = ck;
+                edt.on('contentDom', function(){
+                    edt.editable().attachListener(edt.document, 'keyup', function(event) {
+                       scope.keyUp(event); 
+                    });
+                    edt.editable().attachListener(edt.document, 'keydown', function(event) {
+                       scope.keyDown(event); 
+                    });
+                    edt.editable().attachListener(edt.document, 'key', function(event) {
+                       scope.keyPress(event); 
+                    });
+                });
                 function setData(){
                     if(!data.length) {
                         return;
