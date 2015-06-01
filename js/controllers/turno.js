@@ -20,18 +20,26 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.keyUp = function(event) {
-        console.log('keyUp');
-        //console.log(event);
+        var keyCode = event.data.$.keyCode;
+        switch( keyCode) {
+            case 113: { $scope.rew(); break; }
+            case 114: { 
+                if($scope.playing)
+                    $scope.pause();
+                else
+                    $scope.play(); 
+                break; 
+            }
+            case 115: { $scope.ff(); break; }
+        }
       };
 
       $scope.keyDown = function(event) {
-        console.log('keyDown');
-        //console.log(event);
+        //console.log('keyDown');
       };
 
       $scope.keyPress = function(event) {
-        console.log('keyPress');
-        //console.log(event);
+        //console.log('keyPress');
       };
 
       TIRAPIservice.getStudy($routeParams.id).success(
@@ -125,33 +133,40 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.begin = function() {
         $scope.mySound.pause();
         $scope.mySound.seek(0);
+        $scope.playing = false;
       }
 
       $scope.end = function() {
         $scope.mySound.pause();
         $scope.mySound.seek($scope.mySound.duration);
+        $scope.playing = false;
       }
 
       $scope.rew = function() {
         if($scope.mySound.position - 0.5 > 0)
             $scope.mySound.seek($scope.mySound.position - 0.5);
+        $scope.playing = false;
       }
 
       $scope.ff = function() {
         if($scope.mySound.position + 0.5 < $scope.mySound.duration)
             $scope.mySound.seek($scope.mySound.position + 0.5);
+        $scope.playing = false;
       }
 
       $scope.pause = function() {
         $scope.mySound.pause();
+        $scope.playing = false;
       }
 
       $scope.stop = function() {
         $scope.mySound.pause();
+        $scope.playing = false;
       }
 
       $scope.play = function() {
         $scope.mySound.play();
+        $scope.playing = true;
       }
 
       $scope.selectTemplate = function(){
