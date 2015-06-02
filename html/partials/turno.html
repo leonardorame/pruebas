@@ -142,7 +142,7 @@
             <div class="btn-group">
               <button class="btn btn-primary" ng-click="begin()" ng-model="player.status" btn-radio="'begin'"><span class="glyphicon glyphicon-step-backward"></span><br>Principio</button>
               <button class="btn btn-primary" ng-click="rew()" ng-model="player.status" btn-radio="'rw'"><span class="glyphicon glyphicon-backward"></span><br>Retroceder (F2)</button>
-              <button class="btn btn-primary" ng-click="play()" ng-model="player.status" btn-radio="'play'"><span class="glyphicon glyphicon-play"></span><br>Play/Pause (F3)</button>
+              <button class="btn btn-primary" ng-click="play()" ng-model="player.status" btn-radio="'play'" uncheckable><span class="glyphicon glyphicon-play"></span><br>Play/Pause (F3)</button>
               <!--button class="btn btn-primary" ng-click="pause()" ng-if="!playing" ng-model="player.status" btn-radio="'play'"><span class="glyphicon glyphicon-play"></span><br>Reproducir (F3)</button-->
               <button class="btn btn-primary" ng-click="ff()" ng-model="player.status" btn-radio="'ff'"><span class="glyphicon glyphicon-forward"></span><br>Avanzar (F4)</button>
               <button class="btn btn-primary" ng-click="end()" ng-model="player.status" btn-radio="'end'"><span class="glyphicon glyphicon-step-forward"></span><br>Fin</button>

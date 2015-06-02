@@ -33,12 +33,8 @@ angular.module('TIRApp.controllers.turno', []).
         switch( keyCode) {
             case 113: { $scope.rew(); break; }
             case 114: { 
-                if($scope.playing)
-                    $scope.pause();
-                else
-                    $scope.play(); 
-                event.stopPropagation();
-                event.preventDefault();
+                $scope.play(); 
+                event.data.preventDefault(true);
                 break; 
             }
             case 115: { $scope.ff(); break; }
@@ -165,19 +161,24 @@ angular.module('TIRApp.controllers.turno', []).
         $scope.playing = false;
       }
 
-      $scope.pause = function() {
-        $scope.player.status = 'pause';
-        $scope.mySound.pause();
-        $scope.playing = false;
-      }
-
       $scope.stop = function() {
         $scope.player.status = 'pause';
         $scope.mySound.pause();
         $scope.playing = false;
       }
 
+      $scope.pause = function() {
+        $scope.player.status = 'pause';
+        $scope.mySound.pause();
+        $scope.playing = false;
+      }
+
       $scope.play = function() {
+        if($scope.playing) {
+            $scope.pause();
+            return;
+        };
+
         $scope.player.status = 'play';
         $scope.mySound.play();
         $scope.playing = true;
