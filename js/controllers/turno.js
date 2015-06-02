@@ -8,6 +8,7 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.mySound = null;
       $scope.progressValue = 0;
       $scope.progressMax = 100;
+      $scope.player = {};
 
       function secondstotime(secs)
       {
@@ -22,6 +23,14 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.keyUp = function(event) {
         var keyCode = event.data.$.keyCode;
         switch( keyCode) {
+            case 113: { $scope.player.status = ''; $scope.$apply(); break; }
+            case 115: { $scope.player.status = ''; $scope.$apply(); break; }
+        }
+      };
+
+      $scope.keyDown = function(event) {
+        var keyCode = event.data.$.keyCode;
+        switch( keyCode) {
             case 113: { $scope.rew(); break; }
             case 114: { 
                 if($scope.playing)
@@ -32,10 +41,6 @@ angular.module('TIRApp.controllers.turno', []).
             }
             case 115: { $scope.ff(); break; }
         }
-      };
-
-      $scope.keyDown = function(event) {
-        //console.log('keyDown');
       };
 
       $scope.keyPress = function(event) {
@@ -131,40 +136,47 @@ angular.module('TIRApp.controllers.turno', []).
       }
 
       $scope.begin = function() {
+        $scope.player.status = 'begin';
         $scope.mySound.pause();
         $scope.mySound.seek(0);
         $scope.playing = false;
       }
 
       $scope.end = function() {
+        $scope.player.status = 'end';
         $scope.mySound.pause();
         $scope.mySound.seek($scope.mySound.duration);
         $scope.playing = false;
       }
 
       $scope.rew = function() {
+        $scope.player.status = 'rw';
         if($scope.mySound.position - 0.5 > 0)
             $scope.mySound.seek($scope.mySound.position - 0.5);
         $scope.playing = false;
       }
 
       $scope.ff = function() {
+        $scope.player.status = 'ff';
         if($scope.mySound.position + 0.5 < $scope.mySound.duration)
             $scope.mySound.seek($scope.mySound.position + 0.5);
         $scope.playing = false;
       }
 
       $scope.pause = function() {
+        $scope.player.status = 'pause';
         $scope.mySound.pause();
         $scope.playing = false;
       }
 
       $scope.stop = function() {
+        $scope.player.status = 'pause';
         $scope.mySound.pause();
         $scope.playing = false;
       }
 
       $scope.play = function() {
+        $scope.player.status = 'play';
         $scope.mySound.play();
         $scope.playing = true;
       }

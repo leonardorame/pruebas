@@ -140,12 +140,12 @@
         <div tab heading="Audio">
           <div class="study-table" id="audioRecorder">
             <div class="btn-group">
-              <button class="btn btn-primary" ng-click="begin()" ng-model="radioModel" btn-radio="'begin'"><span class="glyphicon glyphicon-step-backward"></span><br>Principio</button>
-              <button class="btn btn-primary" ng-click="rew()" ng-model="radioModel" btn-radio="'rw'"><span class="glyphicon glyphicon-backward"></span><br>Retroceder (F2)</button>
-              <button class="btn btn-primary" ng-click="play()" ng-model="radioModel" btn-radio="'play'"><span class="glyphicon glyphicon-play"></span><br>Reproducir (F3)</button>
-              <button class="btn btn-primary" ng-click="pause()" ng-model="radioModel" btn-radio="'pause'"><span class="glyphicon glyphicon-pause"></span><br>Pausa (F3)</button>
-              <button class="btn btn-primary" ng-click="ff()" ng-model="radioModel" btn-radio="'ff'"><span class="glyphicon glyphicon-forward"></span><br>Avanzar (F4)</button>
-              <button class="btn btn-primary" ng-click="end()" ng-model="radioModel" btn-radio="'end'"><span class="glyphicon glyphicon-step-forward"></span><br>Fin</button>
+              <button class="btn btn-primary" ng-click="begin()" ng-model="player.status" btn-radio="'begin'"><span class="glyphicon glyphicon-step-backward"></span><br>Principio</button>
+              <button class="btn btn-primary" ng-click="rew()" ng-model="player.status" btn-radio="'rw'"><span class="glyphicon glyphicon-backward"></span><br>Retroceder (F2)</button>
+              <button class="btn btn-primary" ng-click="play()" ng-model="player.status" btn-radio="'play'"><span class="glyphicon glyphicon-play"></span><br>Reproducir (F3)</button>
+              <button class="btn btn-primary" ng-click="pause()" ng-model="player.status" btn-radio="'pause'"><span class="glyphicon glyphicon-pause"></span><br>Pausa (F3)</button>
+              <button class="btn btn-primary" ng-click="ff()" ng-model="player.status" btn-radio="'ff'"><span class="glyphicon glyphicon-forward"></span><br>Avanzar (F4)</button>
+              <button class="btn btn-primary" ng-click="end()" ng-model="player.status" btn-radio="'end'"><span class="glyphicon glyphicon-step-forward"></span><br>Fin</button>
               &nbsp;<span id="time" style="font-size:30px">00:00.00</span>
             </div>
           </div>
