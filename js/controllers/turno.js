@@ -37,6 +37,8 @@ angular.module('TIRApp.controllers.turno', []).
                     $scope.pause();
                 else
                     $scope.play(); 
+                event.stopPropagation();
+                event.preventDefault();
                 break; 
             }
             case 115: { $scope.ff(); break; }
