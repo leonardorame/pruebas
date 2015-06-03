@@ -9,6 +9,33 @@ angular.module('TIRApp.controllers.turno', []).
       $scope.progressValue = 0;
       $scope.progressMax = 100;
       $scope.player = {};
+    
+      $scope.getEditorConfig = function(element) {
+        // Propiedades generales
+        var cfg = {}
+
+        // Propiedades particulares de cada editor
+        if(element.id=="editor1"){
+            cfg.removePlugins = 'elementspath';
+            cfg.resize_enabled = false;
+            cfg.height = 100;
+            cfg.toolbarGroups = [
+                  { name: 'document',	 groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+                  { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+                  { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+                ];
+        }
+
+        if(element.id=="editor2"){
+            cfg.removePlugins = 'elementspath';
+            cfg.resize_enabled = false;
+            cfg.toolbarGroups = [
+                  { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+                  { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+                ];
+        }
+        return cfg;
+      };
 
       function secondstotime(secs)
       {
@@ -49,6 +76,13 @@ angular.module('TIRApp.controllers.turno', []).
             function(data){
                 TIRAPIservice.study = data
                 $scope.study = TIRAPIservice.study;
+                if($scope.study.Title == "") {
+                    for(var i = 0; i < $scope.study.Procedures.length; i++) {
+                        var proc = $scope.study.Procedures[i];
+                        $scope.study.Title = 
+                            proc.CodProcedure + ": " + proc.ProcedureName;
+                    }
+                }
                 $scope.alert = undefined;
                 // recien despues de 
                 // haber cargado los datos
@@ -238,8 +272,8 @@ angular.module('TIRApp.controllers.turno', []).
             });
       };
 
-      $scope.save = function(document) {
-          TIRAPIservice.saveStudy(document).
+      $scope.save = function() {
+          TIRAPIservice.saveStudy($scope.study.Report).
             success(function(data, status, headers, config){
                 $scope.alert = {type: 'success', msg: 'Documento guardado exitosamente!'};
             }).

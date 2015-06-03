@@ -48,7 +48,8 @@ begin
         ':idstatus, ' +
         ':iduser, ' +
         ':idprocedure, ' +
-        ':qty)';
+        ':qty, ' +
+        ':title)';
 
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('idstudy').AsInteger:= lTurno.IdStudy;
@@ -64,6 +65,7 @@ begin
       lQuery.ParamByName('iduser').AsInteger:= Session.User.IdUser;
       lQuery.ParamByName('IdProcedure').AsInteger := lTurno.IdProcedure;
       lQuery.ParamByName('Qty').AsInteger := lTurno.Qty;
+      lQuery.ParamByName('Title').AsString := lTurno.Title;
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
@@ -98,6 +100,7 @@ begin
       lStudy.StudyDate := FormatDateTime('YYYY-MM-DD HH:NN:SS', lQuery.FieldByName('StudyDate').AsDateTime);
       lStudy.Status := lQuery.FieldByName('Status').AsString;
       lStudy.IdStatus := lQuery.FieldByName('IdStatus').AsInteger;
+      lStudy.Title := lQuery.FieldByName('Title').AsString;
       lStudy.Patient_IdPatient := lQuery.FieldByName('Patient_IdPatient').AsInteger;
       lStudy.Patient_FirstName := lQuery.FieldByName('Patient_FirstName').AsString;
       lStudy.Patient_LastName := lQuery.FieldByName('Patient_LastName').AsString;

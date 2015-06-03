@@ -7,8 +7,6 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
-    config.width = 600;
-    config.height = 700;
-    config.removePlugins = 'autogrow';
-    config.disableNativeSpellChecker = false; // enable spellcheck
+	// config.extraPlugins = 'autogrow';
+	config.disableNativeSpellChecker = false;
 };

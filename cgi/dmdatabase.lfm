@@ -113,6 +113,7 @@ object datamodule1: Tdatamodule1
       'stpr.IdStudyProcedure as "IdStudyProcedure",'
       'stpr.IdProcedure as "IdProcedure",'
       'stpr.Qty as "Qty",'
+      'stpr.title,'
       'u.username'
       'from study st'
       'join patient p on st.idpatient = p.idpatient'

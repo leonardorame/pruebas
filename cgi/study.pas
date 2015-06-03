@@ -31,6 +31,7 @@ type
     FPerform_IdProfessional: Integer;
     FPerform_LastName: string;
     FProcedure: string;
+    FTitle: string;
     FQty: Integer;
     FReport: string;
     FReport_FirstName: string;
@@ -64,6 +65,7 @@ type
     property Report_UserName: string read FReport_UserName write FReport_UserName;
     property Report: string read FReport write FReport;
     property ProcedureName: string read FProcedure write FProcedure;
+    property Title: string read FTitle write FTitle;
     property IdProcedure: Integer read FIdProcedure write FIdProcedure;
     property IdCurrentUser: Integer read FIdCurrentUser write FIdCurrentUser;
     property Qty: Integer read FQty write FQty;

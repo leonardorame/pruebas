@@ -88,7 +88,6 @@ directive("mainMenu", function(){
 directive('ckEditor', [function(){
         return {
             require: '?ngModel',
-            //controller: 'turnoController',
             restrict: 'CE',
             link: function (scope, elm, attr, model) {
                 CKEDITOR.env.isCompatible = true;
@@ -114,7 +113,7 @@ directive('ckEditor', [function(){
                        {
                             modes: { wysiwyg: 1, source: 1 },
                             exec: function (editor) { // Add here custom function for the save button
-                              scope.save(editor.getData());
+                              scope.save();
                             }
                        });
                        editor.ui.addButton('Save', { label: 'Save', command: 'save', toolbar: 'document, 1' });
@@ -133,13 +132,8 @@ directive('ckEditor', [function(){
                        editor.ui.addButton('Print', { label: 'Print', command: 'print', toolbar: 'document, 5' });
                     }
                 }
-                var ck = CKEDITOR.replace( elm[0], {
-                  toolbarGroups: [
-                      { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
-                      { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
-                      { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
-                    ]
-                } );
+                var editorConfig = scope.getEditorConfig( elm[0] );
+                var ck = CKEDITOR.replace( elm[0], editorConfig);
                 var edt = ck;
                 edt.on('contentDom', function(){
                     edt.editable().attachListener(edt.document, 'keyup', function(event) {
