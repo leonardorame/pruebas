@@ -23,6 +23,7 @@ angular.module('TIRApp.controllers.templates', []).
         title: 'Modalidad',
         value: 'Modality'
     }];
+
     //default criteria that will be sent to the server
     $scope.filterCriteria = {
         pageNumber: 1,
@@ -124,6 +125,19 @@ angular.module('TIRApp.controllers.templates', []).
         pageNumber: 1,
         sortDir: 'asc',
         sortedBy: 'id'
+    };
+
+    $scope.getEditorConfig = function(element) {
+      var cfg = {}
+      cfg.removePlugins = 'elementspath';
+      cfg.resize_enabled = false;
+      cfg.height = 100;
+      cfg.toolbarGroups = [
+            { name: 'document',	 groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+          ];
+      return cfg;
     };
 
     $scope.alert = undefined;
