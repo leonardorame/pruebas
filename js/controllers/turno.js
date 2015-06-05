@@ -27,6 +27,7 @@ angular.module('TIRApp.controllers.turno', []).
         }
 
         if(element.id=="editor2"){
+            cfg.extraPlugins = 'maximize';
             cfg.removePlugins = 'elementspath';
             cfg.resize_enabled = false;
             cfg.toolbarGroups = [
