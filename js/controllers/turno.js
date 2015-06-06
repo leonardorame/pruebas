@@ -32,7 +32,8 @@ angular.module('TIRApp.controllers.turno', []).
             cfg.resize_enabled = false;
             cfg.toolbarGroups = [
                   { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
-                  { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
+                  { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                  { name: 'tools', groups: [ 'maximize' ] }
                 ];
         }
         return cfg;
