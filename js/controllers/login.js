@@ -7,7 +7,7 @@ angular.module('TIRApp.controllers.login', []).
             frm.username = "";
         }
       }, true);
-  
+          
       $scope.submit = function(){
         TIRAPIservice.login($scope.username, $scope.password).
           success(function(data, status, headers, config){
@@ -32,11 +32,7 @@ angular.module('TIRApp.controllers.login', []).
       $scope.ok = function(loginForm){
         TIRAPIservice.login(loginForm.user.$modelValue, loginForm.password.$modelValue).
           success(function(data, status, headers, config){
-            TIRAPIservice.user.id = data.id;
-            TIRAPIservice.user.name = data.name;
-            TIRAPIservice.user.fullname = data.fullname;
-            TIRAPIservice.user.profile = data.profile;
-            TIRAPIservice.user.idprofessional = data.idprofessional;
+            $cookieStore.put('user_', data);
             $modalInstance.close();
           }).
           error(function(data, status, headers, config){

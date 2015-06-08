@@ -57,7 +57,13 @@ angular.module('TIRApp', [
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 }).
-
+ run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+      if(typeof TIRAPIservice.user() === 'undefined') {
+        $location.path('/login');
+      }
+    });
+ }]).
 /* directiva main-menu */
 directive("mainMenu", function(){
     return {
@@ -181,6 +187,7 @@ directive('ckEditor', [function(){
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 	when("/login", {templateUrl: "partials/login.html", controller: "loginController"}).
+	when("/logoff", {templateUrl: "partials/login.html", controller: "logoffController"}).
 	when("/templates", {templateUrl: "partials/templates.html", controller: "templatesController"}).
 	when("/patients", {templateUrl: "partials/patients.html", controller: "patientsController"}).
 	when("/users", {templateUrl: "partials/users.html", controller: "usersController"}).
