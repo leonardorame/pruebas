@@ -9,6 +9,7 @@ angular.module('TIRApp', [
   'TIRApp.controllers.status',
   'TIRApp.controllers.studystatuses',
   'TIRApp.controllers.insertupdatetpl',
+  'ngCookies',
   'ngRoute',
   'ui.bootstrap'
 ], function($httpProvider) {
@@ -57,8 +58,8 @@ angular.module('TIRApp', [
   }];
 }).
 run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
-    $rootScope.$on( "$routeChangeSuccess", function(event, next, current){
-        if(!TIRAPIservice.user.id){
+    $rootScope.$on( "$routeUpdate", function(event, next, current){
+        if(TIRAPIservice.user.id === undefined){
             TIRAPIservice.retrieveUserInfo().
                 success(function(data){
                     TIRAPIservice.user.id = data.id;

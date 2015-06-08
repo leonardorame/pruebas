@@ -1,7 +1,7 @@
 angular.module('TIRApp.controllers.turno', []).
 
   /* Turno controller */
-  controller('turnoController', function($window, $scope, $routeParams, TIRAPIservice, $modal) {
+  controller('turnoController', function($window, $scope, $routeParams, TIRAPIservice, $modal, $cookieStore) {
       $scope.study = TIRAPIservice.study;
       $scope.userName = TIRAPIservice.user.fullname;
       $scope.alert = undefined;
@@ -316,7 +316,9 @@ angular.module('TIRApp.controllers.turno', []).
   }).
 
   /* Turnos controller */
-  controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
+  controller('turnosController', function($scope, $location, $modal, TIRAPIservice, $cookieStore) {
+    var user_ = $cookieStore.get('user_');
+    console.log(user_);
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
     $scope.alert = undefined;
@@ -392,11 +394,11 @@ angular.module('TIRApp.controllers.turno', []).
     ];
      
     //default criteria that will be sent to the server
-    $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters;
+    $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters.get();
      
     //The function that is responsible of fetching the result from the server and setting the grid to the new result
     $scope.fetchResult = function () {
-        TIRAPIservice.studiesDefaultFilters = $scope.filterCriteria;
+        TIRAPIservice.studiesDefaultFilters.set($scope.filterCriteria);
         return TIRAPIservice.getTurnos($scope.filterCriteria).
             then(function(response){
               // success handler
@@ -412,7 +414,6 @@ angular.module('TIRApp.controllers.turno', []).
      
     //called when navigate to another page in the pagination
     $scope.selectPage = function (page) {
-        TIRAPIservice.studiesDefaultFilters.pageNumber = page;
         $scope.filterCriteria.pageNumber = page;
         $scope.fetchResult();
     };
@@ -438,7 +439,7 @@ angular.module('TIRApp.controllers.turno', []).
     };
      
     //manually select a page to trigger an ajax request to populate the grid on page load
-    $scope.selectPage(TIRAPIservice.studiesDefaultFilters.pageNumber);
+    $scope.selectPage($scope.filterCriteria.pageNumber);
 
     $scope.go = function(study){
         TIRAPIservice.study = study;
