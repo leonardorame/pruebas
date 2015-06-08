@@ -316,9 +316,7 @@ angular.module('TIRApp.controllers.turno', []).
   }).
 
   /* Turnos controller */
-  controller('turnosController', function($scope, $location, $modal, TIRAPIservice, $cookieStore) {
-    var user_ = $cookieStore.get('user_');
-    console.log(user_);
+  controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user.fullname;
     $scope.alert = undefined;

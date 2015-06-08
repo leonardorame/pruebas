@@ -57,24 +57,6 @@ angular.module('TIRApp', [
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 }).
-run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
-    $rootScope.$on( "$routeUpdate", function(event, next, current){
-        if(TIRAPIservice.user.id === undefined){
-            TIRAPIservice.retrieveUserInfo().
-                success(function(data){
-                    TIRAPIservice.user.id = data.id;
-                    TIRAPIservice.user.name = data.name;
-                    TIRAPIservice.user.fullname = data.fullname;
-                    TIRAPIservice.user.profile = data.profile;
-                    TIRAPIservice.user.idprofessional = data.idprofessional;
-                    $rootScope.userName = data.fullname;
-                }).
-                error(function(data, status, headers, config){
-                    $location.path('/login');
-                });
-        }
-    });
-}]).
 
 /* directiva main-menu */
 directive("mainMenu", function(){

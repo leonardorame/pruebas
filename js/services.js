@@ -1,48 +1,32 @@
 angular.module('TIRApp.services', [])
-  .factory('TIRAPIservice', function($http) {
+  .factory('TIRAPIservice', function($http, $cookieStore) {
     var TIRAPI = {};
-
-    var User = function() {
-        this.id = null;
-        this.name = null;
-        this.profile = null;
-        this.fullname = null;
-        this.idprofessional = null;
-    };
-
-    // setters
-    User.prototype.setId = function(aId) { this.id = aId; };
-    User.prototype.setName = function(aName) { this.name = aName; };
-    User.prototype.setIdProfessional = function(aIdProfessional) { this.idprofessional = aIdProfessional; };
-    User.prototype.setProfile = function(aProfile) { this.profile = aProfile; };
-    User.prototype.setFullName = function(aFullName) { this.fullname = aFullName; };
-
-    // getters
-    User.prototype.getId = function() { return this.id; };
-    User.prototype.getName = function() { return this.name; };
-    User.prototype.getIdProfessional = function() { return this.idprofessional; };
-    User.prototype.getProfile = function() { return this.profile; };
-    User.prototype.getFullName = function() { return this.fullname; };
-
-    TIRAPI.user = new User();
 
     TIRAPI.study = {};
     TIRAPI.template = {};
+    TIRAPI.user = $cookieStore.get('user_');
 
     StudiesDefaultFilters = function() {
         this.pageNumber = 1;
         this.sortDit = 'asc';
         this.sortedBy = 'id';
     }
-    
+
     StudiesDefaultFilters.prototype.get = function() { return this; };
     StudiesDefaultFilters.prototype.set = function(aValues) { 
         for(var prop in aValues) {
             this[prop] = aValues[prop]
         }
+        $cookieStore.put('studiesfilters_', aValues);
     };
 
     TIRAPI.studiesDefaultFilters = new StudiesDefaultFilters();
+
+    // if no cookie then create a new cookie with default filters
+    var storedFilters = $cookieStore.get('studiesfilters_');
+    if(typeof storedFilters !== 'undefined') {
+        TIRAPI.studiesDefaultFilters.set(storedFilters);          
+    };
 
     TIRAPI.getTurnos = function(filter) {
       return $http({

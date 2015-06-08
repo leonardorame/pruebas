@@ -11,13 +11,7 @@ angular.module('TIRApp.controllers.login', []).
       $scope.submit = function(){
         TIRAPIservice.login($scope.username, $scope.password).
           success(function(data, status, headers, config){
-            var user = TIRAPIservice.user;
-            user.setId(data.id);
-            user.setName(data.name);
-            user.setFullName(data.fullname);
-            user.setProfile(data.profile);
-            user.setIdProfessional(data.idprofessional);
-            $cookieStore.put('user_', user);
+            $cookieStore.put('user_', data);
             $location.path('/turnos');
           }).
           error(function(data, status, headers, config){
