@@ -47,6 +47,13 @@ angular.module('TIRApp.services', [])
     }
 
     TIRAPI.getStatuses = function(filter) {
+      if(!filter){
+        filter = {
+            pageNumber: 1,
+            sortDit: 'asc',
+            sortedBy: 'id'
+        }
+      }
       return $http({
         method: 'POST', 
         data: filter,

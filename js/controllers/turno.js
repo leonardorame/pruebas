@@ -317,6 +317,7 @@ angular.module('TIRApp.controllers.turno', []).
 
   /* Turnos controller */
   controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
+    $scope.isCollapsed = false;
     $scope.turnos = [];
     $scope.userName = TIRAPIservice.user().fullname;
     $scope.alert = undefined;
@@ -390,6 +391,15 @@ angular.module('TIRApp.controllers.turno', []).
         align: 'center'
       }
     ];
+
+    TIRAPIservice.getStatuses().
+        then(function(response){
+          // success handler
+          $scope.statuses = response.data.data;
+        },function(response){
+            // error handler
+            console.log(response);
+        });
      
     //default criteria that will be sent to the server
     $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters.get();

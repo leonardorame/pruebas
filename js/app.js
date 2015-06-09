@@ -9,8 +9,8 @@ angular.module('TIRApp', [
   'TIRApp.controllers.status',
   'TIRApp.controllers.studystatuses',
   'TIRApp.controllers.insertupdatetpl',
-  'ngCookies',
   'ngRoute',
+  'ngCookies',
   'ui.bootstrap'
 ], function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
@@ -57,7 +57,7 @@ angular.module('TIRApp', [
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 }).
- run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
+run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootScope, $location){
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
       if(typeof TIRAPIservice.user() === 'undefined') {
         $location.path('/login');
