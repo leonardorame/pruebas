@@ -28,21 +28,22 @@
             <tr>
               <th>&nbsp;</th>
               <th ng-repeat="header in headers">
-                <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
+                <sort-by onsort="onSort" sortdir="filterCriteria.sortDir" class="heading" sortedby="filterCriteria.sortedBy" sortvalue="{{ header.value }}">{{ header.title }}</sort-by>
               </th>
             </tr>
           </thead>
           <tbody>
           <tr>
             <td></td>
-            <td ng-repeat="header in headers">
-              <input class="table-filter" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
+            <td ng-repeat="header in headers" style="width: {{header.width}}; max-width: {{header.width}}">
+              <input class="table-filter" style="width: {{header.width}};" on-blur-change="filterResult()" ng-model="filterCriteria[header.value]" type="text"/>
             </td>
           </tr>
           <tr ng-repeat="turno in turnos" ng-dblclick="go(turno)"  ng-click="select(turno)" ng-class="{selected: turno.IdStudyProcedure == currentstudy.IdStudyProcedure}">
-            <td><input type=checkbox ng-model="turno['checked']" name="turno[{{turno.IdStudy}}]" />
+            <td>
+              <input type=checkbox ng-model="turno['checked']" name="turno[{{turno.IdStudy}}]" />
             </td>
-            <td ng-repeat="header in headers" align="{{header.align}}" width="{{header.width}}">
+            <td ng-repeat="header in headers" align="{{header.align}}" style="width: {{header.width}}; max-width: {{header.width}}">
               <span ng-if="$index==1" ng-click="go(turno)">
               {{turno[header.value]}}
               </span>
