@@ -6,14 +6,14 @@
   </ol>
 
 <div>
-  <div>
-    <div class="panel panel-default col-md-1">
-      <div class="panel-heading">Workflow</div>
-      <div class="panel-body" ng-repeat="status in statuses">
-        <button class="btn btn-default btn-block">{{status.Status}}</button>
+  <div style="margin: 0px; padding: 0px">
+    <div class="panel panel-default col-sm-2" style="padding: 2px">
+      <div class="panel-heading text-center" style="padding: 6px; background-color: #003333">Workflow</div>
+      <div class="panel-body" style="padding: 2px;" ng-repeat="status in statuses">
+        <button class="btn btn-default btn-block" ng-click="filter(status)" style="height: 30px;">{{status.Status}}</button>
       </div>
     </div>
-    <div class="col-md-11">
+    <div class="col-sm-10" style="padding-left: 6px;">
       <!--h1>Found ({{itemCount}}) Items</h1-->
       <div class="toolbar">
         <button type="button" ng-click="toTranscriptionist(turnos)">Asignar a Usuario</button>
