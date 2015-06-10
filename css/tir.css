@@ -131,6 +131,11 @@ td {
   text-overflow: ellipsis;
 }
 
+.cropped {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .selected td {
     background-color: #005f6a !important;
 }
@@ -142,6 +147,7 @@ td {
 .table-filter {
   display: block;
   padding: 4px; 
+  margin: 0px;
   width: 100%;
   appearance: none;
   outline: none;

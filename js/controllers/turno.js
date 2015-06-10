@@ -363,12 +363,14 @@ angular.module('TIRApp.controllers.turno', []).
       {
         title: 'Estado',
         value: 'Status',
-        align: 'left'
+        align: 'left',
+        width: '50px'
       },
       {
         title: 'Accession Number',
         value: 'AccessionNumber',
-        align: 'left'
+        align: 'left',
+        width: '80px'
       },
       {
         title: 'Usuario Actual',
@@ -400,6 +402,11 @@ angular.module('TIRApp.controllers.turno', []).
             // error handler
             console.log(response);
         });
+
+    $scope.filter = function(aFilter) {
+        $scope.filterCriteria['Status'] = aFilter.Status;
+        $scope.filterResult();
+    }
      
     //default criteria that will be sent to the server
     $scope.filterCriteria = TIRAPIservice.studiesDefaultFilters.get();
