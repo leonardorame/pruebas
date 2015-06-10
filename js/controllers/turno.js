@@ -18,7 +18,7 @@ angular.module('TIRApp.controllers.turno', []).
         if(element.id=="editor1"){
             cfg.removePlugins = 'elementspath';
             cfg.resize_enabled = false;
-            cfg.height = 100;
+            cfg.height = 60;
             cfg.toolbarGroups = [
                   { name: 'document',	 groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
                   { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
@@ -78,13 +78,13 @@ angular.module('TIRApp.controllers.turno', []).
             function(data){
                 TIRAPIservice.study = data
                 $scope.study = TIRAPIservice.study;
-                if($scope.study.Title == "") {
+                /*if($scope.study.Title == "") {
                     for(var i = 0; i < $scope.study.Procedures.length; i++) {
                         var proc = $scope.study.Procedures[i];
                         $scope.study.Title = 
                             proc.CodProcedure + ": " + proc.ProcedureName;
                     }
-                }
+                }*/
                 $scope.alert = undefined;
                 // recien despues de 
                 // haber cargado los datos
@@ -241,6 +241,7 @@ angular.module('TIRApp.controllers.turno', []).
                         } else {
                           $scope.study.Report = this.template.Template;
                         }
+                        $scope.study.Title = this.template.Title;
                     });
                 }
             });

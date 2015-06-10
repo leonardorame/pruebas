@@ -181,6 +181,7 @@ object datamodule1: Tdatamodule1
       '  idtemplate as "IdTemplate",'
       '  code as "Code",'
       '  name as "Name",'
+      '  title as "Title",'
       '  modality as "Modality",'
       '  template as "Template"'
       'from templates'

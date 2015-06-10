@@ -191,6 +191,7 @@ config(['$routeProvider', function($routeProvider) {
 	when("/templates", {templateUrl: "partials/templates.html", controller: "templatesController"}).
 	when("/patients", {templateUrl: "partials/patients.html", controller: "patientsController"}).
 	when("/users", {templateUrl: "partials/users.html", controller: "usersController"}).
+	when("/", {redirectTo: '/turnos'}).
 	when("/turnos", {templateUrl: "partials/turnos.html", controller: "turnosController"}).
 	when("/turnos/:id", {templateUrl: "partials/turno.html", controller: "turnoController"}).
 	otherwise({redirectTo: '/login'});

@@ -222,15 +222,15 @@ angular.module('TIRApp.controllers.templates', []).
         );
     };
 
-    $scope.save = function(document) {
-
-      TIRAPIservice.saveTemplate(document).
+    $scope.save = function() {
+      TIRAPIservice.saveTemplate($scope.template.Template).
         success(function(data, status, headers, config){
             $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' guardada exitosamente!'};
             var found = $filter('filter')($scope.templates, {IdTemplate: data.IdTemplate})[0];
             if (found) {
                 found.Code = data.Code;
                 found.Name = data.Name;
+                found.Title = data.Title;
                 found.Modality = data.Modality;
             } else {
             }

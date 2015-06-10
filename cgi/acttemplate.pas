@@ -45,10 +45,11 @@ begin
     try
       lQuery.DataBase := datamodule1.PGConnection1;
       datamodule1.SQLTransaction1.StartTransaction;
-      lSql := 'insert into templates(Code, Name) values(:code, :name)';
+      lSql := 'insert into templates(Code, Name, Title) values(:code, :name, :title)';
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('code').AsString:= 'NEW-CODE';
       lQuery.ParamByName('name').AsString:= 'NEW-NAME';
+      lQuery.ParamByName('title').AsString:= 'NEW-TITLE';
       lQuery.ExecSQL;
 
       lSql := 'SELECT currval(''templates_idtemplate_seq'')';
@@ -87,13 +88,14 @@ begin
       lQuery.DataBase := datamodule1.PGConnection1;
       datamodule1.SQLTransaction1.StartTransaction;
 
-      lSql := 'update templates set template = :template, code = :code, ' +
+      lSql := 'update templates set template = :template, title = :title, code = :code, ' +
         'name = :name, modality = :modality ' +
         'where idtemplate = :idtemplate';
       lQuery.SQL.Text := lSql;
       lQuery.ParamByName('template').AsString:= lTemplate.Template;
       lQuery.ParamByName('code').AsString:= lTemplate.Code;
       lQuery.ParamByName('name').AsString:= lTemplate.Name;
+      lQuery.ParamByName('title').AsString:= lTemplate.Title;
       lQuery.ParamByName('modality').AsString:= lTemplate.Modality;
       lQuery.ParamByName('idtemplate').AsInteger:= lTemplate.IdTemplate;
       lQuery.ExecSQL;
@@ -137,6 +139,7 @@ begin
       lTemplate.IdTemplate := lQuery.FieldByName('IdTemplate').AsInteger;
       lTemplate.Code := lQuery.FieldByName('Code').AsString;;
       lTemplate.Name := lQuery.FieldByName('Name').AsString;;
+      lTemplate.Title := lQuery.FieldByName('Title').AsString;;
       lTemplate.Modality := lQuery.FieldByName('Modality').AsString;;
       lTemplate.Template := lQuery.FieldByName('Template').AsString;;
       lJson := lStreamer.ObjectToJSON(lTemplate);

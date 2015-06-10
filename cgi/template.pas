@@ -18,12 +18,14 @@ type
     FModality: string;
     FName: string;
     FTemplate: string;
+    FTitle: string;
   published
     property IdTemplate: Integer read FIdTemplate write FIdTemplate;
     property Code: string read FCode write FCode;
     property Name: string read FName write FName;
     property Template: string read FTemplate write FTemplate;
     property Modality: string read FModality write FModality;
+    property Title: string read FTitle write FTitle;
   end;
 
   TTemplateList = class (specialize TFPGList<TTemplate>);

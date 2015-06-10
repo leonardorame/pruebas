@@ -26,8 +26,6 @@ type
 
 implementation
 
-
-
 procedure TTemplates.Post;
 var
   lList: TTemplateList;
