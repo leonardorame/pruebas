@@ -201,13 +201,17 @@ angular.module('TIRApp.controllers.users', []).
         TIRAPIservice.getUser(user.IdUser).success(
             function(data){
                 $scope.alert = undefined;
-                TIRAPIservice.user = data
                 $scope.currentuser = data;
                 $scope.user = data;
                 // se abre el dialogo
                 $modal.open({
                     controller: 'userDialogController',
-                    templateUrl: 'partials/userDialog.html'
+                    templateUrl: 'partials/userDialog.html',
+                    resolve: {
+                        user: function(){
+                            return $scope.user;
+                        }
+                    }
                 }).result.then(function(user){
                 });
             }
@@ -216,8 +220,8 @@ angular.module('TIRApp.controllers.users', []).
 
   }).
 
-  controller('userDialogController', function($filter, $scope, $location, TIRAPIservice, $modalInstance) {
-    $scope.user = TIRAPIservice.user;
+  controller('userDialogController', function($filter, $scope, $location, $modalInstance, TIRAPIservice, user) {
+    $scope.user = user;
     $scope.ok = function(){
         $modalInstance.close($scope.user);
     };        

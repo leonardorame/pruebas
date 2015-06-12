@@ -1,7 +1,6 @@
 angular.module('TIRApp.controllers.template', []).
   /* Template controller */
   controller('templateController', function($scope, $location, TIRAPIservice, $modalInstance, template) {
-    $scope.userName = TIRAPIservice.user.fullname;
     $scope.template = template;
 
     $scope.getEditorConfig = function(element) {
