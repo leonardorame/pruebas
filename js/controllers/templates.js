@@ -1,6 +1,7 @@
 angular.module('TIRApp.controllers.templates', []).
     
   controller('templatesTableController', function($scope, $location, $modalInstance, TIRAPIservice) {
+    $scope.user = TIRAPIservice.user();
     $scope.templates = [];
 
     $scope.totalPages = 0;
@@ -85,6 +86,8 @@ angular.module('TIRApp.controllers.templates', []).
     $scope.cancel = function(){
         $modalInstance.dismiss('cancel');
     };        
+
+
     $scope.go = function(template){
         TIRAPIservice.getTemplate(template.IdTemplate).success(
             function(data){
@@ -98,7 +101,7 @@ angular.module('TIRApp.controllers.templates', []).
   /* Templates controller */
   controller('templatesController', function($filter, $scope, $location, TIRAPIservice, $modal) {
     $scope.templates = [];
-    $scope.userName = TIRAPIservice.user.fullname;
+    $scope.TIRAPIservice = TIRAPIservice;
 
     $scope.totalPages = 0;
     $scope.itemCount = 0;
@@ -127,18 +130,6 @@ angular.module('TIRApp.controllers.templates', []).
         sortedBy: 'id'
     };
 
-    $scope.getEditorConfig = function(element) {
-      var cfg = {}
-      cfg.removePlugins = 'elementspath';
-      cfg.resize_enabled = false;
-      cfg.height = 100;
-      cfg.toolbarGroups = [
-            { name: 'document',	 groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
-            { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
-            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }
-          ];
-      return cfg;
-    };
 
     $scope.alert = undefined;
     $scope.closeAlert = function(){
@@ -204,28 +195,35 @@ angular.module('TIRApp.controllers.templates', []).
                 $scope.alert = {type: 'danger', msg: 'Error al intentar crear plantilla. COD: ' + status + ' - Probablemente el nombre y/o código esten duplicados (buscar NEW-CODE).'};
             });
     }
+    
+    $scope.selectTemplate = function(aTemplate){
+        $scope.currenttpl = aTemplate;
+    }
 
-    $scope.go = function(template){
-        $scope.alert = {type: 'success', msg: 'Cargando plantilla. Id: ' + template.IdTemplate};
-        TIRAPIservice.getTemplate(template.IdTemplate).success(
-            function(data){
-                $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' cargada exitosamente.'};
-                TIRAPIservice.template = data;
-                $scope.currenttpl = data;
-                $scope.template = data;
+    $scope.openTemplate = function(aTemplate){
+        $scope.currenttpl = aTemplate;
+        $modal.open({
+            controller: 'templateController',
+            templateUrl: 'partials/template.html',
+            windowClass: 'modal-huge',
+            resolve: {
+                template: function(){
+                    return $scope.currenttpl;
+                }
             }
-        ).error(
-            function(data, status, headers, config){
-                alert(data);
-                alert(status);
+        }).result.then(function(template){
+            if(template){
+                $scope.template = template;
+                $scope.currenttpl = template;
+                $scope.save();
             }
-        );
+        });
     };
 
     $scope.save = function() {
       TIRAPIservice.saveTemplate($scope.template.Template).
         success(function(data, status, headers, config){
-            $scope.alert = {type: 'success', msg: 'Plantilla ' + data.IdTemplate + ' guardada exitosamente!'};
+            $scope.alert = {type: 'success', msg: 'Plantilla ' + data.Code + ' guardada exitosamente!'};
             var found = $filter('filter')($scope.templates, {IdTemplate: data.IdTemplate})[0];
             if (found) {
                 found.Code = data.Code;

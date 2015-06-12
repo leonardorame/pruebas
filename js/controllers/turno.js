@@ -3,7 +3,7 @@ angular.module('TIRApp.controllers.turno', []).
   /* Turno controller */
   controller('turnoController', function($window, $scope, $routeParams, TIRAPIservice, $modal, $cookieStore) {
       $scope.study = TIRAPIservice.study;
-      $scope.userName = TIRAPIservice.user().fullname;
+      $scope.TIRAPIservice = TIRAPIservice;
       $scope.alert = undefined;
       $scope.mySound = null;
       $scope.progressValue = 0;
@@ -320,7 +320,7 @@ angular.module('TIRApp.controllers.turno', []).
   controller('turnosController', function($scope, $location, $modal, TIRAPIservice) {
     $scope.isCollapsed = false;
     $scope.turnos = [];
-    $scope.userName = TIRAPIservice.user().fullname;
+    $scope.TIRAPIservice = TIRAPIservice;
     $scope.alert = undefined;
     $scope.totalPages = 0;
     $scope.itemCount = 0;

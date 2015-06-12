@@ -3,7 +3,7 @@ angular.module('TIRApp.controllers.patient', []).
   /* Patients controller */
   controller('patientsController', function($scope, $location, TIRAPIservice, $modal) {
     $scope.patients = [];
-    $scope.userName = TIRAPIservice.user.fullname;
+    $scope.TIRAPIservice = TIRAPIservice;
 
     $scope.totalPages = 0;
     $scope.itemCount = 0;

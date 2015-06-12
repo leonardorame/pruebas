@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Propiedades de la plantilla</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Código:</label>
+        </div>
+        <div class="col-sm-10">
+            <input ng-model="template.Code" />
+        </div>
+        <div class="col-sm-2">
+            <label>Nombre:</label>
+        </div>
+        <div class="col-sm-10">
+            <input ng-model="template.Name" size="30" />
+        </div>
+    </diV>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Título:</label>
+        </div>
+        <div class="col-sm-10">
+            <input ng-model="template.Title" size="50" />
+        </div>
+        <div class="col-sm-2">
+            <label>Modalidad:</label>
+        </div>
+        <div class="col-sm-10">
+            <input ng-model="template.Modality" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="ck-editor" ng-model="template.Template"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

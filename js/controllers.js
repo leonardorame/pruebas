@@ -7,6 +7,7 @@ angular.module('TIRApp.controllers',
         'TIRApp.controllers.templates',
         'TIRApp.controllers.users',
         'TIRApp.controllers.studystatuses',
-        'TIRApp.controllers.diagnostico'
+        'TIRApp.controllers.diagnostico',
+        'TIRApp.controllers.template'
     ]);
 

@@ -5,7 +5,8 @@ angular.module('TIRApp.services', [])
     TIRAPI.study = {};
     TIRAPI.template = {};
     TIRAPI.user = function() {
-      return $cookieStore.get('user_');
+      var user = $cookieStore.get('user_')
+      return user;
     }
 
     StudiesDefaultFilters = function() {

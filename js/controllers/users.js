@@ -94,8 +94,7 @@ angular.module('TIRApp.controllers.users', []).
   /* Users controller */
   controller('usersController', function($filter, $scope, $location, TIRAPIservice, $modal) {
     $scope.users = [];
-    $scope.userName = TIRAPIservice.user.fullname;
-
+    $scope.TIRAPIservice = TIRAPIservice;
     $scope.totalPages = 0;
     $scope.itemCount = 0;
     $scope.headers = [
