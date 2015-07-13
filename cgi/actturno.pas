@@ -8,6 +8,7 @@ uses
   BrookLogger,
   dmdatabase,
   sqldb,
+  pqconnection,
   BaseAction,
   fpjson,
   fpjsonrtti,
@@ -69,11 +70,11 @@ begin
       lQuery.ExecSQL;
       datamodule1.SQLTransaction1.Commit;
     except
-      on E: exception do
+      on E: EPQDatabaseError do
       begin
-        TBrookLogger.Service.Error(E.Message);
-        HttpResponse.Code := 401;
-        HttpResponse.CodeText := E.message;
+        datamodule1.SQLTransaction1.RollBack;
+        HttpResponse.Code := 403;
+        HttpResponse.Content := E.message_primary;
       end;
     end;
   finally

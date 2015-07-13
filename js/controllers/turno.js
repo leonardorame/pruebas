@@ -281,8 +281,8 @@ angular.module('TIRApp.controllers.turno', []).
                 $scope.alert = {type: 'success', msg: 'Documento guardado exitosamente!'};
             }).
             error(function(data, status, headers, config){
-                $scope.alert = {type: 'danger', msg: 'Error al intentar guardar documento. COD: ' + status};
-                if(status = '401'){ 
+                $scope.alert = {type: 'danger', msg: 'Error al intentar guardar documento. COD: ' + status + ' (' + data + ')'};
+                if(status == '401'){ 
                     $modal.open({
                         controller: 'popupLoginController',
                         templateUrl: 'partials/loginPopup.html'
