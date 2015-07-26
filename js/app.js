@@ -9,6 +9,7 @@ angular.module('TIRApp', [
   'TIRApp.controllers.status',
   'TIRApp.controllers.studystatuses',
   'TIRApp.controllers.insertupdatetpl',
+  'tc.chartjs',
   'ngRoute',
   'ngCookies',
   'ui.bootstrap'
@@ -65,12 +66,24 @@ run(['TIRAPIservice', '$rootScope', '$location', function(TIRAPIservice, $rootSc
     });
  }]).
 /* directiva main-menu */
-directive("mainMenu", function(){
+directive("mainMenu", function(TIRAPIservice){
     return {
         restrict: 'A',
         templateUrl: 'partials/menu.html',
         scope: true,
-        transclude: false
+        transclude: false,
+        link: function (scope, elm, attr, model) {
+            scope.menuitems = [
+                {"url": "#/turnos", "value":"Estudios"},
+                {"url": "#/patients", "value":"Pacientes"},
+                {"url": "#/templates", "value":"Plantillas"}
+            ];
+
+            if(TIRAPIservice.user().profile=='Administrators') {
+                scope.menuitems.push({"url": "#/users", "value":"Usuarios"});
+                scope.menuitems.push({"url": "#/stats", "value":"Estadísticas"});
+            }
+        }
     }
 }).
 
@@ -191,6 +204,7 @@ config(['$routeProvider', function($routeProvider) {
 	when("/templates", {templateUrl: "partials/templates.html", controller: "templatesController"}).
 	when("/patients", {templateUrl: "partials/patients.html", controller: "patientsController"}).
 	when("/users", {templateUrl: "partials/users.html", controller: "usersController"}).
+	when("/stats", {templateUrl: "partials/stats.html", controller: "statsController"}).
 	when("/", {redirectTo: '/turnos'}).
 	when("/turnos", {templateUrl: "partials/turnos.html", controller: "turnosController"}).
 	when("/turnos/:id", {templateUrl: "partials/turno.html", controller: "turnoController"}).

@@ -1,0 +1,25 @@
+<div main-menu=""></div>
+
+  <ol class="breadcrumb">
+    <li><a href="#">Inicio</a></li>
+    <li class="active">Estadísticas</li>
+  </ol>
+
+<div>
+
+<div class="row" style="margin-right: 0px; margin-left: 0px;">
+    <div class="col-lg-7 col-xs-12" style="text-align: center;">
+      <div>
+        <h4>Estudios por modalidad últimos 12 meses</h4>
+        <canvas tc-chartjs chart-type="bar" chart-data="chart_1" chart-options="chart_1.options" chart-legend="legend"></canvas>
+        <div style="text-align: center;" tc-chartjs-legend chart-legend="legend"></div>
+      </div>
+    </div>
+    <div class="col-lg-5 col-xs-12" style="text-align: center;">
+      <div>
+        <h4>Participación global por modalidad</h4>
+        <h5>Últimos 12 meses</h5>
+        <canvas tc-chartjs-pie chart-data="chart_2" chart-options="chart_2.options"></canvas>
+      </div>
+    </div>
+</div>
