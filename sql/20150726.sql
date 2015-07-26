@@ -29,3 +29,14 @@ where
   st.modality is not null and 
   st.studydate >= now() - '12 months'::interval
 group by 1, total.count;
+
+create view view_totalByMonth as
+select
+  extract(year from st.studydate) as "Year",
+  extract(month from st.studydate) as "Month",
+  count(*)
+from study st
+where
+  st.studydate >= now() - '12 months'::interval
+group by 1, 2
+order by 1, 2;

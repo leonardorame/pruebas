@@ -46,7 +46,11 @@ begin
     else
     if (Variable['statType'] = 'globalByModality') then
       lQuery.Sql.Text :=
-        'select json_agg(st.*)::text as "Stats" from view_globalByModality st';
+        'select json_agg(st.*)::text as "Stats" from view_globalByModality st'
+    else
+    if (Variable['statType'] = 'totalByMonth') then
+      lQuery.Sql.Text :=
+        'select json_agg(st.*)::text as "Stats" from view_totalByMonth st';
     lQuery.Open;
     lResult := lQuery.Fields[0].AsString;
     write(lResult);

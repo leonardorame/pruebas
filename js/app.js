@@ -197,7 +197,22 @@ directive('ckEditor', [function(){
         }
     }]).
 
-config(['$routeProvider', function($routeProvider) {
+factory('authHttpResponseInterceptor',['$location', '$q','$injector',function($location, $q, $injector){
+    return {
+        response: function(response){
+            return response || $q.when(response);
+        },
+        responseError: function(rejection) {
+            if (rejection.status === 401) {
+                $location.path('/login');
+            }
+            return $q.reject(rejection);
+        }
+    }
+}]).
+
+config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
+  $httpProvider.interceptors.push('authHttpResponseInterceptor');
   $routeProvider.
 	when("/login", {templateUrl: "partials/login.html", controller: "loginController"}).
 	when("/logoff", {templateUrl: "partials/login.html", controller: "logoffController"}).
